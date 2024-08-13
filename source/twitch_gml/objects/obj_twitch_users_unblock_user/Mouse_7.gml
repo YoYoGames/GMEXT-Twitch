@@ -1,0 +1,2 @@
+
+twitch_users_unblock_user("user123", ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);

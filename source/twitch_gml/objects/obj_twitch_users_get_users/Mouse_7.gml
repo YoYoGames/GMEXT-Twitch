@@ -1,0 +1,2 @@
+
+twitch_users_get_users({}, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
