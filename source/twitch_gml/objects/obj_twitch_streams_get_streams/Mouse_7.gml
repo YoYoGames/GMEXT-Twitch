@@ -1,0 +1,2 @@
+
+twitch_streams_get_streams({}, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);

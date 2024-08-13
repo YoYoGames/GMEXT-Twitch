@@ -1,0 +1,2 @@
+
+twitch_chat_get_global_chat_badges(ASYNC_TEST_RESPONSE_SUCCESS,ASYNC_TEST_RESPONSE_FAILED)

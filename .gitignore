@@ -1,0 +1,31 @@
+# VS and VSC folders
+**/.vs/
+**/.vsc/
+
+# Common extensions
+**/*.exp
+**/*.ilk
+**/*.lib
+**/*.pdb
+**/*.exp
+**/*.exe
+
+# Twitch SDKs
+source/Twitch_sdk/
+
+# Twitch DEMO options
+source/Twitch_gml/options/
+
+# Twitch build solutions (temp & output)
+**/Debug/
+**/Release/
+
+# MacOS
+.DS_Store
+
+# XCode and VS userdata
+*.user
+xcuserdata/
+
+# Release packages
+output/
