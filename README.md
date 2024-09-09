@@ -18,7 +18,7 @@ SOURCE: `source/Twitch_gml/`
 
 * Check [the releases](../../releases)
 
-Above is the complete list of releases and features, along with the corresponding changelog for each version.
+The complete list of releases and features, along with the corresponding changelog for each version.
 
 ---
 
