@@ -8,11 +8,17 @@ This extension will work accross all available platform since it relies on using
 
 SOURCE: `source/Twitch_gml/`
 
+
+> [!IMPORTANT]
+> Do not download from the **main branch** this branch is a _work in progress_ branch and probably has features that might be broken or not working properly, please download from the releases panel (right side instead).
+
 ---
 
-## Important
+## Releases and Features
 
-Do not download from the **main branch** this branch is a _work in progress_ branch and probably has features that might be broken or not working properly, please download from the releases panel (right side instead).
+* Check [the releases](../../releases)
+
+Above is the complete list of releases and features, along with the corresponding changelog for each version.
 
 ---
 
