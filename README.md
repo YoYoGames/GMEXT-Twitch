@@ -1,12 +1,15 @@
 # GMEXT-Twitch
 
-Repository for GameMaker's Steamworks Extension
+Repository for GameMaker's Twitch Extension
 
 This repository was created with the intent of presenting users with the latest version available of the extension (even previous to marketplace updates) and also provide a way for the community to contribute with bug fixes and feature implementation.
 
 This extension will work accross all available platform since it relies on using Twitch REST API.
 
 SOURCE: `source/Twitch_gml/`
+
+> [!NOTE]
+> For Android and iOS requires [GMEXT-WebView](https://github.com/YoYoGames/GMEXT-WebView)
 
 
 > [!IMPORTANT]
