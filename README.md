@@ -17,6 +17,12 @@ SOURCE: `source/Twitch_gml/`
 
 ---
 
+## Credits and Attributions
+
+We would like to express our gratitude to [Sidorakh](https://github.com/sidorakh/twitch.gml) and [TabularElf](https://github.com/tabularelf/GMTwitch) for their initial efforts and insights related to the Twitch REST API integration. Their foundational work and community support provided valuable references that informed the development of our extension. Their insights provided useful perspectives during development, and their support and shared knowledge contributed to shaping our approach.
+
+---
+
 ## Releases and Features
 
 * Check [the releases](../../releases)
