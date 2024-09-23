@@ -13,5 +13,5 @@ twitch_games_get_top_games({},
 			_y += _height*1.2
 		}
 	}
-	,ASYNC_TEST_RESPONSE_FAILED)
+	,__twitch_debug_callback_failure)
 

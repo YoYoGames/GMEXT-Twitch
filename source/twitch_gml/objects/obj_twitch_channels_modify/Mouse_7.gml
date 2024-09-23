@@ -11,5 +11,5 @@ twitch_channels_modify_channel_information(_user.id,
 	    //   {id: "Gambling", is_enabled: true},
 	    //   {id: "DrugsIntoxication", is_enabled: false}
 		//]
-	}, ASYNC_TEST_RESPONSE_SUCCESS,ASYNC_TEST_RESPONSE_FAILED)
+	}, __twitch_debug_callback_success,__twitch_debug_callback_failure)
 

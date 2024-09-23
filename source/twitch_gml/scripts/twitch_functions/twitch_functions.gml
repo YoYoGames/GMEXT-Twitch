@@ -1,20 +1,4 @@
 
-#macro ASYNC_TEST_RESPONSE_LENGHT 5000
-
-#macro ASYNC_TEST_RESPONSE_SUCCESS function(_data)														\
-{																										\
-	var _str_data = "SUCCESS: " + string_copy(json_stringify(_data), 0, ASYNC_TEST_RESPONSE_LENGHT);	\
-	show_debug_message(_str_data);																		\
-	show_message_async(_str_data);																		\
-}
-
-#macro ASYNC_TEST_RESPONSE_FAILED function(_data)														\
-{																										\
-	var _str_data = "FAILED: " + string_copy(json_stringify(_data), 0, ASYNC_TEST_RESPONSE_LENGHT);		\
-	show_debug_message(_str_data);																		\
-	show_message_async(_str_data);																		\
-}
-
 function twitch_functions() {
 	throw $"{_GMFUNCTION_} :: This script file cannot be called.";
 };
@@ -24,6 +8,8 @@ function twitch_functions() {
 #endregion
 
 #region Macros
+
+#macro TWITCH_DEBUG_MAX_RESPONSE_LENGTH 5000
 
 #macro TWITCH_DEBUG false
 
@@ -37,6 +23,25 @@ function twitch_functions() {
 #endregion
 
 #region Internal
+
+/// @param {Any} _data
+function __twitch_debug_callback_success(_data) {
+	__twitch_debug_callback("SUCCEEDED", _data);
+}
+
+/// @param {Any} _data
+function __twitch_debug_callback_failure(_data) {
+	__twitch_debug_callback("FAILED", _data);
+}
+
+/// @param {String} _status
+/// @param {Any} _data
+/// @ignore
+function __twitch_debug_callback(_status, _data) {
+	var _str_data = $"{_status} " + string_copy(json_stringify(_data), 0, TWITCH_DEBUG_MAX_RESPONSE_LENGTH);
+	show_debug_message(_str_data);
+	show_message_async(_str_data);
+}
 
 /// @ignore
 function __twitch_get_singleton() {
@@ -137,25 +142,6 @@ function __twitch_request(_url, _http_method, _header_map, _body, _callback_succ
 	return _request_id;
 }
 
-/// @param {Function} _callback_success
-/// @param {Function} _callback_failed
-/// @param {String} _function_name
-/// @ignore
-function __twitch_auth_refresh_token(_callback_success = undefined, _callback_failed = undefined, _function_name = _GMFUNCTION_) {
-	
-	var _url = $"{TWITCH_AUTH_ENDPOINT}oauth2/token";
-
-	var _header_map = ds_map_create();
-	_header_map[? "Content-Type"] = "application/x-www-form-urlencoded";
-
-	var _client_id = twitch_get_client_id();
-	var _client_secret = twitch_get_client_secret();
-
-	var _body = $"client_id={_client_id}&client_secret={_client_secret}&refresh_token={twitch_get_refresh_token()}&grant_type=refresh_token";
-	return __twitch_request(_url, "POST", _header_map, _body, _callback_success, _callback_failed, _function_name);	
-}
-
-
 #endregion
 
 // ## MANAGEMENT ###############################################
@@ -221,6 +207,68 @@ function twitch_get_refresh_token()
 
 // ## AUTH #####################################################
 
+/// @param {Function} _callback_success
+/// @param {Function} _callback_failed
+/// @ignore
+function __twitch_auth_defer_callback(_callback_success, _callback_failed) {
+
+	return method({ callback_success: _callback_success, callback_failed: _callback_failed }, function(_data) {
+
+		var _deferred_context = { callback_success, data: _data };
+
+		// Store the session data in disk
+		__twitch_auth_session_save(_data);
+			
+		// The context of the callback method includes the deferred values from the authentication
+		// call this allows us to silently handle chained actions to store important information
+		twitch_users_get_users(undefined, method(_deferred_context, function(_data) {
+			var _manager = __twitch_get_singleton();
+				
+			_manager.user_struct = _data.data[0];
+				
+			/// feather ignore once GM1011
+			/// feather ignore once GM1013
+
+			_manager.refresher = call_later(600, time_source_units_seconds, twitch_auth_refresh_token, true);
+				
+			if (is_callable(callback_success)) {
+				/// feather ignore once GM1013
+				callback_success(data);
+			}
+		}), 
+		callback_failed);
+	});
+};
+
+/// @param {Struct} _session_data
+function __twitch_auth_session_load() {
+	if (!file_exists(TWITCH_SESSION_FILE))
+		return false;
+
+	var _map = ds_map_secure_load(TWITCH_SESSION_FILE);
+	with (__twitch_get_singleton()) {
+		twitch_access_token = _map[?"access_token"];
+		twitch_refresh_token = _map[?"refresh_token"];
+	}
+	ds_map_destroy(_map);
+	
+	return true;
+}
+
+/// @param {Struct} _session_data
+function __twitch_auth_session_save(_session_data) {
+	// Store the session data in disk
+	var _map = json_decode(json_stringify(_session_data));
+	ds_map_secure_save(_map, TWITCH_SESSION_FILE);
+	ds_map_destroy(_map)
+				
+	with (__twitch_get_singleton()) {
+		// Cache the session tokens
+		twitch_access_token = _session_data.access_token
+		twitch_refresh_token = _session_data.refresh_token
+	}
+}
+
 function twitch_auth(_scopes, _force_verify = false, _state = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_AUTH_ENDPOINT}oauth2/authorize";
@@ -240,13 +288,16 @@ function twitch_auth(_scopes, _force_verify = false, _state = undefined, _callba
 	}
 	else {
 		url_open(_url);
-	}
-
+	}	
+	
+	var _deferred_callback = __twitch_auth_defer_callback(_callback_success, _callback_failed);
+	
 	with (__twitch_get_singleton()) {
-		server = network_create_server_raw(network_socket_tcp, _port, 1); //32);
-		twitch_auth_callback_success = _callback_success;
+		server = network_create_server_raw(network_socket_tcp, _port, 1);
+		twitch_auth_callback_success = _deferred_callback;
 		twitch_auth_callback_failed = _callback_failed;
 	}
+	
 };
 
 function twitch_auth_exchange_code(_code, _callback_success = undefined, _callback_failed = undefined)
@@ -277,30 +328,53 @@ function twitch_auth_app_token(_callback_success = undefined, _callback_failed =
 	var _client_id = twitch_get_client_id();
 	var _client_secret = twitch_get_client_secret();
 
+	var _deferred_callback = method({ callback_success: _callback_success }, function(_data) {
+		with (__twitch_get_singleton()) {
+			twitch_app_access_token = _data.access_token
+			
+			if (is_callable(callback_success)) {
+				callback_success(_data);
+			}
+		}
+	});
+
 	var _body = $"client_id={_client_id}&client_secret={_client_secret}&refresh_token={twitch_get_refresh_token()}&grant_type=client_credentials";
-	var _request = __twitch_request(_url, "POST", _header_map, _body, _callback_success, _callback_failed, "twitch_auth_app_token");
+	var _request = __twitch_request(_url, "POST", _header_map, _body, _deferred_callback, _callback_failed, "twitch_auth_app_token");
 
 	return _request;
 };
 
 function twitch_auth_refresh_token(_callback_success = undefined, _callback_failed = undefined)
 {	
-	return __twitch_auth_refresh_token(_callback_success, _callback_failed, "twitch_auth_refresh_token");
+	var _url = $"{TWITCH_AUTH_ENDPOINT}oauth2/token";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Content-Type"] = "application/x-www-form-urlencoded";
+
+	var _client_id = twitch_get_client_id();
+	var _client_secret = twitch_get_client_secret();
+
+	var _deferred_callback = method({ callback_success: _callback_success }, function(_data) {
+	
+		// Store the session data in disk
+		__twitch_auth_session_save(_data);
+		
+		if (is_callable(callback_success)) {
+			callback_success(_data);
+		}
+	});
+
+	var _body = $"client_id={_client_id}&client_secret={_client_secret}&refresh_token={twitch_get_refresh_token()}&grant_type=refresh_token";
+	return __twitch_request(_url, "POST", _header_map, _body, _deferred_callback, _callback_failed, "twitch_auth_refresh_token");	
 };
 
 function twitch_auth_from_cache(_callback_success = undefined, _callback_failed = undefined)
 {
-	if (!file_exists(TWITCH_SESSION_FILE))
-		return -1;
-
-	with (__twitch_get_singleton()) {
-		var _map = ds_map_secure_load(TWITCH_SESSION_FILE);
-		twitch_access_token = _map[?"access_token"];
-		twitch_refresh_token = _map[?"refresh_token"];
-		ds_map_destroy(_map);
-	}
-
-	return __twitch_auth_refresh_token(_callback_success, _callback_failed, "twitch_auth_from_cache");
+	if (!__twitch_auth_session_load()) return 1;
+	
+	var _deferred_callback = __twitch_auth_defer_callback(_callback_success, _callback_failed);
+	
+	return twitch_auth_refresh_token(_deferred_callback, _callback_failed);
 };
 
 function twitch_auth_signout()
@@ -2288,38 +2362,6 @@ function twitch_subscriptions_check_user_subscription(_broadcaster_id, _user_id,
 	return _request;
 };
 
-// ## TAGS #####################################################
-
-function twitch_tags_get_all_stream_tags(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
-{
-	var _url = $"{TWITCH_ENDPOINT}helix/tags/streams";
-
-	var _header_map = ds_map_create();
-	_header_map[? "Authorization"] = $"Bearer {twitch_get_access_token()}"
-	_header_map[? "Client-Id"] = twitch_get_client_id();
-
-	_url = __twitch_url_from_params(_url, undefined, _optionals);
-	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
-
-	return _request;
-};
-
-function twitch_tags_get_stream_tags(_broadcaster_id, _callback_success = undefined, _callback_failed = undefined)
-{
-	var _url = $"{TWITCH_ENDPOINT}helix/streams/tags";
-
-	var _header_map = ds_map_create();
-	_header_map[? "Authorization"] = $"Bearer {twitch_get_access_token()}"
-	_header_map[? "Client-Id"] = twitch_get_client_id();
-
-	var _parameters = { broadcaster_id: _broadcaster_id };
-
-	_url = __twitch_url_from_params(_url, _parameters);
-	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
-
-	return _request;
-};
-
 // ## TEAMS ####################################################
 
 function twitch_teams_get_channel_teams(_broadcaster_id, _callback_success = undefined, _callback_failed = undefined)
@@ -2385,8 +2427,21 @@ function twitch_users_update_user(_optionals, _callback_success = undefined, _ca
 	_header_map[? "Authorization"] = $"Bearer {twitch_get_access_token()}"
 	_header_map[? "Client-Id"] = twitch_get_client_id();
 
+	var _deferred_callback = method({ callback_success: _callback_success }, function(_data) {
+	
+		with (__twitch_get_singleton()) {
+			var _user = _data.data[0];
+			user_struct = _user;
+		}
+		
+		if (is_callable(callback_success)) {
+			callback_success(_data);
+		}
+	
+	});
+
 	_url = __twitch_url_from_params(_url, undefined, _optionals);
-	var _request = __twitch_request(_url, "PUT", _header_map, "", _callback_success, _callback_failed, "twitch_users_update_user");
+	var _request = __twitch_request(_url, "PUT", _header_map, "", _deferred_callback, _callback_failed, "twitch_users_update_user");
 
 	return _request;
 };

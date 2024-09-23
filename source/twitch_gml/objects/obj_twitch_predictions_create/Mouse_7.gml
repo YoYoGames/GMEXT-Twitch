@@ -19,5 +19,5 @@ twitch_predictions_create_prediction(_user.id,"Any leeks in the stream?",
           "color": "PINK"
         }
       ],
-      120, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
+      120, __twitch_debug_callback_success, __twitch_debug_callback_failure);
 	  

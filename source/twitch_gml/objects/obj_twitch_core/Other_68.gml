@@ -22,13 +22,15 @@ switch(async_load[? "type"])
 	
 		show_debug_message("network_type_disconnect");
 	
-		if (is_undefined(server))
-			return;
+		if (!is_undefined(server)) {
+			network_destroy(server);
+			server = undefined;
+		}
 		
 		if (!is_undefined(twitch_client_auth_socket)) {
 			network_destroy(twitch_client_auth_socket);
+			twitch_client_auth_socket = undefined;
 		}
-		twitch_client_auth_socket = undefined;
 		break;
 
 	case network_type_data:
@@ -42,26 +44,25 @@ switch(async_load[? "type"])
 			var _needle = "?code=";
 			var _start = string_pos(_needle,_data) + string_length(_needle);
 			var _end = string_pos_ext("&", _data, _start);
-			var _code = string_copy(_data, _start, _end - _start);
+			
+			var _count = _end == -1 ? string_length(_data) : _end - _start;
+			
+			var _code = string_copy(_data, _start, _count);
 		
 			twitch_oauth_token = _code
 		
-			var _buff_temp = buffer_load("twitch_auth_index.html");
-			if (_buff_temp != -1) {
-				network_send_raw(twitch_client_auth_socket,_buff_temp, buffer_get_size(_buff_temp));
-				buffer_delete(_buff_temp);
-			}
-			else {
-				var _object_name = object_get_name(object_index);
-				show_debug_message($"{_object_name} :: failed to load `twitch_auth_index.html`");
-			}
-		
+			var _close_tab_script = "HTTP/1.1 200 OK\nContent-Type: text/\nhtml<!DOCTYPE html><html><head><title>Authentication Complete</title><script>window.onload=function(){window.open('','_self').close();setTimeout(()=>{document.body.innerHTML='<p>Authentication successful. Please close this window manually.</p>';},1000);};</script></head><body></body></html>";
+				
+			var _buff = buffer_create(1, buffer_grow, 1);
+			buffer_write(_buff, buffer_string, _close_tab_script);
+			network_send_raw(twitch_client_auth_socket, _buff, buffer_tell(_buff));
+			buffer_delete(_buff);
+			
 			if (os_type == os_android || os_type == os_ios) {
 				WebView_Destroy()
 			}
 		
 			twitch_auth_exchange_code(twitch_oauth_token, twitch_auth_callback_success, twitch_auth_callback_failed)
-			network_destroy(server);
 		}
 		else if (async_load[? "id"] == twitch_client_chat_socket)
 		{

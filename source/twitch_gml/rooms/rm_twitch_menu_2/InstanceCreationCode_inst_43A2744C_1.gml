@@ -1,3 +1,3 @@
-goto = rm_twitch_tags
+goto = undefined
 text = "Tags"
 locked = true
