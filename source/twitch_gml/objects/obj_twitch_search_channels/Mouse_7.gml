@@ -1,2 +1,2 @@
 
-twitch_search_channels("loserfruit", {}, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
+twitch_search_channels("loserfruit", {}, __twitch_debug_callback_success, __twitch_debug_callback_failure);

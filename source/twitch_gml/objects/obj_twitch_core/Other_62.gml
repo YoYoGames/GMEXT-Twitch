@@ -38,11 +38,9 @@ if (_http_status >= 200 && _http_status < 300)
 		var _code = _data[$ "code"];
 		if (is_undefined(_code) || (_code >= 200 && _code < 300))
 		{
-			var _trigger_callback = twitch_http_success(_request, _data)
-			if (_trigger_callback && is_callable(_request.callback_success)) {
+			if (is_callable(_request.callback_success)) {
 				_request.callback_success(_data);
 			}
-				
 			return;
 		}
 	}

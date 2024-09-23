@@ -15,7 +15,9 @@
   "description":"",
   "exportToGame":true,
   "extensionVersion":"0.0.1",
-  "files":[],
+  "files":[
+    {"$GMExtensionFile":"","%Name":"","constants":[],"copyToTargets":-1,"filename":"Twitch.ext","final":"","functions":[],"init":"","kind":4,"name":"","order":[],"origname":"","ProxyFiles":[],"resourceType":"GMExtensionFile","resourceVersion":"2.0","uncompress":false,"usesRunnerInterface":false,},
+  ],
   "gradleinject":"",
   "hasConvertedCodeInjection":true,
   "helpfile":"",

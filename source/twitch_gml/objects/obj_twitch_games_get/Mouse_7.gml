@@ -11,5 +11,5 @@ twitch_games_get_games("33214", "", "", function(_data) {
 		_x += _height*1.2;
 	}
 }
-,ASYNC_TEST_RESPONSE_FAILED)
+,__twitch_debug_callback_failure)
 

@@ -16,4 +16,4 @@ twitch_polls_create_poll(_user.id,"Best Game Genere?",
   {
     "title":"RPG"
   }]
-  ,1800, {}, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
+  ,1800, {}, __twitch_debug_callback_success, __twitch_debug_callback_failure);
