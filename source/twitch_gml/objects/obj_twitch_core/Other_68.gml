@@ -50,8 +50,8 @@ switch(async_load[? "type"])
 			var _code = string_copy(_data, _start, _count);
 		
 			twitch_oauth_token = _code
-		
-			var _close_tab_script = "HTTP/1.1 200 OK\nContent-Type: text/\nhtml<!DOCTYPE html><html><head><title>Authentication Complete</title><script>window.onload=function(){window.open('','_self').close();setTimeout(()=>{document.body.innerHTML='<p>Authentication successful. Please close this window manually.</p>';},1000);};</script></head><body></body></html>";
+
+			var _close_tab_script = "HTTP/1.1 200 OK\nContent-Type: text/html\n\n<html><head><title>Authentication Complete</title><script>window.onload=function() { window.open('','_self').close(); };</script></head><body><p>Authentication successful. Please close this window manually.</p></body></html>"
 				
 			var _buff = buffer_create(1, buffer_grow, 1);
 			buffer_write(_buff, buffer_string, _close_tab_script);
