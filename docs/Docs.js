@@ -16,17 +16,17 @@
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of users.  |
- * | ___id | ${type.string}  | An ID that identifies the user.  |
- * | ___login | ${type.string}  | The user's login name.  |
- * | ___display_name | ${type.string}  | The user's display name.  |
- * | ___type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
- * | ___broadcaster_type | ${type.string}  | The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
- * | ___description | ${type.string}  | The user's description of their channel.  |
- * | ___profile_image_url | ${type.string}  | A URL to the user's profile image.  |
- * | ___offline_image_url | ${type.string}  | A URL to the user's offline image.  |
- * | ___view_count | ${type.number}  | The number of times the user's channel has been viewed. **NOTE**: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | ___email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
- * | ___created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the user.  |
+ * | &nbsp;├──&nbsp;login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;display_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
+ * | &nbsp;├──&nbsp;broadcaster_type | ${type.string}  | The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
+ * | &nbsp;├──&nbsp;description | ${type.string}  | The user's description of their channel.  |
+ * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
+ * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
+ * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. **NOTE**: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
  * @event_end
  * @func_end
  */
@@ -52,17 +52,17 @@ function twitch_auth(scopes, force_verify) {}
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of users.  |
- * | ___id | ${type.string}  | An ID that identifies the user.  |
- * | ___login | ${type.string}  | The user's login name.  |
- * | ___display_name | ${type.string}  | The user's display name.  |
- * | ___type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
- * | ___broadcaster_type | ${type.string}  | The type of broadcaster. The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
- * | ___description | ${type.string}  | The user's description of their channel.  |
- * | ___profile_image_url | ${type.string}  | A URL to the user's profile image.  |
- * | ___offline_image_url | ${type.string}  | A URL to the user's offline image.  |
- * | ___view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | ___email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
- * | ___created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the user.  |
+ * | &nbsp;├──&nbsp;login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;display_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
+ * | &nbsp;├──&nbsp;broadcaster_type | ${type.string}  | The type of broadcaster. The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
+ * | &nbsp;├──&nbsp;description | ${type.string}  | The user's description of their channel.  |
+ * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
+ * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
+ * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
  * @event_end
  * @func_end
  */
@@ -83,17 +83,17 @@ function twitch_auth_exchange_code(code) {}
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of users.  |
- * | ___id | ${type.string}  | An ID that identifies the user.  |
- * | ___login | ${type.string}  | The user's login name.  |
- * | ___display_name | ${type.string}  | The user's display name.  |
- * | ___type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
- * | ___broadcaster_type | ${type.string}  | The type of broadcaster. The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
- * | ___description | ${type.string}  | The user's description of their channel.  |
- * | ___profile_image_url | ${type.string}  | A URL to the user's profile image.  |
- * | ___offline_image_url | ${type.string}  | A URL to the user's offline image.  |
- * | ___view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | ___email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
- * | ___created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the user.  |
+ * | &nbsp;├──&nbsp;login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;display_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
+ * | &nbsp;├──&nbsp;broadcaster_type | ${type.string}  | The type of broadcaster. The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
+ * | &nbsp;├──&nbsp;description | ${type.string}  | The user's description of their channel.  |
+ * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
+ * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
+ * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
  * @event_end
  * @func_end
  */
@@ -116,17 +116,17 @@ function twitch_auth_app_token() {}
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of users.  |
- * | ___id | ${type.string}  | An ID that identifies the user.  |
- * | ___login | ${type.string}  | The user's login name.  |
- * | ___display_name | ${type.string}  | The user's display name.  |
- * | ___type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
- * | ___broadcaster_type | ${type.string}  | The type of broadcaster. The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
- * | ___description | ${type.string}  | The user's description of their channel.  |
- * | ___profile_image_url | ${type.string}  | A URL to the user's profile image.  |
- * | ___offline_image_url | ${type.string}  | A URL to the user's offline image.  |
- * | ___view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | ___email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
- * | ___created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the user.  |
+ * | &nbsp;├──&nbsp;login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;display_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
+ * | &nbsp;├──&nbsp;broadcaster_type | ${type.string}  | The type of broadcaster. The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
+ * | &nbsp;├──&nbsp;description | ${type.string}  | The user's description of their channel.  |
+ * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
+ * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
+ * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
  * @event_end
  * @func_end
  */
@@ -149,17 +149,17 @@ function twitch_auth_refresh_token() {}
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of users.  |
- * | ___id | ${type.string}  | An ID that identifies the user.  |
- * | ___login | ${type.string}  | The user's login name.  |
- * | ___display_name | ${type.string}  | The user's display name.  |
- * | ___type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
- * | ___broadcaster_type | ${type.string}  | The type of broadcaster. The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
- * | ___description | ${type.string}  | The user's description of their channel.  |
- * | ___profile_image_url | ${type.string}  | A URL to the user's profile image.  |
- * | ___offline_image_url | ${type.string}  | A URL to the user's offline image.  |
- * | ___view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | ___email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
- * | ___created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the user.  |
+ * | &nbsp;├──&nbsp;login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;display_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
+ * | &nbsp;├──&nbsp;broadcaster_type | ${type.string}  | The type of broadcaster. The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
+ * | &nbsp;├──&nbsp;description | ${type.string}  | The user's description of their channel.  |
+ * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
+ * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
+ * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
  * @event_end
  * @func_end
  */
@@ -237,7 +237,6 @@ function twitch_auth_signout() {}
  * @member TWITCH_SCOPE_MODERATOR_MANAGE_UNBAN_REQUESTS The value `"moderator:manage:unban_requests"`. Manage a broadcaster's unban requests.
  * @member TWITCH_SCOPE_MODERATOR_MANAGE_SHIELD_MODE The value `"moderator:manage:shield_mode"`. Manage a broadcaster's Shield Mode status.
  * @member TWITCH_SCOPE_MODERATOR_MANAGE_SHOUTOUTS The value `"moderator:manage:shoutouts"`. Manage a broadcaster's shoutouts.
- * @member TWITCH_SCOPE_MODERATOR_MANAGE_BLOCKED_TERMS The value `"moderator:manage:blocked_terms"`. Manage a broadcaster's list of blocked terms.
  * @member TWITCH_SCOPE_MODERATOR_MANAGE_ANNOUNCEMENTS The value `"moderator:manage:announcements"`. Send announcements in channels where you have the moderator role.
  * @member TWITCH_SCOPE_USER_BOT The value `"user:bot"`. Join a specified chat channel as your user and appear as a bot, and perform chat-related actions as your user.
  * @member TWITCH_SCOPE_USER_EDIT The value `"user:edit"`. Manage a user object.
@@ -287,15 +286,15 @@ function twitch_auth_signout() {}
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list of leaderboard leaders. The leaders are returned in rank order by how much they’ve cheered. The array is empty if nobody has cheered bits. |
- * | ___user_id | ${type.string}  | An ID that identifies a user on the leaderboard. |
- * | ___user_login | ${type.string}  | The user’s login name. |
- * | ___user_name | ${type.string}  | The user’s display name. |
- * | ___rank | ${type.real}  | The user’s position on the leaderboard. |
- * | ___score | ${type.real}  | The number of Bits the user has cheered. |
- * | ___date_range | ${type.struct}  | The reporting window’s start and end dates, in RFC3339 format. The dates are calculated by using the `started_at` and `period` parameters. If you don’t specify the `started_at` parameter, the fields contain empty strings. |
- * | ______started_at | ${type.string}  | The reporting window’s start date. |
- * | ______ended_at | ${type.string}  | tmThe reporting window’s end date.p |
- * | ___total | ${type.real}  | The number of ranked users in `data`. This is the value in the `count` parameter or the total number of entries on the leaderboard, whichever is less. |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies a user on the leaderboard. |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user’s login name. |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user’s display name. |
+ * | &nbsp;├──&nbsp;rank | ${type.real}  | The user’s position on the leaderboard. |
+ * | &nbsp;├──&nbsp;score | ${type.real}  | The number of Bits the user has cheered. |
+ * | &nbsp;├──&nbsp;date_range | ${type.struct}  | The reporting window’s start and end dates, in RFC3339 format. The dates are calculated by using the `started_at` and `period` parameters. If you don’t specify the `started_at` parameter, the fields contain empty strings. |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;started_at | ${type.string}  | The reporting window’s start date. |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;ended_at | ${type.string}  | tmThe reporting window’s end date.p |
+ * | &nbsp;└──&nbsp;total | ${type.real}  | The number of ranked users in `data`. This is the value in the `count` parameter or the total number of entries on the leaderboard, whichever is less. |
  * 
  * @function_end
  */
@@ -321,18 +320,18 @@ function twitch_bits_get_bits_leaderboard(optionals, callback_success, callback_
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of Cheermotes. The list is in ascending order by the `order` field's value.  |
- * | ___prefix | ${type.string}  | The name portion of the Cheermote string that you use in chat to cheer Bits. The full Cheermote string is the concatenation of {prefix} + {number of Bits}. For example, if the prefix is "Cheer" and you want to cheer 100 Bits, the full Cheermote string is Cheer100. When the Cheermote string is entered in chat, Twitch converts it to the image associated with the Bits tier that was cheered.  |
- * | ___tiers | ${type.array}  | A list of tier levels that the Cheermote supports. Each tier identifies the range of Bits that you can cheer at that tier level and an image that graphically identifies the tier level.  |
- * | ______min_bits | ${type.number}  | The minimum number of Bits that you must cheer at this tier level. The maximum number of Bits that you can cheer at this level is determined by the required minimum Bits of the next tier level minus 1. For example, if `min_bits` is 1 and `min_bits` for the next tier is 100, the Bits range for this tier level is 1 through 99. The minimum Bits value of the last tier is the maximum number of Bits you can cheer using this Cheermote. For example, 10000.  |
- * | ______id | ${type.string}  | The tier level. Possible tiers are:1, 100, 500, 1000, 5000, 10000, 100000  |
- * | ______color | ${type.string}  | The hex code of the color associated with this tier level (for example, `#979797`).  |
- * | ______images | ${type.Dictionary}  | The animated and static image sets for the Cheermote. The dictionary of images is organized by theme, format, and size. The theme keys are *dark and light*. Each theme is a dictionary of formats: animated and static. Each format is a dictionary of sizes: 1, 1.5, 2, 3, and 4. The value of each size contains the URL to the image.  |
- * | ______can_cheer | ${type.boolean}  | A Boolean value that determines whether users can cheer at this tier level.  |
- * | ______show_in_bits_card | ${type.boolean}  | A Boolean value that determines whether this tier level is shown in the Bits card. Is `true` if this tier level is shown in the Bits card.  |
- * | ___type | ${type.string}  | The type of Cheermote. Possible values are: "`global_first_party`" - A Twitch-defined Cheermote that is shown in the Bits card. `"global_third_party"` - A Twitch-defined Cheermote that is not shown in the Bits card. `"channel_custom"` - A broadcaster-defined Cheermote. `"display_only"` - Do not use; for internal use only. `"sponsored"` - A sponsor-defined Cheermote. When used, the sponsor adds additional Bits to the amount that the user cheered. For example, if the user cheered Terminator100, the broadcaster might receive 110 Bits, which includes the sponsor's 10 Bits contribution.  |
- * | ___order | ${type.number}  | The order that the Cheermotes are shown in the Bits card. The numbers may not be consecutive. For example, the numbers may jump from 1 to 7 to 13. The order numbers are unique within a Cheermote type (for example, `"global_first_party"`) but may not be unique amongst all Cheermotes in the response.  |
- * | ___last_updated | ${type.string}  | The date and time, in RFC3339 format, when this Cheermote was last updated.  |
- * | ___is_charitable | ${type.boolean}  | A Boolean value that indicates whether this Cheermote provides a charitable contribution match during charity campaigns.  |
+ * | &nbsp;├──&nbsp;prefix | ${type.string}  | The name portion of the Cheermote string that you use in chat to cheer Bits. The full Cheermote string is the concatenation of {prefix} + {number of Bits}. For example, if the prefix is "Cheer" and you want to cheer 100 Bits, the full Cheermote string is Cheer100. When the Cheermote string is entered in chat, Twitch converts it to the image associated with the Bits tier that was cheered.  |
+ * | &nbsp;├──&nbsp;tiers | ${type.array}  | A list of tier levels that the Cheermote supports. Each tier identifies the range of Bits that you can cheer at that tier level and an image that graphically identifies the tier level.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;min_bits | ${type.number}  | The minimum number of Bits that you must cheer at this tier level. The maximum number of Bits that you can cheer at this level is determined by the required minimum Bits of the next tier level minus 1. For example, if `min_bits` is 1 and `min_bits` for the next tier is 100, the Bits range for this tier level is 1 through 99. The minimum Bits value of the last tier is the maximum number of Bits you can cheer using this Cheermote. For example, 10000.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | The tier level. Possible tiers are:1, 100, 500, 1000, 5000, 10000, 100000  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;color | ${type.string}  | The hex code of the color associated with this tier level (for example, `#979797`).  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;images | ${type.struct}  | The animated and static image sets for the Cheermote. The dictionary of images is organized by theme, format, and size. The theme keys are `"dark"` and `"light"`. Each theme is a dictionary of formats: `"animated"` and `"static"`. Each format is a dictionary of sizes: `"1"`, `"1.5"`, `"2"`, `"3"`, and `"4"`. The value of each size contains the URL to the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;can_cheer | ${type.boolean}  | A Boolean value that determines whether users can cheer at this tier level.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;show_in_bits_card | ${type.boolean}  | A Boolean value that determines whether this tier level is shown in the Bits card. Is `true` if this tier level is shown in the Bits card.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The type of Cheermote. Possible values are: "`global_first_party`" - A Twitch-defined Cheermote that is shown in the Bits card. `"global_third_party"` - A Twitch-defined Cheermote that is not shown in the Bits card. `"channel_custom"` - A broadcaster-defined Cheermote. `"display_only"` - Do not use; for internal use only. `"sponsored"` - A sponsor-defined Cheermote. When used, the sponsor adds additional Bits to the amount that the user cheered. For example, if the user cheered Terminator100, the broadcaster might receive 110 Bits, which includes the sponsor's 10 Bits contribution.  |
+ * | &nbsp;├──&nbsp;order | ${type.number}  | The order that the Cheermotes are shown in the Bits card. The numbers may not be consecutive. For example, the numbers may jump from 1 to 7 to 13. The order numbers are unique within a Cheermote type (for example, `"global_first_party"`) but may not be unique amongst all Cheermotes in the response.  |
+ * | &nbsp;├──&nbsp;last_updated | ${type.string}  | The date and time, in RFC3339 format, when this Cheermote was last updated.  |
+ * | &nbsp;└──&nbsp;is_charitable | ${type.boolean}  | A Boolean value that indicates whether this Cheermote provides a charitable contribution match during charity campaigns.  |
  * @event_end
  * @func_end
  */
@@ -362,27 +361,27 @@ function twitch_bits_get_cheermotes(optionals, callback_success, callback_failed
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of transactions.  |
- * | ___id | ${type.string}  | An ID that identifies the transaction.  |
- * | ___timestamp | ${type.string}  | The UTC date and time (in RFC3339 format) of the transaction.  |
- * | ___broadcaster_id | ${type.string}  | The ID of the broadcaster that owns the channel where the transaction occurred.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___user_id | ${type.string}  | The ID of the user that purchased the digital product.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___product_type | ${type.string}  | The type of transaction. Possible values are: `"BITS_IN_EXTENSION"`  |
- * | ___product_data | ${type.struct}  | Contains details about the digital product.  |
- * | ______sku | ${type.string}  | An ID that identifies the digital product.  |
- * | ______domain | ${type.string}  | Set to `twitch.ext.` + `<the extension's ID>`.  |
- * | ______cost | ${type.struct}  | Contains details about the digital product's cost.  |
- * | _________amount | ${type.number}  | The amount exchanged for the digital product.  |
- * | _________type | ${type.string}  | The type of currency exchanged. Possible values are: `"bits"`  |
- * | ______inDevelopment | ${type.boolean}  | A Boolean value that determines whether the product is in development. Is `true` if the digital product is in development and cannot be exchanged.  |
- * | ______displayName | ${type.string}  | The name of the digital product.  |
- * | ______expiration | ${type.string}  | This field is always empty since you may purchase only unexpired products.  |
- * | ______broadcast | ${type.boolean}  | A Boolean value that determines whether the data was broadcast to all instances of the extension. Is `true` if the data was broadcast to all instances.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the transaction.  |
+ * | &nbsp;├──&nbsp;timestamp | ${type.string}  | The UTC date and time (in RFC3339 format) of the transaction.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that owns the channel where the transaction occurred.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of the user that purchased the digital product.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;product_type | ${type.string}  | The type of transaction. Possible values are: `"BITS_IN_EXTENSION"`  |
+ * | &nbsp;└──&nbsp;product_data | ${type.struct}  | Contains details about the digital product.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;sku | ${type.string}  | An ID that identifies the digital product.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;domain | ${type.string}  | Set to `twitch.ext.` + `<the extension's ID>`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;cost | ${type.struct}  | Contains details about the digital product's cost.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;amount | ${type.number}  | The amount exchanged for the digital product.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;type | ${type.string}  | The type of currency exchanged. Possible values are: `"bits"`  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;inDevelopment | ${type.boolean}  | A Boolean value that determines whether the product is in development. Is `true` if the digital product is in development and cannot be exchanged.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;displayName | ${type.string}  | The name of the digital product.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;expiration | ${type.string}  | This field is always empty since you may purchase only unexpired products.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;broadcast | ${type.boolean}  | A Boolean value that determines whether the data was broadcast to all instances of the extension. Is `true` if the data was broadcast to all instances.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -406,17 +405,17 @@ function twitch_bits_get_extension_transactions(extension_id, optionals, callbac
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains information about the specified channels. The list is empty if the specified channels weren't found.  |
- * | ___broadcaster_id | ${type.string}  | An ID that uniquely identifies the broadcaster.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_language | ${type.string}  | The broadcaster's preferred language. The value is an ISO 639-1 two-letter language code (for example, `"en"` for English). The value is set to `"other"` if the language is not a Twitch supported language.  |
- * | ___game_name | ${type.string}  | The name of the game that the broadcaster is playing or last played. The value is an empty string if the broadcaster has never played a game.  |
- * | ___game_id | ${type.string}  | An ID that uniquely identifies the game that the broadcaster is playing or last played. The value is an empty string if the broadcaster has never played a game.  |
- * | ___title | ${type.string}  | The title of the stream that the broadcaster is currently streaming or last streamed. The value is an empty string if the broadcaster has never streamed.  |
- * | ___delay | ${type.number}  | The value of the broadcaster's stream delay setting, in seconds. This field's value defaults to zero unless 1) the request specifies a user access token, 2) the ID in the `broadcaster_id` parameter matches the user ID in the access token, and 3) the broadcaster has partner status and they set a non-zero stream delay value.  |
- * | ___tags | ${type.array} of ${type.string}  | The tags applied to the channel.  |
- * | ___content_classification_labels | ${type.array} of ${type.string}  | The CCLs applied to the channel.  |
- * | ___is_branded_content | ${type.boolean}  | Boolean flag indicating if the channel has branded content.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that uniquely identifies the broadcaster.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_language | ${type.string}  | The broadcaster's preferred language. The value is an ISO 639-1 two-letter language code (for example, `"en"` for English). The value is set to `"other"` if the language is not a Twitch supported language.  |
+ * | &nbsp;├──&nbsp;game_name | ${type.string}  | The name of the game that the broadcaster is playing or last played. The value is an empty string if the broadcaster has never played a game.  |
+ * | &nbsp;├──&nbsp;game_id | ${type.string}  | An ID that uniquely identifies the game that the broadcaster is playing or last played. The value is an empty string if the broadcaster has never played a game.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The title of the stream that the broadcaster is currently streaming or last streamed. The value is an empty string if the broadcaster has never streamed.  |
+ * | &nbsp;├──&nbsp;delay | ${type.number}  | The value of the broadcaster's stream delay setting, in seconds. This field's value defaults to zero unless 1) the request specifies a user access token, 2) the ID in the `broadcaster_id` parameter matches the user ID in the access token, and 3) the broadcaster has partner status and they set a non-zero stream delay value.  |
+ * | &nbsp;├──&nbsp;tags | ${type.array} of ${type.string}  | The tags applied to the channel.  |
+ * | &nbsp;├──&nbsp;content_classification_labels | ${type.array} of ${type.string}  | The CCLs applied to the channel.  |
+ * | &nbsp;└──&nbsp;is_branded_content | ${type.boolean}  | Boolean flag indicating if the channel has branded content.  |
  * @event_end
  * @func_end
  */
@@ -441,7 +440,7 @@ function twitch_channels_get_channel_information(broadcaster_id, callback_succes
  * - `title` : ${type.string} : The title of the user's stream. You may not set this field to an empty string.
  * - `delay` : ${type.number} : The number of seconds you want your broadcast buffered before streaming it live. The delay helps ensure fairness during competitive play. Only users with Partner status may set this field. The maximum delay is 900 seconds (15 minutes).
  * - `tags` : ${type.array} of ${type.string} : A list of channel-defined tags to apply to the channel. To remove all tags from the channel, set tags to an empty array. Tags help identify the content that the channel streams. [Learn More](https://help.twitch.tv/s/article/guide-to-tags) A channel may specify a maximum of 10 tags. Each tag is limited to a maximum of 25 characters and may not be an empty string or contain spaces or special characters. Tags are case insensitive. For readability, consider using camelCasing or PascalCasing.
- * - `content_classification_labels` : ${Label[]} : List of labels that should be set as the Channel's CCLs.
+ * - `content_classification_labels` : ${type.string} : List of labels that should be set as the Channel's CCLs.
  * - `is_branded_content` : ${type.boolean} : Boolean flag indicating if the channel has branded content.
  * 
  * @param {function} callback_success Triggered if the request succeeded
@@ -468,9 +467,9 @@ function twitch_channels_modify_channel_information(broadcaster_id, id, is_enabl
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list of users that are editors for the specified broadcaster. The list is empty if the broadcaster doesn't have editors.  |
- * | ___user_id | ${type.string}  | An ID that uniquely identifies a user with editor permissions.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___created_at | ${type.string}  | The date and time, in RFC3339 format, when the user became one of the broadcaster's editors.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that uniquely identifies a user with editor permissions.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;└──&nbsp;created_at | ${type.string}  | The date and time, in RFC3339 format, when the user became one of the broadcaster's editors.  |
  * @event_end
  * @func_end
  */
@@ -500,12 +499,12 @@ function twitch_channels_get_channel_editors(broadcaster_id, callback_success, c
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of broadcasters that the user follows. The list is in descending order by `followed_at` (with the most recently followed broadcaster first). The list is empty if the user doesn't follow anyone.  |
- * | ___broadcaster_id | ${type.string}  | An ID that uniquely identifies the broadcaster that this user is following.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___followed_at | ${type.string}  | The UTC timestamp when the user started following the broadcaster.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that uniquely identifies the broadcaster that this user is following.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;└──&nbsp;followed_at | ${type.string}  | The UTC timestamp when the user started following the broadcaster.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * | total | ${type.number}  | The total number of broadcasters that the user follows. As someone pages through the list, the number may change as the user follows or unfollows broadcasters.  |
  * @event_end
  * @func_end
@@ -540,12 +539,12 @@ function twitch_channels_get_followed_channels(user_id, optionals, callback_succ
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of users that follow the specified broadcaster. The list is in descending order by `followed_at` (with the most recent follower first). The list is empty if nobody follows the broadcaster, the specified `user_id` isn't in the follower list, the user access token is missing the `TWITCH_SCOPE_MODERATOR_READ_FOLLOWERS` scope, or the user isn't the broadcaster or moderator for the channel.  |
- * | ___followed_at | ${type.string}  | The UTC timestamp when the user started following the broadcaster.  |
- * | ___user_id | ${type.string}  | An ID that uniquely identifies the user that's following the broadcaster.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;followed_at | ${type.string}  | The UTC timestamp when the user started following the broadcaster.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that uniquely identifies the user that's following the broadcaster.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;└──&nbsp;user_name | ${type.string}  | The user's display name.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * | total | ${type.number}  | The total number of users that follow this broadcaster. As someone pages through the list, the number of users may change as users follow or unfollow the broadcaster.  |
  * @event_end
  * @func_end
@@ -586,38 +585,38 @@ function twitch_channels_get_channel_followers(broadcaster_id, optionals, callba
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the single custom reward you created.  |
- * | ___broadcaster_id | ${type.string}  | The ID that uniquely identifies the broadcaster.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___id | ${type.string}  | The ID that uniquely identifies this custom reward.  |
- * | ___title | ${type.string}  | The title of the reward.  |
- * | ___prompt | ${type.string}  | The prompt shown to the viewer when they redeem the reward if user input is required (see the `is_user_input_required` field).  |
- * | ___cost | ${type.number}  | The cost of the reward in Channel Points.  |
- * | ___image | ${type.struct}  | A set of custom images for the reward. This field is set to `undefined` if the broadcaster didn't upload images.  |
- * | ______url_1x | ${type.string}  | The URL to a small version of the image.  |
- * | ______url_2x | ${type.string}  | The URL to a medium version of the image.  |
- * | ______url_4x | ${type.string}  | The URL to a large version of the image.  |
- * | ___default_image | ${type.struct}  | A set of default images for the reward.  |
- * | ______url_1x | ${type.string}  | The URL to a small version of the image.  |
- * | ______url_2x | ${type.string}  | The URL to a medium version of the image.  |
- * | ______url_4x | ${type.string}  | The URL to a large version of the image.  |
- * | ___background_color | ${type.string}  | The background color to use for the reward. The color is in Hex format (for example, `"#00E5CB"`).  |
- * | ___is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward is enabled. Is `true` if enabled; otherwise, `false`. Disabled rewards aren't shown to the user.  |
- * | ___is_user_input_required | ${type.boolean}  | A Boolean value that determines whether the user must enter information when redeeming the reward. Is `true` if the reward requires user input.  |
- * | ___max_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number to the redemptions allowed per live stream.  |
- * | ______is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per live stream. Is `true` if the reward applies a limit.  |
- * | ______max_per_stream | ${type.int64}  | The maximum number of redemptions allowed per live stream.  |
- * | ___max_per_user_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number of redemptions allowed per user per live stream.  |
- * | ______is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per user per live stream. Is `true` if the reward applies a limit.  |
- * | ______max_per_user_per_stream | ${type.int64}  | The maximum number of redemptions allowed per user per live stream.  |
- * | ___global_cooldown_setting | ${type.struct}  | The settings used to determine whether to apply a cooldown period between redemptions and the length of the cooldown.  |
- * | ______is_enabled | ${type.boolean}  | A Boolean value that determines whether to apply a cooldown period. Is `true` if a cooldown period is enabled.  |
- * | ______global_cooldown_seconds | ${type.int64}  | The cooldown period, in seconds.  |
- * | ___is_paused | ${type.boolean}  | A Boolean value that determines whether the reward is currently paused. Is `true` if the reward is paused. Viewers can't redeem paused rewards.  |
- * | ___is_in_stock | ${type.boolean}  | A Boolean value that determines whether the reward is currently in stock. Is `true` if the reward is in stock. Viewers can't redeem out of stock rewards.  |
- * | ___should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to FULFILLED status immediately when a reward is redeemed. If `false`, status is UNFULFILLED and follows the normal request queue process.  |
- * | ___redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
- * | ___cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state (see the `global_cooldown_setting` field).  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID that uniquely identifies the broadcaster.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | The ID that uniquely identifies this custom reward.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The title of the reward.  |
+ * | &nbsp;├──&nbsp;prompt | ${type.string}  | The prompt shown to the viewer when they redeem the reward if user input is required (see the `is_user_input_required` field).  |
+ * | &nbsp;├──&nbsp;cost | ${type.number}  | The cost of the reward in Channel Points.  |
+ * | &nbsp;├──&nbsp;image | ${type.struct}  | A set of custom images for the reward. This field is set to `undefined` if the broadcaster didn't upload images.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x | ${type.string}  | The URL to a small version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x | ${type.string}  | The URL to a medium version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x | ${type.string}  | The URL to a large version of the image.  |
+ * | &nbsp;├──&nbsp;default_image | ${type.struct}  | A set of default images for the reward.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x | ${type.string}  | The URL to a small version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x | ${type.string}  | The URL to a medium version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x | ${type.string}  | The URL to a large version of the image.  |
+ * | &nbsp;├──&nbsp;background_color | ${type.string}  | The background color to use for the reward. The color is in Hex format (for example, `"#00E5CB"`).  |
+ * | &nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward is enabled. Is `true` if enabled; otherwise, `false`. Disabled rewards aren't shown to the user.  |
+ * | &nbsp;├──&nbsp;is_user_input_required | ${type.boolean}  | A Boolean value that determines whether the user must enter information when redeeming the reward. Is `true` if the reward requires user input.  |
+ * | &nbsp;├──&nbsp;max_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number to the redemptions allowed per live stream.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per live stream. Is `true` if the reward applies a limit.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;max_per_stream | ${type.int64}  | The maximum number of redemptions allowed per live stream.  |
+ * | &nbsp;├──&nbsp;max_per_user_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number of redemptions allowed per user per live stream.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per user per live stream. Is `true` if the reward applies a limit.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;max_per_user_per_stream | ${type.int64}  | The maximum number of redemptions allowed per user per live stream.  |
+ * | &nbsp;├──&nbsp;global_cooldown_setting | ${type.struct}  | The settings used to determine whether to apply a cooldown period between redemptions and the length of the cooldown.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether to apply a cooldown period. Is `true` if a cooldown period is enabled.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;global_cooldown_seconds | ${type.int64}  | The cooldown period, in seconds.  |
+ * | &nbsp;├──&nbsp;is_paused | ${type.boolean}  | A Boolean value that determines whether the reward is currently paused. Is `true` if the reward is paused. Viewers can't redeem paused rewards.  |
+ * | &nbsp;├──&nbsp;is_in_stock | ${type.boolean}  | A Boolean value that determines whether the reward is currently in stock. Is `true` if the reward is in stock. Viewers can't redeem out of stock rewards.  |
+ * | &nbsp;├──&nbsp;should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to FULFILLED status immediately when a reward is redeemed. If `false`, status is UNFULFILLED and follows the normal request queue process.  |
+ * | &nbsp;├──&nbsp;redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
+ * | &nbsp;└──&nbsp;cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state (see the `global_cooldown_setting` field).  |
  * @event_end
  * @func_end
  */
@@ -668,38 +667,38 @@ function twitch_channel_points_delete_custom_reward(broadcaster_id, id, callback
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list of custom rewards. The list is in ascending order by `id`. If the broadcaster hasn't created custom rewards, the list is empty.  |
- * | ___broadcaster_id | ${type.string}  | The ID that uniquely identifies the broadcaster.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___id | ${type.string}  | The ID that uniquely identifies this custom reward.  |
- * | ___title | ${type.string}  | The title of the reward.  |
- * | ___prompt | ${type.string}  | The prompt shown to the viewer when they redeem the reward if user input is required (see the `is_user_input_required` field).  |
- * | ___cost | ${type.number}  | The cost of the reward in Channel Points.  |
- * | ___image | ${type.struct}  | A set of custom images for the reward. This field is `undefined` if the broadcaster didn't upload images.  |
- * | ______url_1x | ${type.string}  | The URL to a small version of the image.  |
- * | ______url_2x | ${type.string}  | The URL to a medium version of the image.  |
- * | ______url_4x | ${type.string}  | The URL to a large version of the image.  |
- * | ___default_image | ${type.struct}  | A set of default images for the reward.  |
- * | ______url_1x | ${type.string}  | The URL to a small version of the image.  |
- * | ______url_2x | ${type.string}  | The URL to a medium version of the image.  |
- * | ______url_4x | ${type.string}  | The URL to a large version of the image.  |
- * | ___background_color | ${type.string}  | The background color to use for the reward. The color is in Hex format (for example, `"#00E5CB"`).  |
- * | ___is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward is enabled. Is `true` if enabled; otherwise, `false`. Disabled rewards aren't shown to the user.  |
- * | ___is_user_input_required | ${type.boolean}  | A Boolean value that determines whether the user must enter information when redeeming the reward. Is `true` if the user is prompted.  |
- * | ___max_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number of redemptions allowed per live stream.  |
- * | ______is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per live stream. Is `true` if the reward applies a limit.  |
- * | ______max_per_stream | ${type.int64}  | The maximum number of redemptions allowed per live stream.  |
- * | ___max_per_user_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number of redemptions allowed per user per live stream.  |
- * | ______is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per user per live stream. Is `true` if the reward applies a limit.  |
- * | ______max_per_user_per_stream | ${type.int64}  | The maximum number of redemptions allowed per user per live stream.  |
- * | ___global_cooldown_setting | ${type.struct}  | The settings used to determine whether to apply a cooldown period between redemptions and the length of the cooldown.  |
- * | ______is_enabled | ${type.boolean}  | A Boolean value that determines whether to apply a cooldown period. Is `true` if a cooldown period is enabled.  |
- * | ______global_cooldown_seconds | ${type.int64}  | The cooldown period, in seconds.  |
- * | ___is_paused | ${type.boolean}  | A Boolean value that determines whether the reward is currently paused. Is `true` if the reward is paused. Viewers can't redeem paused rewards.  |
- * | ___is_in_stock | ${type.boolean}  | A Boolean value that determines whether the reward is currently in stock. Is `true` if the reward is in stock. Viewers can't redeem out of stock rewards.  |
- * | ___should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to FULFILLED status immediately when a reward is redeemed. If `false`, status is set to UNFULFILLED and follows the normal request queue process.  |
- * | ___redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
- * | ___cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state. See the `global_cooldown_setting` field.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID that uniquely identifies the broadcaster.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | The ID that uniquely identifies this custom reward.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The title of the reward.  |
+ * | &nbsp;├──&nbsp;prompt | ${type.string}  | The prompt shown to the viewer when they redeem the reward if user input is required (see the `is_user_input_required` field).  |
+ * | &nbsp;├──&nbsp;cost | ${type.number}  | The cost of the reward in Channel Points.  |
+ * | &nbsp;├──&nbsp;image | ${type.struct}  | A set of custom images for the reward. This field is `undefined` if the broadcaster didn't upload images.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x | ${type.string}  | The URL to a small version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x | ${type.string}  | The URL to a medium version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x | ${type.string}  | The URL to a large version of the image.  |
+ * | &nbsp;├──&nbsp;default_image | ${type.struct}  | A set of default images for the reward.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x | ${type.string}  | The URL to a small version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x | ${type.string}  | The URL to a medium version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x | ${type.string}  | The URL to a large version of the image.  |
+ * | &nbsp;├──&nbsp;background_color | ${type.string}  | The background color to use for the reward. The color is in Hex format (for example, `"#00E5CB"`).  |
+ * | &nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward is enabled. Is `true` if enabled; otherwise, `false`. Disabled rewards aren't shown to the user.  |
+ * | &nbsp;├──&nbsp;is_user_input_required | ${type.boolean}  | A Boolean value that determines whether the user must enter information when redeeming the reward. Is `true` if the user is prompted.  |
+ * | &nbsp;├──&nbsp;max_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number of redemptions allowed per live stream.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per live stream. Is `true` if the reward applies a limit.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;max_per_stream | ${type.int64}  | The maximum number of redemptions allowed per live stream.  |
+ * | &nbsp;├──&nbsp;max_per_user_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number of redemptions allowed per user per live stream.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per user per live stream. Is `true` if the reward applies a limit.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;max_per_user_per_stream | ${type.int64}  | The maximum number of redemptions allowed per user per live stream.  |
+ * | &nbsp;├──&nbsp;global_cooldown_setting | ${type.struct}  | The settings used to determine whether to apply a cooldown period between redemptions and the length of the cooldown.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether to apply a cooldown period. Is `true` if a cooldown period is enabled.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;global_cooldown_seconds | ${type.int64}  | The cooldown period, in seconds.  |
+ * | &nbsp;├──&nbsp;is_paused | ${type.boolean}  | A Boolean value that determines whether the reward is currently paused. Is `true` if the reward is paused. Viewers can't redeem paused rewards.  |
+ * | &nbsp;├──&nbsp;is_in_stock | ${type.boolean}  | A Boolean value that determines whether the reward is currently in stock. Is `true` if the reward is in stock. Viewers can't redeem out of stock rewards.  |
+ * | &nbsp;├──&nbsp;should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to FULFILLED status immediately when a reward is redeemed. If `false`, status is set to UNFULFILLED and follows the normal request queue process.  |
+ * | &nbsp;├──&nbsp;redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
+ * | &nbsp;└──&nbsp;cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state. See the `global_cooldown_setting` field.  |
  * @event_end
  * @func_end
  */
@@ -745,21 +744,21 @@ function twitch_channel_points_get_custom_reward(broadcaster_id, optionals, call
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of redemptions for the specified reward. The list is empty if there are no redemptions that match the redemption criteria.  |
- * | ___broadcaster_id | ${type.string}  | The ID that uniquely identifies the broadcaster.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___id | ${type.string}  | The ID that uniquely identifies this redemption.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___user_id | ${type.string}  | The ID that uniquely identifies the user that redeemed the reward.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___user_input | ${type.string}  | The text the user entered at the prompt when they redeemed the reward; otherwise, an empty string if user input was not required.  |
- * | ___status | ${type.string}  | The state of the redemption. Possible values are: `"CANCELED"`, `"FULFILLED"`, `"UNFULFILLED"`  |
- * | ___redeemed_at | ${type.string}  | The date and time of when the reward was redeemed, in RFC3339 format.  |
- * | ___reward | ${type.struct}  | The reward that the user redeemed.  |
- * | ______id | ${type.string}  | The ID that uniquely identifies the redeemed reward.  |
- * | ______title | ${type.string}  | The reward's title.  |
- * | ______prompt | ${type.string}  | The prompt displayed to the viewer if user input is required.  |
- * | ______cost | ${type.int64}  | The reward's cost, in Channel Points.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID that uniquely identifies the broadcaster.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | The ID that uniquely identifies this redemption.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID that uniquely identifies the user that redeemed the reward.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;user_input | ${type.string}  | The text the user entered at the prompt when they redeemed the reward; otherwise, an empty string if user input was not required.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The state of the redemption. Possible values are: `"CANCELED"`, `"FULFILLED"`, `"UNFULFILLED"`  |
+ * | &nbsp;├──&nbsp;redeemed_at | ${type.string}  | The date and time of when the reward was redeemed, in RFC3339 format.  |
+ * | &nbsp;└──&nbsp;reward | ${type.struct}  | The reward that the user redeemed.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | The ID that uniquely identifies the redeemed reward.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The reward's title.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;prompt | ${type.string}  | The prompt displayed to the viewer if user input is required.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;cost | ${type.int64}  | The reward's cost, in Channel Points.  |
  * @event_end
  * @func_end
  */
@@ -780,16 +779,16 @@ function twitch_channel_points_get_custom_reward_redemption(broadcaster_id, rewa
  * 
  * - `title` : ${type.string} : The reward's title. The title may contain a maximum of 45 characters and it must be unique amongst all of the broadcaster's custom rewards.
  * - `prompt` : ${type.string} : The prompt shown to the viewer when they redeem the reward. Specify a prompt if `is_user_input_required` is `true`. The prompt is limited to a maximum of 200 characters.
- * - `cost` : ${int64} : The cost of the reward, in channel points. The minimum is 1 point.
+ * - `cost` : ${type.int64} : The cost of the reward, in channel points. The minimum is 1 point.
  * - `background_color` : ${type.string} : The background color to use for the reward. Specify the color using Hex format (for example, \#00E5CB).
  * - `is_enabled` : ${type.boolean} : A Boolean value that indicates whether the reward is enabled. Set to `true` to enable the reward. Viewers see only enabled rewards.
  * - `is_user_input_required` : ${type.boolean} : A Boolean value that determines whether users must enter information to redeem the reward. Set to `true` if user input is required. See the `prompt` field.
  * - `is_max_per_stream_enabled` : ${type.boolean} : A Boolean value that determines whether to limit the maximum number of redemptions allowed per live stream (see the `max_per_stream` field). Set to `true` to limit redemptions.
- * - `max_per_stream` : ${int64} : The maximum number of redemptions allowed per live stream. Applied only if `is_max_per_stream_enabled` is `true`. The minimum value is 1.
+ * - `max_per_stream` : ${type.int64} : The maximum number of redemptions allowed per live stream. Applied only if `is_max_per_stream_enabled` is `true`. The minimum value is 1.
  * - `is_max_per_user_per_stream_enabled` : ${type.boolean} : A Boolean value that determines whether to limit the maximum number of redemptions allowed per user per stream (see `max_per_user_per_stream`). The minimum value is 1. Set to `true` to limit redemptions.
- * - `max_per_user_per_stream` : ${int64} : The maximum number of redemptions allowed per user per stream. Applied only if `is_max_per_user_per_stream_enabled` is `true`.
+ * - `max_per_user_per_stream` : ${type.int64} : The maximum number of redemptions allowed per user per stream. Applied only if `is_max_per_user_per_stream_enabled` is `true`.
  * - `is_global_cooldown_enabled` : ${type.boolean} : A Boolean value that determines whether to apply a cooldown period between redemptions. Set to `true` to apply a cooldown period. For the duration of the cooldown period, see `global_cooldown_seconds`.
- * - `global_cooldown_seconds` : ${int64} : The cooldown period, in seconds. Applied only if `is_global_cooldown_enabled` is `true`. The minimum value is 1; however, for it to be shown in the Twitch UX, the minimum value is 60.
+ * - `global_cooldown_seconds` : ${type.int64} : The cooldown period, in seconds. Applied only if `is_global_cooldown_enabled` is `true`. The minimum value is 1; however, for it to be shown in the Twitch UX, the minimum value is 60.
  * - `is_paused` : ${type.boolean} : A Boolean value that determines whether to pause the reward. Set to `true` to pause the reward. Viewers can't redeem paused rewards..
  * - `should_redemptions_skip_request_queue` : ${type.boolean} : A Boolean value that determines whether redemptions should be set to `"FULFILLED"` status immediately when a reward is redeemed. If `false`, status is set to `"UNFULFILLED"` and follows the normal request queue process.
  * 
@@ -801,38 +800,38 @@ function twitch_channel_points_get_custom_reward_redemption(broadcaster_id, rewa
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list contains the single reward that you updated.  |
- * | ___broadcaster_id | ${type.string}  | The ID that uniquely identifies the broadcaster.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___id | ${type.string}  | The ID that uniquely identifies this custom reward.  |
- * | ___title | ${type.string}  | The title of the reward.  |
- * | ___prompt | ${type.string}  | The prompt shown to the viewer when they redeem the reward if user input is required. See the `is_user_input_required` field.  |
- * | ___cost | ${type.int64}  | The cost of the reward in Channel Points.  |
- * | ___image | ${type.struct}  | A set of custom images for the reward. This field is `undefined` if the broadcaster didn't upload images.  |
- * | ______url_1x | ${type.string}  | The URL to a small version of the image.  |
- * | ______url_2x | ${type.string}  | The URL to a medium version of the image.  |
- * | ______url_4x | ${type.string}  | The URL to a large version of the image.  |
- * | ___default_image | ${type.struct}  | A set of default images for the reward.  |
- * | ______url_1x | ${type.string}  | The URL to a small version of the image.  |
- * | ______url_2x | ${type.string}  | The URL to a medium version of the image.  |
- * | ______url_4x | ${type.string}  | The URL to a large version of the image.  |
- * | ___background_color | ${type.string}  | The background color to use for the reward. The color is in Hex format (for example, `"#00E5CB"`).  |
- * | ___is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward is enabled. Is `true` if enabled; otherwise, `false`. Disabled rewards aren't shown to the user.  |
- * | ___is_user_input_required | ${type.boolean}  | A Boolean value that determines whether the user must enter information when they redeem the reward. Is `true` if the user is prompted.  |
- * | ___max_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number of redemptions allowed per live stream.  |
- * | ______is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per live stream. Is `true` if the reward applies a limit.  |
- * | ______max_per_stream | ${type.int64}  | The maximum number of redemptions allowed per live stream.  |
- * | ___max_per_user_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number of redemptions allowed per user per live stream.  |
- * | ______is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per user per live stream. Is `true` if the reward applies a limit.  |
- * | ______max_per_user_per_stream | ${type.int64}  | The maximum number of redemptions allowed per user per live stream.  |
- * | ___global_cooldown_setting | ${type.struct}  | The settings used to determine whether to apply a cooldown period between redemptions and the length of the cooldown.  |
- * | ______is_enabled | ${type.boolean}  | A Boolean value that determines whether to apply a cooldown period. Is `true` if a cooldown period is enabled.  |
- * | ______global_cooldown_seconds | ${type.int64}  | The cooldown period, in seconds.  |
- * | ___is_paused | ${type.boolean}  | A Boolean value that determines whether the reward is currently paused. Is `true` if the reward is paused. Viewers can't redeem paused rewards.  |
- * | ___is_in_stock | ${type.boolean}  | A Boolean value that determines whether the reward is currently in stock. Is `true` if the reward is in stock. Viewers can't redeem out of stock rewards.  |
- * | ___should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to FULFILLED status immediately when a reward is redeemed. If `false`, status is set to UNFULFILLED and follows the normal request queue process.  |
- * | ___redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
- * | ___cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state. See the `global_cooldown_setting` field.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID that uniquely identifies the broadcaster.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | The ID that uniquely identifies this custom reward.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The title of the reward.  |
+ * | &nbsp;├──&nbsp;prompt | ${type.string}  | The prompt shown to the viewer when they redeem the reward if user input is required. See the `is_user_input_required` field.  |
+ * | &nbsp;├──&nbsp;cost | ${type.int64}  | The cost of the reward in Channel Points.  |
+ * | &nbsp;├──&nbsp;image | ${type.struct}  | A set of custom images for the reward. This field is `undefined` if the broadcaster didn't upload images.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x | ${type.string}  | The URL to a small version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x | ${type.string}  | The URL to a medium version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x | ${type.string}  | The URL to a large version of the image.  |
+ * | &nbsp;├──&nbsp;default_image | ${type.struct}  | A set of default images for the reward.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x | ${type.string}  | The URL to a small version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x | ${type.string}  | The URL to a medium version of the image.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x | ${type.string}  | The URL to a large version of the image.  |
+ * | &nbsp;├──&nbsp;background_color | ${type.string}  | The background color to use for the reward. The color is in Hex format (for example, `"#00E5CB"`).  |
+ * | &nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward is enabled. Is `true` if enabled; otherwise, `false`. Disabled rewards aren't shown to the user.  |
+ * | &nbsp;├──&nbsp;is_user_input_required | ${type.boolean}  | A Boolean value that determines whether the user must enter information when they redeem the reward. Is `true` if the user is prompted.  |
+ * | &nbsp;├──&nbsp;max_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number of redemptions allowed per live stream.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per live stream. Is `true` if the reward applies a limit.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;max_per_stream | ${type.int64}  | The maximum number of redemptions allowed per live stream.  |
+ * | &nbsp;├──&nbsp;max_per_user_per_stream_setting | ${type.struct}  | The settings used to determine whether to apply a maximum to the number of redemptions allowed per user per live stream.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether the reward applies a limit on the number of redemptions allowed per user per live stream. Is `true` if the reward applies a limit.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;max_per_user_per_stream | ${type.int64}  | The maximum number of redemptions allowed per user per live stream.  |
+ * | &nbsp;├──&nbsp;global_cooldown_setting | ${type.struct}  | The settings used to determine whether to apply a cooldown period between redemptions and the length of the cooldown.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_enabled | ${type.boolean}  | A Boolean value that determines whether to apply a cooldown period. Is `true` if a cooldown period is enabled.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;global_cooldown_seconds | ${type.int64}  | The cooldown period, in seconds.  |
+ * | &nbsp;├──&nbsp;is_paused | ${type.boolean}  | A Boolean value that determines whether the reward is currently paused. Is `true` if the reward is paused. Viewers can't redeem paused rewards.  |
+ * | &nbsp;├──&nbsp;is_in_stock | ${type.boolean}  | A Boolean value that determines whether the reward is currently in stock. Is `true` if the reward is in stock. Viewers can't redeem out of stock rewards.  |
+ * | &nbsp;├──&nbsp;should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to FULFILLED status immediately when a reward is redeemed. If `false`, status is set to UNFULFILLED and follows the normal request queue process.  |
+ * | &nbsp;├──&nbsp;redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
+ * | &nbsp;└──&nbsp;cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state. See the `global_cooldown_setting` field.  |
  * @event_end
  * @func_end
  */
@@ -864,21 +863,21 @@ function twitch_channel_points_update_custom_reward(broadcaster_id, id, optional
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list contains the single redemption that you updated.  |
- * | ___broadcaster_id | ${type.string}  | The ID that uniquely identifies the broadcaster.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___id | ${type.string}  | The ID that uniquely identifies this redemption..  |
- * | ___user_id | ${type.string}  | The ID of the user that redeemed the reward.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___reward | ${type.struct}  | An object that describes the reward that the user redeemed.  |
- * | ______id | ${type.string}  | The ID that uniquely identifies the reward.  |
- * | ______title | ${type.string}  | The reward's title.  |
- * | ______prompt | ${type.string}  | The prompt displayed to the viewer if user input is required.  |
- * | ______cost | ${type.int64}  | The reward's cost, in Channel Points.  |
- * | ___user_input | ${type.string}  | The text that the user entered at the prompt when they redeemed the reward; otherwise, an empty string if user input was not required.  |
- * | ___status | ${type.string}  | The state of the redemption. Possible values are: `"CANCELED"`, `"FULFILLED"`, `"UNFULFILLED"`  |
- * | ___redeemed_at | ${type.string}  | The date and time of when the reward was redeemed, in RFC3339 format.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID that uniquely identifies the broadcaster.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | The ID that uniquely identifies this redemption..  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of the user that redeemed the reward.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;reward | ${type.struct}  | An object that describes the reward that the user redeemed.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | The ID that uniquely identifies the reward.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The reward's title.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;prompt | ${type.string}  | The prompt displayed to the viewer if user input is required.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;cost | ${type.int64}  | The reward's cost, in Channel Points.  |
+ * | &nbsp;├──&nbsp;user_input | ${type.string}  | The text that the user entered at the prompt when they redeemed the reward; otherwise, an empty string if user input was not required.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The state of the redemption. Possible values are: `"CANCELED"`, `"FULFILLED"`, `"UNFULFILLED"`  |
+ * | &nbsp;└──&nbsp;redeemed_at | ${type.string}  | The date and time of when the reward was redeemed, in RFC3339 format.  |
  * @event_end
  * @func_end
  */
@@ -904,22 +903,22 @@ function twitch_channel_points_update_redemption_status(id, broadcaster_id, rewa
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the charity campaign that the broadcaster is currently running. The list is empty if the broadcaster is not running a charity campaign; the campaign information is not available after the campaign ends.  |
- * | ___id | ${type.string}  | An ID that identifies the charity campaign.  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that's running the campaign.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___charity_name | ${type.string}  | The charity's name.  |
- * | ___charity_description | ${type.string}  | A description of the charity.  |
- * | ___charity_logo | ${type.string}  | A URL to an image of the charity's logo. The image's type is PNG and its size is 100px X 100px.  |
- * | ___charity_website | ${type.string}  | A URL to the charity's website.  |
- * | ___current_amount | ${type.struct}  | The current amount of donations that the campaign has received.  |
- * | ______value | ${type.number}  | The monetary amount. The amount is specified in the currency's minor unit. For example, the minor units for USD is cents, so if the amount is $5.50 USD, `value` is set to 550.  |
- * | ______decimal_places | ${type.number}  | The number of decimal places used by the currency. For example, USD uses two decimal places. Use this number to translate `value` from minor units to major units by using the formula: `value / 10^decimal_places`  |
- * | ______currency | ${type.string}  | The ISO-4217 three-letter currency code that identifies the type of currency in `value`.  |
- * | ___target_amount | ${type.struct}  | The campaign's fundraising goal. This field is `undefined` if the broadcaster has not defined a fundraising goal.  |
- * | ______value | ${type.number}  | The monetary amount. The amount is specified in the currency's minor unit. For example, the minor units for USD is cents, so if the amount is $5.50 USD, `value` is set to 550.  |
- * | ______decimal_places | ${type.number}  | The number of decimal places used by the currency. For example, USD uses two decimal places. Use this number to translate `value` from minor units to major units by using the formula: `value / 10^decimal_places`  |
- * | ______currency | ${type.string}  | The ISO-4217 three-letter currency code that identifies the type of currency in `value`.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the charity campaign.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that's running the campaign.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;charity_name | ${type.string}  | The charity's name.  |
+ * | &nbsp;├──&nbsp;charity_description | ${type.string}  | A description of the charity.  |
+ * | &nbsp;├──&nbsp;charity_logo | ${type.string}  | A URL to an image of the charity's logo. The image's type is PNG and its size is 100px X 100px.  |
+ * | &nbsp;├──&nbsp;charity_website | ${type.string}  | A URL to the charity's website.  |
+ * | &nbsp;├──&nbsp;current_amount | ${type.struct}  | The current amount of donations that the campaign has received.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;value | ${type.number}  | The monetary amount. The amount is specified in the currency's minor unit. For example, the minor units for USD is cents, so if the amount is $5.50 USD, `value` is set to 550.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;decimal_places | ${type.number}  | The number of decimal places used by the currency. For example, USD uses two decimal places. Use this number to translate `value` from minor units to major units by using the formula: `value / 10^decimal_places`  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;currency | ${type.string}  | The ISO-4217 three-letter currency code that identifies the type of currency in `value`.  |
+ * | &nbsp;└──&nbsp;target_amount | ${type.struct}  | The campaign's fundraising goal. This field is `undefined` if the broadcaster has not defined a fundraising goal.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;value | ${type.number}  | The monetary amount. The amount is specified in the currency's minor unit. For example, the minor units for USD is cents, so if the amount is $5.50 USD, `value` is set to 550.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;decimal_places | ${type.number}  | The number of decimal places used by the currency. For example, USD uses two decimal places. Use this number to translate `value` from minor units to major units by using the formula: `value / 10^decimal_places`  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;currency | ${type.string}  | The ISO-4217 three-letter currency code that identifies the type of currency in `value`.  |
  * @event_end
  * @func_end
  */
@@ -950,17 +949,17 @@ function twitch_charity_get_charity_campaign(broadcaster_id, callback_success, c
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the donations that users have made to the broadcaster's charity campaign.  The list is empty if the broadcaster is not currently running a charity campaign; the donation information is not available after the campaign ends.  |
- * | ___id | ${type.string}  | An ID that identifies the donation. The ID is unique across campaigns.  |
- * | ___campaign_id | ${type.string}  | An ID that identifies the charity campaign that the donation applies to.  |
- * | ___user_id | ${type.string}  | An ID that identifies a user that donated money to the campaign.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___amount | ${type.struct}  | An object that contains the amount of money that the user donated.  |
- * | ______value | ${type.number}  | The monetary amount. The amount is specified in the currency's minor unit. For example, the minor units for USD is cents, so if the amount is $5.50 USD, `value` is set to 550.  |
- * | ______decimal_places | ${type.number}  | The number of decimal places used by the currency. For example, USD uses two decimal places. Use this number to translate `value` from minor units to major units by using the formula:`value / 10^decimal_places`  |
- * | ______currency | ${type.string}  | The ISO-4217 three-letter currency code that identifies the type of currency in `value`.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the donation. The ID is unique across campaigns.  |
+ * | &nbsp;├──&nbsp;campaign_id | ${type.string}  | An ID that identifies the charity campaign that the donation applies to.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies a user that donated money to the campaign.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;amount | ${type.struct}  | An object that contains the amount of money that the user donated.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;value | ${type.number}  | The monetary amount. The amount is specified in the currency's minor unit. For example, the minor units for USD is cents, so if the amount is $5.50 USD, `value` is set to 550.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;decimal_places | ${type.number}  | The number of decimal places used by the currency. For example, USD uses two decimal places. Use this number to translate `value` from minor units to major units by using the formula:`value / 10^decimal_places`  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;currency | ${type.string}  | The ISO-4217 three-letter currency code that identifies the type of currency in `value`.  |
  * | pagination | ${type.struct}  | An object that contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -994,11 +993,11 @@ function twitch_charity_get_charity_campaign_donations(broadcaster_id, optionals
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of users that are connected to the broadcaster's chat room. The list is empty if no users are connected to the chat room.  |
- * | ___user_id | ${type.string}  | The ID of a user that's connected to the broadcaster's chat room.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of a user that's connected to the broadcaster's chat room.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;└──&nbsp;user_name | ${type.string}  | The user's display name.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * | total | ${type.number}  | The total number of users that are connected to the broadcaster's chat room. As you page through the list, the number of users may change as users join and leave the chat room.  |
  * @event_end
  * @func_end
@@ -1027,18 +1026,18 @@ function twitch_chat_get_chatters(broadcaster_id, moderator_id, optionals, callb
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of emotes that the specified broadcaster created. If the broadcaster hasn't created custom emotes, the list is empty.  |
- * | ___id | ${type.string}  | An ID that identifies this emote.  |
- * | ___name | ${type.string}  | The name of the emote. This is the name that viewers type in the chat window to get the emote to appear.  |
- * | ___images | ${type.struct}  | The image URLs for the emote. These image URLs always provide a static, non-animated emote image with a light background. **NOTE:** You should use the templated URL in the `template` field to fetch the image instead of using these URLs.  |
- * | ______url_1x | ${type.string}  | A URL to the small version (28px x 28px) of the emote.  |
- * | ______url_2x | ${type.string}  | A URL to the medium version (56px x 56px) of the emote.  |
- * | ______url_4x | ${type.string}  | A URL to the large version (112px x 112px) of the emote.  |
- * | ___tier | ${type.string}  | The subscriber tier at which the emote is unlocked. This field contains the tier information only if `emote_type` is set to `"subscriptions"`, otherwise, it's an empty string.  |
- * | ___emote_type | ${type.string}  | The type of emote. The possible values are: `"bitstier"` — A custom Bits tier emote, `"follower"` — A custom follower emote, `"subscriptions"` — A custom subscriber emote.  |
- * | ___emote_set_id | ${type.string}  | An ID that identifies the emote set that the emote belongs to.  |
- * | ___format | ${type.array} of ${type.string}  | The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only `"static"`. But if the emote is available as a static PNG and an animated GIF, the array contains `"static"` and `"animated"`. The possible formats are: `"animated"` — An animated GIF is available for this emote, `"static"` — A static PNG file is available for this emote.  |
- * | ___scale | ${type.array} of ${type.string}  | The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are: 1.0 — A small version (28px x 28px) is available, 2.0 — A medium version (56px x 56px) is available, 3.0 — A large version (112px x 112px) is available.  |
- * | ___theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in. Possible themes are: `"dark"`, `"light"`  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this emote.  |
+ * | &nbsp;├──&nbsp;name | ${type.string}  | The name of the emote. This is the name that viewers type in the chat window to get the emote to appear.  |
+ * | &nbsp;├──&nbsp;images | ${type.struct}  | The image URLs for the emote. These image URLs always provide a static, non-animated emote image with a light background. **NOTE:** You should use the templated URL in the `template` field to fetch the image instead of using these URLs.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x | ${type.string}  | A URL to the small version (28px x 28px) of the emote.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x | ${type.string}  | A URL to the medium version (56px x 56px) of the emote.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x | ${type.string}  | A URL to the large version (112px x 112px) of the emote.  |
+ * | &nbsp;├──&nbsp;tier | ${type.string}  | The subscriber tier at which the emote is unlocked. This field contains the tier information only if `emote_type` is set to `"subscriptions"`, otherwise, it's an empty string.  |
+ * | &nbsp;├──&nbsp;emote_type | ${type.string}  | The type of emote. The possible values are: `"bitstier"` — A custom Bits tier emote, `"follower"` — A custom follower emote, `"subscriptions"` — A custom subscriber emote.  |
+ * | &nbsp;├──&nbsp;emote_set_id | ${type.string}  | An ID that identifies the emote set that the emote belongs to.  |
+ * | &nbsp;├──&nbsp;format | ${type.array} of ${type.string}  | The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only `"static"`. But if the emote is available as a static PNG and an animated GIF, the array contains `"static"` and `"animated"`. The possible formats are: `"animated"` — An animated GIF is available for this emote, `"static"` — A static PNG file is available for this emote.  |
+ * | &nbsp;├──&nbsp;scale | ${type.array} of ${type.string}  | The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are: 1.0 — A small version (28px x 28px) is available, 2.0 — A medium version (56px x 56px) is available, 3.0 — A large version (112px x 112px) is available.  |
+ * | &nbsp;└──&nbsp;theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in. Possible themes are: `"dark"`, `"light"`  |
  * | template | ${type.string}  | A templated URL. Use the values from the `id`, `format`, `scale`, and `theme_mode` fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote. For information about what the template looks like and how to use it to fetch emotes, see [Emote CDN URL format](https://dev.twitch.tv/docs/irc/emotes#cdn-template). You should use this template instead of using the URLs in the `images` struct.  |
  * @event_end
  * @func_end
@@ -1064,15 +1063,15 @@ function twitch_chat_get_channel_emotes(broadcaster_id, callback_success, callba
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of global emotes.  |
- * | ___id | ${type.string}  | An ID that identifies this emote.  |
- * | ___name | ${type.string}  | The name of the emote. This is the name that viewers type in the chat window to get the emote to appear.  |
- * | ___images | ${type.struct}  | The image URLs for the emote. These image URLs always provide a static, non-animated emote image with a light background. **NOTE**: You should use the templated URL in the `template` field to fetch the image instead of using these URLs.  |
- * | ______url_1x | ${type.string}  | A URL to the small version (28px x 28px) of the emote.  |
- * | ______url_2x | ${type.string}  | A URL to the medium version (56px x 56px) of the emote.  |
- * | ______url_4x | ${type.string}  | A URL to the large version (112px x 112px) of the emote.  |
- * | ___format | ${type.array} of ${type.string}  | The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only `"static"`. But if the emote is available as a static PNG and an animated GIF, the array contains `"static"` and `"animated"`. The possible formats are: `"animated"` — An animated GIF is available for this emote, `"static"` — A static PNG file is available for this emote.  |
- * | ___scale | ${type.array} of ${type.string}  | The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are:1.0 — A small version (28px x 28px) is available.2.0 — A medium version (56px x 56px) is available.3.0 — A large version (112px x 112px) is available.  |
- * | ___theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in. Possible themes are: `"dark"`, `"light"`  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this emote.  |
+ * | &nbsp;├──&nbsp;name | ${type.string}  | The name of the emote. This is the name that viewers type in the chat window to get the emote to appear.  |
+ * | &nbsp;├──&nbsp;images | ${type.struct}  | The image URLs for the emote. These image URLs always provide a static, non-animated emote image with a light background. **NOTE**: You should use the templated URL in the `template` field to fetch the image instead of using these URLs.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x | ${type.string}  | A URL to the small version (28px x 28px) of the emote.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x | ${type.string}  | A URL to the medium version (56px x 56px) of the emote.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x | ${type.string}  | A URL to the large version (112px x 112px) of the emote.  |
+ * | &nbsp;├──&nbsp;format | ${type.array} of ${type.string}  | The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only `"static"`. But if the emote is available as a static PNG and an animated GIF, the array contains `"static"` and `"animated"`. The possible formats are: `"animated"` — An animated GIF is available for this emote, `"static"` — A static PNG file is available for this emote.  |
+ * | &nbsp;├──&nbsp;scale | ${type.array} of ${type.string}  | The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are:1.0 — A small version (28px x 28px) is available.2.0 — A medium version (56px x 56px) is available.3.0 — A large version (112px x 112px) is available.  |
+ * | &nbsp;└──&nbsp;theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in. Possible themes are: `"dark"`, `"light"`  |
  * | template | ${type.string}  | A templated URL. Use the values from the `id`, `format`, `scale`, and `theme_mode` fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote. For information about what the template looks like and how to use it to fetch emotes, see [Emote CDN URL format](https://dev.twitch.tv/docs/irc/emotes#cdn-template). You should use this template instead of using the URLs in the `images` struct.  |
  * @event_end
  * @func_end
@@ -1101,18 +1100,18 @@ function twitch_chat_get_global_emotes(callback_success, callback_failed) {}
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of emotes found in the specified emote sets. The list is empty if none of the IDs were found. The list is in the same order as the set IDs specified in the request. Each set contains one or more emoticons.  |
- * | ___id | ${type.string}  | An ID that uniquely identifies this emote.  |
- * | ___name | ${type.string}  | The name of the emote. This is the name that viewers type in the chat window to get the emote to appear.  |
- * | ___images | ${type.struct}  | The image URLs for the emote. These image URLs always provide a static, non-animated emote image with a light background. **NOTE**: You should use the templated URL in the `template` field to fetch the image instead of using these URLs.  |
- * | ______url_1x | ${type.string}  | A URL to the small version (28px x 28px) of the emote.  |
- * | ______url_2x | ${type.string}  | A URL to the medium version (56px x 56px) of the emote.  |
- * | ______url_4x | ${type.string}  | A URL to the large version (112px x 112px) of the emote.  |
- * | ___emote_type | ${type.string}  | The type of emote. The possible values are: `"bitstier"` - A Bits tier emote, `"follower"` - A follower emote, `"subscriptions"` - A subscriber emote.  |
- * | ___emote_set_id | ${type.string}  | An ID that identifies the emote set that the emote belongs to.  |
- * | ___owner_id | ${type.string}  | The ID of the broadcaster who owns the emote.  |
- * | ___format | ${type.array} of ${type.string}  | The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only `"static"`. But if the emote is available as a static PNG and an animated GIF, the array contains `"static"` and `"animated"`. The possible formats are: `"animated"` - An animated GIF is available for this emote, `"static"` - A static PNG file is available for this emote.  |
- * | ___scale | ${type.array} of ${type.string}  | The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are: 1.0 - A small version (28px x 28px) is available, 2.0 - A medium version (56px x 56px) is available, 3.0 - A large version (112px x 112px) is available.  |
- * | ___theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in. Possible themes are: `"dark"`, `"light"`  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that uniquely identifies this emote.  |
+ * | &nbsp;├──&nbsp;name | ${type.string}  | The name of the emote. This is the name that viewers type in the chat window to get the emote to appear.  |
+ * | &nbsp;├──&nbsp;images | ${type.struct}  | The image URLs for the emote. These image URLs always provide a static, non-animated emote image with a light background. **NOTE**: You should use the templated URL in the `template` field to fetch the image instead of using these URLs.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x | ${type.string}  | A URL to the small version (28px x 28px) of the emote.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x | ${type.string}  | A URL to the medium version (56px x 56px) of the emote.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x | ${type.string}  | A URL to the large version (112px x 112px) of the emote.  |
+ * | &nbsp;├──&nbsp;emote_type | ${type.string}  | The type of emote. The possible values are: `"bitstier"` - A Bits tier emote, `"follower"` - A follower emote, `"subscriptions"` - A subscriber emote.  |
+ * | &nbsp;├──&nbsp;emote_set_id | ${type.string}  | An ID that identifies the emote set that the emote belongs to.  |
+ * | &nbsp;├──&nbsp;owner_id | ${type.string}  | The ID of the broadcaster who owns the emote.  |
+ * | &nbsp;├──&nbsp;format | ${type.array} of ${type.string}  | The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only `"static"`. But if the emote is available as a static PNG and an animated GIF, the array contains `"static"` and `"animated"`. The possible formats are: `"animated"` - An animated GIF is available for this emote, `"static"` - A static PNG file is available for this emote.  |
+ * | &nbsp;├──&nbsp;scale | ${type.array} of ${type.string}  | The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are: 1.0 - A small version (28px x 28px) is available, 2.0 - A medium version (56px x 56px) is available, 3.0 - A large version (112px x 112px) is available.  |
+ * | &nbsp;└──&nbsp;theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in. Possible themes are: `"dark"`, `"light"`  |
  * | template | ${type.string}  | A templated URL. Use the values from the `id`, `format`, `scale`, and `theme_mode` fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote. For information about what the template looks like and how to use it to fetch emotes, see [Emote CDN URL format](https://dev.twitch.tv/docs/irc/emotes#cdn-template). You should use this template instead of using the URLs in the `images` struct.  |
  * @event_end
  * @func_end
@@ -1137,16 +1136,16 @@ function twitch_chat_get_emote_sets(emote_set_id, callback_success, callback_fai
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of chat badges. The list is sorted in ascending order by `set_id`, and within a set, the list is sorted in ascending order by `id`.  |
- * | ___set_id | ${type.string}  | An ID that identifies this set of chat badges. For example, Bits or Subscriber.  |
- * | ___versions | ${type.array}  | The list of chat badges in this set.  |
- * | ______id | ${type.string}  | An ID that identifies this version of the badge. The ID can be any value. For example, for Bits, the ID is the Bits tier level, but for World of Warcraft, it could be Alliance or Horde.  |
- * | ______image_url_1x | ${type.string}  | A URL to the small version (18px x 18px) of the badge.  |
- * | ______image_url_2x | ${type.string}  | A URL to the medium version (36px x 36px) of the badge.  |
- * | ______image_url_4x | ${type.string}  | A URL to the large version (72px x 72px) of the badge.  |
- * | ______title | ${type.string}  | The title of the badge.  |
- * | ______description | ${type.string}  | The description of the badge.  |
- * | ______click_action | ${type.string}  | The action to take when clicking on the badge. Set to `undefined` if no action is specified.  |
- * | ______click_url | ${type.string}  | The URL to navigate to when clicking on the badge. Set to `undefined` if no URL is specified.  |
+ * | &nbsp;├──&nbsp;set_id | ${type.string}  | An ID that identifies this set of chat badges. For example, Bits or Subscriber.  |
+ * | &nbsp;└──&nbsp;versions | ${type.array}  | The list of chat badges in this set.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this version of the badge. The ID can be any value. For example, for Bits, the ID is the Bits tier level, but for World of Warcraft, it could be Alliance or Horde.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_1x | ${type.string}  | A URL to the small version (18px x 18px) of the badge.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_2x | ${type.string}  | A URL to the medium version (36px x 36px) of the badge.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_4x | ${type.string}  | A URL to the large version (72px x 72px) of the badge.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The title of the badge.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;description | ${type.string}  | The description of the badge.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;click_action | ${type.string}  | The action to take when clicking on the badge. Set to `undefined` if no action is specified.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;click_url | ${type.string}  | The URL to navigate to when clicking on the badge. Set to `undefined` if no URL is specified.  |
  * @event_end
  * @func_end
  */
@@ -1169,16 +1168,16 @@ function twitch_chat_get_channel_chat_badges(broadcaster_id, callback_success, c
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of chat badges. The list is sorted in ascending order by `set_id`, and within a set, the list is sorted in ascending order by `id`.  |
- * | ___set_id | ${type.string}  | An ID that identifies this set of chat badges. For example, Bits or Subscriber.  |
- * | ___versions | ${type.array}  | The list of chat badges in this set.  |
- * | ______id | ${type.string}  | An ID that identifies this version of the badge. The ID can be any value. For example, for Bits, the ID is the Bits tier level, but for World of Warcraft, it could be Alliance or Horde.  |
- * | ______image_url_1x | ${type.string}  | A URL to the small version (18px x 18px) of the badge.  |
- * | ______image_url_2x | ${type.string}  | A URL to the medium version (36px x 36px) of the badge.  |
- * | ______image_url_4x | ${type.string}  | A URL to the large version (72px x 72px) of the badge.  |
- * | ______title | ${type.string}  | The title of the badge.  |
- * | ______description | ${type.string}  | The description of the badge.  |
- * | ______click_action | ${type.string}  | The action to take when clicking on the badge. Set to `undefined` if no action is specified.  |
- * | ______click_url | ${type.string}  | The URL to navigate to when clicking on the badge. Set to `undefined` if no URL is specified.  |
+ * | &nbsp;├──&nbsp;set_id | ${type.string}  | An ID that identifies this set of chat badges. For example, Bits or Subscriber.  |
+ * | &nbsp;└──&nbsp;versions | ${type.array}  | The list of chat badges in this set.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this version of the badge. The ID can be any value. For example, for Bits, the ID is the Bits tier level, but for World of Warcraft, it could be Alliance or Horde.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_1x | ${type.string}  | A URL to the small version (18px x 18px) of the badge.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_2x | ${type.string}  | A URL to the medium version (36px x 36px) of the badge.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_4x | ${type.string}  | A URL to the large version (72px x 72px) of the badge.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The title of the badge.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;description | ${type.string}  | The description of the badge.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;click_action | ${type.string}  | The action to take when clicking on the badge. Set to `undefined` if no action is specified.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;click_url | ${type.string}  | The URL to navigate to when clicking on the badge. Set to `undefined` if no URL is specified.  |
  * @event_end
  * @func_end
  */
@@ -1208,17 +1207,17 @@ function twitch_chat_get_global_chat_badges(callback_success, callback_failed) {
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of chat settings. It contains a single struct with all the settings.  |
- * | ___broadcaster_id | ${type.string}  | The ID of the broadcaster specified in the request.  |
- * | ___emote_mode | ${type.boolean}  | A Boolean value that determines whether chat messages must contain only emotes. Is `true` if chat messages may contain only emotes; otherwise, `false`.  |
- * | ___follower_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Is `true` if the broadcaster restricts the chat room to followers only; otherwise, `false`. See the `follower_mode_duration` field for how long users must follow the broadcaster before being able to participate in the chat room.  |
- * | ___follower_mode_duration | ${type.number}  | The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Is `undefined` if `follower_mode` is `false`.  |
- * | ___moderator_id | ${type.string}  | The moderator's ID. The response includes this field only if the request specifies a user access token that includes the `TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS` scope.  |
- * | ___non_moderator_chat_delay | ${type.boolean}  | A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. See the `non_moderator_chat_delay_duration` field for the length of the delay. Is `true` if the broadcaster applies a delay; otherwise, `false`. The response includes this field only if the request specifies a user access token that includes the `TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS` scope and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
- * | ___non_moderator_chat_delay_duration | ${type.number}  | The amount of time, in seconds, that messages are delayed before appearing in chat. Is `undefined` if `non_moderator_chat_delay` is `false`.The response includes this field only if the request specifies a user access token that includes the `TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS` scope and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
- * | ___slow_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster limits how often users in the chat room are allowed to send messages. Is `true` if the broadcaster applies a delay; otherwise, `false`. See the `slow_mode_wait_time` field for the delay.  |
- * | ___slow_mode_wait_time | ${type.number}  | The amount of time, in seconds, that users must wait between sending messages. Is `undefined` if `slow_mode` is `false`.  |
- * | ___subscriber_mode | ${type.boolean}  | A Boolean value that determines whether only users that subscribe to the broadcaster's channel may talk in the chat room. Is `true` if the broadcaster restricts the chat room to subscribers only; otherwise, `false`.  |
- * | ___unique_chat_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster requires users to post only unique messages in the chat room. Is `true` if the broadcaster requires unique messages only; otherwise, `false`.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster specified in the request.  |
+ * | &nbsp;├──&nbsp;emote_mode | ${type.boolean}  | A Boolean value that determines whether chat messages must contain only emotes. Is `true` if chat messages may contain only emotes; otherwise, `false`.  |
+ * | &nbsp;├──&nbsp;follower_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Is `true` if the broadcaster restricts the chat room to followers only; otherwise, `false`. See the `follower_mode_duration` field for how long users must follow the broadcaster before being able to participate in the chat room.  |
+ * | &nbsp;├──&nbsp;follower_mode_duration | ${type.number}  | The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Is `undefined` if `follower_mode` is `false`.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator's ID. The response includes this field only if the request specifies a user access token that includes the `TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS` scope.  |
+ * | &nbsp;├──&nbsp;non_moderator_chat_delay | ${type.boolean}  | A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. See the `non_moderator_chat_delay_duration` field for the length of the delay. Is `true` if the broadcaster applies a delay; otherwise, `false`. The response includes this field only if the request specifies a user access token that includes the `TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS` scope and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
+ * | &nbsp;├──&nbsp;non_moderator_chat_delay_duration | ${type.number}  | The amount of time, in seconds, that messages are delayed before appearing in chat. Is `undefined` if `non_moderator_chat_delay` is `false`.The response includes this field only if the request specifies a user access token that includes the `TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS` scope and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
+ * | &nbsp;├──&nbsp;slow_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster limits how often users in the chat room are allowed to send messages. Is `true` if the broadcaster applies a delay; otherwise, `false`. See the `slow_mode_wait_time` field for the delay.  |
+ * | &nbsp;├──&nbsp;slow_mode_wait_time | ${type.number}  | The amount of time, in seconds, that users must wait between sending messages. Is `undefined` if `slow_mode` is `false`.  |
+ * | &nbsp;├──&nbsp;subscriber_mode | ${type.boolean}  | A Boolean value that determines whether only users that subscribe to the broadcaster's channel may talk in the chat room. Is `true` if the broadcaster restricts the chat room to subscribers only; otherwise, `false`.  |
+ * | &nbsp;└──&nbsp;unique_chat_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster requires users to post only unique messages in the chat room. Is `true` if the broadcaster requires unique messages only; otherwise, `false`.  |
  * @event_end
  * @func_end
  */
@@ -1248,17 +1247,17 @@ function twitch_chat_get_chat_settings(broadcaster_id, optionals, callback_succe
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  |   |
- * | ___id | ${type.string}  | An ID that uniquely identifies this emote.  |
- * | ___name | ${type.string}  | The User ID of broadcaster whose channel is receiving the unban request.  |
- * | ___emote_type | ${type.string}  | The type of emote. The possible values are: `"none"` — No emote type was assigned to this emote, `"bitstier"` — A Bits tier emote, `"follower"` — A follower emote, `"subscriptions"` — A subscriber emote, `"channelpoints"` — An emote granted by using channel points, `"rewards"` — An emote granted to the user through a special event, `"hypetrain"` — An emote granted for participation in a Hype Train, `"prime"` — An emote granted for linking an Amazon Prime account, `"turbo"` — An emote granted for having Twitch Turbo, `"smilies"` — Emoticons supported by Twitch, `"globals"` — An emote accessible by everyone, `"owl2019"` — Emotes related to Overwatch League 2019, `"twofactor"` — Emotes granted by enabling two-factor authentication on an account, `"limitedtime"` — Emotes that were granted for only a limited time.  |
- * | ___emote_set_id | ${type.string}  | An ID that identifies the emote set that the emote belongs to.  |
- * | ___owner_id | ${type.string}  | The ID of the broadcaster who owns the emote.  |
- * | ___format | ${type.array} of ${type.string}  | The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only `"static"`. But if the emote is available as a static PNG and an animated GIF, the array contains `"static"` and `"animated"`. `"animated"` —  An animated GIF is available for this emote, `"static"` — A static PNG file is available for this emote.  |
- * | ___scale | ${type.array} of ${type.string}  | The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. 1.0 —  A small version (28px x 28px) is available, 2.0 — A medium version (56px x 56px) is available, 3.0 —  A large version (112px x 112px) is available.  |
- * | ___theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in: `"dark"`, `"light"`  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that uniquely identifies this emote.  |
+ * | &nbsp;├──&nbsp;name | ${type.string}  | The User ID of broadcaster whose channel is receiving the unban request.  |
+ * | &nbsp;├──&nbsp;emote_type | ${type.string}  | The type of emote. The possible values are: `"none"` — No emote type was assigned to this emote, `"bitstier"` — A Bits tier emote, `"follower"` — A follower emote, `"subscriptions"` — A subscriber emote, `"channelpoints"` — An emote granted by using channel points, `"rewards"` — An emote granted to the user through a special event, `"hypetrain"` — An emote granted for participation in a Hype Train, `"prime"` — An emote granted for linking an Amazon Prime account, `"turbo"` — An emote granted for having Twitch Turbo, `"smilies"` — Emoticons supported by Twitch, `"globals"` — An emote accessible by everyone, `"owl2019"` — Emotes related to Overwatch League 2019, `"twofactor"` — Emotes granted by enabling two-factor authentication on an account, `"limitedtime"` — Emotes that were granted for only a limited time.  |
+ * | &nbsp;├──&nbsp;emote_set_id | ${type.string}  | An ID that identifies the emote set that the emote belongs to.  |
+ * | &nbsp;├──&nbsp;owner_id | ${type.string}  | The ID of the broadcaster who owns the emote.  |
+ * | &nbsp;├──&nbsp;format | ${type.array} of ${type.string}  | The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only `"static"`. But if the emote is available as a static PNG and an animated GIF, the array contains `"static"` and `"animated"`. `"animated"` —  An animated GIF is available for this emote, `"static"` — A static PNG file is available for this emote.  |
+ * | &nbsp;├──&nbsp;scale | ${type.array} of ${type.string}  | The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. 1.0 —  A small version (28px x 28px) is available, 2.0 — A medium version (56px x 56px) is available, 3.0 —  A large version (112px x 112px) is available.  |
+ * | &nbsp;└──&nbsp;theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in: `"dark"`, `"light"`  |
  * | template | ${type.string}  | A templated URL. Uses the values from the `id`, `format`, `scale`, and `theme_mode` fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote.  For information about what the template looks like and how to use it to fetch emotes, see [Emote CDN URL format](https://dev.twitch.tv/docs/irc/emotes#cdn-template).  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through.  For more information about pagination support, see Twitch API Guide - Pagination.  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -1292,17 +1291,17 @@ function twitch_chat_get_user_emotes(user_id, optionals, callback_success, callb
  * | subscriber_mode | ${type.boolean}  | A Boolean value that determines whether only users that subscribe to the broadcaster's channel may talk in the chat room. Set to `true` if the broadcaster restricts the chat room to subscribers only; otherwise, `false`. The default is `false`.  |
  * | unique_chat_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster requires users to post only unique messages in the chat room. Set to `true` if the broadcaster allows only unique messages; otherwise, `false`. The default is `false`.  |
  * | data | ${type.array}  | The list of chat settings. The list contains a single struct with all the settings.  |
- * | ___broadcaster_id | ${type.string}  | The ID of the broadcaster specified in the request.  |
- * | ___emote_mode | ${type.boolean}  | A Boolean value that determines whether chat messages must contain only emotes. Is `true` if chat messages may contain only emotes; otherwise, `false`.  |
- * | ___follower_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Is `true` if the broadcaster restricts the chat room to followers only; otherwise, `false`. See the follower_mode_duration field for how long users must follow the broadcaster before being able to participate in the chat room.  |
- * | ___follower_mode_duration | ${type.number}  | The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Is `undefined` if `follower_mode` is `false`.  |
- * | ___moderator_id | ${type.string}  | The moderator's ID. The response includes this field only if the request specifies a user access token that includes the  `TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS` scope.  |
- * | ___non_moderator_chat_delay | ${type.boolean}  | A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. See the `non_moderator_chat_delay_duration` field for the length of the delay. Is `true` if the broadcaster applies a delay; otherwise, `false`.  |
- * | ___non_moderator_chat_delay_duration | ${type.number}  | The amount of time, in seconds, that messages are delayed before appearing in chat. Is `undefined` if `non_moderator_chat_delay` is `false`.  |
- * | ___slow_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster limits how often users in the chat room are allowed to send messages. Is `true` if the broadcaster applies a delay; otherwise, `false`. See the `slow_mode_wait_time` field for the delay.  |
- * | ___slow_mode_wait_time | ${type.number}  | The amount of time, in seconds, that users must wait between sending messages. Is `undefined` if `slow_mode` is `false`.  |
- * | ___subscriber_mode | ${type.boolean}  | A Boolean value that determines whether only users that subscribe to the broadcaster's channel may talk in the chat room. Is `true` if the broadcaster restricts the chat room to subscribers only; otherwise, `false`.  |
- * | ___unique_chat_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster requires users to post only unique messages in the chat room. Is `true` if the broadcaster requires unique messages only; otherwise, `false`.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster specified in the request.  |
+ * | &nbsp;├──&nbsp;emote_mode | ${type.boolean}  | A Boolean value that determines whether chat messages must contain only emotes. Is `true` if chat messages may contain only emotes; otherwise, `false`.  |
+ * | &nbsp;├──&nbsp;follower_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Is `true` if the broadcaster restricts the chat room to followers only; otherwise, `false`. See the follower_mode_duration field for how long users must follow the broadcaster before being able to participate in the chat room.  |
+ * | &nbsp;├──&nbsp;follower_mode_duration | ${type.number}  | The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Is `undefined` if `follower_mode` is `false`.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator's ID. The response includes this field only if the request specifies a user access token that includes the  `TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS` scope.  |
+ * | &nbsp;├──&nbsp;non_moderator_chat_delay | ${type.boolean}  | A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. See the `non_moderator_chat_delay_duration` field for the length of the delay. Is `true` if the broadcaster applies a delay; otherwise, `false`.  |
+ * | &nbsp;├──&nbsp;non_moderator_chat_delay_duration | ${type.number}  | The amount of time, in seconds, that messages are delayed before appearing in chat. Is `undefined` if `non_moderator_chat_delay` is `false`.  |
+ * | &nbsp;├──&nbsp;slow_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster limits how often users in the chat room are allowed to send messages. Is `true` if the broadcaster applies a delay; otherwise, `false`. See the `slow_mode_wait_time` field for the delay.  |
+ * | &nbsp;├──&nbsp;slow_mode_wait_time | ${type.number}  | The amount of time, in seconds, that users must wait between sending messages. Is `undefined` if `slow_mode` is `false`.  |
+ * | &nbsp;├──&nbsp;subscriber_mode | ${type.boolean}  | A Boolean value that determines whether only users that subscribe to the broadcaster's channel may talk in the chat room. Is `true` if the broadcaster restricts the chat room to subscribers only; otherwise, `false`.  |
+ * | &nbsp;└──&nbsp;unique_chat_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster requires users to post only unique messages in the chat room. Is `true` if the broadcaster requires unique messages only; otherwise, `false`.  |
  * @event_end
  * @func_end
  */
@@ -1378,11 +1377,11 @@ function twitch_chat_send_a_shoutout(from_broadcaster_id, to_broadcaster_id, mod
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  |   |
- * | ___message_id | ${type.string}  | The message id for the message that was sent.  |
- * | ___is_sent | ${type.boolean}  | If the message passed all checks and was sent.  |
- * | ___drop_reason | ${type.struct}  | The reason the message was dropped, if any.  |
- * | ______code | ${type.string}  | Code for why the message was dropped.  |
- * | ______message | ${type.string}  | Message for why the message was dropped.  |
+ * | &nbsp;├──&nbsp;message_id | ${type.string}  | The message id for the message that was sent.  |
+ * | &nbsp;├──&nbsp;is_sent | ${type.boolean}  | If the message passed all checks and was sent.  |
+ * | &nbsp;└──&nbsp;drop_reason | ${type.struct}  | The reason the message was dropped, if any.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;code | ${type.string}  | Code for why the message was dropped.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;message | ${type.string}  | Message for why the message was dropped.  |
  * @event_end
  * @func_end
  */
@@ -1406,10 +1405,10 @@ function twitch_chat_send_chat_message(broadcaster_id, sender_id, message, optio
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of users and the color code they use for their name.  |
- * | ___user_id | ${type.string}  | An ID that uniquely identifies the user.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___color | ${type.string}  | The Hex color code that the user uses in chat for their name. If the user hasn't specified a color in their settings, the string is empty.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that uniquely identifies the user.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;└──&nbsp;color | ${type.string}  | The Hex color code that the user uses in chat for their name. If the user hasn't specified a color in their settings, the string is empty.  |
  * @event_end
  * @func_end
  */
@@ -1497,25 +1496,25 @@ function twitch_clips_create_clip(broadcaster_id, optionals, callback_success, c
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of video clips. For clips returned by game_id or broadcaster_id, the list is in descending order by view count. For lists returned by id, the list is in the same order as the input IDs.  |
- * | ___id | ${type.string}  | An ID that uniquely identifies the clip.  |
- * | ___url | ${type.string}  | A URL to the clip.  |
- * | ___embed_url | ${type.string}  | A URL that you can use in an iframe to embed the clip (see [Embedding Video and Clips](https://dev.twitch.tv/docs/embed/video-and-clips/)).  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that the video was clipped from.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___creator_id | ${type.string}  | An ID that identifies the user that created the clip.  |
- * | ___creator_name | ${type.string}  | The user's display name.  |
- * | ___video_id | ${type.string}  | An ID that identifies the video that the clip came from. This field contains an empty string if the video is not available.  |
- * | ___game_id | ${type.string}  | The ID of the game that was being played when the clip was created.  |
- * | ___language | ${type.string}  | The ISO 639-1 two-letter language code that the broadcaster broadcasts in. For example, `"en"` for English. The value is `"other"` if the broadcaster uses a language that Twitch doesn't support.  |
- * | ___title | ${type.string}  | The title of the clip.  |
- * | ___view_count | ${type.number}  | The number of times the clip has been viewed.  |
- * | ___created_at | ${type.string}  | The date and time of when the clip was created. The date and time is in RFC3339 format.  |
- * | ___thumbnail_url | ${type.string}  | A URL to a thumbnail image of the clip.  |
- * | ___duration | ${type.real}  | The length of the clip, in seconds. Precision is 0.1.  |
- * | ___vod_offset | ${type.number}  | The zero-based offset, in seconds, to where the clip starts in the video (VOD). Is `undefined` if the video is not available or hasn't been created yet from the live stream (see `video_id`). Note that there's a delay between when a clip is created during a broadcast and when the offset is set. During the delay period, `vod_offset` is `undefined`. The delay is indeterminant but is typically minutes long.  |
- * | ___is_featured | ${type.boolean}  | A Boolean value that indicates if the clip is featured or not.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that uniquely identifies the clip.  |
+ * | &nbsp;├──&nbsp;url | ${type.string}  | A URL to the clip.  |
+ * | &nbsp;├──&nbsp;embed_url | ${type.string}  | A URL that you can use in an iframe to embed the clip (see [Embedding Video and Clips](https://dev.twitch.tv/docs/embed/video-and-clips/)).  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that the video was clipped from.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;creator_id | ${type.string}  | An ID that identifies the user that created the clip.  |
+ * | &nbsp;├──&nbsp;creator_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;video_id | ${type.string}  | An ID that identifies the video that the clip came from. This field contains an empty string if the video is not available.  |
+ * | &nbsp;├──&nbsp;game_id | ${type.string}  | The ID of the game that was being played when the clip was created.  |
+ * | &nbsp;├──&nbsp;language | ${type.string}  | The ISO 639-1 two-letter language code that the broadcaster broadcasts in. For example, `"en"` for English. The value is `"other"` if the broadcaster uses a language that Twitch doesn't support.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The title of the clip.  |
+ * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the clip has been viewed.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The date and time of when the clip was created. The date and time is in RFC3339 format.  |
+ * | &nbsp;├──&nbsp;thumbnail_url | ${type.string}  | A URL to a thumbnail image of the clip.  |
+ * | &nbsp;├──&nbsp;duration | ${type.real}  | The length of the clip, in seconds. Precision is 0.1.  |
+ * | &nbsp;├──&nbsp;vod_offset | ${type.number}  | The zero-based offset, in seconds, to where the clip starts in the video (VOD). Is `undefined` if the video is not available or hasn't been created yet from the live stream (see `video_id`). Note that there's a delay between when a clip is created during a broadcast and when the offset is set. During the delay period, `vod_offset` is `undefined`. The delay is indeterminant but is typically minutes long.  |
+ * | &nbsp;└──&nbsp;is_featured | ${type.boolean}  | A Boolean value that indicates if the clip is featured or not.  |
  * | pagination | ${type.struct}  | The information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` or `before` parameter to this value depending on whether you're paging forwards or backwards.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` or `before` parameter to this value depending on whether you're paging forwards or backwards.  |
  * @event_end
  * @func_end
  */
@@ -1538,8 +1537,8 @@ function twitch_clips_get_clips(broadcaster_id, game_id, id, optionals, callback
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | List of information about the client's conduits.  |
- * | ___id | ${type.string}  | Conduit ID.  |
- * | ___shard_count | ${type.number}  | Number of shards associated with this conduit.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | Conduit ID.  |
+ * | &nbsp;└──&nbsp;shard_count | ${type.number}  | Number of shards associated with this conduit.  |
  * @event_end
  * @func_end
  */
@@ -1563,8 +1562,8 @@ function twitch_conduits_get_conduits(callback_success, callback_failed) {}
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | List of information about the client's conduits.  |
- * | ___id | ${type.string}  | Conduit ID.  |
- * | ___shard_count | ${type.number}  | Number of shards created for this conduit.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | Conduit ID.  |
+ * | &nbsp;└──&nbsp;shard_count | ${type.number}  | Number of shards created for this conduit.  |
  * @event_end
  * @func_end
  */
@@ -1589,8 +1588,8 @@ function twitch_conduits_create_conduits(shard_count, callback_success, callback
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | List of information about the client's conduits.  |
- * | ___id | ${type.string}  | Conduit ID.  |
- * | ___shard_count | ${type.number}  | Number of shards associated with this conduit after the update.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | Conduit ID.  |
+ * | &nbsp;└──&nbsp;shard_count | ${type.number}  | Number of shards associated with this conduit after the update.  |
  * @event_end
  * @func_end
  */
@@ -1635,16 +1634,16 @@ function twitch_conduits_delete_conduit(id, callback_success, callback_failed) {
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | List of information about a conduit's shards.  |
- * | ___id | ${type.string}  | Shard ID.  |
- * | ___status | ${type.string}  | The shard status. The subscriber receives events only for enabled shards. Possible values are: `"enabled"` — The shard is enabled, `"webhook_callback_verification_pending"` — The shard is pending verification of the specified callback URL, `"webhook_callback_verification_failed"` — The specified callback URL failed verification, `"notification_failures_exceeded"` — The notification delivery failure rate was too high, `"websocket_disconnected"` — The client closed the connection, `"websocket_failed_ping_pong"` — The client failed to respond to a ping message, `"websocket_received_inbound_traffic"` — The client sent a non-pong message. Clients may only send pong messages (and only in response to a ping message), `"websocket_internal_error"` — The Twitch WebSocket server experienced an unexpected error, `"websocket_network_timeout"` — The Twitch WebSocket server timed out writing the message to the client, `"websocket_network_error"` — The Twitch WebSocket server experienced a network error writing the message to the client, `"websocket_failed_to_reconnect"` - The client failed to reconnect to the Twitch WebSocket server within the required time after a Reconnect Message.  |
- * | ___transport | ${type.struct}  | The transport details used to send the notifications.  |
- * | ______method | ${type.string}  | The transport method. Possible values are: `"webhook"`, `"websocket"`  |
- * | ______callback | ${type.string}  | The callback URL where the notifications are sent. Included only if method is set to webhook.  |
- * | ______session_id | ${type.string}  | An ID that identifies the WebSocket that notifications are sent to. Included only if method is set to websocket.  |
- * | ______connected_at | ${type.string}  | The UTC date and time that the WebSocket connection was established. Included only if method is set to websocket.  |
- * | ______disconnected_at | ${type.string}  | The UTC date and time that the WebSocket connection was lost. Included only if method is set to websocket.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | Shard ID.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The shard status. The subscriber receives events only for enabled shards. Possible values are: `"enabled"` — The shard is enabled, `"webhook_callback_verification_pending"` — The shard is pending verification of the specified callback URL, `"webhook_callback_verification_failed"` — The specified callback URL failed verification, `"notification_failures_exceeded"` — The notification delivery failure rate was too high, `"websocket_disconnected"` — The client closed the connection, `"websocket_failed_ping_pong"` — The client failed to respond to a ping message, `"websocket_received_inbound_traffic"` — The client sent a non-pong message. Clients may only send pong messages (and only in response to a ping message), `"websocket_internal_error"` — The Twitch WebSocket server experienced an unexpected error, `"websocket_network_timeout"` — The Twitch WebSocket server timed out writing the message to the client, `"websocket_network_error"` — The Twitch WebSocket server experienced a network error writing the message to the client, `"websocket_failed_to_reconnect"` - The client failed to reconnect to the Twitch WebSocket server within the required time after a Reconnect Message.  |
+ * | &nbsp;└──&nbsp;transport | ${type.struct}  | The transport details used to send the notifications.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;method | ${type.string}  | The transport method. Possible values are: `"webhook"`, `"websocket"`  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;callback | ${type.string}  | The callback URL where the notifications are sent. Included only if method is set to webhook.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;session_id | ${type.string}  | An ID that identifies the WebSocket that notifications are sent to. Included only if method is set to websocket.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;connected_at | ${type.string}  | The UTC date and time that the WebSocket connection was established. Included only if method is set to websocket.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;disconnected_at | ${type.string}  | The UTC date and time that the WebSocket connection was lost. Included only if method is set to websocket.  |
  * | pagination | ${type.struct}  | Contains information used to page through a list of results. The object is empty if there are no more pages left to page through.  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -1680,18 +1679,18 @@ function twitch_conduits_get_conduit_shards(conduit_id, optionals, callback_succ
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | List of successful shard updates.  |
- * | ___id | ${type.string}  | Shard ID.  |
- * | ___status | ${type.string}  | The shard status. The subscriber receives events only for enabled shards. Possible values are: `"enabled"` — The shard is enabled, `"webhook_callback_verification_pending"` — The shard is pending verification of the specified callback URL, `"webhook_callback_verification_failed"` — The specified callback URL failed verification, `"notification_failures_exceeded"` — The notification delivery failure rate was too high, `"websocket_disconnected"` — The client closed the connection, `"websocket_failed_ping_pong"` — The client failed to respond to a ping message, `"websocket_received_inbound_traffic"` — The client sent a non-pong message. Clients may only send pong messages (and only in response to a ping message), `"websocket_internal_error"` — The Twitch WebSocket server experienced an unexpected error, `"websocket_network_timeout"` — The Twitch WebSocket server timed out writing the message to the client, `"websocket_network_error"` — The Twitch WebSocket server experienced a network error writing the message to the client, `"websocket_failed_to_reconnect"` - The client failed to reconnect to the Twitch WebSocket server within the required time after a Reconnect Message.  |
- * | ___transport | ${type.struct}  | The transport details used to send the notifications.  |
- * | ______method | ${type.string}  | The transport method. Possible values are: `"webhook"`, `"websocket"`  |
- * | ______callback | ${type.string}  | The callback URL where the notifications are sent. Included only if method is set to webhook.  |
- * | ______session_id | ${type.string}  | An ID that identifies the WebSocket that notifications are sent to. Included only if method is set to websocket.  |
- * | ______connected_at | ${type.string}  | The UTC date and time that the WebSocket connection was established. Included only if method is set to websocket.  |
- * | ______disconnected_at | ${type.string}  | The UTC date and time that the WebSocket connection was lost. Included only if method is set to websocket.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | Shard ID.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The shard status. The subscriber receives events only for enabled shards. Possible values are: `"enabled"` — The shard is enabled, `"webhook_callback_verification_pending"` — The shard is pending verification of the specified callback URL, `"webhook_callback_verification_failed"` — The specified callback URL failed verification, `"notification_failures_exceeded"` — The notification delivery failure rate was too high, `"websocket_disconnected"` — The client closed the connection, `"websocket_failed_ping_pong"` — The client failed to respond to a ping message, `"websocket_received_inbound_traffic"` — The client sent a non-pong message. Clients may only send pong messages (and only in response to a ping message), `"websocket_internal_error"` — The Twitch WebSocket server experienced an unexpected error, `"websocket_network_timeout"` — The Twitch WebSocket server timed out writing the message to the client, `"websocket_network_error"` — The Twitch WebSocket server experienced a network error writing the message to the client, `"websocket_failed_to_reconnect"` - The client failed to reconnect to the Twitch WebSocket server within the required time after a Reconnect Message.  |
+ * | &nbsp;└──&nbsp;transport | ${type.struct}  | The transport details used to send the notifications.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;method | ${type.string}  | The transport method. Possible values are: `"webhook"`, `"websocket"`  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;callback | ${type.string}  | The callback URL where the notifications are sent. Included only if method is set to webhook.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;session_id | ${type.string}  | An ID that identifies the WebSocket that notifications are sent to. Included only if method is set to websocket.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;connected_at | ${type.string}  | The UTC date and time that the WebSocket connection was established. Included only if method is set to websocket.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;disconnected_at | ${type.string}  | The UTC date and time that the WebSocket connection was lost. Included only if method is set to websocket.  |
  * | errors | ${type.array}  | List of unsuccessful updates.  |
- * | ___id | ${type.string}  | Shard ID.  |
- * | ___message | ${type.string}  | The error that occurred while updating the shard. Possible errors: - The length of the string in the secret field is not valid. - The URL in the transport's callback field is not valid. The URL must use the HTTPS protocol and the 443 port number. - The value specified in the method field is not valid. - The callback field is required if you specify the webhook transport method. - The session_id field is required if you specify the WebSocket transport method. - The websocket session is not connected. - The shard id is outside of the conduit's range.  |
- * | ___code | ${type.string}  | Error codes used to represent a specific error condition while attempting to update shards.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | Shard ID.  |
+ * | &nbsp;├──&nbsp;message | ${type.string}  | The error that occurred while updating the shard. Possible errors: - The length of the string in the secret field is not valid. - The URL in the transport's callback field is not valid. The URL must use the HTTPS protocol and the 443 port number. - The value specified in the method field is not valid. - The callback field is required if you specify the webhook transport method. - The session_id field is required if you specify the WebSocket transport method. - The websocket session is not connected. - The shard id is outside of the conduit's range.  |
+ * | &nbsp;└──&nbsp;code | ${type.string}  | Error codes used to represent a specific error condition while attempting to update shards.  |
  * @event_end
  * @func_end
  */
@@ -1718,10 +1717,10 @@ function twitch_conduits_update_conduit_shards(conduit_id, shards,id, transport,
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains information about the available content classification labels.  |
- * | ___content_classification_labels | ${type.array}  | The list of CCLs available.  |
- * | ______id | ${type.string}  | Unique identifier for the CCL.  |
- * | ______description | ${type.string}  | Localized description of the CCL.  |
- * | ______name | ${type.string}  | Localized name of the CCL.  |
+ * | &nbsp;└──&nbsp;content_classification_labels | ${type.array}  | The list of CCLs available.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | Unique identifier for the CCL.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;description | ${type.string}  | Localized description of the CCL.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | Localized name of the CCL.  |
  * @event_end
  * @func_end
  */
@@ -1742,14 +1741,14 @@ function twitch_ccls_get_content_classification_labels(optionals, callback_succe
  * 
  * | Member     | Type        | Description                   |
  * | -----------| ------------| ------------------------------|
- * | App | ${type.None}  | If you don't specify request parameters, the request returns all entitlements that your organization owns.  |
- * | App | ${type.user_id}  | The request returns all entitlements for any game that the organization granted to the specified user.  |
- * | App | ${type.user_id, game_id}  | The request returns all entitlements that the specified game granted to the specified user.  |
- * | App | ${type.game_id}  | The request returns all entitlements that the specified game granted to all entitled users.  |
- * | User | ${type.None}  | If you don't specify request parameters, the request returns all entitlements for any game that the organization granted to the user identified in the access token.  |
- * | User | ${type.user_id}  | Invalid.  |
- * | User | ${type.user_id, game_id}  | Invalid.  |
- * | User | ${type.game_id}  | The request returns all entitlements that the specified game granted to the user identified in the access token.  |
+ * | App | None  | If you don't specify request parameters, the request returns all entitlements that your organization owns.  |
+ * | App | user_id  | The request returns all entitlements for any game that the organization granted to the specified user.  |
+ * | App | user_id, game_id  | The request returns all entitlements that the specified game granted to the specified user.  |
+ * | App | game_id  | The request returns all entitlements that the specified game granted to all entitled users.  |
+ * | User | None  | If you don't specify request parameters, the request returns all entitlements for any game that the organization granted to the user identified in the access token.  |
+ * | User | user_id  | Invalid.  |
+ * | User | user_id, game_id  | Invalid.  |
+ * | User | game_id  | The request returns all entitlements that the specified game granted to the user identified in the access token.  |
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -1768,15 +1767,15 @@ function twitch_ccls_get_content_classification_labels(optionals, callback_succe
  * | Member | Type | Description |
  * |--------|------|-------------|
  * | data | ${type.array}  | The list of entitlements.  |
- * | ___id | ${type.string}  | An ID that identifies the entitlement.  |
- * | ___benefit_id | ${type.string}  | An ID that identifies the benefit (reward).  |
- * | ___timestamp | ${type.string}  | The UTC date and time (in RFC3339 format) of when the entitlement was granted.  |
- * | ___user_id | ${type.string}  | An ID that identifies the user who was granted the entitlement.  |
- * | ___game_id | ${type.string}  | An ID that identifies the game the user was playing when the reward was entitled.  |
- * | ___fulfillment_status | ${type.string}  | The entitlement's fulfillment status. Possible values are: `"CLAIMED"`, `"FULFILLED"`  |
- * | ___last_updated | ${type.string}  | The UTC date and time (in RFC3339 format) of when the entitlement was last updated.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the entitlement.  |
+ * | &nbsp;├──&nbsp;benefit_id | ${type.string}  | An ID that identifies the benefit (reward).  |
+ * | &nbsp;├──&nbsp;timestamp | ${type.string}  | The UTC date and time (in RFC3339 format) of when the entitlement was granted.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the user who was granted the entitlement.  |
+ * | &nbsp;├──&nbsp;game_id | ${type.string}  | An ID that identifies the game the user was playing when the reward was entitled.  |
+ * | &nbsp;├──&nbsp;fulfillment_status | ${type.string}  | The entitlement's fulfillment status. Possible values are: `"CLAIMED"`, `"FULFILLED"`  |
+ * | &nbsp;└──&nbsp;last_updated | ${type.string}  | The UTC date and time (in RFC3339 format) of when the entitlement was last updated.  |
  * | pagination | ${type.struct}  | The information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` parameter to this value to page forward through the results.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` parameter to this value to page forward through the results.  |
  * @event_end
  * @func_end
  */
@@ -1806,8 +1805,8 @@ function twitch_entitlements_get_drops_entitlements(optionals, callback_success,
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that indicates which entitlements were successfully updated and those that weren't.  |
- * | ___status | ${type.string}  | A string that indicates whether the status of the entitlements in the `ids` field were successfully updated. Possible values are: `"INVALID_ID"` - The entitlement IDs in the `ids` field are not valid. `"NOT_FOUND"` - The entitlement IDs in the `ids` field were not found. `"SUCCESS"` - The status of the entitlements in the `ids` field were successfully updated. `"UNAUTHORIZED"` - The user or organization identified by the user access token is not authorized to update the entitlements. `"UPDATE_FAILED"` - The update failed. These are considered transient errors and the request should be retried later.  |
- * | ___ids | ${type.array} of ${type.string}  | The list of entitlements that the status in the `status` field applies to.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | A string that indicates whether the status of the entitlements in the `ids` field were successfully updated. Possible values are: `"INVALID_ID"` - The entitlement IDs in the `ids` field are not valid. `"NOT_FOUND"` - The entitlement IDs in the `ids` field were not found. `"SUCCESS"` - The status of the entitlements in the `ids` field were successfully updated. `"UNAUTHORIZED"` - The user or organization identified by the user access token is not authorized to update the entitlements. `"UPDATE_FAILED"` - The update failed. These are considered transient errors and the request should be retried later.  |
+ * | &nbsp;└──&nbsp;ids | ${type.array} of ${type.string}  | The list of entitlements that the status in the `status` field applies to.  |
  * @event_end
  * @func_end
  */
@@ -1838,10 +1837,10 @@ function twitch_entitlements_update_drops_entitlements(optionals, callback_succe
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of requested configuration segments. The list is returned in the same order that you specified the list of segments in the request.  |
- * | ___segment | ${type.string}  | The type of segment. Possible values are: `"broadcaster"`, `"developer"`, `"global"`  |
- * | ___broadcaster_id | ${type.string}  | The ID of the broadcaster that installed the extension. The object includes this field only if the `segment` parameter is set to `"developer"` or `"broadcaster"`.  |
- * | ___content | ${type.string}  | The contents of the segment. This string may be a plain-text string or a string-encoded JSON object.  |
- * | ___version | ${type.string}  | The version number that identifies this definition of the segment's data.  |
+ * | &nbsp;├──&nbsp;segment | ${type.string}  | The type of segment. Possible values are: `"broadcaster"`, `"developer"`, `"global"`  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that installed the extension. The object includes this field only if the `segment` parameter is set to `"developer"` or `"broadcaster"`.  |
+ * | &nbsp;├──&nbsp;content | ${type.string}  | The contents of the segment. This string may be a plain-text string or a string-encoded JSON object.  |
+ * | &nbsp;└──&nbsp;version | ${type.string}  | The version number that identifies this definition of the segment's data.  |
  * @event_end
  * @func_end
  */
@@ -1906,7 +1905,7 @@ function twitch_extensions_set_extension_required_configuration(broadcaster_id, 
  * 
  * To send the message to all channels on which your extension is active, set the `channel_id` field to `"all"` and set the `"pubsub_perms.send"` array to `"global"`.
  * 
- * @param {String[]} target The target of the message. Possible values are: `"broadcast"`, `"global"`, `"whisper<user-id>"`. If `is_global_broadcast` is `true`, you must set this field to `"global"`. The `"broadcast"` and `"global"` values are mutually exclusive; specify only one of them. 
+ * @param {array[string]} target The target of the message. Possible values are: `"broadcast"`, `"global"`, `"whisper<user-id>"`. If `is_global_broadcast` is `true`, you must set this field to `"global"`. The `"broadcast"` and `"global"` values are mutually exclusive; specify only one of them. 
  * @param {string} broadcaster_id The ID of the broadcaster to send the message to. Don't include this field if `is_global_broadcast` is set to `true`. 
  * @param {string} message The message to send. The message can be a plain-text string or a string-encoded JSON object. The message is limited to a maximum of 5 KB. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -1944,11 +1943,11 @@ function twitch_extensions_send_extension_pubsub_message(target, broadcaster_id,
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of broadcasters that are streaming live and that have installed or activated the extension.  |
- * | ___broadcaster_id | ${type.string}  | The ID of the broadcaster that is streaming live and has installed or activated the extension.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___game_name | ${type.string}  | The name of the category or game being streamed.  |
- * | ___game_id | ${type.string}  | The ID of the category or game being streamed.  |
- * | ___title | ${type.string}  | The title of the broadcaster's stream. May be an empty string if not specified.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that is streaming live and has installed or activated the extension.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;game_name | ${type.string}  | The name of the category or game being streamed.  |
+ * | &nbsp;├──&nbsp;game_id | ${type.string}  | The ID of the category or game being streamed.  |
+ * | &nbsp;└──&nbsp;title | ${type.string}  | The title of the broadcaster's stream. May be an empty string if not specified.  |
  * | pagination | ${type.string}  | This field contains the cursor used to page through the results. The field is empty if there are no more pages left to page through. Note that this field is a string compared to other endpoints that use a Pagination object. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * @event_end
  * @func_end
@@ -1973,11 +1972,11 @@ function twitch_extensions_get_extension_live_channels(extension_id, optionals, 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of shared secrets that the extension created.  |
- * | ___format_version | ${type.number}  | The version number that identifies this definition of the secret's data.  |
- * | ___secrets | ${type.array}  | The list of secrets.  |
- * | ______content | ${type.string}  | The raw secret that you use with JWT encoding.  |
- * | ______active_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you may begin using this secret to sign a JWT.  |
- * | ______expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you must stop using this secret to decode a JWT.  |
+ * | &nbsp;├──&nbsp;format_version | ${type.number}  | The version number that identifies this definition of the secret's data.  |
+ * | &nbsp;└──&nbsp;secrets | ${type.array}  | The list of secrets.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;content | ${type.string}  | The raw secret that you use with JWT encoding.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you may begin using this secret to sign a JWT.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you must stop using this secret to decode a JWT.  |
  * @event_end
  * @func_end
  */
@@ -2005,11 +2004,11 @@ function twitch_extensions_get_extension_secrets(extension_id, callback_success,
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the newly added secrets.  |
- * | ___format_version | ${type.number}  | The version number that identifies this definition of the secret's data.  |
- * | ___secrets | ${type.array}  | The list of secrets.  |
- * | ______content | ${type.string}  | The raw secret that you use with JWT encoding.  |
- * | ______active_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you may begin using this secret to sign a JWT.  |
- * | ______expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you must stop using this secret to decode a JWT.  |
+ * | &nbsp;├──&nbsp;format_version | ${type.number}  | The version number that identifies this definition of the secret's data.  |
+ * | &nbsp;└──&nbsp;secrets | ${type.array}  | The list of secrets.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;content | ${type.string}  | The raw secret that you use with JWT encoding.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you may begin using this secret to sign a JWT.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you must stop using this secret to decode a JWT.  |
  * @event_end
  * @func_end
  */
@@ -2058,49 +2057,49 @@ function twitch_extensions_send_extension_chat_message(broadcaster_id, text, ext
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the specified extension.  |
- * | ___author_name | ${type.string}  | The name of the user or organization that owns the extension.  |
- * | ___bits_enabled | ${type.boolean}  | A Boolean value that determines whether the extension has features that use Bits. Is `true` if the extension has features that use Bits.  |
- * | ___can_install | ${type.boolean}  | A Boolean value that determines whether a user can install the extension on their channel. Is `true` if a user can install the extension. Typically, this is set to `false` if the extension is currently in testing mode and requires users to be allowlisted (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Access**).  |
- * | ___configuration_location | ${type.string}  | The location of where the extension's configuration is stored. Possible values are: `"hosted"` - The Extensions Configuration Service hosts the configuration. `"custom"` - The Extension Backend Service (EBS) hosts the configuration. `"none"` - The extension doesn't require configuration.  |
- * | ___description | ${type.string}  | A longer description of the extension. It appears on the details page.  |
- * | ___eula_tos_url | ${type.string}  | A URL to the extension's Terms of Service.  |
- * | ___has_chat_support | ${type.boolean}  | A Boolean value that determines whether the extension can communicate with the installed channel's chat. Is `true` if the extension can communicate with the channel's chat room.  |
- * | ___icon_url | ${type.string}  | A URL to the default icon that's displayed in the Extensions directory.  |
- * | ___icon_urls | ${type.map[string]string}  | A dictionary that contains URLs to different sizes of the default icon. The dictionary's key identifies the icon's size (for example, 24x24), and the dictionary's value contains the URL to the icon.  |
- * | ___id | ${type.string}  | The extension's ID.  |
- * | ___name | ${type.string}  | The extension's name.  |
- * | ___privacy_policy_url | ${type.string}  | A URL to the extension's privacy policy.  |
- * | ___request_identity_link | ${type.boolean}  | A Boolean value that determines whether the extension wants to explicitly ask viewers to link their Twitch identity.  |
- * | ___screenshot_urls | ${type.array} of ${type.string}  | A list of URLs to screenshots that are shown in the Extensions marketplace.  |
- * | ___state | ${type.string}  | The extension's state. Possible values are: `"Approved"`, `"AssetsUploaded"`, `"Deleted"`, `"Deprecated"`, `"InReview"`, `"InTest"`, `"PendingAction"`, `"Rejected"`, `"Released"`  |
- * | ___subscriptions_support_level | ${type.string}  | Indicates whether the extension can view the user's subscription level on the channel that the extension is installed on. Possible values are: `"none"` - The extension can't view the user's subscription level. `"optional"` - The extension can view the user's subscription level.  |
- * | ___summary | ${type.string}  | A short description of the extension that streamers see when hovering over the discovery splash screen in the Extensions manager.  |
- * | ___support_email | ${type.string}  | The email address that users use to get support for the extension.  |
- * | ___version | ${type.string}  | The extension's version number.  |
- * | ___viewer_summary | ${type.string}  | A brief description displayed on the channel to explain how the extension works.  |
- * | ___views | ${type.struct}  | Describes all views-related information such as how the extension is displayed on mobile devices.  |
- * | ______mobile | ${type.struct}  | Describes how the extension is displayed on mobile devices.  |
- * | _________viewer_url | ${type.string}  | The HTML file that is shown to viewers on mobile devices. This page is presented to viewers as a panel behind the chat area of the mobile app.  |
- * | ______panel | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a panel extension.  |
- * | _________viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Panel slot.  |
- * | _________height | ${type.number}  | The height, in pixels, of the panel component that the extension is rendered in.  |
- * | _________can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
- * | ______video_overlay | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-overlay extension.  |
- * | _________viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated on the Video - Overlay slot.  |
- * | _________can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
- * | ______component | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-component extension.  |
- * | _________viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Video - Component slot.  |
- * | _________aspect_ratio_x | ${type.number}  | The width value of the ratio (width : height) which determines the extension's width, and how the extension's iframe will resize in different video player environments.  |
- * | _________aspect_ratio_y | ${type.number}  | The height value of the ratio (width : height) which determines the extension's height, and how the extension's iframe will resize in different video player environments.  |
- * | _________autoscale | ${type.boolean}  | A Boolean value that determines whether to apply CSS zoom. If `true`, a CSS zoom is applied such that the size of the extension is variable but the inner dimensions are fixed based on Scale Pixels. This allows your extension to render as if it is of fixed width and height. If `false`, the inner dimensions of the extension iframe are variable, meaning your extension must implement responsiveness.  |
- * | _________scale_pixels | ${type.number}  | The base width, in pixels, of the extension to use when scaling (see `autoscale`). This value is ignored if `autoscale` is `false`.  |
- * | _________target_height | ${type.number}  | The height as a percent of the maximum height of a video component extension. Values are between 1% - 100%.  |
- * | _________can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
- * | ______config | ${type.struct}  | Describes the view that is shown to broadcasters while they are configuring your extension within the Extension Manager.  |
- * | _________viewer_url | ${type.string}  | The HTML file shown to broadcasters while they are configuring your extension within the Extension Manager.  |
- * | _________can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
- * | ___allowlisted_config_urls | ${type.array} of ${type.string}  | Allowlisted configuration URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
- * | ___allowlisted_panel_urls | ${type.array} of ${type.string}  | Allowlisted panel URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
+ * | &nbsp;├──&nbsp;author_name | ${type.string}  | The name of the user or organization that owns the extension.  |
+ * | &nbsp;├──&nbsp;bits_enabled | ${type.boolean}  | A Boolean value that determines whether the extension has features that use Bits. Is `true` if the extension has features that use Bits.  |
+ * | &nbsp;├──&nbsp;can_install | ${type.boolean}  | A Boolean value that determines whether a user can install the extension on their channel. Is `true` if a user can install the extension. Typically, this is set to `false` if the extension is currently in testing mode and requires users to be allowlisted (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Access**).  |
+ * | &nbsp;├──&nbsp;configuration_location | ${type.string}  | The location of where the extension's configuration is stored. Possible values are: `"hosted"` - The Extensions Configuration Service hosts the configuration. `"custom"` - The Extension Backend Service (EBS) hosts the configuration. `"none"` - The extension doesn't require configuration.  |
+ * | &nbsp;├──&nbsp;description | ${type.string}  | A longer description of the extension. It appears on the details page.  |
+ * | &nbsp;├──&nbsp;eula_tos_url | ${type.string}  | A URL to the extension's Terms of Service.  |
+ * | &nbsp;├──&nbsp;has_chat_support | ${type.boolean}  | A Boolean value that determines whether the extension can communicate with the installed channel's chat. Is `true` if the extension can communicate with the channel's chat room.  |
+ * | &nbsp;├──&nbsp;icon_url | ${type.string}  | A URL to the default icon that's displayed in the Extensions directory.  |
+ * | &nbsp;├──&nbsp;icon_urls | ${type.struct}  | A dictionary that contains URLs to different sizes of the default icon. The dictionary's key identifies the icon's size (for example, `"24x24"`), and the dictionary's value contains the URL to the icon.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | The extension's ID.  |
+ * | &nbsp;├──&nbsp;name | ${type.string}  | The extension's name.  |
+ * | &nbsp;├──&nbsp;privacy_policy_url | ${type.string}  | A URL to the extension's privacy policy.  |
+ * | &nbsp;├──&nbsp;request_identity_link | ${type.boolean}  | A Boolean value that determines whether the extension wants to explicitly ask viewers to link their Twitch identity.  |
+ * | &nbsp;├──&nbsp;screenshot_urls | ${type.array} of ${type.string}  | A list of URLs to screenshots that are shown in the Extensions marketplace.  |
+ * | &nbsp;├──&nbsp;state | ${type.string}  | The extension's state. Possible values are: `"Approved"`, `"AssetsUploaded"`, `"Deleted"`, `"Deprecated"`, `"InReview"`, `"InTest"`, `"PendingAction"`, `"Rejected"`, `"Released"`  |
+ * | &nbsp;├──&nbsp;subscriptions_support_level | ${type.string}  | Indicates whether the extension can view the user's subscription level on the channel that the extension is installed on. Possible values are: `"none"` - The extension can't view the user's subscription level. `"optional"` - The extension can view the user's subscription level.  |
+ * | &nbsp;├──&nbsp;summary | ${type.string}  | A short description of the extension that streamers see when hovering over the discovery splash screen in the Extensions manager.  |
+ * | &nbsp;├──&nbsp;support_email | ${type.string}  | The email address that users use to get support for the extension.  |
+ * | &nbsp;├──&nbsp;version | ${type.string}  | The extension's version number.  |
+ * | &nbsp;├──&nbsp;viewer_summary | ${type.string}  | A brief description displayed on the channel to explain how the extension works.  |
+ * | &nbsp;├──&nbsp;views | ${type.struct}  | Describes all views-related information such as how the extension is displayed on mobile devices.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;mobile | ${type.struct}  | Describes how the extension is displayed on mobile devices.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on mobile devices. This page is presented to viewers as a panel behind the chat area of the mobile app.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;panel | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a panel extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Panel slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;height | ${type.number}  | The height, in pixels, of the panel component that the extension is rendered in.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;video_overlay | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-overlay extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated on the Video - Overlay slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;component | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-component extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Video - Component slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_x | ${type.number}  | The width value of the ratio (width : height) which determines the extension's width, and how the extension's iframe will resize in different video player environments.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_y | ${type.number}  | The height value of the ratio (width : height) which determines the extension's height, and how the extension's iframe will resize in different video player environments.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;autoscale | ${type.boolean}  | A Boolean value that determines whether to apply CSS zoom. If `true`, a CSS zoom is applied such that the size of the extension is variable but the inner dimensions are fixed based on Scale Pixels. This allows your extension to render as if it is of fixed width and height. If `false`, the inner dimensions of the extension iframe are variable, meaning your extension must implement responsiveness.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;scale_pixels | ${type.number}  | The base width, in pixels, of the extension to use when scaling (see `autoscale`). This value is ignored if `autoscale` is `false`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;target_height | ${type.number}  | The height as a percent of the maximum height of a video component extension. Values are between 1% - 100%.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;config | ${type.struct}  | Describes the view that is shown to broadcasters while they are configuring your extension within the Extension Manager.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file shown to broadcasters while they are configuring your extension within the Extension Manager.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;├──&nbsp;allowlisted_config_urls | ${type.array} of ${type.string}  | Allowlisted configuration URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
+ * | &nbsp;└──&nbsp;allowlisted_panel_urls | ${type.array} of ${type.string}  | Allowlisted panel URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
  * @event_end
  * @func_end
  */
@@ -2128,49 +2127,49 @@ function twitch_extensions_get_extensions(extension_id, optionals, callback_succ
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the specified extension.  |
- * | ___author_name | ${type.string}  | The name of the user or organization that owns the extension.  |
- * | ___bits_enabled | ${type.boolean}  | A Boolean value that determines whether the extension has features that use Bits. Is `true` if the extension has features that use Bits.  |
- * | ___can_install | ${type.boolean}  | A Boolean value that determines whether a user can install the extension on their channel. Is `true` if a user can install the extension. Typically, this is set to `false` if the extension is currently in testing mode and requires users to be allowlisted (the allowlist is configured on Twitch's developer site under the **Extensions** > **Extension** > **Version** > **Access**).  |
- * | ___configuration_location | ${type.string}  | The location of where the extension's configuration is stored. Possible values are: `"hosted"` - The Extensions Configuration Service hosts the configuration. `"custom"` - The Extension Backend Service (EBS) hosts the configuration. `"none"` - The extension doesn't require configuration.  |
- * | ___description | ${type.string}  | A longer description of the extension. It appears on the details page.  |
- * | ___eula_tos_url | ${type.string}  | A URL to the extension's Terms of Service.  |
- * | ___has_chat_support | ${type.boolean}  | A Boolean value that determines whether the extension can communicate with the installed channel's chat. Is `true` if the extension can communicate with the channel's chat room.  |
- * | ___icon_url | ${type.string}  | A URL to the default icon that's displayed in the Extensions directory.  |
- * | ___icon_urls | ${type.map[string]string}  | A dictionary that contains URLs to different sizes of the default icon. The dictionary's key identifies the icon's size (for example, 24x24), and the dictionary's value contains the URL to the icon.  |
- * | ___id | ${type.string}  | The extension's ID.  |
- * | ___name | ${type.string}  | The extension's name.  |
- * | ___privacy_policy_url | ${type.string}  | A URL to the extension's privacy policy.  |
- * | ___request_identity_link | ${type.boolean}  | A Boolean value that determines whether the extension wants to explicitly ask viewers to link their Twitch identity.  |
- * | ___screenshot_urls | ${type.array} of ${type.string}  | A list of URLs to screenshots that are shown in the Extensions marketplace.  |
- * | ___state | ${type.string}  | The extension's state. Possible values are: `"Approved"`, `"AssetsUploaded"`, `"Deleted"`, `"Deprecated"`, `"InReview"`, `"InTest"`, `"PendingAction"`, `"Rejected"`, `"Released"`  |
- * | ___subscriptions_support_level | ${type.string}  | Indicates whether the extension can view the user's subscription level on the channel that the extension is installed on. Possible values are: `"none"` - The extension can't view the user's subscription level. `"optional"` - The extension can view the user's subscription level.  |
- * | ___summary | ${type.string}  | A short description of the extension that streamers see when hovering over the discovery splash screen in the Extensions manager.  |
- * | ___support_email | ${type.string}  | The email address that users use to get support for the extension.  |
- * | ___version | ${type.string}  | The extension's version number.  |
- * | ___viewer_summary | ${type.string}  | A brief description displayed on the channel to explain how the extension works.  |
- * | ___views | ${type.struct}  | Describes all views-related information such as how the extension is displayed on mobile devices.  |
- * | ______mobile | ${type.struct}  | Describes how the extension is displayed on mobile devices.  |
- * | _________viewer_url | ${type.string}  | The HTML file that is shown to viewers on mobile devices. This page is presented to viewers as a panel behind the chat area of the mobile app.  |
- * | ______panel | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a panel extension.  |
- * | _________viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Panel slot.  |
- * | _________height | ${type.number}  | The height, in pixels, of the panel component that the extension is rendered in.  |
- * | _________can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
- * | ______video_overlay | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-overlay extension.  |
- * | _________viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated on the Video - Overlay slot.  |
- * | _________can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
- * | ______component | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-component extension.  |
- * | _________viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Video - Component slot.  |
- * | _________aspect_ratio_x | ${type.number}  | The width value of the ratio (width : height) which determines the extension's width, and how the extension's iframe will resize in different video player environments.  |
- * | _________aspect_ratio_y | ${type.number}  | The height value of the ratio (width : height) which determines the extension's height, and how the extension's iframe will resize in different video player environments.  |
- * | _________autoscale | ${type.boolean}  | A Boolean value that determines whether to apply CSS zoom. If `true`, a CSS zoom is applied such that the size of the extension is variable but the inner dimensions are fixed based on Scale Pixels. This allows your extension to render as if it is of fixed width and height. If `false`, the inner dimensions of the extension iframe are variable, meaning your extension must implement responsiveness.  |
- * | _________scale_pixels | ${type.number}  | The base width, in pixels, of the extension to use when scaling (see `autoscale`). This value is ignored if `autoscale` is `false`.  |
- * | _________target_height | ${type.number}  | The height as a percent of the maximum height of a video component extension. Values are between 1% - 100%.  |
- * | _________can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
- * | ______config | ${type.struct}  | Describes the view that is shown to broadcasters while they are configuring your extension within the Extension Manager.  |
- * | _________viewer_url | ${type.string}  | The HTML file shown to broadcasters while they are configuring your extension within the Extension Manager.  |
- * | _________can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
- * | ___allowlisted_config_urls | ${type.array} of ${type.string}  | Allowlisted configuration URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
- * | ___allowlisted_panel_urls | ${type.array} of ${type.string}  | Allowlisted panel URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
+ * | &nbsp;├──&nbsp;author_name | ${type.string}  | The name of the user or organization that owns the extension.  |
+ * | &nbsp;├──&nbsp;bits_enabled | ${type.boolean}  | A Boolean value that determines whether the extension has features that use Bits. Is `true` if the extension has features that use Bits.  |
+ * | &nbsp;├──&nbsp;can_install | ${type.boolean}  | A Boolean value that determines whether a user can install the extension on their channel. Is `true` if a user can install the extension. Typically, this is set to `false` if the extension is currently in testing mode and requires users to be allowlisted (the allowlist is configured on Twitch's developer site under the **Extensions** > **Extension** > **Version** > **Access**).  |
+ * | &nbsp;├──&nbsp;configuration_location | ${type.string}  | The location of where the extension's configuration is stored. Possible values are: `"hosted"` - The Extensions Configuration Service hosts the configuration. `"custom"` - The Extension Backend Service (EBS) hosts the configuration. `"none"` - The extension doesn't require configuration.  |
+ * | &nbsp;├──&nbsp;description | ${type.string}  | A longer description of the extension. It appears on the details page.  |
+ * | &nbsp;├──&nbsp;eula_tos_url | ${type.string}  | A URL to the extension's Terms of Service.  |
+ * | &nbsp;├──&nbsp;has_chat_support | ${type.boolean}  | A Boolean value that determines whether the extension can communicate with the installed channel's chat. Is `true` if the extension can communicate with the channel's chat room.  |
+ * | &nbsp;├──&nbsp;icon_url | ${type.string}  | A URL to the default icon that's displayed in the Extensions directory.  |
+ * | &nbsp;├──&nbsp;icon_urls | ${type.struct}  | A dictionary that contains URLs to different sizes of the default icon. The dictionary's key identifies the icon's size (for example, `"24x24"`), and the dictionary's value contains the URL to the icon.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | The extension's ID.  |
+ * | &nbsp;├──&nbsp;name | ${type.string}  | The extension's name.  |
+ * | &nbsp;├──&nbsp;privacy_policy_url | ${type.string}  | A URL to the extension's privacy policy.  |
+ * | &nbsp;├──&nbsp;request_identity_link | ${type.boolean}  | A Boolean value that determines whether the extension wants to explicitly ask viewers to link their Twitch identity.  |
+ * | &nbsp;├──&nbsp;screenshot_urls | ${type.array} of ${type.string}  | A list of URLs to screenshots that are shown in the Extensions marketplace.  |
+ * | &nbsp;├──&nbsp;state | ${type.string}  | The extension's state. Possible values are: `"Approved"`, `"AssetsUploaded"`, `"Deleted"`, `"Deprecated"`, `"InReview"`, `"InTest"`, `"PendingAction"`, `"Rejected"`, `"Released"`  |
+ * | &nbsp;├──&nbsp;subscriptions_support_level | ${type.string}  | Indicates whether the extension can view the user's subscription level on the channel that the extension is installed on. Possible values are: `"none"` - The extension can't view the user's subscription level. `"optional"` - The extension can view the user's subscription level.  |
+ * | &nbsp;├──&nbsp;summary | ${type.string}  | A short description of the extension that streamers see when hovering over the discovery splash screen in the Extensions manager.  |
+ * | &nbsp;├──&nbsp;support_email | ${type.string}  | The email address that users use to get support for the extension.  |
+ * | &nbsp;├──&nbsp;version | ${type.string}  | The extension's version number.  |
+ * | &nbsp;├──&nbsp;viewer_summary | ${type.string}  | A brief description displayed on the channel to explain how the extension works.  |
+ * | &nbsp;├──&nbsp;views | ${type.struct}  | Describes all views-related information such as how the extension is displayed on mobile devices.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;mobile | ${type.struct}  | Describes how the extension is displayed on mobile devices.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on mobile devices. This page is presented to viewers as a panel behind the chat area of the mobile app.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;panel | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a panel extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Panel slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;height | ${type.number}  | The height, in pixels, of the panel component that the extension is rendered in.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;video_overlay | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-overlay extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated on the Video - Overlay slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;component | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-component extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Video - Component slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_x | ${type.number}  | The width value of the ratio (width : height) which determines the extension's width, and how the extension's iframe will resize in different video player environments.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_y | ${type.number}  | The height value of the ratio (width : height) which determines the extension's height, and how the extension's iframe will resize in different video player environments.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;autoscale | ${type.boolean}  | A Boolean value that determines whether to apply CSS zoom. If `true`, a CSS zoom is applied such that the size of the extension is variable but the inner dimensions are fixed based on Scale Pixels. This allows your extension to render as if it is of fixed width and height. If `false`, the inner dimensions of the extension iframe are variable, meaning your extension must implement responsiveness.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;scale_pixels | ${type.number}  | The base width, in pixels, of the extension to use when scaling (see `autoscale`). This value is ignored if `autoscale` is `false`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;target_height | ${type.number}  | The height as a percent of the maximum height of a video component extension. Values are between 1% - 100%.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;config | ${type.struct}  | Describes the view that is shown to broadcasters while they are configuring your extension within the Extension Manager.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file shown to broadcasters while they are configuring your extension within the Extension Manager.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;├──&nbsp;allowlisted_config_urls | ${type.array} of ${type.string}  | Allowlisted configuration URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
+ * | &nbsp;└──&nbsp;allowlisted_panel_urls | ${type.array} of ${type.string}  | Allowlisted panel URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
  * @event_end
  * @func_end
  */
@@ -2197,14 +2196,14 @@ function twitch_extensions_get_released_extensions(extension_id, optionals, call
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list of Bits products that the extension created. The list is in ascending SKU order. The list is empty if the extension hasn't created any products or they're all expired or disabled.  |
- * | ___sku | ${type.string}  | The product's SKU. The SKU is unique across an extension's products.  |
- * | ___cost | ${type.struct}  | An object that contains the product's cost information.  |
- * | ______amount | ${type.number}  | The product's price.  |
- * | ______type | ${type.string}  | The type of currency. Possible values are: `"bits"`  |
- * | ___in_development | ${type.boolean}  | A Boolean value that indicates whether the product is in development. If `true`, the product is not available for public use.  |
- * | ___display_name | ${type.string}  | The product's name as displayed in the extension.  |
- * | ___expiration | ${type.string}  | The date and time, in RFC3339 format, when the product expires.  |
- * | ___is_broadcast | ${type.boolean}  | A Boolean value that determines whether Bits product purchase events are broadcast to all instances of an extension on a channel. The events are broadcast via the `onTransactionComplete` helper callback. Is `true` if the event is broadcast to all instances.  |
+ * | &nbsp;├──&nbsp;sku | ${type.string}  | The product's SKU. The SKU is unique across an extension's products.  |
+ * | &nbsp;├──&nbsp;cost | ${type.struct}  | An object that contains the product's cost information.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;amount | ${type.number}  | The product's price.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;type | ${type.string}  | The type of currency. Possible values are: `"bits"`  |
+ * | &nbsp;├──&nbsp;in_development | ${type.boolean}  | A Boolean value that indicates whether the product is in development. If `true`, the product is not available for public use.  |
+ * | &nbsp;├──&nbsp;display_name | ${type.string}  | The product's name as displayed in the extension.  |
+ * | &nbsp;├──&nbsp;expiration | ${type.string}  | The date and time, in RFC3339 format, when the product expires.  |
+ * | &nbsp;└──&nbsp;is_broadcast | ${type.boolean}  | A Boolean value that determines whether Bits product purchase events are broadcast to all instances of an extension on a channel. The events are broadcast via the `onTransactionComplete` helper callback. Is `true` if the event is broadcast to all instances.  |
  * @event_end
  * @func_end
  */
@@ -2238,14 +2237,14 @@ function twitch_extensions_get_extension_bits_products(optionals, callback_succe
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list of Bits products that the extension created. The list is in ascending SKU order. The list is empty if the extension hasn't created any products or they're all expired or disabled.  |
- * | ___sku | ${type.string}  | The product's SKU. The SKU is unique across an extension's products.  |
- * | ___cost | ${type.struct}  | An object that contains the product's cost information.  |
- * | ______amount | ${type.number}  | The product's price.  |
- * | ______type | ${type.string}  | The type of currency. Possible values are:`"bits"`  |
- * | ___in_development | ${type.boolean}  | A Boolean value that indicates whether the product is in development. If `true`, the product is not available for public use.  |
- * | ___display_name | ${type.string}  | The product's name as displayed in the extension.  |
- * | ___expiration | ${type.string}  | The date and time, in RFC3339 format, when the product expires.  |
- * | ___is_broadcast | ${type.boolean}  | A Boolean value that determines whether Bits product purchase events are broadcast to all instances of an extension on a channel. Is `true` if the event is broadcast to all instances.  |
+ * | &nbsp;├──&nbsp;sku | ${type.string}  | The product's SKU. The SKU is unique across an extension's products.  |
+ * | &nbsp;├──&nbsp;cost | ${type.struct}  | An object that contains the product's cost information.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;amount | ${type.number}  | The product's price.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;type | ${type.string}  | The type of currency. Possible values are:`"bits"`  |
+ * | &nbsp;├──&nbsp;in_development | ${type.boolean}  | A Boolean value that indicates whether the product is in development. If `true`, the product is not available for public use.  |
+ * | &nbsp;├──&nbsp;display_name | ${type.string}  | The product's name as displayed in the extension.  |
+ * | &nbsp;├──&nbsp;expiration | ${type.string}  | The date and time, in RFC3339 format, when the product expires.  |
+ * | &nbsp;└──&nbsp;is_broadcast | ${type.boolean}  | A Boolean value that determines whether Bits product purchase events are broadcast to all instances of an extension on a channel. Is `true` if the event is broadcast to all instances.  |
  * @event_end
  * @func_end
  */
@@ -2284,19 +2283,19 @@ function twitch_extensions_update_extension_bits_product(sku, cost, amount, type
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the single subscription that you created.  |
- * | ___id | ${type.string}  | An ID that identifies the subscription.  |
- * | ___status | ${type.string}  | The subscription's status. The subscriber receives events only for enabled subscriptions. Possible values are: `"enabled"` — The subscription is enabled. `"webhook_callback_verification_pending"` — The subscription is pending verification of the specified callback URL (see [Responding to a challenge request](https://dev.twitch.tv/docs/eventsub/handling-webhook-events#responding-to-a-challenge-request)).  |
- * | ___type | ${type.string}  | The subscription's type. See [Subscription Types](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#subscription-types).  |
- * | ___version | ${type.string}  | The version number that identifies this definition of the subscription's data.  |
- * | ___condition | ${type.struct}  | The subscription's parameter values. This is a string-encoded JSON object whose contents are determined by the subscription type.  |
- * | ___created_at | ${type.string}  | The date and time (in RFC3339 format) of when the subscription was created.  |
- * | ___transport | ${type.struct}  | The transport details used to send the notifications.  |
- * | ______method | ${type.string}  | The transport method. Possible values are: `"webhook"`, `"websocket"`, `"conduit"`  |
- * | ______callback | ${type.string}  | The callback URL where the notifications are sent. Included only if `method` is set to `"webhook"`.  |
- * | ______session_id | ${type.string}  | An ID that identifies the WebSocket that notifications are sent to. Included only if `method` is set to `"websocket"`.  |
- * | ______connected_at | ${type.string}  | The UTC date and time that the WebSocket connection was established. Included only if method is set to `"websocket"`.  |
- * | ______conduit_id | ${type.string}  | An ID that identifies the conduit to send notifications to. Included only if method is set to `"conduit"`.  |
- * | ___cost | ${type.number}  | The amount that the subscription counts against your limit. [Learn More](https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits)  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the subscription.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The subscription's status. The subscriber receives events only for enabled subscriptions. Possible values are: `"enabled"` — The subscription is enabled. `"webhook_callback_verification_pending"` — The subscription is pending verification of the specified callback URL (see [Responding to a challenge request](https://dev.twitch.tv/docs/eventsub/handling-webhook-events#responding-to-a-challenge-request)).  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The subscription's type. See [Subscription Types](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#subscription-types).  |
+ * | &nbsp;├──&nbsp;version | ${type.string}  | The version number that identifies this definition of the subscription's data.  |
+ * | &nbsp;├──&nbsp;condition | ${type.struct}  | The subscription's parameter values. This is a string-encoded JSON object whose contents are determined by the subscription type.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The date and time (in RFC3339 format) of when the subscription was created.  |
+ * | &nbsp;├──&nbsp;transport | ${type.struct}  | The transport details used to send the notifications.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;method | ${type.string}  | The transport method. Possible values are: `"webhook"`, `"websocket"`, `"conduit"`  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;callback | ${type.string}  | The callback URL where the notifications are sent. Included only if `method` is set to `"webhook"`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;session_id | ${type.string}  | An ID that identifies the WebSocket that notifications are sent to. Included only if `method` is set to `"websocket"`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;connected_at | ${type.string}  | The UTC date and time that the WebSocket connection was established. Included only if method is set to `"websocket"`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;conduit_id | ${type.string}  | An ID that identifies the conduit to send notifications to. Included only if method is set to `"conduit"`.  |
+ * | &nbsp;└──&nbsp;cost | ${type.number}  | The amount that the subscription counts against your limit. [Learn More](https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits)  |
  * | total | ${type.number}  | The total number of subscriptions you've created.  |
  * | total_cost | ${type.number}  | The sum of all of your subscription costs. [Learn More](https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits)  |
  * | max_total_cost | ${type.number}  | The maximum total cost that you're allowed to incur for all subscriptions you create.  |
@@ -2351,24 +2350,24 @@ function twitch_eventsub_delete_eventsub_subscription(id, callback_success, call
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of subscriptions. The list is ordered by the oldest subscription first. The list is empty if the client hasn't created subscriptions or there are no subscriptions that match the specified filter criteria.  |
- * | ___id | ${type.string}  | An ID that identifies the subscription.  |
- * | ___status | ${type.string}  | The subscription's status. The subscriber receives events only for **enabled** subscriptions. Possible values are: `"enabled"` — The subscription is enabled. `"webhook_callback_verification_pending"` — The subscription is pending verification of the specified callback URL. `"webhook_callback_verification_failed"` — The specified callback URL failed verification. `"notification_failures_exceeded"` — The notification delivery failure rate was too high. `"authorization_revoked"` — The authorization was revoked for one or more users specified in the **Condition** object. `"moderator_removed"` — The moderator that authorized the subscription is no longer one of the broadcaster's moderators. `"user_removed"` — One of the users specified in the **Condition** object was removed. `"version_removed"` — The subscription to subscription type and version is no longer supported. `"beta_maintenance"` — The subscription to the beta subscription type was removed due to maintenance. `"websocket_disconnected"` — The client closed the connection. `"websocket_failed_ping_pong"` — The client failed to respond to a ping message. `"websocket_received_inbound_traffic"` — The client sent a non-pong message. Clients may only send pong messages (and only in response to a ping message). `"websocket_connection_unused"` — The client failed to subscribe to events within the required time. `"websocket_internal_error"` — The Twitch WebSocket server experienced an unexpected error. `"websocket_network_timeout"` — The Twitch WebSocket server timed out writing the message to the client. `"websocket_network_error"` — The Twitch WebSocket server experienced a network error writing the message to the client.  |
- * | ___type | ${type.string}  | The subscription's type. See [Subscription Types](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#subscription-types).  |
- * | ___version | ${type.string}  | The version number that identifies this definition of the subscription's data.  |
- * | ___condition | ${type.struct}  | The subscription's parameter values. This is a string-encoded JSON object whose contents are determined by the subscription type.  |
- * | ___created_at | ${type.string}  | The date and time (in RFC3339 format) of when the subscription was created.  |
- * | ___transport | ${type.struct}  | The transport details used to send the notifications.  |
- * | ______method | ${type.string}  | The transport method. Possible values are: `"webhook"`, `"websocket"`  |
- * | ______callback | ${type.string}  | The callback URL where the notifications are sent. Included only if `method` is set to `"webhook"`.  |
- * | ______session_id | ${type.string}  | An ID that identifies the WebSocket that notifications are sent to. Included only if `method` is set to `"websocket"`.  |
- * | ______connected_at | ${type.string}  | The UTC date and time that the WebSocket connection was established. Included only if `method` is set to `"websocket"`.  |
- * | ______disconnected_at | ${type.string}  | The UTC date and time that the WebSocket connection was lost. Included only if `method` is set to `"websocket"`.  |
- * | ___cost | ${type.number}  | The amount that the subscription counts against your limit. [Learn More](https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits)  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the subscription.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The subscription's status. The subscriber receives events only for **enabled** subscriptions. Possible values are: `"enabled"` — The subscription is enabled. `"webhook_callback_verification_pending"` — The subscription is pending verification of the specified callback URL. `"webhook_callback_verification_failed"` — The specified callback URL failed verification. `"notification_failures_exceeded"` — The notification delivery failure rate was too high. `"authorization_revoked"` — The authorization was revoked for one or more users specified in the **Condition** object. `"moderator_removed"` — The moderator that authorized the subscription is no longer one of the broadcaster's moderators. `"user_removed"` — One of the users specified in the **Condition** object was removed. `"version_removed"` — The subscription to subscription type and version is no longer supported. `"beta_maintenance"` — The subscription to the beta subscription type was removed due to maintenance. `"websocket_disconnected"` — The client closed the connection. `"websocket_failed_ping_pong"` — The client failed to respond to a ping message. `"websocket_received_inbound_traffic"` — The client sent a non-pong message. Clients may only send pong messages (and only in response to a ping message). `"websocket_connection_unused"` — The client failed to subscribe to events within the required time. `"websocket_internal_error"` — The Twitch WebSocket server experienced an unexpected error. `"websocket_network_timeout"` — The Twitch WebSocket server timed out writing the message to the client. `"websocket_network_error"` — The Twitch WebSocket server experienced a network error writing the message to the client.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The subscription's type. See [Subscription Types](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#subscription-types).  |
+ * | &nbsp;├──&nbsp;version | ${type.string}  | The version number that identifies this definition of the subscription's data.  |
+ * | &nbsp;├──&nbsp;condition | ${type.struct}  | The subscription's parameter values. This is a string-encoded JSON object whose contents are determined by the subscription type.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The date and time (in RFC3339 format) of when the subscription was created.  |
+ * | &nbsp;├──&nbsp;transport | ${type.struct}  | The transport details used to send the notifications.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;method | ${type.string}  | The transport method. Possible values are: `"webhook"`, `"websocket"`  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;callback | ${type.string}  | The callback URL where the notifications are sent. Included only if `method` is set to `"webhook"`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;session_id | ${type.string}  | An ID that identifies the WebSocket that notifications are sent to. Included only if `method` is set to `"websocket"`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;connected_at | ${type.string}  | The UTC date and time that the WebSocket connection was established. Included only if `method` is set to `"websocket"`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;disconnected_at | ${type.string}  | The UTC date and time that the WebSocket connection was lost. Included only if `method` is set to `"websocket"`.  |
+ * | &nbsp;└──&nbsp;cost | ${type.number}  | The amount that the subscription counts against your limit. [Learn More](https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits)  |
  * | total | ${type.number}  | The total number of subscriptions that you've created.  |
  * | total_cost | ${type.number}  | The sum of all of your subscription costs. [Learn More](https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits)  |
  * | max_total_cost | ${type.number}  | The maximum total cost that you're allowed to incur for all subscriptions that you create.  |
  * | pagination | ${type.struct}  | An object that contains the cursor used to get the next page of subscriptions. The object is empty if there are no more pages to get. The number of subscriptions returned per page is undertermined.  |
- * | ___cursor | ${type.string}  | The cursor value that you set the after parameter to.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor value that you set the after parameter to.  |
  * @event_end
  * @func_end
  */
@@ -2397,12 +2396,12 @@ function twitch_eventsub_get_eventsub_subscriptions(optionals, callback_success,
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of broadcasts. The broadcasts are sorted by the number of viewers, with the most popular first.  |
- * | ___id | ${type.string}  | An ID that identifies the category or game.  |
- * | ___name | ${type.string}  | The category's or game's name.  |
- * | ___box_art_url | ${type.string}  | A URL to the category's or game's box art. You must replace the `{width}x{height}` placeholder with the size of image you want.  |
- * | ___igdb_id | ${type.string}  | The ID that [IGDB](https://www.igdb.com/) uses to identify this game. If the IGDB ID is not available to Twitch, this field is set to an empty string.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the category or game.  |
+ * | &nbsp;├──&nbsp;name | ${type.string}  | The category's or game's name.  |
+ * | &nbsp;├──&nbsp;box_art_url | ${type.string}  | A URL to the category's or game's box art. You must replace the `{width}x{height}` placeholder with the size of image you want.  |
+ * | &nbsp;└──&nbsp;igdb_id | ${type.string}  | The ID that [IGDB](https://www.igdb.com/) uses to identify this game. If the IGDB ID is not available to Twitch, this field is set to an empty string.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` or `before` parameter to get the next or previous page of results.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` or `before` parameter to get the next or previous page of results.  |
  * @event_end
  * @func_end
  */
@@ -2431,10 +2430,10 @@ function twitch_games_get_top_games(optionals, callback_success, callback_failed
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of categories and games. The list is empty if the specified categories and games weren't found.  |
- * | ___id | ${type.string}  | An ID that identifies the category or game.  |
- * | ___name | ${type.string}  | The category's or game's name.  |
- * | ___box_art_url | ${type.string}  | A URL to the category's or game's box art. You must replace the `{width}x{height}` placeholder with the size of image you want.  |
- * | ___igdb_id | ${type.string}  | The ID that [IGDB](https://www.igdb.com/) uses to identify this game. If the IGDB ID is not available to Twitch, this field is set to an empty string.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the category or game.  |
+ * | &nbsp;├──&nbsp;name | ${type.string}  | The category's or game's name.  |
+ * | &nbsp;├──&nbsp;box_art_url | ${type.string}  | A URL to the category's or game's box art. You must replace the `{width}x{height}` placeholder with the size of image you want.  |
+ * | &nbsp;└──&nbsp;igdb_id | ${type.string}  | The ID that [IGDB](https://www.igdb.com/) uses to identify this game. If the IGDB ID is not available to Twitch, this field is set to an empty string.  |
  * @event_end
  * @func_end
  */
@@ -2460,15 +2459,15 @@ function twitch_games_get_games(id, name, igdb_id, callback_success, callback_fa
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of goals. The list is empty if the broadcaster hasn't created goals.  |
- * | ___id | ${type.string}  | An ID that identifies this goal.  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the goal.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___type | ${type.string}  | The type of goal. Possible values are: `"follower"` - The goal is to increase followers. `"subscription"` - The goal is to increase subscriptions. This type shows the net increase or decrease in tier points associated with the subscriptions. `"subscription_count"` - The goal is to increase subscriptions. This type shows the net increase or decrease in the number of subscriptions.`"new_subscription"` - The goal is to increase subscriptions. This type shows only the net increase in tier points associated with the subscriptions (it does not account for users that unsubscribed since the goal started). `"new_subscription_count"` - The goal is to increase subscriptions. This type shows only the net increase in the number of subscriptions (it does not account for users that unsubscribed since the goal started).  |
- * | ___description | ${type.string}  | A description of the goal. Is an empty string if not specified.  |
- * | ___current_amount | ${type.number}  | The goal's current value. The goal's `type` determines how this value is increased or decreased. If `type` is `"follower"`, this field is set to the broadcaster's current number of followers. This number increases with new followers and decreases when users unfollow the broadcaster. If `type` is `"subscription"`, this field is increased and decreased by the points value associated with the subscription tier. For example, if a tier-two subscription is worth 2 points, this field is increased or decreased by 2, not 1. If `type` is `"subscription_count"`, this field is increased by 1 for each new subscription and decreased by 1 for each user that unsubscribes. If `type` is `"new_subscription"`, this field is increased by the points value associated with the subscription tier. For example, if a tier-two subscription is worth 2 points, this field is increased by 2, not 1. If `type` is `"new_subscription_count"`, this field is increased by 1 for each new subscription.  |
- * | ___target_amount | ${type.number}  | The goal's target value. For example, if the broadcaster has 200 followers before creating the goal, and their goal is to double that number, this field is set to 400.  |
- * | ___created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the broadcaster created the goal.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this goal.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the goal.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The type of goal. Possible values are: `"follower"` - The goal is to increase followers. `"subscription"` - The goal is to increase subscriptions. This type shows the net increase or decrease in tier points associated with the subscriptions. `"subscription_count"` - The goal is to increase subscriptions. This type shows the net increase or decrease in the number of subscriptions.`"new_subscription"` - The goal is to increase subscriptions. This type shows only the net increase in tier points associated with the subscriptions (it does not account for users that unsubscribed since the goal started). `"new_subscription_count"` - The goal is to increase subscriptions. This type shows only the net increase in the number of subscriptions (it does not account for users that unsubscribed since the goal started).  |
+ * | &nbsp;├──&nbsp;description | ${type.string}  | A description of the goal. Is an empty string if not specified.  |
+ * | &nbsp;├──&nbsp;current_amount | ${type.number}  | The goal's current value. The goal's `type` determines how this value is increased or decreased. If `type` is `"follower"`, this field is set to the broadcaster's current number of followers. This number increases with new followers and decreases when users unfollow the broadcaster. If `type` is `"subscription"`, this field is increased and decreased by the points value associated with the subscription tier. For example, if a tier-two subscription is worth 2 points, this field is increased or decreased by 2, not 1. If `type` is `"subscription_count"`, this field is increased by 1 for each new subscription and decreased by 1 for each user that unsubscribes. If `type` is `"new_subscription"`, this field is increased by the points value associated with the subscription tier. For example, if a tier-two subscription is worth 2 points, this field is increased by 2, not 1. If `type` is `"new_subscription_count"`, this field is increased by 1 for each new subscription.  |
+ * | &nbsp;├──&nbsp;target_amount | ${type.number}  | The goal's target value. For example, if the broadcaster has 200 followers before creating the goal, and their goal is to double that number, this field is set to 400.  |
+ * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the broadcaster created the goal.  |
  * @event_end
  * @func_end
  */
@@ -2551,24 +2550,24 @@ function twitch_guest_star_update_channel_guest_star_settings(optionals, callbac
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.Session[]}  | Summary of the session details  |
- * | ___id | ${type.string}  | ID uniquely representing the Guest Star session.  |
- * | ___guests | ${type.Guest}  | List of guests currently interacting with the Guest Star session.  |
- * | ___slot_id | ${type.string}  | ID representing this guest's slot assignment. Host is always in slot `"0"`. Guests are assigned the following consecutive IDs (e.g, `"1"`, `"2"`, `"3"`, etc.). Screen Share is represented as a special guest with the ID `"SCREENSHARE"`. The identifier here matches the ID referenced in browser source links used in broadcasting software.  |
- * | ___is_live | ${type.boolean}  | Flag determining whether or not the guest is visible in the browser source in the host's streaming software.  |
- * | ___user_id | ${type.string}  | User ID of the guest assigned to this slot.  |
- * | ___user_display_name | ${type.string}  | Display name of the guest assigned to this slot.  |
- * | ___user_login | ${type.string}  | Login of the guest assigned to this slot.  |
- * | ___volume | ${type.number}  | Value from 0 to 100 representing the host's volume setting for this guest.  |
- * | ___assigned_at | ${type.string}  | Timestamp when this guest was assigned a slot in the session.  |
- * | ___audio_settings | ${type.MediaSettings}  | Information about the guest's audio settings  |
- * | ______is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
- * | ______is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
- * | ______is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
- * | ___video_settings | ${type.MediaSettings}  | Information about the guest's video settings  |
- * | ______is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
- * | ______is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
- * | ______is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
+ * | data | ${type.array}  | Summary of the session details  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | ID uniquely representing the Guest Star session.  |
+ * | &nbsp;├──&nbsp;guests | ${type.array}  | List of guests currently interacting with the Guest Star session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;slot_id | ${type.string}  | ID representing this guest's slot assignment. Host is always in slot `"0"`. Guests are assigned the following consecutive IDs (e.g, `"1"`, `"2"`, `"3"`, etc.). Screen Share is represented as a special guest with the ID `"SCREENSHARE"`. The identifier here matches the ID referenced in browser source links used in broadcasting software.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_live | ${type.boolean}  | Flag determining whether or not the guest is visible in the browser source in the host's streaming software.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | User ID of the guest assigned to this slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_display_name | ${type.string}  | Display name of the guest assigned to this slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | Login of the guest assigned to this slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;volume | ${type.number}  | Value from 0 to 100 representing the host's volume setting for this guest.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;assigned_at | ${type.string}  | Timestamp when this guest was assigned a slot in the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;audio_settings | ${type.struct}  | Information about the guest's audio settings  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;video_settings | ${type.struct}  | Information about the guest's video settings  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
  * @event_end
  * @func_end
  */
@@ -2593,24 +2592,24 @@ function twitch_guest_star_get_guest_star_session(optionals, callback_success, c
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.Session[]}  | Summary of the session details.  |
- * | ___id | ${type.string}  | ID uniquely representing the Guest Star session.  |
- * | ___guests | ${type.Guest}  | List of guests currently interacting with the Guest Star session. On creation, the session will contain the broadcaster as a solo guest.  |
- * | ___slot_id | ${type.string}  | ID representing this guest's slot assignment. Host is always in slot `"0"`. Guests are assigned the following consecutive IDs (e.g, `"1"`, `"2"`, `"3"`, etc.). Screen Share is represented as a special guest with the ID `"SCREENSHARE"`. The identifier here matches the ID referenced in browser source links used in broadcasting software.  |
- * | ___is_live | ${type.boolean}  | Flag determining whether or not the guest is visible in the browser source in the host's streaming software.  |
- * | ___user_id | ${type.string}  | User ID of the guest assigned to this slot.  |
- * | ___user_display_name | ${type.string}  | Display name of the guest assigned to this slot.  |
- * | ___user_login | ${type.string}  | Login of the guest assigned to this slot.  |
- * | ___volume | ${type.number}  | Value from 0 to 100 representing the host's volume setting for this guest.  |
- * | ___assigned_at | ${type.string}  | Timestamp when this guest was assigned a slot in the session.  |
- * | ___audio_settings | ${type.MediaSettings}  | Information about the guest's audio settings  |
- * | ______is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
- * | ______is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
- * | ______is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
- * | ___video_settings | ${type.MediaSettings}  | Information about the guest's video settings  |
- * | ______is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
- * | ______is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
- * | ______is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
+ * | data | ${type.array}  | Summary of the session details.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | ID uniquely representing the Guest Star session.  |
+ * | &nbsp;├──&nbsp;guests | ${type.struct}  | List of guests currently interacting with the Guest Star session. On creation, the session will contain the broadcaster as a solo guest.  |
+ * | &nbsp;├──&nbsp;slot_id | ${type.string}  | ID representing this guest's slot assignment. Host is always in slot `"0"`. Guests are assigned the following consecutive IDs (e.g, `"1"`, `"2"`, `"3"`, etc.). Screen Share is represented as a special guest with the ID `"SCREENSHARE"`. The identifier here matches the ID referenced in browser source links used in broadcasting software.  |
+ * | &nbsp;├──&nbsp;is_live | ${type.boolean}  | Flag determining whether or not the guest is visible in the browser source in the host's streaming software.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | User ID of the guest assigned to this slot.  |
+ * | &nbsp;├──&nbsp;user_display_name | ${type.string}  | Display name of the guest assigned to this slot.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | Login of the guest assigned to this slot.  |
+ * | &nbsp;├──&nbsp;volume | ${type.number}  | Value from 0 to 100 representing the host's volume setting for this guest.  |
+ * | &nbsp;├──&nbsp;assigned_at | ${type.string}  | Timestamp when this guest was assigned a slot in the session.  |
+ * | &nbsp;├──&nbsp;audio_settings | ${type.struct}  | Information about the guest's audio settings  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
+ * | &nbsp;└──&nbsp;video_settings | ${type.struct}  | Information about the guest's video settings  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
  * @event_end
  * @func_end
  */
@@ -2636,24 +2635,24 @@ function twitch_guest_star_create_guest_star_session(optionals, callback_success
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.Session[]}  | Summary of the session details when the session was ended.  |
- * | ___id | ${type.string}  | ID uniquely representing the Guest Star session.  |
- * | ___guests | ${type.Guest}  | List of guests currently interacting with the Guest Star session.  |
- * | ___slot_id | ${type.string}  | ID representing this guest's slot assignment. Host is always in slot `"0"`. Guests are assigned the following consecutive IDs (e.g, `"1"`, `"2"`, `"3"`, etc.). Screen Share is represented as a special guest with the ID `"SCREENSHARE"`. The identifier here matches the ID referenced in browser source links used in broadcasting software.  |
- * | ___is_live | ${type.boolean}  | Flag determining whether or not the guest is visible in the browser source in the host's streaming software.  |
- * | ___user_id | ${type.string}  | User ID of the guest assigned to this slot.  |
- * | ___user_display_name | ${type.string}  | Display name of the guest assigned to this slot.  |
- * | ___user_login | ${type.string}  | Login of the guest assigned to this slot.  |
- * | ___volume | ${type.number}  | Value from 0 to 100 representing the host's volume setting for this guest.  |
- * | ___assigned_at | ${type.string}  | Timestamp when this guest was assigned a slot in the session.  |
- * | ___audio_settings | ${type.MediaSettings}  | Information about the guest's audio settings  |
- * | ______is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
- * | ______is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
- * | ______is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
- * | ___video_settings | ${type.MediaSettings}  | Information about the guest's video settings  |
- * | ______is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
- * | ______is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
- * | ______is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
+ * | data | ${type.array}  | Summary of the session details when the session was ended.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | ID uniquely representing the Guest Star session.  |
+ * | &nbsp;├──&nbsp;guests | ${type.array}  | List of guests currently interacting with the Guest Star session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;slot_id | ${type.string}  | ID representing this guest's slot assignment. Host is always in slot `"0"`. Guests are assigned the following consecutive IDs (e.g, `"1"`, `"2"`, `"3"`, etc.). Screen Share is represented as a special guest with the ID `"SCREENSHARE"`. The identifier here matches the ID referenced in browser source links used in broadcasting software.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_live | ${type.boolean}  | Flag determining whether or not the guest is visible in the browser source in the host's streaming software.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | User ID of the guest assigned to this slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_display_name | ${type.string}  | Display name of the guest assigned to this slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | Login of the guest assigned to this slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;volume | ${type.number}  | Value from 0 to 100 representing the host's volume setting for this guest.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;assigned_at | ${type.string}  | Timestamp when this guest was assigned a slot in the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;audio_settings | ${type.struct}  | Information about the guest's audio settings  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;video_settings | ${type.struct}  | Information about the guest's video settings  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
  * @event_end
  * @func_end
  */
@@ -2680,14 +2679,14 @@ function twitch_guest_star_end_guest_star_session(optionals, callback_success, c
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.Invite[]}  | A list of invite objects describing the invited user as well as their ready status.  |
- * | ___user_id | ${type.string}  | Twitch User ID corresponding to the invited guest  |
- * | ___invited_at | ${type.string}  | Timestamp when this user was invited to the session.  |
- * | ___status | ${type.string}  | Status representing the invited user's join state. Can be one of the following: `"INVITED"`: The user has been invited to the session but has not acknowledged it. `"ACCEPTED"`: The invited user has acknowledged the invite and joined the waiting room, but may still be setting up their media devices or otherwise preparing to join the call. `"READY"`: The invited user has signaled they are ready to join the call from the waiting room.  |
- * | ___is_video_enabled | ${type.boolean}  | Flag signaling that the invited user has chosen to disable their local video device. The user has hidden themselves, but they may choose to reveal their video feed upon joining the session.  |
- * | ___is_audio_enabled | ${type.boolean}  | Flag signaling that the invited user has chosen to disable their local audio device. The user has muted themselves, but they may choose to unmute their audio feed upon joining the session.  |
- * | ___is_video_available | ${type.boolean}  | Flag signaling that the invited user has a video device available for sharing.  |
- * | ___is_audio_available | ${type.boolean}  | Flag signaling that the invited user has an audio device available for sharing.  |
+ * | data | ${type.array}  | A list of invite structs describing the invited user as well as their ready status.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | Twitch User ID corresponding to the invited guest  |
+ * | &nbsp;├──&nbsp;invited_at | ${type.string}  | Timestamp when this user was invited to the session.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | Status representing the invited user's join state. Can be one of the following: `"INVITED"`: The user has been invited to the session but has not acknowledged it. `"ACCEPTED"`: The invited user has acknowledged the invite and joined the waiting room, but may still be setting up their media devices or otherwise preparing to join the call. `"READY"`: The invited user has signaled they are ready to join the call from the waiting room.  |
+ * | &nbsp;├──&nbsp;is_video_enabled | ${type.boolean}  | Flag signaling that the invited user has chosen to disable their local video device. The user has hidden themselves, but they may choose to reveal their video feed upon joining the session.  |
+ * | &nbsp;├──&nbsp;is_audio_enabled | ${type.boolean}  | Flag signaling that the invited user has chosen to disable their local audio device. The user has muted themselves, but they may choose to unmute their audio feed upon joining the session.  |
+ * | &nbsp;├──&nbsp;is_video_available | ${type.boolean}  | Flag signaling that the invited user has a video device available for sharing.  |
+ * | &nbsp;└──&nbsp;is_audio_available | ${type.boolean}  | Flag signaling that the invited user has an audio device available for sharing.  |
  * @event_end
  * @func_end
  */
@@ -2855,29 +2854,29 @@ function twitch_guest_star_update_guest_star_slot_settings(optionals, callback_s
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of Hype Train events. The list is empty if the broadcaster hasn't run a Hype Train within the last 5 days.  |
- * | ___id | ${type.string}  | An ID that identifies this event.  |
- * | ___event_type | ${type.string}  | The type of event. The string is in the form, hypetrain.{event_name}. The request returns only progress event types (i.e., hypetrain.progression).  |
- * | ___event_timestamp | ${type.string}  | The UTC date and time (in RFC3339 format) that the event occurred.  |
- * | ___version | ${type.string}  | The version number of the definition of the event's data. For example, the value is 1 if the data in `event_data` uses the first definition of the event's data.  |
- * | ___event_data | ${type.struct}  | The event's data.  |
- * | ______broadcaster_id | ${type.string}  | The ID of the broadcaster that's running the Hype Train.  |
- * | ______cooldown_end_time | ${type.string}  | The UTC date and time (in RFC3339 format) that another Hype Train can start.  |
- * | ______expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the Hype Train ends.  |
- * | ______goal | ${type.number}  | The value needed to reach the next level.  |
- * | ______id | ${type.string}  | An ID that identifies this Hype Train.  |
- * | ______last_contribution | ${type.struct}  | The most recent contribution towards the Hype Train's goal.  |
- * | _________total | ${type.number}  | The total amount contributed. If `type` is `"BITS"`, `total` represents the amount of Bits used. If type is `"SUBS"`, total is 500, 1000, or 2500 to represent tier 1, 2, or 3 subscriptions, respectively.  |
- * | _________type | ${type.string}  | The contribution method used. Possible values are: `"BITS"` - Cheering with Bits. `"SUBS"` - Subscription activity like subscribing or gifting subscriptions. `"OTHER"` - Covers other contribution methods not listed.  |
- * | _________user | ${type.string}  | The ID of the user that made the contribution.  |
- * | ______level | ${type.number}  | The highest level that the Hype Train reached (the levels are 1 through 5).  |
- * | ______started_at | ${type.string}  | The UTC date and time (in RFC3339 format) that this Hype Train started.  |
- * | ______top_contributions | ${type.array}  | The top contributors for each contribution type. For example, the top contributor using BITS (by aggregate) and the top contributor using SUBS (by count).  |
- * | _________total | ${type.number}  | The total amount contributed. If `type` is `"BITS"`, `total` represents the amount of Bits used. If `type` is `"SUBS"`, `total` is 500, 1000, or 2500 to represent tier 1, 2, or 3 subscriptions, respectively.  |
- * | _________type | ${type.string}  | The contribution method used. Possible values are: `"BITS"` - Cheering with Bits. `"SUBS"` - Subscription activity like subscribing or gifting subscriptions. `"OTHER"` - Covers other contribution methods not listed.  |
- * | _________user | ${type.string}  | The ID of the user that made the contribution.  |
- * | ______total | ${type.number}  | The current total amount raised.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this event.  |
+ * | &nbsp;├──&nbsp;event_type | ${type.string}  | The type of event. The string is in the form, hypetrain.{event_name}. The request returns only progress event types (i.e., hypetrain.progression).  |
+ * | &nbsp;├──&nbsp;event_timestamp | ${type.string}  | The UTC date and time (in RFC3339 format) that the event occurred.  |
+ * | &nbsp;├──&nbsp;version | ${type.string}  | The version number of the definition of the event's data. For example, the value is 1 if the data in `event_data` uses the first definition of the event's data.  |
+ * | &nbsp;└──&nbsp;event_data | ${type.struct}  | The event's data.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that's running the Hype Train.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;cooldown_end_time | ${type.string}  | The UTC date and time (in RFC3339 format) that another Hype Train can start.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the Hype Train ends.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;goal | ${type.number}  | The value needed to reach the next level.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this Hype Train.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;last_contribution | ${type.struct}  | The most recent contribution towards the Hype Train's goal.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;total | ${type.number}  | The total amount contributed. If `type` is `"BITS"`, `total` represents the amount of Bits used. If type is `"SUBS"`, total is 500, 1000, or 2500 to represent tier 1, 2, or 3 subscriptions, respectively.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;type | ${type.string}  | The contribution method used. Possible values are: `"BITS"` - Cheering with Bits. `"SUBS"` - Subscription activity like subscribing or gifting subscriptions. `"OTHER"` - Covers other contribution methods not listed.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;user | ${type.string}  | The ID of the user that made the contribution.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;level | ${type.number}  | The highest level that the Hype Train reached (the levels are 1 through 5).  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) that this Hype Train started.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;top_contributions | ${type.array}  | The top contributors for each contribution type. For example, the top contributor using BITS (by aggregate) and the top contributor using SUBS (by count).  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;total | ${type.number}  | The total amount contributed. If `type` is `"BITS"`, `total` represents the amount of Bits used. If `type` is `"SUBS"`, `total` is 500, 1000, or 2500 to represent tier 1, 2, or 3 subscriptions, respectively.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;type | ${type.string}  | The contribution method used. Possible values are: `"BITS"` - Cheering with Bits. `"SUBS"` - Subscription activity like subscribing or gifting subscriptions. `"OTHER"` - Covers other contribution methods not listed.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;user | ${type.string}  | The ID of the user that made the contribution.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;total | ${type.number}  | The current total amount raised.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -2905,7 +2904,7 @@ function twitch_hype_train_get_hype_train_events(broadcaster_id, optionals, call
  * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATION_READ` scope.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose AutoMod settings and list of blocked terms are used to check the message. This ID must match the user ID in the access token. 
- * @param {Object[]} data The list of messages to check. The list must contain at least one message and may contain up to a maximum of 100 messages. 
+ * @param {array} data The list of messages to check. The list must contain at least one message and may contain up to a maximum of 100 messages. 
  * @param {string} msg_id A caller-defined ID used to correlate this message with the same message in the response. 
  * @param {string} msg_text The message to check. 
  * @param {function} callback_success Triggered if the request succeeded
@@ -2916,8 +2915,8 @@ function twitch_hype_train_get_hype_train_events(broadcaster_id, optionals, call
  * | Member | Type | Description |
  * | -------| -----| ------------|
  * | data | ${type.array}  | The list of messages and whether Twitch would approve them for chat.  |
- * | ___msg_id | ${type.string}  | The caller-defined ID passed in the request.  |
- * | ___is_permitted | ${type.boolean}  | A Boolean value that indicates whether Twitch would approve the message for chat or hold it for moderator review or block it from chat. Is `true` if Twitch would approve the message; otherwise, `false` if Twitch would hold the message for moderator review or block it from chat.  |
+ * | &nbsp;├──&nbsp;msg_id | ${type.string}  | The caller-defined ID passed in the request.  |
+ * | &nbsp;└──&nbsp;is_permitted | ${type.boolean}  | A Boolean value that indicates whether Twitch would approve the message for chat or hold it for moderator review or block it from chat. Is `true` if Twitch would approve the message; otherwise, `false` if Twitch would hold the message for moderator review or block it from chat.  |
  * @event_end
  * @func_end
  */
@@ -2962,17 +2961,17 @@ function twitch_moderation_manage_held_automod_messages(user_id, msg_id, action,
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of AutoMod settings. The list contains a single object that contains all the AutoMod settings.  |
- * | ___broadcaster_id | ${type.string}  | The broadcaster's ID.  |
- * | ___moderator_id | ${type.string}  | The moderator's ID.  |
- * | ___overall_level | ${type.number}  | The default AutoMod level for the broadcaster. This field is `undefined` if the broadcaster has set one or more of the individual settings.  |
- * | ___disability | ${type.number}  | The Automod level for discrimination against disability.  |
- * | ___aggression | ${type.number}  | The Automod level for hostility involving aggression.  |
- * | ___sexuality_sex_or_gender | ${type.number}  | The AutoMod level for discrimination based on sexuality, sex, or gender.  |
- * | ___misogyny | ${type.number}  | The Automod level for discrimination against women.  |
- * | ___bullying | ${type.number}  | The Automod level for hostility involving name calling or insults.  |
- * | ___swearing | ${type.number}  | The Automod level for profanity.  |
- * | ___race_ethnicity_or_religion | ${type.number}  | The Automod level for racial discrimination.  |
- * | ___sex_based_terms | ${type.number}  | The Automod level for sexual content.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The broadcaster's ID.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator's ID.  |
+ * | &nbsp;├──&nbsp;overall_level | ${type.number}  | The default AutoMod level for the broadcaster. This field is `undefined` if the broadcaster has set one or more of the individual settings.  |
+ * | &nbsp;├──&nbsp;disability | ${type.number}  | The Automod level for discrimination against disability.  |
+ * | &nbsp;├──&nbsp;aggression | ${type.number}  | The Automod level for hostility involving aggression.  |
+ * | &nbsp;├──&nbsp;sexuality_sex_or_gender | ${type.number}  | The AutoMod level for discrimination based on sexuality, sex, or gender.  |
+ * | &nbsp;├──&nbsp;misogyny | ${type.number}  | The Automod level for discrimination against women.  |
+ * | &nbsp;├──&nbsp;bullying | ${type.number}  | The Automod level for hostility involving name calling or insults.  |
+ * | &nbsp;├──&nbsp;swearing | ${type.number}  | The Automod level for profanity.  |
+ * | &nbsp;├──&nbsp;race_ethnicity_or_religion | ${type.number}  | The Automod level for racial discrimination.  |
+ * | &nbsp;└──&nbsp;sex_based_terms | ${type.number}  | The Automod level for sexual content.  |
  * @event_end
  * @func_end
  */
@@ -3022,17 +3021,17 @@ function twitch_moderation_get_automod_settings(broadcaster_id, moderator_id, ca
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of AutoMod settings. The list contains a single object that contains all the AutoMod settings.  |
- * | ___broadcaster_id | ${type.string}  | The broadcaster's ID.  |
- * | ___moderator_id | ${type.string}  | The moderator's ID.  |
- * | ___overall_level | ${type.number}  | The default AutoMod level for the broadcaster. This field is `undefined` if the broadcaster has set one or more of the individual settings.  |
- * | ___disability | ${type.number}  | The Automod level for discrimination against disability.  |
- * | ___aggression | ${type.number}  | The Automod level for hostility involving aggression.  |
- * | ___sexuality_sex_or_gender | ${type.number}  | The AutoMod level for discrimination based on sexuality, sex, or gender.  |
- * | ___misogyny | ${type.number}  | The Automod level for discrimination against women.  |
- * | ___bullying | ${type.number}  | The Automod level for hostility involving name calling or insults.  |
- * | ___swearing | ${type.number}  | The Automod level for profanity.  |
- * | ___race_ethnicity_or_religion | ${type.number}  | The Automod level for racial discrimination.  |
- * | ___sex_based_terms | ${type.number}  | The Automod level for sexual content.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The broadcaster's ID.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator's ID.  |
+ * | &nbsp;├──&nbsp;overall_level | ${type.number}  | The default AutoMod level for the broadcaster. This field is `undefined` if the broadcaster has set one or more of the individual settings.  |
+ * | &nbsp;├──&nbsp;disability | ${type.number}  | The Automod level for discrimination against disability.  |
+ * | &nbsp;├──&nbsp;aggression | ${type.number}  | The Automod level for hostility involving aggression.  |
+ * | &nbsp;├──&nbsp;sexuality_sex_or_gender | ${type.number}  | The AutoMod level for discrimination based on sexuality, sex, or gender.  |
+ * | &nbsp;├──&nbsp;misogyny | ${type.number}  | The Automod level for discrimination against women.  |
+ * | &nbsp;├──&nbsp;bullying | ${type.number}  | The Automod level for hostility involving name calling or insults.  |
+ * | &nbsp;├──&nbsp;swearing | ${type.number}  | The Automod level for profanity.  |
+ * | &nbsp;├──&nbsp;race_ethnicity_or_religion | ${type.number}  | The Automod level for racial discrimination.  |
+ * | &nbsp;└──&nbsp;sex_based_terms | ${type.number}  | The Automod level for sexual content.  |
  * @event_end
  * @func_end
  */
@@ -3063,17 +3062,17 @@ function twitch_moderation_update_automod_settings(broadcaster_id, moderator_id,
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of users that were banned or put in a timeout.  |
- * | ___user_id | ${type.string}  | The ID of the banned user.  |
- * | ___user_login | ${type.string}  | The banned user's login name.  |
- * | ___user_name | ${type.string}  | The banned user's display name.  |
- * | ___expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the timeout expires, or an empty string if the user is permanently banned.  |
- * | ___created_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the user was banned.  |
- * | ___reason | ${type.string}  | The reason the user was banned or put in a timeout if the moderator provided one.  |
- * | ___moderator_id | ${type.string}  | The ID of the moderator that banned the user or put them in a timeout.  |
- * | ___moderator_login | ${type.string}  | The moderator's login name.  |
- * | ___moderator_name | ${type.string}  | The moderator's display name.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of the banned user.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The banned user's login name.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The banned user's display name.  |
+ * | &nbsp;├──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the timeout expires, or an empty string if the user is permanently banned.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the user was banned.  |
+ * | &nbsp;├──&nbsp;reason | ${type.string}  | The reason the user was banned or put in a timeout if the moderator provided one.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The ID of the moderator that banned the user or put them in a timeout.  |
+ * | &nbsp;├──&nbsp;moderator_login | ${type.string}  | The moderator's login name.  |
+ * | &nbsp;└──&nbsp;moderator_name | ${type.string}  | The moderator's display name.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -3111,11 +3110,11 @@ function twitch_moderation_get_banned_users(broadcaster_id, optionals, callback_
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the user you successfully banned or put in a timeout.  |
- * | ___broadcaster_id | ${type.string}  | The broadcaster whose chat room the user was banned from chatting in.  |
- * | ___moderator_id | ${type.string}  | The moderator that banned or put the user in the timeout.  |
- * | ___user_id | ${type.string}  | The user that was banned or put in a timeout.  |
- * | ___created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the ban or timeout was placed.  |
- * | ___end_time | ${type.string}  | The UTC date and time (in RFC3339 format) that the timeout will end. Is `undefined` if the user was banned instead of being put in a timeout.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The broadcaster whose chat room the user was banned from chatting in.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator that banned or put the user in the timeout.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | The user that was banned or put in a timeout.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the ban or timeout was placed.  |
+ * | &nbsp;└──&nbsp;end_time | ${type.string}  | The UTC date and time (in RFC3339 format) that the timeout will end. Is `undefined` if the user was banned instead of being put in a timeout.  |
  * @event_end
  * @func_end
  */
@@ -3168,23 +3167,23 @@ function twitch_moderation_unban_user(broadcaster_id, moderator_id, user_id, cal
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains information about the channel's unban requests.  |
- * | ___id | ${type.string}  | Unban request ID.  |
- * | ___broadcaster_id | ${type.string}  | User ID of broadcaster whose channel is receiving the unban request.  |
- * | ______broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___moderator_id | ${type.string}  | User ID of moderator who approved/denied the request.  |
- * | ___moderator_login | ${type.string}  | The moderator's login name.  |
- * | ___moderator_name | ${type.string}  | The moderator's display name.  |
- * | ___user_id | ${type.string}  | User ID of the requestor who is asking for an unban.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___text | ${type.string}  | Text of the request from the requesting user.  |
- * | ___status | ${type.string}  | Status of the request. One of: `"pending"`, `"approved"`, `"denied"`, `"acknowledged"`, `"canceled"`  |
- * | ___created_at | ${type.string}  | Timestamp of when the unban request was created.  |
- * | ___resolved_at | ${type.string}  | Timestamp of when moderator/broadcaster approved or denied the request.  |
- * | ___resolution_text | ${type.string}  | Text input by the resolver (moderator) of the unban request.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | Unban request ID.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | User ID of broadcaster whose channel is receiving the unban request.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | User ID of moderator who approved/denied the request.  |
+ * | &nbsp;├──&nbsp;moderator_login | ${type.string}  | The moderator's login name.  |
+ * | &nbsp;├──&nbsp;moderator_name | ${type.string}  | The moderator's display name.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | User ID of the requestor who is asking for an unban.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;text | ${type.string}  | Text of the request from the requesting user.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | Status of the request. One of: `"pending"`, `"approved"`, `"denied"`, `"acknowledged"`, `"canceled"`  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | Timestamp of when the unban request was created.  |
+ * | &nbsp;├──&nbsp;resolved_at | ${type.string}  | Timestamp of when moderator/broadcaster approved or denied the request.  |
+ * | &nbsp;└──&nbsp;resolution_text | ${type.string}  | Text input by the resolver (moderator) of the unban request.  |
  * | pagination | ${type.struct}  | Contains information used to page through a list of results. The object is empty if there are no more pages left to page through.  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -3216,21 +3215,21 @@ function twitch_moderation_get_unban_requests(broadcaster_id, moderator_id, stat
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  |   |
- * | ___id | ${type.string}  | Unban request ID.  |
- * | ___broadcaster_id | ${type.string}  | User ID of broadcaster whose channel is receiving the unban request.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___moderator_id | ${type.string}  | User ID of moderator who approved/denied the request.  |
- * | ___moderator_login | ${type.string}  | The moderator's login name.  |
- * | ___moderator_name | ${type.string}  | The moderator's display name.  |
- * | ___user_id | ${type.string}  | User ID of the requestor who is asking for an unban.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___text | ${type.string}  | Text of the request from the requesting user.  |
- * | ___status | ${type.string}  | Status of the request. One of: `"approved"`, `"denied"`  |
- * | ___created_at | ${type.string}  | Timestamp of when the unban request was created.  |
- * | ___resolved_at | ${type.string}  | Timestamp of when moderator/broadcaster approved or denied the request.  |
- * | ___resolution_text | ${type.string}  | Text input by the resolver (moderator) of the unban request.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | Unban request ID.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | User ID of broadcaster whose channel is receiving the unban request.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | User ID of moderator who approved/denied the request.  |
+ * | &nbsp;├──&nbsp;moderator_login | ${type.string}  | The moderator's login name.  |
+ * | &nbsp;├──&nbsp;moderator_name | ${type.string}  | The moderator's display name.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | User ID of the requestor who is asking for an unban.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;text | ${type.string}  | Text of the request from the requesting user.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | Status of the request. One of: `"approved"`, `"denied"`  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | Timestamp of when the unban request was created.  |
+ * | &nbsp;├──&nbsp;resolved_at | ${type.string}  | Timestamp of when moderator/broadcaster approved or denied the request.  |
+ * | &nbsp;└──&nbsp;resolution_text | ${type.string}  | Text input by the resolver (moderator) of the unban request.  |
  * @event_end
  * @func_end
  */
@@ -3260,15 +3259,15 @@ function twitch_moderation_resolve_unban_requests(broadcaster_id, moderator_id, 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of blocked terms. The list is in descending order of when they were created (see the `created_at` timestamp).  |
- * | ___broadcaster_id | ${type.string}  | The broadcaster that owns the list of blocked terms.  |
- * | ___moderator_id | ${type.string}  | The moderator that blocked the word or phrase from being used in the broadcaster's chat room.  |
- * | ___id | ${type.string}  | An ID that identifies this blocked term.  |
- * | ___text | ${type.string}  | The blocked word or phrase.  |
- * | ___created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was blocked.  |
- * | ___updated_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was updated. When the term is added, this timestamp is the same as `created_at`. The timestamp changes as AutoMod continues to deny the term.  |
- * | ___expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the blocked term is set to expire. After the block expires, users may use the term in the broadcaster's chat room.This field is `undefined` if the term was added manually or was permanently blocked by AutoMod.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The broadcaster that owns the list of blocked terms.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator that blocked the word or phrase from being used in the broadcaster's chat room.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this blocked term.  |
+ * | &nbsp;├──&nbsp;text | ${type.string}  | The blocked word or phrase.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was blocked.  |
+ * | &nbsp;├──&nbsp;updated_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was updated. When the term is added, this timestamp is the same as `created_at`. The timestamp changes as AutoMod continues to deny the term.  |
+ * | &nbsp;└──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the blocked term is set to expire. After the block expires, users may use the term in the broadcaster's chat room.This field is `undefined` if the term was added manually or was permanently blocked by AutoMod.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -3294,13 +3293,13 @@ function twitch_moderation_get_blocked_terms(broadcaster_id, moderator_id, optio
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the single blocked term that the broadcaster added.  |
- * | ___broadcaster_id | ${type.string}  | The broadcaster that owns the list of blocked terms.  |
- * | ___moderator_id | ${type.string}  | The moderator that blocked the word or phrase from being used in the broadcaster's chat room.  |
- * | ___id | ${type.string}  | An ID that identifies this blocked term.  |
- * | ___text | ${type.string}  | The blocked word or phrase.  |
- * | ___created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was blocked.  |
- * | ___updated_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was updated. When the term is added, this timestamp is the same as `created_at`. The timestamp changes as AutoMod continues to deny the term.  |
- * | ___expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the blocked term is set to expire. After the block expires, users may use the term in the broadcaster's chat room.This field is `undefined` if the term was added manually or was permanently blocked by AutoMod.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The broadcaster that owns the list of blocked terms.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator that blocked the word or phrase from being used in the broadcaster's chat room.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this blocked term.  |
+ * | &nbsp;├──&nbsp;text | ${type.string}  | The blocked word or phrase.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was blocked.  |
+ * | &nbsp;├──&nbsp;updated_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was updated. When the term is added, this timestamp is the same as `created_at`. The timestamp changes as AutoMod continues to deny the term.  |
+ * | &nbsp;└──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the blocked term is set to expire. After the block expires, users may use the term in the broadcaster's chat room.This field is `undefined` if the term was added manually or was permanently blocked by AutoMod.  |
  * @event_end
  * @func_end
  */
@@ -3369,11 +3368,11 @@ function twitch_moderation_delete_chat_messages(broadcaster_id, moderator_id, op
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of channels that the user has moderator privileges in.  |
- * | ___broadcaster_id | ${type.string}  | An ID that uniquely identifies the channel this user can moderate.  |
- * | ___broadcaster_login | ${type.string}  | The channel's login name.  |
- * | ___broadcaster_name | ${type.string}  | The channels' display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that uniquely identifies the channel this user can moderate.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The channel's login name.  |
+ * | &nbsp;└──&nbsp;broadcaster_name | ${type.string}  | The channels' display name.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through.  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -3403,11 +3402,11 @@ function twitch_moderation_get_moderated_channels(user_id, optionals, callback_s
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of moderators.  |
- * | ___user_id | ${type.string}  | The ID of the user that has permission to moderate the broadcaster's channel.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of the user that has permission to moderate the broadcaster's channel.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;└──&nbsp;user_name | ${type.string}  | The user's display name.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -3475,11 +3474,11 @@ function twitch_moderation_remove_channel_moderator(broadcaster_id, user_id, cal
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of VIPs. The list is empty if the broadcaster doesn't have VIP users.  |
- * | ___user_id | ${type.string}  | An ID that uniquely identifies the VIP user.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that uniquely identifies the VIP user.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;└──&nbsp;user_login | ${type.string}  | The user's login name.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -3547,11 +3546,11 @@ function twitch_moderation_remove_channel_vip(user_id, broadcaster_id, callback_
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains a single object with the broadcaster's updated Shield Mode status.  |
- * | ___is_active | ${type.boolean}  | A Boolean value that determines whether Shield Mode is active. Is `true` if Shield Mode is active; otherwise, `false`.  |
- * | ___moderator_id | ${type.string}  | An ID that identifies the moderator that last activated Shield Mode.  |
- * | ___moderator_login | ${type.string}  | The moderator's login name.  |
- * | ___moderator_name | ${type.string}  | The moderator's display name.  |
- * | ___last_activated_at | ${type.string}  | The UTC timestamp (in RFC3339 format) of when Shield Mode was last activated.  |
+ * | &nbsp;├──&nbsp;is_active | ${type.boolean}  | A Boolean value that determines whether Shield Mode is active. Is `true` if Shield Mode is active; otherwise, `false`.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | An ID that identifies the moderator that last activated Shield Mode.  |
+ * | &nbsp;├──&nbsp;moderator_login | ${type.string}  | The moderator's login name.  |
+ * | &nbsp;├──&nbsp;moderator_name | ${type.string}  | The moderator's display name.  |
+ * | &nbsp;└──&nbsp;last_activated_at | ${type.string}  | The UTC timestamp (in RFC3339 format) of when Shield Mode was last activated.  |
  * @event_end
  * @func_end
  */
@@ -3578,11 +3577,11 @@ function twitch_moderation_update_shield_mode_status(broadcaster_id, moderator_i
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains a single struct with the broadcaster's Shield Mode status.  |
- * | ___is_active | ${type.boolean}  | A Boolean value that determines whether Shield Mode is active. Is `true` if the broadcaster activated Shield Mode; otherwise, `false`.  |
- * | ___moderator_id | ${type.string}  | An ID that identifies the moderator that last activated Shield Mode. Is an empty string if Shield Mode hasn't been previously activated.  |
- * | ___moderator_login | ${type.string}  | The moderator's login name. Is an empty string if Shield Mode hasn't been previously activated.  |
- * | ___moderator_name | ${type.string}  | The moderator's display name. Is an empty string if Shield Mode hasn't been previously activated.  |
- * | ___last_activated_at | ${type.string}  | The UTC timestamp (in RFC3339 format) of when Shield Mode was last activated. Is an empty string if Shield Mode hasn't been previously activated.  |
+ * | &nbsp;├──&nbsp;is_active | ${type.boolean}  | A Boolean value that determines whether Shield Mode is active. Is `true` if the broadcaster activated Shield Mode; otherwise, `false`.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | An ID that identifies the moderator that last activated Shield Mode. Is an empty string if Shield Mode hasn't been previously activated.  |
+ * | &nbsp;├──&nbsp;moderator_login | ${type.string}  | The moderator's login name. Is an empty string if Shield Mode hasn't been previously activated.  |
+ * | &nbsp;├──&nbsp;moderator_name | ${type.string}  | The moderator's display name. Is an empty string if Shield Mode hasn't been previously activated.  |
+ * | &nbsp;└──&nbsp;last_activated_at | ${type.string}  | The UTC timestamp (in RFC3339 format) of when Shield Mode was last activated. Is an empty string if Shield Mode hasn't been previously activated.  |
  * @event_end
  * @func_end
  */
@@ -3642,27 +3641,27 @@ function twitch_moderation_get_shield_mode_status(broadcaster_id, moderator_id, 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list of polls. The polls are returned in descending order of start time unless you specify IDs in the request, in which case they're returned in the same order as you passed them in the request. The list is empty if the broadcaster hasn't created polls.  |
- * | ___id | ${type.string}  | An ID that identifies the poll.  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the poll.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___title | ${type.string}  | The question that viewers are voting on. For example, *What game should I play next?* The title may contain a maximum of 60 characters.  |
- * | ___choices | ${type.array}  | A list of choices that viewers can choose from. The list will contain a minimum of two choices and up to a maximum of five choices.  |
- * | ______id | ${type.string}  | An ID that identifies this choice.  |
- * | ______title | ${type.string}  | The choice's title. The title may contain a maximum of 25 characters.  |
- * | ______votes | ${type.number}  | The total number of votes cast for this choice.  |
- * | ______channel_points_votes | ${type.number}  | The number of votes cast using Channel Points.  |
- * | ______bits_votes | ${type.number}  | Not used; will be set to 0.  |
- * | ___bits_voting_enabled | ${type.boolean}  | Not used; will be set to `false`.  |
- * | ___bits_per_vote | ${type.number}  | Not used; will be set to 0.  |
- * | ___channel_points_voting_enabled | ${type.boolean}  | A Boolean value that indicates whether viewers may cast additional votes using Channel Points. For information about Channel Points, see [Channel Points Guide](https://help.twitch.tv/s/article/channel-points-guide).  |
- * | ___channel_points_per_vote | ${type.number}  | The number of points the viewer must spend to cast one additional vote.  |
- * | ___status | ${type.string}  | The poll's status. Valid values are: `"ACTIVE"` — The poll is running. `"COMPLETED"` — The poll ended on schedule (see the `duration` field). `"TERMINATED"` — The poll was terminated before its scheduled end. `"ARCHIVED"` — The poll has been archived and is no longer visible on the channel. `"MODERATED"` — The poll was deleted. `"INVALID"` — Something went wrong while determining the state.  |
- * | ___duration | ${type.number}  | The length of time (in seconds) that the poll will run for.  |
- * | ___started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll began.  |
- * | ___ended_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll ended. If `status` is `"ACTIVE"`, this field is set to `undefined`.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the poll.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the poll.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The question that viewers are voting on. For example, *What game should I play next?* The title may contain a maximum of 60 characters.  |
+ * | &nbsp;├──&nbsp;choices | ${type.array}  | A list of choices that viewers can choose from. The list will contain a minimum of two choices and up to a maximum of five choices.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this choice.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The choice's title. The title may contain a maximum of 25 characters.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;votes | ${type.number}  | The total number of votes cast for this choice.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_votes | ${type.number}  | The number of votes cast using Channel Points.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;bits_votes | ${type.number}  | Not used; will be set to 0.  |
+ * | &nbsp;├──&nbsp;bits_voting_enabled | ${type.boolean}  | Not used; will be set to `false`.  |
+ * | &nbsp;├──&nbsp;bits_per_vote | ${type.number}  | Not used; will be set to 0.  |
+ * | &nbsp;├──&nbsp;channel_points_voting_enabled | ${type.boolean}  | A Boolean value that indicates whether viewers may cast additional votes using Channel Points. For information about Channel Points, see [Channel Points Guide](https://help.twitch.tv/s/article/channel-points-guide).  |
+ * | &nbsp;├──&nbsp;channel_points_per_vote | ${type.number}  | The number of points the viewer must spend to cast one additional vote.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The poll's status. Valid values are: `"ACTIVE"` — The poll is running. `"COMPLETED"` — The poll ended on schedule (see the `duration` field). `"TERMINATED"` — The poll was terminated before its scheduled end. `"ARCHIVED"` — The poll has been archived and is no longer visible on the channel. `"MODERATED"` — The poll was deleted. `"INVALID"` — Something went wrong while determining the state.  |
+ * | &nbsp;├──&nbsp;duration | ${type.number}  | The length of time (in seconds) that the poll will run for.  |
+ * | &nbsp;├──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll began.  |
+ * | &nbsp;├──&nbsp;ended_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll ended. If `status` is `"ACTIVE"`, this field is set to `undefined`.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -3681,7 +3680,7 @@ function twitch_polls_get_polls(broadcaster_id, optionals, callback_success, cal
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that's running the poll. This ID must match the user ID in the user access token. 
  * @param {string} title The question that viewers will vote on. For example, *What game should I play next?* The question may contain a maximum of 60 characters. 
- * @param {Object[]} choices A list of choices that viewers may choose from. The list must contain a minimum of 2 choices and up to a maximum of 5 choices. 
+ * @param {array} choices A list of choices that viewers may choose from. The list must contain a minimum of 2 choices and up to a maximum of 5 choices. 
  * @param {number} duration The length of time (in seconds) that the poll will run for. The minimum is 15 seconds and the maximum is 1800 seconds (30 minutes). 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -3696,25 +3695,25 @@ function twitch_polls_get_polls(broadcaster_id, optionals, callback_success, cal
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the single poll that you created.  |
- * | ___id | ${type.string}  | An ID that identifies the poll.  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the poll.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___title | ${type.string}  | The question that viewers are voting on. For example, *What game should I play next?* The title may contain a maximum of 60 characters.  |
- * | ___choices | ${type.array}  | A list of choices that viewers can choose from. The list will contain a minimum of two choices and up to a maximum of five choices.  |
- * | ______id | ${type.string}  | An ID that identifies this choice.  |
- * | ______title | ${type.string}  | The choice's title. The title may contain a maximum of 25 characters.  |
- * | ______votes | ${type.number}  | The total number of votes cast for this choice.  |
- * | ______channel_points_votes | ${type.number}  | The number of votes cast using Channel Points.  |
- * | ______bits_votes | ${type.number}  | Not used; will be set to 0.  |
- * | ___bits_voting_enabled | ${type.boolean}  | Not used; will be set to `false`.  |
- * | ___bits_per_vote | ${type.number}  | Not used; will be set to 0.  |
- * | ___channel_points_voting_enabled | ${type.boolean}  | A Boolean value that indicates whether viewers may cast additional votes using Channel Points. For information about Channel Points, see [Channel Points Guide](https://help.twitch.tv/s/article/channel-points-guide).  |
- * | ___channel_points_per_vote | ${type.number}  | The number of points the viewer must spend to cast one additional vote.  |
- * | ___status | ${type.string}  | The poll's status. Valid values are: `"ACTIVE"` - The poll is running. `"COMPLETED"` - The poll ended on schedule (see the `duration` field). `"TERMINATED"` - The poll was terminated before its scheduled end. `"ARCHIVED"` - The poll has been archived and is no longer visible on the channel. `"MODERATED"` - The poll was deleted. `"INVALID"` - Something went wrong while determining the state.  |
- * | ___duration | ${type.number}  | The length of time (in seconds) that the poll will run for.  |
- * | ___started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll began.  |
- * | ___ended_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll ended. If `status` is `"ACTIVE"`, this field is set to `undefined`.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the poll.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the poll.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The question that viewers are voting on. For example, *What game should I play next?* The title may contain a maximum of 60 characters.  |
+ * | &nbsp;├──&nbsp;choices | ${type.array}  | A list of choices that viewers can choose from. The list will contain a minimum of two choices and up to a maximum of five choices.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this choice.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The choice's title. The title may contain a maximum of 25 characters.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;votes | ${type.number}  | The total number of votes cast for this choice.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_votes | ${type.number}  | The number of votes cast using Channel Points.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;bits_votes | ${type.number}  | Not used; will be set to 0.  |
+ * | &nbsp;├──&nbsp;bits_voting_enabled | ${type.boolean}  | Not used; will be set to `false`.  |
+ * | &nbsp;├──&nbsp;bits_per_vote | ${type.number}  | Not used; will be set to 0.  |
+ * | &nbsp;├──&nbsp;channel_points_voting_enabled | ${type.boolean}  | A Boolean value that indicates whether viewers may cast additional votes using Channel Points. For information about Channel Points, see [Channel Points Guide](https://help.twitch.tv/s/article/channel-points-guide).  |
+ * | &nbsp;├──&nbsp;channel_points_per_vote | ${type.number}  | The number of points the viewer must spend to cast one additional vote.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The poll's status. Valid values are: `"ACTIVE"` - The poll is running. `"COMPLETED"` - The poll ended on schedule (see the `duration` field). `"TERMINATED"` - The poll was terminated before its scheduled end. `"ARCHIVED"` - The poll has been archived and is no longer visible on the channel. `"MODERATED"` - The poll was deleted. `"INVALID"` - Something went wrong while determining the state.  |
+ * | &nbsp;├──&nbsp;duration | ${type.number}  | The length of time (in seconds) that the poll will run for.  |
+ * | &nbsp;├──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll began.  |
+ * | &nbsp;└──&nbsp;ended_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll ended. If `status` is `"ACTIVE"`, this field is set to `undefined`.  |
  * @event_end
  * @func_end
  */
@@ -3740,25 +3739,25 @@ function twitch_polls_create_poll(broadcaster_id, title, choices, duration, opti
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | An array that contains the poll that you ended.  |
- * | ___id | ${type.string}  | An ID that identifies the poll.  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the poll.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___title | ${type.string}  | The question that viewers are voting on. For example, *What game should I play next?* The title may contain a maximum of 60 characters.  |
- * | ___choices | ${type.array}  | A list of choices that viewers can choose from. The list will contain a minimum of two choices and up to a maximum of five choices.  |
- * | ______id | ${type.string}  | An ID that identifies this choice.  |
- * | ______title | ${type.string}  | The choice's title. The title may contain a maximum of 25 characters.  |
- * | ______votes | ${type.number}  | The total number of votes cast for this choice.  |
- * | ______channel_points_votes | ${type.number}  | The number of votes cast using Channel Points.  |
- * | ______bits_votes | ${type.number}  | Not used; will be set to 0.  |
- * | ___bits_voting_enabled | ${type.boolean}  | Not used; will be set to `false`.  |
- * | ___bits_per_vote | ${type.number}  | Not used; will be set to 0.  |
- * | ___channel_points_voting_enabled | ${type.boolean}  | A Boolean value that indicates whether viewers may cast additional votes using Channel Points. For information about Channel Points, see [Channel Points Guide](https://help.twitch.tv/s/article/channel-points-guide).  |
- * | ___channel_points_per_vote | ${type.number}  | The number of points the viewer must spend to cast one additional vote.  |
- * | ___status | ${type.string}  | The poll's status. Valid values are: `"ACTIVE"` - The poll is running. `"COMPLETED"` - The poll ended on schedule (see the `duration` field). `"TERMINATED"` - The poll was terminated before its scheduled end. `"ARCHIVED"` - The poll has been archived and is no longer visible on the channel. `"MODERATED"` - The poll was deleted. `"INVALID"` - Something went wrong while determining the state.  |
- * | ___duration | ${type.number}  | The length of time (in seconds) that the poll will run for.  |
- * | ___started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll began.  |
- * | ___ended_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll ended. If `status` is `"ACTIVE"`, this field is set to `undefined`.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the poll.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the poll.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The question that viewers are voting on. For example, *What game should I play next?* The title may contain a maximum of 60 characters.  |
+ * | &nbsp;├──&nbsp;choices | ${type.array}  | A list of choices that viewers can choose from. The list will contain a minimum of two choices and up to a maximum of five choices.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this choice.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The choice's title. The title may contain a maximum of 25 characters.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;votes | ${type.number}  | The total number of votes cast for this choice.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_votes | ${type.number}  | The number of votes cast using Channel Points.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;bits_votes | ${type.number}  | Not used; will be set to 0.  |
+ * | &nbsp;├──&nbsp;bits_voting_enabled | ${type.boolean}  | Not used; will be set to `false`.  |
+ * | &nbsp;├──&nbsp;bits_per_vote | ${type.number}  | Not used; will be set to 0.  |
+ * | &nbsp;├──&nbsp;channel_points_voting_enabled | ${type.boolean}  | A Boolean value that indicates whether viewers may cast additional votes using Channel Points. For information about Channel Points, see [Channel Points Guide](https://help.twitch.tv/s/article/channel-points-guide).  |
+ * | &nbsp;├──&nbsp;channel_points_per_vote | ${type.number}  | The number of points the viewer must spend to cast one additional vote.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The poll's status. Valid values are: `"ACTIVE"` - The poll is running. `"COMPLETED"` - The poll ended on schedule (see the `duration` field). `"TERMINATED"` - The poll was terminated before its scheduled end. `"ARCHIVED"` - The poll has been archived and is no longer visible on the channel. `"MODERATED"` - The poll was deleted. `"INVALID"` - Something went wrong while determining the state.  |
+ * | &nbsp;├──&nbsp;duration | ${type.number}  | The length of time (in seconds) that the poll will run for.  |
+ * | &nbsp;├──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll began.  |
+ * | &nbsp;└──&nbsp;ended_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll ended. If `status` is `"ACTIVE"`, this field is set to `undefined`.  |
  * @event_end
  * @func_end
  */
@@ -3788,31 +3787,31 @@ function twitch_polls_end_poll(broadcaster_id, id, status, callback_success, cal
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The broadcaster's list of Channel Points Predictions. The list is sorted in descending ordered by when the prediction began (the most recent prediction is first). The list is empty if the broadcaster hasn't created predictions.  |
- * | ___id | ${type.string}  | An ID that identifies this prediction.  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the prediction.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___title | ${type.string}  | The question that the prediction asks. For example, *Will I finish this entire pizza?*  |
- * | ___winning_outcome_id | ${type.string}  | The ID of the winning outcome. Is `undefined` unless `status` is `"RESOLVED"`.  |
- * | ___outcomes | ${type.array}  | The list of possible outcomes for the prediction.  |
- * | ______id | ${type.string}  | An ID that identifies this outcome.  |
- * | ______title | ${type.string}  | The outcome's text.  |
- * | ______users | ${type.number}  | The number of unique viewers that chose this outcome.  |
- * | ______channel_points | ${type.number}  | The number of Channel Points spent by viewers on this outcome.  |
- * | ______top_predictors | ${type.array}  | A list of viewers who were the top predictors; otherwise, `undefined` if none.  |
- * | _________user_id | ${type.string}  | An ID that identifies the viewer.  |
- * | _________user_name | ${type.string}  | The viewer's display name.  |
- * | _________user_login | ${type.string}  | The viewer's login name.  |
- * | _________channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
- * | _________channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
- * | ______color | ${type.string}  | The color that visually identifies this outcome in the UX. Possible values are: `"BLUE"`, `"PINK"`. If the number of outcomes is two, the color is `"BLUE"` for the first outcome and `"PINK"` for the second outcome. If there are more than two outcomes, the color is `"BLUE"` for all outcomes.  |
- * | ___prediction_window | ${type.number}  | The length of time (in seconds) that the prediction will run for.  |
- * | ___status | ${type.string}  | The prediction's status. Valid values are: `"ACTIVE"` - The Prediction is running and viewers can make predictions. `"CANCELED"` - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. `"LOCKED"` - The broadcaster locked the Prediction, which means viewers can no longer make predictions. `"RESOLVED"` - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.  |
- * | ___created_at | ${type.string}  | The UTC date and time of when the Prediction began.  |
- * | ___ended_at | ${type.string}  | The UTC date and time of when the Prediction ended. If status is `"ACTIVE"`, this is set to `undefined`.  |
- * | ___locked_at | ${type.string}  | The UTC date and time of when the Prediction was locked. If status is not `"LOCKED"`, this is set to `undefined`.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this prediction.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the prediction.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The question that the prediction asks. For example, *Will I finish this entire pizza?*  |
+ * | &nbsp;├──&nbsp;winning_outcome_id | ${type.string}  | The ID of the winning outcome. Is `undefined` unless `status` is `"RESOLVED"`.  |
+ * | &nbsp;├──&nbsp;outcomes | ${type.array}  | The list of possible outcomes for the prediction.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this outcome.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The outcome's text.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;users | ${type.number}  | The number of unique viewers that chose this outcome.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points | ${type.number}  | The number of Channel Points spent by viewers on this outcome.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;top_predictors | ${type.array}  | A list of viewers who were the top predictors; otherwise, `undefined` if none.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name | ${type.string}  | The viewer's display name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | The viewer's login name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;color | ${type.string}  | The color that visually identifies this outcome in the UX. Possible values are: `"BLUE"`, `"PINK"`. If the number of outcomes is two, the color is `"BLUE"` for the first outcome and `"PINK"` for the second outcome. If there are more than two outcomes, the color is `"BLUE"` for all outcomes.  |
+ * | &nbsp;├──&nbsp;prediction_window | ${type.number}  | The length of time (in seconds) that the prediction will run for.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The prediction's status. Valid values are: `"ACTIVE"` - The Prediction is running and viewers can make predictions. `"CANCELED"` - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. `"LOCKED"` - The broadcaster locked the Prediction, which means viewers can no longer make predictions. `"RESOLVED"` - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time of when the Prediction began.  |
+ * | &nbsp;├──&nbsp;ended_at | ${type.string}  | The UTC date and time of when the Prediction ended. If status is `"ACTIVE"`, this is set to `undefined`.  |
+ * | &nbsp;└──&nbsp;locked_at | ${type.string}  | The UTC date and time of when the Prediction was locked. If status is not `"LOCKED"`, this is set to `undefined`.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * @event_end
  * @func_end
  */
@@ -3831,7 +3830,7 @@ function twitch_predictions_get_predictions(broadcaster_id, optionals, callback_
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that's running the prediction. This ID must match the user ID in the user access token. 
  * @param {string} title The question that the broadcaster is asking. For example, *Will I finish this entire pizza?* The title is limited to a maximum of 45 characters. 
- * @param {Object[]} outcomes The list of possible outcomes that the viewers may choose from. The list must contain a minimum of 2 choices and up to a maximum of 10 choices. 
+ * @param {array} outcomes The list of possible outcomes that the viewers may choose from. The list must contain a minimum of 2 choices and up to a maximum of 10 choices. 
  * @param {number} prediction_window The length of time (in seconds) that the prediction will run for. The minimum is 30 seconds and the maximum is 1800 seconds (30 minutes). 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
@@ -3841,29 +3840,29 @@ function twitch_predictions_get_predictions(broadcaster_id, optionals, callback_
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the single prediction that you created.  |
- * | ___id | ${type.string}  | An ID that identifies this prediction.  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the prediction.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___title | ${type.string}  | The question that the prediction asks. For example, *Will I finish this entire pizza?*  |
- * | ___winning_outcome_id | ${type.string}  | The ID of the winning outcome. Is `undefined` unless status is `"RESOLVED"`.  |
- * | ___outcomes | ${type.array}  | The list of possible outcomes for the prediction.  |
- * | ______id | ${type.string}  | An ID that identifies this outcome.  |
- * | ______title | ${type.string}  | The outcome's text.  |
- * | ______users | ${type.number}  | The number of unique viewers that chose this outcome.  |
- * | ______channel_points | ${type.number}  | The number of Channel Points spent by viewers on this outcome.  |
- * | ______top_predictors | ${type.array}  | A list of viewers who were the top predictors; otherwise, `undefined` if none.  |
- * | _________user_id | ${type.string}  | An ID that identifies the viewer.  |
- * | _________user_name | ${type.string}  | The viewer's display name.  |
- * | _________user_login | ${type.string}  | The viewer's login name.  |
- * | _________channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
- * | _________channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
- * | ______color | ${type.string}  | The color that visually identifies this outcome in the UX. Possible values are: `"BLUE"`, `"PINK"`. If the number of outcomes is two, the color is `"BLUE"` for the first outcome and `"PINK"` for the second outcome. If there are more than two outcomes, the color is `"BLUE"` for all outcomes.  |
- * | ___prediction_window | ${type.number}  | The length of time (in seconds) that the prediction will run for.  |
- * | ___status | ${type.string}  | The prediction's status. Valid values are: `"ACTIVE"` - The Prediction is running and viewers can make predictions. `"CANCELED"` - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. `"LOCKED"` - The broadcaster locked the Prediction, which means viewers can no longer make predictions. `"RESOLVED"` - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.  |
- * | ___created_at | ${type.string}  | The UTC date and time of when the Prediction began.  |
- * | ___ended_at | ${type.string}  | The UTC date and time of when the Prediction ended. If `status` is `"ACTIVE"`, this is set to `undefined`.  |
- * | ___locked_at | ${type.string}  | The UTC date and time of when the Prediction was locked. If `status` is not `"LOCKED"`, this is set to `undefined`.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this prediction.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the prediction.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The question that the prediction asks. For example, *Will I finish this entire pizza?*  |
+ * | &nbsp;├──&nbsp;winning_outcome_id | ${type.string}  | The ID of the winning outcome. Is `undefined` unless status is `"RESOLVED"`.  |
+ * | &nbsp;├──&nbsp;outcomes | ${type.array}  | The list of possible outcomes for the prediction.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this outcome.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The outcome's text.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;users | ${type.number}  | The number of unique viewers that chose this outcome.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points | ${type.number}  | The number of Channel Points spent by viewers on this outcome.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;top_predictors | ${type.array}  | A list of viewers who were the top predictors; otherwise, `undefined` if none.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name | ${type.string}  | The viewer's display name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | The viewer's login name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;color | ${type.string}  | The color that visually identifies this outcome in the UX. Possible values are: `"BLUE"`, `"PINK"`. If the number of outcomes is two, the color is `"BLUE"` for the first outcome and `"PINK"` for the second outcome. If there are more than two outcomes, the color is `"BLUE"` for all outcomes.  |
+ * | &nbsp;├──&nbsp;prediction_window | ${type.number}  | The length of time (in seconds) that the prediction will run for.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The prediction's status. Valid values are: `"ACTIVE"` - The Prediction is running and viewers can make predictions. `"CANCELED"` - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. `"LOCKED"` - The broadcaster locked the Prediction, which means viewers can no longer make predictions. `"RESOLVED"` - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time of when the Prediction began.  |
+ * | &nbsp;├──&nbsp;ended_at | ${type.string}  | The UTC date and time of when the Prediction ended. If `status` is `"ACTIVE"`, this is set to `undefined`.  |
+ * | &nbsp;└──&nbsp;locked_at | ${type.string}  | The UTC date and time of when the Prediction was locked. If `status` is not `"LOCKED"`, this is set to `undefined`.  |
  * @event_end
  * @func_end
  */
@@ -3893,29 +3892,29 @@ function twitch_predictions_create_prediction(broadcaster_id, title, outcomes, p
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the single prediction that you updated.  |
- * | ___id | ${type.string}  | An ID that identifies this prediction.  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the prediction.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___title | ${type.string}  | The question that the prediction asks. For example, *Will I finish this entire pizza?*  |
- * | ___winning_outcome_id | ${type.string}  | The ID of the winning outcome. Is `undefined` unless status is `"RESOLVED"`.  |
- * | ___outcomes | ${type.array}  | The list of possible outcomes for the prediction.  |
- * | ______id | ${type.string}  | An ID that identifies this outcome.  |
- * | ______title | ${type.string}  | The outcome's text.  |
- * | ______users | ${type.number}  | The number of unique viewers that chose this outcome.  |
- * | ______channel_points | ${type.number}  | The number of Channel Points spent by viewers on this outcome.  |
- * | ______top_predictors | ${type.array}  | A list of viewers who were the top predictors; otherwise, `undefined` if none.  |
- * | _________user_id | ${type.string}  | An ID that identifies the viewer.  |
- * | _________user_name | ${type.string}  | The viewer's display name.  |
- * | _________user_login | ${type.string}  | The viewer's login name.  |
- * | _________channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
- * | _________channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
- * | ______color | ${type.string}  | The color that visually identifies this outcome in the UX. Possible values are: `"BLUE"`, `"PINK"`. If the number of outcomes is two, the color is `"BLUE"` for the first outcome and `"PINK"` for the second outcome. If there are more than two outcomes, the color is `"BLUE"` for all outcomes.  |
- * | ___prediction_window | ${type.number}  | The length of time (in seconds) that the prediction will run for.  |
- * | ___status | ${type.string}  | The prediction's status. Valid values are: `"ACTIVE"` - The Prediction is running and viewers can make predictions. `"CANCELED"` - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. `"LOCKED"` - The broadcaster locked the Prediction, which means viewers can no longer make predictions. `"RESOLVED"` - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.  |
- * | ___created_at | ${type.string}  | The UTC date and time of when the Prediction began.  |
- * | ___ended_at | ${type.string}  | The UTC date and time of when the Prediction ended. If `status` is `"ACTIVE"`, this is set to `undefined`.  |
- * | ___locked_at | ${type.string}  | The UTC date and time of when the Prediction was locked. If `status` is not `"LOCKED"`, this is set to `undefined`.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this prediction.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster that created the prediction.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The question that the prediction asks. For example, *Will I finish this entire pizza?*  |
+ * | &nbsp;├──&nbsp;winning_outcome_id | ${type.string}  | The ID of the winning outcome. Is `undefined` unless status is `"RESOLVED"`.  |
+ * | &nbsp;├──&nbsp;outcomes | ${type.array}  | The list of possible outcomes for the prediction.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this outcome.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The outcome's text.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;users | ${type.number}  | The number of unique viewers that chose this outcome.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points | ${type.number}  | The number of Channel Points spent by viewers on this outcome.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;top_predictors | ${type.array}  | A list of viewers who were the top predictors; otherwise, `undefined` if none.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name | ${type.string}  | The viewer's display name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | The viewer's login name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;color | ${type.string}  | The color that visually identifies this outcome in the UX. Possible values are: `"BLUE"`, `"PINK"`. If the number of outcomes is two, the color is `"BLUE"` for the first outcome and `"PINK"` for the second outcome. If there are more than two outcomes, the color is `"BLUE"` for all outcomes.  |
+ * | &nbsp;├──&nbsp;prediction_window | ${type.number}  | The length of time (in seconds) that the prediction will run for.  |
+ * | &nbsp;├──&nbsp;status | ${type.string}  | The prediction's status. Valid values are: `"ACTIVE"` - The Prediction is running and viewers can make predictions. `"CANCELED"` - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. `"LOCKED"` - The broadcaster locked the Prediction, which means viewers can no longer make predictions. `"RESOLVED"` - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time of when the Prediction began.  |
+ * | &nbsp;├──&nbsp;ended_at | ${type.string}  | The UTC date and time of when the Prediction ended. If `status` is `"ACTIVE"`, this is set to `undefined`.  |
+ * | &nbsp;└──&nbsp;locked_at | ${type.string}  | The UTC date and time of when the Prediction was locked. If `status` is not `"LOCKED"`, this is set to `undefined`.  |
  * @event_end
  * @func_end
  */
@@ -3948,8 +3947,8 @@ function twitch_predictions_end_prediction(broadcaster_id, id, status, optionals
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains a single object with information about the pending raid.  |
- * | ___created_at | ${type.string}  | The UTC date and time, in RFC3339 format, of when the raid was requested.  |
- * | ___is_mature | ${type.boolean}  | A Boolean value that indicates whether the channel being raided contains mature content.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time, in RFC3339 format, of when the raid was requested.  |
+ * | &nbsp;└──&nbsp;is_mature | ${type.boolean}  | A Boolean value that indicates whether the channel being raided contains mature content.  |
  * @event_end
  * @func_end
  */
@@ -4001,24 +4000,24 @@ function twitch_raids_cancel_a_raid(broadcaster_id, callback_success, callback_f
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.struct}  | The broadcaster's streaming schedule.  |
- * | ___segments | ${type.array}  | The list of broadcasts in the broadcaster's streaming schedule.  |
- * | ______id | ${type.string}  | An ID that identifies this broadcast segment.  |
- * | ______start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast starts.  |
- * | ______end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast ends.  |
- * | ______title | ${type.string}  | The broadcast segment's title.  |
- * | ______canceled_until | ${type.string}  | Indicates whether the broadcaster canceled this segment of a recurring broadcast. If the broadcaster canceled this segment, this field is set to the same value that's in the  `end_time` field; otherwise, it's set to `undefined`.  |
- * | ______category | ${type.struct}  | The type of content that the broadcaster plans to stream or `undefined` if not specified.  |
- * | _________id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
- * | _________name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will playing a game or Just Chatting if the broadcaster will host a talk show.  |
- * | ______is_recurring | ${type.boolean}  | A Boolean value that determines whether the broadcast is part of a recurring series that streams at the same time each week or is a one-time broadcast. Is `true` if the broadcast is part of a recurring series.  |
- * | ___broadcaster_id | ${type.string}  | The ID of the broadcaster that owns the broadcast schedule.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___vacation | ${type.struct}  | The dates when the broadcaster is on vacation and not streaming. Is set to `undefined` if vacation mode is not enabled.  |
- * | ______start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation starts.  |
- * | ______end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation ends.  |
- * | ___pagination | ${type.struct}  | The information used to page through a list of results. The object is empty if there are no more pages left to page through. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).  |
- * | ______cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` parameter to this value.  |
+ * | &nbsp;├──&nbsp;segments | ${type.array}  | The list of broadcasts in the broadcaster's streaming schedule.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this broadcast segment.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast starts.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast ends.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The broadcast segment's title.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;canceled_until | ${type.string}  | Indicates whether the broadcaster canceled this segment of a recurring broadcast. If the broadcaster canceled this segment, this field is set to the same value that's in the  `end_time` field; otherwise, it's set to `undefined`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;category | ${type.struct}  | The type of content that the broadcaster plans to stream or `undefined` if not specified.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will playing a game or Just Chatting if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_recurring | ${type.boolean}  | A Boolean value that determines whether the broadcast is part of a recurring series that streams at the same time each week or is a one-time broadcast. Is `true` if the broadcast is part of a recurring series.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that owns the broadcast schedule.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;vacation | ${type.struct}  | The dates when the broadcaster is on vacation and not streaming. Is set to `undefined` if vacation mode is not enabled.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation starts.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation ends.  |
+ * | &nbsp;├──&nbsp;pagination | ${type.struct}  | The information used to page through a list of results. The object is empty if there are no more pages left to page through. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` parameter to this value.  |
  * @event_end
  * @func_end
  */
@@ -4090,22 +4089,22 @@ function twitch_schedule_update_channel_stream_schedule(broadcaster_id, optional
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.struct}  | The broadcaster's streaming schedule.  |
- * | ___segments | ${type.array}  | A list that contains the single broadcast segment that you added.  |
- * | ______id | ${type.string}  | An ID that identifies this broadcast segment.  |
- * | ______start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast starts.  |
- * | ______end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast ends.  |
- * | ______title | ${type.string}  | The broadcast segment's title.  |
- * | ______canceled_until | ${type.string}  | Indicates whether the broadcaster canceled this segment of a recurring broadcast. If the broadcaster canceled this segment, this field is set to the same value that's in the  `end_time` field; otherwise, it's set to `undefined`.  |
- * | ______category | ${type.struct}  | The type of content that the broadcaster plans to stream or `undefined` if not specified.  |
- * | _________id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
- * | _________name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will play a game or Just Chatting if the broadcaster will host a talk show.  |
- * | ______is_recurring | ${type.boolean}  | A Boolean value that determines whether the broadcast is part of a recurring series that streams at the same time each week or is a one-time broadcast. Is `true` if the broadcast is part of a recurring series.  |
- * | ___broadcaster_id | ${type.string}  | The ID of the broadcaster that owns the broadcast schedule.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___vacation | ${type.struct}  | The dates when the broadcaster is on vacation and not streaming. Is set to `undefined` if vacation mode is not enabled.  |
- * | ______start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation starts.  |
- * | ______end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation ends.  |
+ * | &nbsp;├──&nbsp;segments | ${type.array}  | A list that contains the single broadcast segment that you added.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this broadcast segment.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast starts.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast ends.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The broadcast segment's title.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;canceled_until | ${type.string}  | Indicates whether the broadcaster canceled this segment of a recurring broadcast. If the broadcaster canceled this segment, this field is set to the same value that's in the  `end_time` field; otherwise, it's set to `undefined`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;category | ${type.struct}  | The type of content that the broadcaster plans to stream or `undefined` if not specified.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will play a game or Just Chatting if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_recurring | ${type.boolean}  | A Boolean value that determines whether the broadcast is part of a recurring series that streams at the same time each week or is a one-time broadcast. Is `true` if the broadcast is part of a recurring series.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that owns the broadcast schedule.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;└──&nbsp;vacation | ${type.struct}  | The dates when the broadcaster is on vacation and not streaming. Is set to `undefined` if vacation mode is not enabled.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation starts.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation ends.  |
  * @event_end
  * @func_end
  */
@@ -4141,22 +4140,22 @@ function twitch_schedule_create_channel_stream_schedule_segment(broadcaster_id, 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.struct}  | The broadcaster's streaming scheduled.  |
- * | ___segments | ${type.array}  | A list that contains the single broadcast segment that you updated.  |
- * | ______id | ${type.string}  | An ID that identifies this broadcast segment.  |
- * | ______start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast starts.  |
- * | ______end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast ends.  |
- * | ______title | ${type.string}  | The broadcast segment's title.  |
- * | ______canceled_until | ${type.string}  | Indicates whether the broadcaster canceled this segment of a recurring broadcast. If the broadcaster canceled this segment, this field is set to the same value that's in the `end_time` field; otherwise, it's set to `undefined`.  |
- * | ______category | ${type.struct}  | The type of content that the broadcaster plans to stream or `undefined` if not specified.  |
- * | _________id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
- * | _________name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will play a game or Just Chatting if the broadcaster will host a talk show.  |
- * | ______is_recurring | ${type.boolean}  | A Boolean value that determines whether the broadcast is part of a recurring series that streams at the same time each week or is a one-time broadcast. Is `true` if the broadcast is part of a recurring series.  |
- * | ___broadcaster_id | ${type.string}  | The ID of the broadcaster that owns the broadcast schedule.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___vacation | ${type.struct}  | The dates when the broadcaster is on vacation and not streaming. Is set to `undefined` if vacation mode is not enabled.  |
- * | ______start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation starts.  |
- * | ______end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation ends.  |
+ * | &nbsp;├──&nbsp;segments | ${type.array}  | A list that contains the single broadcast segment that you updated.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this broadcast segment.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast starts.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast ends.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The broadcast segment's title.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;canceled_until | ${type.string}  | Indicates whether the broadcaster canceled this segment of a recurring broadcast. If the broadcaster canceled this segment, this field is set to the same value that's in the `end_time` field; otherwise, it's set to `undefined`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;category | ${type.struct}  | The type of content that the broadcaster plans to stream or `undefined` if not specified.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will play a game or Just Chatting if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_recurring | ${type.boolean}  | A Boolean value that determines whether the broadcast is part of a recurring series that streams at the same time each week or is a one-time broadcast. Is `true` if the broadcast is part of a recurring series.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that owns the broadcast schedule.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;└──&nbsp;vacation | ${type.struct}  | The dates when the broadcaster is on vacation and not streaming. Is set to `undefined` if vacation mode is not enabled.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation starts.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation ends.  |
  * @event_end
  * @func_end
  */
@@ -4206,9 +4205,9 @@ function twitch_schedule_delete_channel_stream_schedule_segment(broadcaster_id, 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of games or categories that match the query. The list is empty if there are no matches.  |
- * | ___box_art_url | ${type.string}  | A URL to an image of the game's box art or streaming category.  |
- * | ___name | ${type.string}  | The name of the game or category.  |
- * | ___id | ${type.string}  | An ID that uniquely identifies the game or category.  |
+ * | &nbsp;├──&nbsp;box_art_url | ${type.string}  | A URL to an image of the game's box art or streaming category.  |
+ * | &nbsp;├──&nbsp;name | ${type.string}  | The name of the game or category.  |
+ * | &nbsp;└──&nbsp;id | ${type.string}  | An ID that uniquely identifies the game or category.  |
  * @event_end
  * @func_end
  */
@@ -4244,18 +4243,18 @@ function twitch_search_search_categories(query, optionals, callback_success, cal
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of channels that match the query. The list is empty if there are no matches.  |
- * | ___broadcaster_language | ${type.string}  | The ISO 639-1 two-letter language code of the language used by the broadcaster. For example, `"en"` for English. If the broadcaster uses a language not in the list of [supported stream languages](https://help.twitch.tv/s/article/languages-on-twitch#streamlang), the value is `"other"`. |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___display_name | ${type.string}  | The broadcaster's display name.  |
- * | ___game_id | ${type.string}  | The ID of the game that the broadcaster is playing or last played.  |
- * | ___game_name | ${type.string}  | The name of the game that the broadcaster is playing or last played.  |
- * | ___id | ${type.string}  | An ID that uniquely identifies the channel (this is the broadcaster's ID).  |
- * | ___is_live | ${type.boolean}  | A Boolean value that determines whether the broadcaster is streaming live. Is `true` if the broadcaster is streaming live; otherwise, `false`.  |
- * | ___tag_ids | ${type.array} of ${type.string}  | **IMPORTANT** As of February 28, 2023, this field is deprecated and returns only an empty array. If you use this field, please update your code to use the `tags` field.The list of tags that apply to the stream. The list contains IDs only when the channel is streaming live. For a list of possible tags, see [List of All Tags](https://www.twitch.tv/directory/all/tags). The list doesn't include Category Tags. |
- * | ___tags | ${type.array} of ${type.string}  | The tags applied to the channel.  |
- * | ___thumbnail_url | ${type.string}  | A URL to a thumbnail of the broadcaster's profile image.  |
- * | ___title | ${type.string}  | The stream's title. Is an empty string if the broadcaster didn't set it.  |
- * | ___started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster started streaming. The string is empty if the broadcaster is not streaming live.  |
+ * | &nbsp;├──&nbsp;broadcaster_language | ${type.string}  | The ISO 639-1 two-letter language code of the language used by the broadcaster. For example, `"en"` for English. If the broadcaster uses a language not in the list of [supported stream languages](https://help.twitch.tv/s/article/languages-on-twitch#streamlang), the value is `"other"`. |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;display_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;game_id | ${type.string}  | The ID of the game that the broadcaster is playing or last played.  |
+ * | &nbsp;├──&nbsp;game_name | ${type.string}  | The name of the game that the broadcaster is playing or last played.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that uniquely identifies the channel (this is the broadcaster's ID).  |
+ * | &nbsp;├──&nbsp;is_live | ${type.boolean}  | A Boolean value that determines whether the broadcaster is streaming live. Is `true` if the broadcaster is streaming live; otherwise, `false`.  |
+ * | &nbsp;├──&nbsp;tag_ids | ${type.array} of ${type.string}  | **IMPORTANT** As of February 28, 2023, this field is deprecated and returns only an empty array. If you use this field, please update your code to use the `tags` field.The list of tags that apply to the stream. The list contains IDs only when the channel is streaming live. For a list of possible tags, see [List of All Tags](https://www.twitch.tv/directory/all/tags). The list doesn't include Category Tags. |
+ * | &nbsp;├──&nbsp;tags | ${type.array} of ${type.string}  | The tags applied to the channel.  |
+ * | &nbsp;├──&nbsp;thumbnail_url | ${type.string}  | A URL to a thumbnail of the broadcaster's profile image.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The stream's title. Is an empty string if the broadcaster didn't set it.  |
+ * | &nbsp;└──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster started streaming. The string is empty if the broadcaster is not streaming live.  |
  * @event_end
  * @func_end
  */
@@ -4279,7 +4278,7 @@ function twitch_search_search_channels(query, optionals, callback_success, callb
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the channel's stream key.  |
- * | ___stream_key | ${type.string}  | The channel's stream key.  |
+ * | &nbsp;└──&nbsp;stream_key | ${type.string}  | The channel's stream key.  |
  * @event_end
  * @func_end
  */
@@ -4313,23 +4312,23 @@ function twitch_streams_get_stream_key(broadcaster_id, callback_success, callbac
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of streams.  |
- * | ___id | ${type.string}  | An ID that identifies the stream. You can use this ID later to look up the video on demand (VOD).  |
- * | ___user_id | ${type.string}  | The ID of the user that's broadcasting the stream.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___game_id | ${type.string}  | The ID of the category or game being played.  |
- * | ___game_name | ${type.string}  | The name of the category or game being played.  |
- * | ___type | ${type.string}  | The type of stream. Possible values are: `"live"`. If an error occurs, this field is set to an empty string.  |
- * | ___title | ${type.string}  | The stream's title. Is an empty string if not set.  |
- * | ___tags | ${type.array} of ${type.string}  | The tags applied to the stream.  |
- * | ___viewer_count | ${type.number}  | The number of users watching the stream.  |
- * | ___started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast began.  |
- * | ___language | ${type.string}  | The language that the stream uses. This is an ISO 639-1 two-letter language code or `"other"` if the stream uses a language not in the list of [supported stream languages](https://help.twitch.tv/s/article/languages-on-twitch#streamlang).  |
- * | ___thumbnail_url | ${type.string}  | A URL to an image of a frame from the last 5 minutes of the stream. Replace the width and height placeholders in the URL (`{width}x{height}`) with the size of the image you want, in pixels.  |
- * | ___tag_ids | ${type.array} of ${type.string}  | **IMPORTANT** As of February 28, 2023, this field is deprecated and returns only an empty array. If you use this field, please update your code to use the `tags` field. The list of tags that apply to the stream. The list contains IDs only when the channel is streaming live. For a list of possible tags, see [List of All Tags](https://www.twitch.tv/directory/all/tags). The list doesn't include Category Tags.  |
- * | ___is_mature | ${type.boolean}  | A Boolean value that indicates whether the stream is meant for mature audiences.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the stream. You can use this ID later to look up the video on demand (VOD).  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of the user that's broadcasting the stream.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;game_id | ${type.string}  | The ID of the category or game being played.  |
+ * | &nbsp;├──&nbsp;game_name | ${type.string}  | The name of the category or game being played.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The type of stream. Possible values are: `"live"`. If an error occurs, this field is set to an empty string.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The stream's title. Is an empty string if not set.  |
+ * | &nbsp;├──&nbsp;tags | ${type.array} of ${type.string}  | The tags applied to the stream.  |
+ * | &nbsp;├──&nbsp;viewer_count | ${type.number}  | The number of users watching the stream.  |
+ * | &nbsp;├──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast began.  |
+ * | &nbsp;├──&nbsp;language | ${type.string}  | The language that the stream uses. This is an ISO 639-1 two-letter language code or `"other"` if the stream uses a language not in the list of [supported stream languages](https://help.twitch.tv/s/article/languages-on-twitch#streamlang).  |
+ * | &nbsp;├──&nbsp;thumbnail_url | ${type.string}  | A URL to an image of a frame from the last 5 minutes of the stream. Replace the width and height placeholders in the URL (`{width}x{height}`) with the size of the image you want, in pixels.  |
+ * | &nbsp;├──&nbsp;tag_ids | ${type.array} of ${type.string}  | **IMPORTANT** As of February 28, 2023, this field is deprecated and returns only an empty array. If you use this field, please update your code to use the `tags` field. The list of tags that apply to the stream. The list contains IDs only when the channel is streaming live. For a list of possible tags, see [List of All Tags](https://www.twitch.tv/directory/all/tags). The list doesn't include Category Tags.  |
+ * | &nbsp;└──&nbsp;is_mature | ${type.boolean}  | A Boolean value that indicates whether the stream is meant for mature audiences.  |
  * | pagination | ${type.struct}  | The information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` or `before` parameter to this value depending on whether you're paging forwards or backwards.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` or `before` parameter to this value depending on whether you're paging forwards or backwards.  |
  * @event_end
  * @func_end
  */
@@ -4358,23 +4357,23 @@ function twitch_streams_get_streams(optionals, callback_success, callback_failed
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of live streams of broadcasters that the specified user follows. The list is in descending order by the number of viewers watching the stream. Because viewers come and go during a stream, it's possible to find duplicate or missing streams in the list as you page through the results. The list is empty if none of the followed broadcasters are streaming live.  |
- * | ___id | ${type.string}  | An ID that identifies the stream. You can use this ID later to look up the video on demand (VOD).  |
- * | ___user_id | ${type.string}  | The ID of the user that's broadcasting the stream.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___game_id | ${type.string}  | The ID of the category or game being played.  |
- * | ___game_name | ${type.string}  | The ID of the category or game being played.  |
- * | ___type | ${type.string}  | The type of stream. Possible values are: `"live"`. If an error occurs, this field is set to an empty string.  |
- * | ___title | ${type.string}  | The stream's title. Is an empty string if not set.  |
- * | ___viewer_count | ${type.number}  | The number of users watching the stream.  |
- * | ___started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast began.  |
- * | ___language | ${type.string}  | The language that the stream uses. This is an ISO 639-1 two-letter language code or `"other"` if the stream uses a language not in the list of [supported stream languages](https://help.twitch.tv/s/article/languages-on-twitch#streamlang).  |
- * | ___thumbnail_url | ${type.string}  | A URL to an image of a frame from the last 5 minutes of the stream. Replace the width and height placeholders in the URL (`{width}x{height}`) with the size of the image you want, in pixels.  |
- * | ___tag_ids | ${type.array} of ${type.string}  | **IMPORTANT** As of February 28, 2023, this field is deprecated and returns only an empty array. If you use this field, please update your code to use the `tags` field. The list of tags that apply to the stream. The list contains IDs only when the channel is streaming live. For a list of possible tags, see [List of All Tags](https://www.twitch.tv/directory/all/tags). The list doesn't include Category Tags.  |
- * | ___tags | ${type.array} of ${type.string}  | The tags applied to the stream.  |
- * | ___is_mature | ${type.boolean}  | A Boolean value that indicates whether the stream is meant for mature audiences.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the stream. You can use this ID later to look up the video on demand (VOD).  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of the user that's broadcasting the stream.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;game_id | ${type.string}  | The ID of the category or game being played.  |
+ * | &nbsp;├──&nbsp;game_name | ${type.string}  | The ID of the category or game being played.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The type of stream. Possible values are: `"live"`. If an error occurs, this field is set to an empty string.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The stream's title. Is an empty string if not set.  |
+ * | &nbsp;├──&nbsp;viewer_count | ${type.number}  | The number of users watching the stream.  |
+ * | &nbsp;├──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcast began.  |
+ * | &nbsp;├──&nbsp;language | ${type.string}  | The language that the stream uses. This is an ISO 639-1 two-letter language code or `"other"` if the stream uses a language not in the list of [supported stream languages](https://help.twitch.tv/s/article/languages-on-twitch#streamlang).  |
+ * | &nbsp;├──&nbsp;thumbnail_url | ${type.string}  | A URL to an image of a frame from the last 5 minutes of the stream. Replace the width and height placeholders in the URL (`{width}x{height}`) with the size of the image you want, in pixels.  |
+ * | &nbsp;├──&nbsp;tag_ids | ${type.array} of ${type.string}  | **IMPORTANT** As of February 28, 2023, this field is deprecated and returns only an empty array. If you use this field, please update your code to use the `tags` field. The list of tags that apply to the stream. The list contains IDs only when the channel is streaming live. For a list of possible tags, see [List of All Tags](https://www.twitch.tv/directory/all/tags). The list doesn't include Category Tags.  |
+ * | &nbsp;├──&nbsp;tags | ${type.array} of ${type.string}  | The tags applied to the stream.  |
+ * | &nbsp;└──&nbsp;is_mature | ${type.boolean}  | A Boolean value that indicates whether the stream is meant for mature audiences.  |
  * | pagination | ${type.struct}  | The information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` parameter to this value.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` parameter to this value.  |
  * @event_end
  * @func_end
  */
@@ -4404,10 +4403,10 @@ function twitch_streams_get_followed_streams(user_id, optionals, callback_succes
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the single marker that you added.  |
- * | ___id | ${type.string}  | An ID that identifies this marker.  |
- * | ___created_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the user created the marker.  |
- * | ___position_seconds | ${type.number}  | The relative offset (in seconds) of the marker from the beginning of the stream.  |
- * | ___description | ${type.string}  | A description that the user gave the marker to help them remember why they marked the location.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this marker.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the user created the marker.  |
+ * | &nbsp;├──&nbsp;position_seconds | ${type.number}  | The relative offset (in seconds) of the marker from the beginning of the stream.  |
+ * | &nbsp;└──&nbsp;description | ${type.string}  | A description that the user gave the marker to help them remember why they marked the location.  |
  * @event_end
  * @func_end
  */
@@ -4438,19 +4437,19 @@ function twitch_streams_create_stream_marker(user_id, optionals, callback_succes
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of markers grouped by the user that created the marks.  |
- * | ___user_id | ${type.string}  | The ID of the user that created the marker.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
- * | ___videos | ${type.array}  | A list of videos that contain markers. The list contains a single video.  |
- * | ___video_id | ${type.string}  | An ID that identifies this video.  |
- * | ___markers | ${type.array}  | The list of markers in this video. The list in ascending order by when the marker was created.  |
- * | ______id | ${type.string}  | An ID that identifies this marker.  |
- * | ______created_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the user created the marker.  |
- * | ______description | ${type.string}  | The description that the user gave the marker to help them remember why they marked the location. Is an empty string if the user didn't provide one.  |
- * | ______position_seconds | ${type.number}  | The relative offset (in seconds) of the marker from the beginning of the stream.  |
- * | ______url | ${type.string}  | A URL that opens the video in Twitch Highlighter.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of the user that created the marker.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;videos | ${type.array}  | A list of videos that contain markers. The list contains a single video.  |
+ * | &nbsp;├──&nbsp;video_id | ${type.string}  | An ID that identifies this video.  |
+ * | &nbsp;└──&nbsp;markers | ${type.array}  | The list of markers in this video. The list in ascending order by when the marker was created.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this marker.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the user created the marker.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;description | ${type.string}  | The description that the user gave the marker to help them remember why they marked the location. Is an empty string if the user didn't provide one.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;position_seconds | ${type.number}  | The relative offset (in seconds) of the marker from the beginning of the stream.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url | ${type.string}  | A URL that opens the video in Twitch Highlighter.  |
  * | pagination | ${type.struct}  | The information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` or `before` parameter to this value depending on whether you're paging forwards or backwards.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` or `before` parameter to this value depending on whether you're paging forwards or backwards.  |
  * @event_end
  * @func_end
  */
@@ -4483,20 +4482,20 @@ function twitch_streams_get_stream_markers(user_id, video_id, optionals, callbac
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of users that subscribe to the broadcaster. The list is empty if the broadcaster has no subscribers.  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___gifter_id | ${type.string}  | The ID of the user that gifted the subscription to the user. Is an empty string if `is_gift` is `false`.  |
- * | ___gifter_login | ${type.string}  | The gifter's login name. Is an empty string if `is_gift` is `false`.  |
- * | ___gifter_name | ${type.string}  | The gifter's display name. Is an empty string if `is_gift` is `false`.  |
- * | ___is_gift | ${type.boolean}  | A Boolean value that determines whether the subscription is a gift subscription. Is `true` if the subscription was gifted.  |
- * | ___plan_name | ${type.string}  | The name of the subscription.  |
- * | ___tier | ${type.string}  | The type of subscription. Possible values are: 1000 - Tier 1, 2000 - Tier 2, 3000 - Tier 3  |
- * | ___user_id | ${type.string}  | An ID that identifies the subscribing user.  |
- * | ___user_name | ${type.string}  | The user's display name.  |
- * | ___user_login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;gifter_id | ${type.string}  | The ID of the user that gifted the subscription to the user. Is an empty string if `is_gift` is `false`.  |
+ * | &nbsp;├──&nbsp;gifter_login | ${type.string}  | The gifter's login name. Is an empty string if `is_gift` is `false`.  |
+ * | &nbsp;├──&nbsp;gifter_name | ${type.string}  | The gifter's display name. Is an empty string if `is_gift` is `false`.  |
+ * | &nbsp;├──&nbsp;is_gift | ${type.boolean}  | A Boolean value that determines whether the subscription is a gift subscription. Is `true` if the subscription was gifted.  |
+ * | &nbsp;├──&nbsp;plan_name | ${type.string}  | The name of the subscription.  |
+ * | &nbsp;├──&nbsp;tier | ${type.string}  | The type of subscription. Possible values are: 1000 - Tier 1, 2000 - Tier 2, 3000 - Tier 3  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the subscribing user.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;└──&nbsp;user_login | ${type.string}  | The user's login name.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next or previous page of results. Use the cursor to set the request's `after` or `before` parameter depending on whether you're paging forwards or backwards.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next or previous page of results. Use the cursor to set the request's `after` or `before` parameter depending on whether you're paging forwards or backwards.  |
  * | points | ${type.number}  | The current number of subscriber points earned by this broadcaster. Points are based on the subscription tier of each user that subscribes to this broadcaster. For example, a Tier 1 subscription is worth 1 point, Tier 2 is worth 2 points, and Tier 3 is worth 6 points. The number of points determines the number of emote slots that are unlocked for the broadcaster (see [Subscriber Emote Slots](https://help.twitch.tv/s/article/subscriber-emote-guide#emoteslots)).  |
  * | total | ${type.number}  | The total number of users that subscribe to this broadcaster.  |
  * @event_end
@@ -4525,14 +4524,14 @@ function twitch_subscriptions_get_broadcaster_subscriptions(broadcaster_id, opti
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains a single object with information about the user's subscription.  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___gifter_id | ${type.string}  | The ID of the user that gifted the subscription. The object includes this field only if `is_gift` is `true`.  |
- * | ___gifter_login | ${type.string}  | The gifter's login name. The object includes this field only if `is_gift` is `true`.  |
- * | ___gifter_name | ${type.string}  | The gifter's display name. The object includes this field only if `is_gift` is `true`.  |
- * | ___is_gift | ${type.boolean}  | A Boolean value that determines whether the subscription is a gift subscription. Is `true` if the subscription was gifted. |
- * | ___tier | ${type.string}  | The type of subscription. Possible values are: 1000 - Tier 1, 2000 - Tier 2, 3000 - Tier 3  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;gifter_id | ${type.string}  | The ID of the user that gifted the subscription. The object includes this field only if `is_gift` is `true`.  |
+ * | &nbsp;├──&nbsp;gifter_login | ${type.string}  | The gifter's login name. The object includes this field only if `is_gift` is `true`.  |
+ * | &nbsp;├──&nbsp;gifter_name | ${type.string}  | The gifter's display name. The object includes this field only if `is_gift` is `true`.  |
+ * | &nbsp;├──&nbsp;is_gift | ${type.boolean}  | A Boolean value that determines whether the subscription is a gift subscription. Is `true` if the subscription was gifted. |
+ * | &nbsp;└──&nbsp;tier | ${type.string}  | The type of subscription. Possible values are: 1000 - Tier 1, 2000 - Tier 2, 3000 - Tier 3  |
  * @event_end
  * @func_end
  */
@@ -4556,18 +4555,18 @@ function twitch_subscriptions_check_user_subscription(broadcaster_id, user_id, c
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of teams that the broadcaster is a member of. Returns an empty array if the broadcaster is not a member of a team.  |
- * | ___broadcaster_id | ${type.string}  | An ID that identifies the broadcaster.  |
- * | ___broadcaster_login | ${type.string}  | The broadcaster's login name.  |
- * | ___broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | ___background_image_url | ${type.string}  | A URL to the team's background image.  |
- * | ___banner | ${type.string}  | A URL to the team's banner.  |
- * | ___created_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the team was created.  |
- * | ___updated_at | ${type.string}  | The UTC date and time (in RFC3339 format) of the last time the team was updated.  |
- * | ___info | ${type.string}  | The team's description. The description may contain formatting such as Markdown, HTML, newline (\n) characters, etc.  |
- * | ___thumbnail_url | ${type.string}  | A URL to a thumbnail image of the team's logo.  |
- * | ___team_name | ${type.string}  | The team's name.  |
- * | ___team_display_name | ${type.string}  | The team's display name.  |
- * | ___id | ${type.string}  | An ID that identifies the team.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster.  |
+ * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;background_image_url | ${type.string}  | A URL to the team's background image.  |
+ * | &nbsp;├──&nbsp;banner | ${type.string}  | A URL to the team's banner.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the team was created.  |
+ * | &nbsp;├──&nbsp;updated_at | ${type.string}  | The UTC date and time (in RFC3339 format) of the last time the team was updated.  |
+ * | &nbsp;├──&nbsp;info | ${type.string}  | The team's description. The description may contain formatting such as Markdown, HTML, newline (\n) characters, etc.  |
+ * | &nbsp;├──&nbsp;thumbnail_url | ${type.string}  | A URL to a thumbnail image of the team's logo.  |
+ * | &nbsp;├──&nbsp;team_name | ${type.string}  | The team's name.  |
+ * | &nbsp;├──&nbsp;team_display_name | ${type.string}  | The team's display name.  |
+ * | &nbsp;└──&nbsp;id | ${type.string}  | An ID that identifies the team.  |
  * @event_end
  * @func_end
  */
@@ -4592,19 +4591,19 @@ function twitch_teams_get_channel_teams(broadcaster_id, callback_success, callba
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the single team that you requested.  |
- * | ___users | ${type.array}  | The list of team members.  |
- * | ______user_id | ${type.string}  | An ID that identifies the team member.  |
- * | ______user_login | ${type.string}  | The team member's login name.  |
- * | ______user_name | ${type.string}  | The team member's display name.  |
- * | ___background_image_url | ${type.string}  | A URL to the team's background image.  |
- * | ___banner | ${type.string}  | A URL to the team's banner.  |
- * | ___created_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the team was created.  |
- * | ___updated_at | ${type.string}  | The UTC date and time (in RFC3339 format) of the last time the team was updated.  |
- * | ___info | ${type.string}  | The team's description. The description may contain formatting such as Markdown, HTML, newline (\n) characters, etc.  |
- * | ___thumbnail_url | ${type.string}  | A URL to a thumbnail image of the team's logo.  |
- * | ___team_name | ${type.string}  | The team's name.  |
- * | ___team_display_name | ${type.string}  | The team's display name.  |
- * | ___id | ${type.string}  | An ID that identifies the team.  |
+ * | &nbsp;├──&nbsp;users | ${type.array}  | The list of team members.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the team member.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | The team member's login name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;user_name | ${type.string}  | The team member's display name.  |
+ * | &nbsp;├──&nbsp;background_image_url | ${type.string}  | A URL to the team's background image.  |
+ * | &nbsp;├──&nbsp;banner | ${type.string}  | A URL to the team's banner.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the team was created.  |
+ * | &nbsp;├──&nbsp;updated_at | ${type.string}  | The UTC date and time (in RFC3339 format) of the last time the team was updated.  |
+ * | &nbsp;├──&nbsp;info | ${type.string}  | The team's description. The description may contain formatting such as Markdown, HTML, newline (\n) characters, etc.  |
+ * | &nbsp;├──&nbsp;thumbnail_url | ${type.string}  | A URL to a thumbnail image of the team's logo.  |
+ * | &nbsp;├──&nbsp;team_name | ${type.string}  | The team's name.  |
+ * | &nbsp;├──&nbsp;team_display_name | ${type.string}  | The team's display name.  |
+ * | &nbsp;└──&nbsp;id | ${type.string}  | An ID that identifies the team.  |
  * @event_end
  * @func_end
  */
@@ -4635,17 +4634,17 @@ function twitch_teams_get_teams(name, id, callback_success, callback_failed) {}
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of users.  |
- * | ___id | ${type.string}  | An ID that identifies the user.  |
- * | ___login | ${type.string}  | The user's login name.  |
- * | ___display_name | ${type.string}  | The user's display name.  |
- * | ___type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
- * | ___broadcaster_type | ${type.string}  | The type of broadcaster. The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
- * | ___description | ${type.string}  | The user's description of their channel.  |
- * | ___profile_image_url | ${type.string}  | A URL to the user's profile image.  |
- * | ___offline_image_url | ${type.string}  | A URL to the user's offline image.  |
- * | ___view_count | ${type.number}  | The number of times the user's channel has been viewed. **NOTE:** This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | ___email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
- * | ___created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the user.  |
+ * | &nbsp;├──&nbsp;login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;display_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
+ * | &nbsp;├──&nbsp;broadcaster_type | ${type.string}  | The type of broadcaster. The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster [affiliate broadcaster](https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US), `"partner"` — A partner broadcaster [partner broadcaster](https://help.twitch.tv/s/article/partner-program-overview), `""` — A normal broadcaster  |
+ * | &nbsp;├──&nbsp;description | ${type.string}  | The user's description of their channel.  |
+ * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
+ * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
+ * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. **NOTE:** This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
  * @event_end
  * @func_end
  */
@@ -4674,17 +4673,17 @@ function twitch_users_get_users(optionals, callback_success, callback_failed) {}
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list contains the single user that you updated.  |
- * | ___id | ${type.string}  | An ID that identifies the user.  |
- * | ___login | ${type.string}  | The user's login name.  |
- * | ___display_name | ${type.string}  | The user's display name.  |
- * | ___type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
- * | ___broadcaster_type | ${type.string}  | The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster, `"partner"` — A partner broadcaster, `""` — A normal broadcaster  |
- * | ___description | ${type.string}  | The user's description of their channel.  |
- * | ___profile_image_url | ${type.string}  | A URL to the user's profile image.  |
- * | ___offline_image_url | ${type.string}  | A URL to the user's offline image.  |
- * | ___view_count | ${type.number}  | The number of times the user's channel has been viewed. **NOTE:** This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | ___email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope.If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
- * | ___created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the user.  |
+ * | &nbsp;├──&nbsp;login | ${type.string}  | The user's login name.  |
+ * | &nbsp;├──&nbsp;display_name | ${type.string}  | The user's display name.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The type of user. Possible values are: `"admin"` — Twitch administrator, `"global_mod"`, `"staff"` — Twitch staff, `""` — Normal user  |
+ * | &nbsp;├──&nbsp;broadcaster_type | ${type.string}  | The type of broadcaster. Possible values are: `"affiliate"` — An affiliate broadcaster, `"partner"` — A partner broadcaster, `""` — A normal broadcaster  |
+ * | &nbsp;├──&nbsp;description | ${type.string}  | The user's description of their channel.  |
+ * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
+ * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
+ * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. **NOTE:** This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope.If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
  * @event_end
  * @func_end
  */
@@ -4713,9 +4712,9 @@ function twitch_users_update_user(optionals, callback_success, callback_failed) 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of blocked users. The list is in descending order by when the user was blocked.  |
- * | ___user_id | ${type.string}  | An ID that identifies the blocked user.  |
- * | ___user_login | ${type.string}  | The blocked user's login name.  |
- * | ___display_name | ${type.string}  | The blocked user's display name.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the blocked user.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The blocked user's login name.  |
+ * | &nbsp;└──&nbsp;display_name | ${type.string}  | The blocked user's display name.  |
  * @event_end
  * @func_end
  */
@@ -4777,11 +4776,11 @@ function twitch_users_unblock_user(target_user_id, callback_success, callback_fa
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of extensions that the user has installed.  |
- * | ___id | ${type.string}  | An ID that identifies the extension.  |
- * | ___version | ${type.string}  | The extension's version.  |
- * | ___name | ${type.string}  | The extension's name.  |
- * | ___can_activate | ${type.boolean}  | A Boolean value that determines whether the extension is configured and can be activated. Is `true` if the extension is configured and can be activated.  |
- * | ___type | ${type.array} of ${type.string}  | The extension types that you can activate for this extension. Possible values are: `"component"`, `"mobile"`, `"overlay"`, `"panel"`  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the extension.  |
+ * | &nbsp;├──&nbsp;version | ${type.string}  | The extension's version.  |
+ * | &nbsp;├──&nbsp;name | ${type.string}  | The extension's name.  |
+ * | &nbsp;├──&nbsp;can_activate | ${type.boolean}  | A Boolean value that determines whether the extension is configured and can be activated. Is `true` if the extension is configured and can be activated.  |
+ * | &nbsp;└──&nbsp;type | ${type.array} of ${type.string}  | The extension types that you can activate for this extension. Possible values are: `"component"`, `"mobile"`, `"overlay"`, `"panel"`  |
  * @event_end
  * @func_end
  */
@@ -4810,23 +4809,23 @@ function twitch_users_get_user_extensions(callback_success, callback_failed) {}
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.struct}  | The active extensions that the broadcaster has installed.  |
- * | ___panel | ${type.map[string]struct}  | A dictionary that contains the data for a panel extension. The dictionary's key is a sequential number beginning with 1. The following fields contain the panel's data for each key.  |
- * | ______active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured this panel extension.  |
- * | ______id | ${type.string}  | An ID that identifies the extension.  |
- * | ______version | ${type.string}  | The extension's version.  |
- * | ______name | ${type.string}  | The extension's name.  |
- * | ___overlay | ${type.map[string]struct}  | A dictionary that contains the data for a video-overlay extension. The dictionary's key is a sequential number beginning with 1. The following fields contain the overlay's data for each key.  |
- * | ______active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured this overlay extension.  |
- * | ______id | ${type.string}  | An ID that identifies the extension.  |
- * | ______version | ${type.string}  | The extension's version.  |
- * | ______name | ${type.string}  | The extension's name.  |
- * | ___component | ${type.map[string]struct}  | A dictionary that contains the data for a video-component extension. The dictionary's key is a sequential number beginning with 1. The following fields contain the component's data for each key.  |
- * | ______active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured this component extension.  |
- * | ______id | ${type.string}  | An ID that identifies the extension.  |
- * | ______version | ${type.string}  | The extension's version.  |
- * | ______name | ${type.string}  | The extension's name.  |
- * | ______x | ${type.number}  | The x-coordinate where the extension is placed.  |
- * | ______y | ${type.number}  | The y-coordinate where the extension is placed.  |
+ * | &nbsp;├──&nbsp;panel | ${type.struct}  | A dictionary that contains the data for a panel extension. The dictionary's key is a sequential number beginning with `"1"`. The following fields contain the panel's data for each key.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured this panel extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;version | ${type.string}  | The extension's version.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The extension's name.  |
+ * | &nbsp;├──&nbsp;overlay | ${type.struct}  | A dictionary that contains the data for a video-overlay extension. The dictionary's key is a sequential number beginning with `"1"`. The following fields contain the overlay's data for each key.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured this overlay extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;version | ${type.string}  | The extension's version.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The extension's name.  |
+ * | &nbsp;└──&nbsp;component | ${type.struct}  | A dictionary that contains the data for a video-component extension. The dictionary's key is a sequential number beginning with `"1"`. The following fields contain the component's data for each key.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured this component extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;version | ${type.string}  | The extension's version.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;name | ${type.string}  | The extension's name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;x | ${type.number}  | The x-coordinate where the extension is placed.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;y | ${type.number}  | The y-coordinate where the extension is placed.  |
  * @event_end
  * @func_end
  */
@@ -4854,23 +4853,23 @@ function twitch_users_get_user_active_extensions(optionals, callback_success, ca
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.struct}  | The extensions that the broadcaster updated.  |
- * | ___panel | ${type.struct}  | A dictionary that contains the data for a panel extension. The dictionary's key is a sequential number beginning with 1. The following fields contain the panel's data for each key.  |
- * | ______active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured a panel extension.  |
- * | ______id | ${type.string}  | An ID that identifies the extension.  |
- * | ______version | ${type.string}  | The extension's version.  |
- * | ______name | ${type.string}  | The extension's name.  |
- * | ___overlay | ${type.map[string]struct}  | A dictionary that contains the data for a video-overlay extension. The dictionary's key is a sequential number beginning with 1. The following fields contain the overlay's data for each key.  |
- * | ______active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured an overlay extension.  |
- * | ______id | ${type.string}  | An ID that identifies the extension.  |
- * | ______version | ${type.string}  | The extension's version.  |
- * | ______name | ${type.string}  | The extension's name.  |
- * | ___component | ${type.map[string]struct}  | A dictionary that contains the data for a video-component extension. The dictionary's key is a sequential number beginning with 1. The following fields contain the component's data for each key.  |
- * | ______active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured a component extension.  |
- * | ______id | ${type.string}  | An ID that identifies the extension.  |
- * | ______version | ${type.string}  | The extension's version.  |
- * | ______name | ${type.string}  | The extension's name.  |
- * | ______x | ${type.number}  | The x-coordinate where the extension is placed.  |
- * | ______y | ${type.number}  | The y-coordinate where the extension is placed.  |
+ * | &nbsp;├──&nbsp;panel | ${type.struct}  | A dictionary that contains the data for a panel extension. The dictionary's key is a sequential number beginning with `"1"`. The following fields contain the panel's data for each key.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured a panel extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;version | ${type.string}  | The extension's version.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The extension's name.  |
+ * | &nbsp;├──&nbsp;overlay | ${type.struct}  | A dictionary that contains the data for a video-overlay extension. The dictionary's key is a sequential number beginning with `"1"`. The following fields contain the overlay's data for each key.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured an overlay extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;version | ${type.string}  | The extension's version.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The extension's name.  |
+ * | &nbsp;└──&nbsp;component | ${type.struct}  | A dictionary that contains the data for a video-component extension. The dictionary's key is a sequential number beginning with `"1"`. The following fields contain the component's data for each key.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active | ${type.boolean}  | A Boolean value that determines the extension's activation state. If `false`, the user has not configured a component extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the extension.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;version | ${type.string}  | The extension's version.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;name | ${type.string}  | The extension's name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;x | ${type.number}  | The x-coordinate where the extension is placed.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;y | ${type.number}  | The y-coordinate where the extension is placed.  |
  * @event_end
  * @func_end
  */
@@ -4908,27 +4907,27 @@ function twitch_users_update_user_extensions(data, callback_success, callback_fa
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of published videos that match the filter criteria.  |
- * | ___id | ${type.string}  | An ID that identifies the video.  |
- * | ___stream_id | ${type.string}  | The ID of the stream that the video originated from if the video's type is `"archive"`; otherwise, `undefined`.  |
- * | ___user_id | ${type.string}  | The ID of the broadcaster that owns the video.  |
- * | ___user_login | ${type.string}  | The broadcaster's login name.  |
- * | ___user_name | ${type.string}  | The broadcaster's display name.  |
- * | ___title | ${type.string}  | The video's title.  |
- * | ___description | ${type.string}  | The video's description.  |
- * | ___created_at | ${type.string}  | The date and time, in UTC, of when the video was created. The timestamp is in RFC3339 format.  |
- * | ___published_at | ${type.string}  | The date and time, in UTC, of when the video was published. The timestamp is in RFC3339 format.  |
- * | ___url | ${type.string}  | The video's URL.  |
- * | ___thumbnail_url | ${type.string}  | A URL to a thumbnail image of the video. Before using the URL, you must replace the `%{width}` and `%{height}` placeholders with the width and height of the thumbnail you want returned. Due to current limitations, `${width}` must be 320 and `${height}` must be 180.  |
- * | ___viewable | ${type.string}  | The video's viewable state. Always set to `"public"`.  |
- * | ___view_count | ${type.number}  | The number of times that users have watched the video.  |
- * | ___language | ${type.string}  | The ISO 639-1 two-letter language code that the video was broadcast in. For example, the language code is `"DE"` if the video was broadcast in German. For a list of supported languages, see [Supported Stream Language](https://help.twitch.tv/s/article/languages-on-twitch#streamlang). The language value is `"other"` if the video was broadcast in a language not in the list of supported languages.  |
- * | ___type | ${type.string}  | The video's type. Possible values are: `"archive"` — An on-demand video (VOD) of one of the broadcaster's past streams, `"highlight"` — A highlight reel of one of the broadcaster's past streams. See [Creating Highlights](https://help.twitch.tv/s/article/creating-highlights-and-stream-markers), `"upload"` — A video that the broadcaster uploaded to their video library. See Upload under [Video Producer](https://help.twitch.tv/s/article/video-on-demand?language=en_US#videoproducer).  |
- * | ___duration | ${type.string}  | The video's length in ISO 8601 duration format. For example, 3m21s represents 3 minutes, 21 seconds.  |
- * | ___muted_segments | ${type.array}  | The segments that Twitch Audio Recognition muted; otherwise, `undefined`.  |
- * | ______duration | ${type.number}  | The duration of the muted segment, in seconds.  |
- * | ______offset | ${type.number}  | The offset, in seconds, from the beginning of the video to where the muted segment begins.  |
+ * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the video.  |
+ * | &nbsp;├──&nbsp;stream_id | ${type.string}  | The ID of the stream that the video originated from if the video's type is `"archive"`; otherwise, `undefined`.  |
+ * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of the broadcaster that owns the video.  |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The broadcaster's login name.  |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The broadcaster's display name.  |
+ * | &nbsp;├──&nbsp;title | ${type.string}  | The video's title.  |
+ * | &nbsp;├──&nbsp;description | ${type.string}  | The video's description.  |
+ * | &nbsp;├──&nbsp;created_at | ${type.string}  | The date and time, in UTC, of when the video was created. The timestamp is in RFC3339 format.  |
+ * | &nbsp;├──&nbsp;published_at | ${type.string}  | The date and time, in UTC, of when the video was published. The timestamp is in RFC3339 format.  |
+ * | &nbsp;├──&nbsp;url | ${type.string}  | The video's URL.  |
+ * | &nbsp;├──&nbsp;thumbnail_url | ${type.string}  | A URL to a thumbnail image of the video. Before using the URL, you must replace the `%{width}` and `%{height}` placeholders with the width and height of the thumbnail you want returned. Due to current limitations, `${width}` must be 320 and `${height}` must be 180.  |
+ * | &nbsp;├──&nbsp;viewable | ${type.string}  | The video's viewable state. Always set to `"public"`.  |
+ * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times that users have watched the video.  |
+ * | &nbsp;├──&nbsp;language | ${type.string}  | The ISO 639-1 two-letter language code that the video was broadcast in. For example, the language code is `"DE"` if the video was broadcast in German. For a list of supported languages, see [Supported Stream Language](https://help.twitch.tv/s/article/languages-on-twitch#streamlang). The language value is `"other"` if the video was broadcast in a language not in the list of supported languages.  |
+ * | &nbsp;├──&nbsp;type | ${type.string}  | The video's type. Possible values are: `"archive"` — An on-demand video (VOD) of one of the broadcaster's past streams, `"highlight"` — A highlight reel of one of the broadcaster's past streams. See [Creating Highlights](https://help.twitch.tv/s/article/creating-highlights-and-stream-markers), `"upload"` — A video that the broadcaster uploaded to their video library. See Upload under [Video Producer](https://help.twitch.tv/s/article/video-on-demand?language=en_US#videoproducer).  |
+ * | &nbsp;├──&nbsp;duration | ${type.string}  | The video's length in ISO 8601 duration format. For example, 3m21s represents 3 minutes, 21 seconds.  |
+ * | &nbsp;└──&nbsp;muted_segments | ${type.array}  | The segments that Twitch Audio Recognition muted; otherwise, `undefined`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;duration | ${type.number}  | The duration of the muted segment, in seconds.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;offset | ${type.number}  | The offset, in seconds, from the beginning of the video to where the muted segment begins.  |
  * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
- * | ___cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` or `before` parameter depending on whether you're paging forwards or backwards through the results.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` or `before` parameter depending on whether you're paging forwards or backwards through the results.  |
  * @event_end
  * @func_end
  */
