@@ -280,9 +280,7 @@ function twitch_auth(_scopes, _force_verify = false, _state = undefined, _callba
 
 	var _parameters = { client_id: twitch_get_client_id(), force_verify: _force_verify, response_type: "code", redirect_uri: _redirect_uri, scope: _scopes_str, /* state */ };
 
-	_url = __twitch_url_from_params(_url, _parameters);
-	show_debug_message(_url);
-	
+	_url = __twitch_url_from_params(_url, _parameters);	
 	if (os_type == os_android or os_type == os_ios) {
 		WebView_Create(_url);
 	}
