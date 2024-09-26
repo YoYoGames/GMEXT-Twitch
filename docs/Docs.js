@@ -2693,17 +2693,26 @@ function twitch_extensions_update_extension_bits_product(sku, cost, amount, type
  * 
  * This function creates an EventSub subscription.
  * 
- * If you use webhooks to receive events, the request must specify an app access token. The request will fail if you use a user access token. If the subscription type requires user authorization, the user must have granted your app (client ID) permissions to receive those events before you subscribe to them. For example, to subscribe to channel.subscribe events, your app must get a user access token that includes the `TWITCH_SCOPE_CHANNEL_READ_SUBSCRIPTIONS` scope, which adds the required permission to your app access token's client ID.
+ * If you use [webhooks to receive events](https://dev.twitch.tv/docs/eventsub/handling-webhook-events), the request must specify an app access token. The request will fail if you use a user access token. If the subscription type requires user authorization, the user must have granted your app (client ID) permissions to receive those events before you subscribe to them. For example, to subscribe to [channel.subscribe](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types/#channelsubscribe) events, your app must get a user access token that includes the `TWITCH_SCOPE_CHANNEL_READ_SUBSCRIPTIONS` scope, which adds the required permission to your app access token's client ID.
  * 
- * If you use WebSockets to receive events, the request must specify a user access token. The request will fail if you use an app access token. If the subscription type requires user authorization, the token must include the required scope. However, if the subscription type doesn't include user authorization, the token may include any scopes or no scopes.
+ * If you use [WebSockets to receive events](https://dev.twitch.tv/docs/eventsub/handling-websocket-events), the request must specify a user access token. The request will fail if you use an app access token. If the subscription type requires user authorization, the token must include the required scope. However, if the subscription type doesn't include user authorization, the token may include any scopes or no scopes.
  * 
- * If you use Conduits to receive events, the request must specify an app access token. The request will fail if you use a user access token.
+ * If you use [Conduits](https://dev.twitch.tv/docs/eventsub/handling-conduit-events/) to receive events, the request must specify an app access token. The request will fail if you use a user access token.
  * 
  * @param {string} type The type of subscription to create. For a list of subscriptions that you can create, see&nbsp;[Subscription Types](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#subscription-types). Set this field to the value in the&nbsp;**Name**&nbsp;column of the Subscription Types table. 
  * @param {string} version The version number that identifies the definition of the subscription type that you want the response to use. 
  * @param {struct} condition A JSON object that contains the parameter values that are specific to the specified subscription type. For the object's required and optional fields, see the subscription type's documentation. 
- * @param {struct} transport The transport details that you want Twitch to use when sending you notifications. 
- * @param {string} method The transport method. Possible values are: `"webhook"`, `"websocket"`, `"conduit"` 
+ * @param {struct} transport The transport details that you want Twitch to use when sending you notifications.
+ * @param {string} method The transport method.
+ * 
+ * Possible values are:
+ * 
+ * - `"webhook"`
+ * - `"websocket"`
+ * - `"conduit"`
+ * 
+ * The demo project provides example code that shows how to use the `"websocket"` method. The other transports methods can also be used, though require additional setup. See [Getting Events Using Webhook Callbacks](https://dev.twitch.tv/docs/eventsub/handling-webhook-events/) and [Getting Events Using Conduits](https://dev.twitch.tv/docs/eventsub/handling-conduit-events/).
+ * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `callback` : ${type.string} : The callback URL where the notifications are sent. The URL must use the HTTPS protocol and port 443. See&nbsp;[Processing an event](https://dev.twitch.tv/docs/eventsub/handling-webhook-events#processing-an-event). Specify this field only if `method` is set to `"webhook"`. **NOTE**: Redirects are not followed.
@@ -2750,9 +2759,9 @@ function twitch_eventsub_create_eventsub_subscription(type, version, condition, 
  * 
  * This function deletes an EventSub subscription.
  * 
- * If you use webhooks to receive events, the request must specify an app access token. The request will fail if you use a user access token.
+ * If you use [webhooks to receive events](https://dev.twitch.tv/docs/eventsub/handling-webhook-events), the request must specify an app access token. The request will fail if you use a user access token.
  * 
- * If you use WebSockets to receive events, the request must specify a user access token. The request will fail if you use an app access token. The token may include any scopes.
+ * If you use [WebSockets to receive events](https://dev.twitch.tv/docs/eventsub/handling-websocket-events), the request must specify a user access token. The request will fail if you use an app access token. The token may include any scopes.
  * 
  * @param {string} id The ID of the subscription to delete. 
  * @param {function} callback_success Triggered if the request succeeded
@@ -2821,6 +2830,51 @@ function twitch_eventsub_delete_eventsub_subscription(id, callback_success, call
  * @func_end
  */
 function twitch_eventsub_get_eventsub_subscriptions(optionals, callback_success, callback_failed) {}
+
+
+/**
+ * @func twitch_eventsub_live_connect
+ * @desc **Twitch Endpoint:** N / A
+ * 
+ * This function creates a connection to be used with the `"websocket"` transport method of the EventSub functions.
+ * 
+ * The function takes a callback function with a single parameter: the ${type.buffer} that holds the received data.
+ * 
+ * ```gml
+ * eventsub_callback = function(_buffer)
+ * {
+ *     var _eventsub_str = buffer_read(_buffer, buffer_string);
+ *     var _data = json_parse(_eventsub_str);
+ *     
+ *     switch(_data.metadata.message_type)
+ *     {
+ *         // Process different message types in a switch statement
+ *         // ...
+ *     }
+ * }
+ * ```
+ * 
+ * This connection receives several types of message that should be handled correctly. See [Handling WebSocket Events](https://dev.twitch.tv/docs/eventsub/handling-websocket-events/)
+ * See the demo project for a complete code example.
+ * 
+ * [[Note: Ping-pong messages are handled automatically by GameMaker.]]
+ * 
+ * @param {function} callback The callback function that's called when data is received on the network socket
+ * 
+ * @func_end
+ */
+
+
+/**
+ * @func twitch_eventsub_live_disconnect
+ * @desc **Twitch Endpoint:** N / A
+ * 
+ * This function disconnects from the connection set up earlier using ${function.twitch_eventsub_live_connect}.
+ * 
+ * [[Note: This function frees the underlying web socket and must be called when you're finished using the connection to prevent a memory leak.]]
+ * 
+ * @func_end
+ */
 
 
 /**
@@ -2939,7 +2993,7 @@ function twitch_goals_get_creator_goals(broadcaster_id, callback_success, callba
  * This function gets the channel settings for configuration of the Guest Star feature for a particular host.
  * 
  * * Parameter `moderator_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_READ_GUEST_STAR`, `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`, `TWITCH_SCOPE_MODERATOR_READ_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_GUEST_STAR`, `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`, `TWITCH_SCOPE_MODERATOR_READ_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -2974,7 +3028,7 @@ function twitch_guest_star_get_channel_guest_star_settings(optionals, callback_s
  * This function mutates the channel settings for configuration of the Guest Star feature for a particular host.
  * 
  * * Parameter `broadcaster_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`
  * 
  * @param {string} broadcaster_id The ID of the broadcaster you want to update Guest Star settings for.
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -3005,7 +3059,7 @@ function twitch_guest_star_update_channel_guest_star_settings(optionals, callbac
  * 
  * This function gets information about an ongoing Guest Star session for a particular channel.
  * 
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_READ_GUEST_STAR`, `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`, `TWITCH_SCOPE_MODERATOR_READ_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_GUEST_STAR`, `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`, `TWITCH_SCOPE_MODERATOR_READ_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
  * * Guests must be either invited or assigned a slot within the session
  * 
  * @param {string} broadcaster_id ID for the user hosting the Guest Star session.
@@ -3052,7 +3106,7 @@ function twitch_guest_star_get_guest_star_session(optionals, callback_success, c
  * This function programmatically creates a Guest Star session on behalf of the broadcaster. Requires the broadcaster to be present in the call interface, or the call will be ended automatically.
  * 
  * * Parameter `broadcaster_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`
  * 
  * @param {string} broadcaster_id The ID of the broadcaster you want to create a Guest Star session for. Provided `broadcaster_id` must match the `user_id` in the auth token.
  * 
@@ -3097,7 +3151,7 @@ function twitch_guest_star_create_guest_star_session(optionals, callback_success
  * This function programmatically ends a Guest Star session on behalf of the broadcaster. Performs the same action as if the host clicked the "End Call" button in the Guest Star UI.
  * 
  * * Parameter `broadcaster_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`
  * 
  * @param {string} broadcaster_id : The ID of the broadcaster you want to end a Guest Star session for. Provided `broadcaster_id` must match the `user_id` in the auth token.
  * @param {string} session_id : ID for the session to end on behalf of the broadcaster.
@@ -3143,7 +3197,7 @@ function twitch_guest_star_end_guest_star_session(optionals, callback_success, c
  * This function provides the caller with a list of pending invites to a Guest Star session, including the invitee's ready status while joining the waiting room.
  * 
  * * Parameter `broadcaster_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_READ_GUEST_STAR`, `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`, `TWITCH_SCOPE_MODERATOR_READ_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_GUEST_STAR`, `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`, `TWITCH_SCOPE_MODERATOR_READ_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
  * 
  * @param {string} broadcaster_id The ID of the broadcaster running the Guest Star session.
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the `user_id` in the user access token.
@@ -3180,7 +3234,7 @@ function twitch_guest_star_get_guest_star_invites(optionals, callback_success, c
  * This function sends an invite to a specified guest on behalf of the broadcaster for a Guest Star session in progress.
  * 
  * * Parameter `moderator_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
  * 
  * @param {string} broadcaster_id The ID of the broadcaster running the Guest Star session.
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the `user_id` in the user access token.
@@ -3208,7 +3262,7 @@ function twitch_guest_star_send_guest_star_invite(optionals, callback_success, c
  * This function revokes a previously sent invite for a Guest Star session.
  * 
  * * Parameter `moderator_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
  * 
  * @param {string} broadcaster_id The ID of the broadcaster running the Guest Star session.
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the `user_id` in the user access token.
@@ -3236,7 +3290,7 @@ function twitch_guest_star_delete_guest_star_invite(optionals, callback_success,
  * This function allows a previously invited user to be assigned a slot within the active Guest Star session, once that guest has indicated they are ready to join.
  * 
  * * Parameter `moderator_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
  * 
  * @param {string} broadcaster_id The ID of the broadcaster running the Guest Star session.
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the `user_id` in the user access token.
@@ -3265,7 +3319,7 @@ function twitch_guest_star_assign_guest_star_slot(optionals, callback_success, c
  * This function allows a user to update the assigned slot for a particular user within the active Guest Star session.
  * 
  * * Parameter `moderator_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
  * 
  * @param {string} broadcaster_id The ID of the broadcaster running the Guest Star session.
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the `user_id` in the user access token.
@@ -3294,7 +3348,7 @@ function twitch_guest_star_update_guest_star_slot(optionals, callback_success, c
  * This function allows a caller to remove a slot assignment from a user participating in an active Guest Star session. This revokes their access to the session immediately and disables their access to publish or subscribe to media within the session.
  * 
  * * Parameter `moderator_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
  * 
  * @param {string} broadcaster_id The ID of the broadcaster running the Guest Star session.
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token.
@@ -3324,7 +3378,7 @@ function twitch_guest_star_delete_guest_star_slot(optionals, callback_success, c
  * This function allows a user to update slot settings for a particular guest within a Guest Star session, such as allowing the user to share audio or video within the call as a host. These settings will be broadcasted to all subscribers which control their view of the guest in that slot. One or more of the optional parameters to this API can be specified at any time.
  * 
  * * Parameter `moderator_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR` or `TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR`
  * 
  * @param {string} broadcaster_id The ID of the broadcaster running the Guest Star session.
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token.
@@ -3524,11 +3578,11 @@ function twitch_moderation_get_automod_settings(broadcaster_id, moderator_id, ca
  * 
  * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_AUTOMOD_SETTINGS`.]]
  * 
- * Because PUT is an overwrite operation, you must include all the fields that you want set after the operation completes. Typically, you'll send a GET request, update the fields you want to change, and pass that object in the PUT request.
+ * You must include all the fields that you want set after the operation completes. Typically, you'll call ${function.twitch_moderation_get_automod_settings}, update the fields you want to change in the sturct, and then pass the struct to this function.
  * 
  * You may set either `overall_level` or the individual settings like `aggression`, but not both.
  * 
- * Setting `overall_level` applies default values to the individual settings. However, setting `overall_level` to 4 does not necessarily mean that it applies 4 to all the individual settings. Instead, it applies a set of recommended defaults to the rest of the settings. For example, if you set `overall_level` to 2, Twitch provides some filtering on discrimination and sexual content, but more filtering on hostility (see the first example response).
+ * Setting `overall_level` applies default values to the individual settings. However, setting `overall_level` to 4 does not necessarily mean that it applies 4 to all the individual settings. Instead, it applies a set of recommended defaults to the rest of the settings. For example, if you set `overall_level` to 2, Twitch provides some filtering on discrimination and sexual content, but more filtering on hostility.
  * 
  * If `overall_level` is currently set and you update `swearing` to 3, `overall_level` will be set to `undefined` and all settings other than `swearing` will be set to 0. The same is true if individual settings are set and you update `overall_level` to 3 — all the individual settings are updated to reflect the default level.
  * 
@@ -3550,7 +3604,7 @@ function twitch_moderation_get_automod_settings(broadcaster_id, moderator_id, ca
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose AutoMod settings you want to update. 
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token. 
- * @param {string} settings The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token. 
+ * @param {struct} settings The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
@@ -3932,7 +3986,7 @@ function twitch_moderation_delete_chat_messages(broadcaster_id, moderator_id, op
  * This function gets a list of channels that the specified user has moderator privileges in.
  * 
  * * Parameter `user_id` must match the user ID in the [User-Access Token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires OAuth Scope: `TWITCH_SCOPE_USER_READ_MODERATED_CHANNELS`
+ * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_MODERATED_CHANNELS`
  * 
  * @param {string} user_id A user's ID. Returns the list of channels that this user has moderator privileges in. This ID must match the user ID in the user OAuth token 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -4754,7 +4808,7 @@ function twitch_schedule_update_channel_stream_schedule(broadcaster_id, optional
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `is_recurring` : ${type.boolean} : A Boolean value that determines whether the broadcast recurs weekly. Is `true` if the broadcast recurs weekly. Only partners and affiliates may add non-recurring broadcasts.
- * - `category_id` : ${type.string} : The ID of the category that best represents the broadcast's content. To get the category ID, use the ${function.twitch_search_search_categories} function.
+ * - `category_id` : ${type.string} : The ID of the category that best represents the broadcast's content. To get the category ID, use the ${function.twitch_search_categories} function.
  * - `title` : ${type.string} : The broadcast's title. The title may contain a maximum of 140 characters.
  * 
  * @param {function} callback_success Triggered if the request succeeded
@@ -4806,7 +4860,7 @@ function twitch_schedule_create_channel_stream_schedule_segment(broadcaster_id, 
  * 
  * - `start_time` : ${type.string} : The date and time that the broadcast segment starts. Specify the date and time in RFC3339 format (for example, 2022-08-02T06:00:00Z). **NOTE:** Only partners and affiliates may update a broadcast's start time and only for non-recurring segments.
  * - `duration` : ${type.string} : The length of time, in minutes, that the broadcast is scheduled to run. The duration must be in the range 30 through 1380 (23 hours).
- * - `category_id` : ${type.string} : The ID of the category that best represents the broadcast's content. To get the category ID, use the ${function.twitch_search_search_categories} function.
+ * - `category_id` : ${type.string} : The ID of the category that best represents the broadcast's content. To get the category ID, use the ${function.twitch_search_categories} function.
  * - `title` : ${type.string} : The broadcast's title. The title may contain a maximum of 140 characters.
  * - `is_canceled` : ${type.boolean} : A Boolean value that indicates whether the broadcast is canceled. Set to `true` to cancel the segment.**NOTE**: For recurring segments, the API cancels the first segment after the current UTC date and time and not the specified segment (unless the specified segment is the next segment after the current UTC date and time).
  * - `timezone` : ${type.string} : The time zone where the broadcast takes place. Specify the time zone using [IANA time zone database](https://www.iana.org/time-zones) format (for example, America/New_York).
@@ -4871,7 +4925,7 @@ function twitch_schedule_delete_channel_stream_schedule_segment(broadcaster_id, 
 
 
 /**
- * @func twitch_search_search_categories
+ * @func twitch_search_categories
  * @desc **Twitch Endpoint:** [Search Categories](https://dev.twitch.tv/docs/api/reference/#search-categories)
  * 
  * This function gets the games or categories that match the specified query.
@@ -4903,11 +4957,11 @@ function twitch_schedule_delete_channel_stream_schedule_segment(broadcaster_id, 
  * @event_end
  * @func_end
  */
-function twitch_search_search_categories(query, optionals, callback_success, callback_failed) {}
+function twitch_search_categories(query, optionals, callback_success, callback_failed) {}
 
 
 /**
- * @func twitch_search_search_channels
+ * @func twitch_search_channels
  * @desc **Twitch Endpoint:** [Search Channels](https://dev.twitch.tv/docs/api/reference/#search-channels)
  * 
  * This function gets the channels that match the specified query and have streamed content within the past 6 months.
@@ -4953,7 +5007,7 @@ function twitch_search_search_categories(query, optionals, callback_success, cal
  * @event_end
  * @func_end
  */
-function twitch_search_search_channels(query, optionals, callback_success, callback_failed) {}
+function twitch_search_channels(query, optionals, callback_success, callback_failed) {}
 
 
 /**
@@ -5333,6 +5387,17 @@ function twitch_teams_get_teams(name, id, callback_success, callback_failed) {}
 
 
 /**
+ * @func twitch_users_get_user
+ * @desc **Twitch Endpoint:** N / A
+ * 
+ * This function returns the current Twitch user.
+ * 
+ * This function is not part of the Twitch API and is specific to the extension.
+ * 
+ * @func_end
+ */
+
+/**
  * @func twitch_users_get_users
  * @desc **Twitch Endpoint:** [Get Users](https://dev.twitch.tv/docs/api/reference/#get-users)
  * 
@@ -5388,7 +5453,7 @@ function twitch_users_get_users(optionals, callback_success, callback_failed) {}
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `description` : ${type.string} : The string to update the channel's description to. The description is limited to a maximum of 300 characters. To remove the description, specify this parameter but don't set it's value (for example, <code class="highlighter-rouge">?description=</code>).
+ * - `description` : ${type.string} : The string to update the channel's description to. The description is limited to a maximum of 300 characters. To remove the description, specify this member and set it to an empty string `""`.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
@@ -5642,7 +5707,7 @@ function twitch_users_update_user_extensions(data, callback_success, callback_fa
  * 
  * @param {string} id A list of IDs that identify the videos you want to get. To get more than one video, include this parameter for each video you want to get. For example, `id=1234&amp;id=5678`. You may specify a maximum of 100 IDs. The endpoint ignores duplicate IDs and IDs that weren't found (if there's at least one valid ID).The `id`, `user_id`, and `game_id` parameters are mutually exclusive. 
  * @param {string} user_id The ID of the user whose list of videos you want to get. The `id`, `user_id`, and `game_id` parameters are mutually exclusive. 
- * @param {string} game_id A category or game ID. The response contains a maximum of 500 videos that show this content. To get category/game IDs, use the ${function.twitch_search_search_categories} function.The `id`, `user_id`, and `game_id` parameters are mutually exclusive. 
+ * @param {string} game_id A category or game ID. The response contains a maximum of 500 videos that show this content. To get category/game IDs, use the ${function.twitch_search_categories} function.The `id`, `user_id`, and `game_id` parameters are mutually exclusive. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `language` : ${type.string} : A filter used to filter the list of videos by the language that the video owner broadcasts in. For example, to get videos that were broadcast in German, set this parameter to the ISO 639-1 two-letter code for German (i.e., `DE`). For a list of supported languages, see [Supported Stream Language](https://help.twitch.tv/s/article/languages-on-twitch?language=en_US#streamlang). If the language is not supported, use `"other"`. Specify this parameter only if you specify the `game_id` parameter.
@@ -5941,6 +6006,10 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
  * @ref twitch_chat_get_global_chat_badges
  * @ref twitch_chat_get_chat_settings
  * @ref twitch_chat_get_user_emotes
+ * @ref twitch_chat_live_connect
+ * @ref twitch_chat_live_send
+ * @ref twitch_chat_live_send_raw
+ * @ref twitch_chat_live_disconnect
  * @ref twitch_chat_update_chat_settings
  * @ref twitch_chat_send_chat_announcement
  * @ref twitch_chat_send_a_shoutout
@@ -6014,7 +6083,7 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
 /**
  * @module extensions
  * @title Extensions
- * @desc 
+ * @desc [[Note: these functions haven not been implemented yet.]]
  * 
  * @section_func
  * @desc These are the functions of this module: 
@@ -6045,6 +6114,8 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
  * @ref twitch_eventsub_create_eventsub_subscription
  * @ref twitch_eventsub_delete_eventsub_subscription
  * @ref twitch_eventsub_get_eventsub_subscriptions
+ * @ref twitch_eventsub_live_connect
+ * @ref twitch_eventsub_live_disconnect
  * @section_end
  * 
  * @module_end
@@ -6218,8 +6289,8 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
  * 
  * @section_func
  * @desc These are the functions of this module: 
- * @ref twitch_search_search_categories
- * @ref twitch_search_search_channels
+ * @ref twitch_search_categories
+ * @ref twitch_search_channels
  * @section_end
  * 
  * @module_end
@@ -6279,6 +6350,7 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
  * @section_func
  * @desc These are the functions of this module: 
  * @ref twitch_users_get_users
+ * @ref twitch_users_get_user
  * @ref twitch_users_update_user
  * @ref twitch_users_get_user_block_list
  * @ref twitch_users_block_user
