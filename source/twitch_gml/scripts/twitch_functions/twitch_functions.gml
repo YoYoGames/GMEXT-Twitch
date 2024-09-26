@@ -222,15 +222,16 @@ function __twitch_auth_defer_callback(_callback_success, _callback_failed) {
 		// The context of the callback method includes the deferred values from the authentication
 		// call this allows us to silently handle chained actions to store important information
 		twitch_users_get_users(undefined, method(_deferred_context, function(_data) {
-			var _manager = __twitch_get_singleton();
+			
+			with (__twitch_get_singleton()) {
+				user_struct = _data.data[0];
 				
-			_manager.user_struct = _data.data[0];
-				
-			/// feather ignore once GM1011
-			/// feather ignore once GM1013
-
-			_manager.refresher = call_later(600, time_source_units_seconds, twitch_auth_refresh_token, true);
-				
+				// Do this to avoid a memory leak when spamming authentication calls
+				if (is_undefined(refresher)) {
+					refresher = call_later(600, time_source_units_seconds, twitch_auth_refresh_token, true);
+				}
+			}
+			
 			if (is_callable(callback_success)) {
 				/// feather ignore once GM1013
 				callback_success(data);
