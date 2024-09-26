@@ -271,7 +271,7 @@ function __twitch_auth_session_save(_session_data) {
 }
 
 function twitch_auth(_scopes, _force_verify = false, _state = undefined, _callback_success = undefined, _callback_failed = undefined)
-{
+{	
 	var _url = $"{TWITCH_AUTH_ENDPOINT}oauth2/authorize";
 	
 	var _port = twitch_get_redirect_port();
@@ -344,7 +344,7 @@ function twitch_auth_app_token(_callback_success = undefined, _callback_failed =
 };
 
 function twitch_auth_refresh_token(_callback_success = undefined, _callback_failed = undefined)
-{	
+{
 	var _url = $"{TWITCH_AUTH_ENDPOINT}oauth2/token";
 
 	var _header_map = ds_map_create();
@@ -368,7 +368,7 @@ function twitch_auth_refresh_token(_callback_success = undefined, _callback_fail
 };
 
 function twitch_auth_from_cache(_callback_success = undefined, _callback_failed = undefined)
-{
+{	
 	if (!__twitch_auth_session_load()) return 1;
 	
 	var _deferred_callback = __twitch_auth_defer_callback(_callback_success, _callback_failed);
@@ -1426,7 +1426,7 @@ function twitch_guest_star_get_guest_star_session(_broadcaster_id, _moderator_id
 	return _request;
 };
 
-function twitch_guest_create_guest_star_session(_broadcaster_id, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_create_guest_star_session(_broadcaster_id, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/session";
 
@@ -1442,7 +1442,7 @@ function twitch_guest_create_guest_star_session(_broadcaster_id, _callback_succe
 	return _request;
 };
 
-function twitch_guest_end_guest_star_session(_broadcaster_id, _session_id, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_end_guest_star_session(_broadcaster_id, _session_id, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/session";
 
@@ -1458,7 +1458,7 @@ function twitch_guest_end_guest_star_session(_broadcaster_id, _session_id, _call
 	return _request;
 };
 
-function twitch_guest_get_guest_star_invites(_broadcaster_id, _moderator_id, _session_id, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_get_guest_star_invites(_broadcaster_id, _moderator_id, _session_id, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/invites";
 
@@ -1474,7 +1474,7 @@ function twitch_guest_get_guest_star_invites(_broadcaster_id, _moderator_id, _se
 	return _request;
 };
 
-function twitch_guest_send_guest_star_invite(_broadcaster_id, _moderator_id, _session_id, _guest_id, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_send_guest_star_invite(_broadcaster_id, _moderator_id, _session_id, _guest_id, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/invites";
 
@@ -1490,7 +1490,7 @@ function twitch_guest_send_guest_star_invite(_broadcaster_id, _moderator_id, _se
 	return _request;
 };
 
-function twitch_guest_delete_guest_star_invite(_broadcaster_id, _moderator_id, _session_id, _guest_id, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_delete_guest_star_invite(_broadcaster_id, _moderator_id, _session_id, _guest_id, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/invites";
 
@@ -1506,7 +1506,7 @@ function twitch_guest_delete_guest_star_invite(_broadcaster_id, _moderator_id, _
 	return _request;
 };
 
-function twitch_guest_assign_guest_star_slot(_broadcaster_id, _moderator_id, _session_id, _guest_id, _slot_id, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_assign_guest_star_slot(_broadcaster_id, _moderator_id, _session_id, _guest_id, _slot_id, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/slot";
 
@@ -1522,7 +1522,7 @@ function twitch_guest_assign_guest_star_slot(_broadcaster_id, _moderator_id, _se
 	return _request;
 };
 
-function twitch_guest_update_guest_star_slot(_broadcaster_id, _moderator_id, _session_id, _source_slot_id, _destination_slot_id, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_update_guest_star_slot(_broadcaster_id, _moderator_id, _session_id, _source_slot_id, _destination_slot_id, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/slot";
 
@@ -1538,7 +1538,7 @@ function twitch_guest_update_guest_star_slot(_broadcaster_id, _moderator_id, _se
 	return _request;
 };
 
-function twitch_guest_delete_guest_star_slot(_broadcaster_id, _moderator_id, _session_id, _guest_id, _slot_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_delete_guest_star_slot(_broadcaster_id, _moderator_id, _session_id, _guest_id, _slot_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/slot";
 
@@ -1554,7 +1554,7 @@ function twitch_guest_delete_guest_star_slot(_broadcaster_id, _moderator_id, _se
 	return _request;
 };
 
-function twitch_guest_update_guest_star_slot_settings(_broadcaster_id, _moderator_id, _session_id, _guest_id, _slot_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_update_guest_star_slot_settings(_broadcaster_id, _moderator_id, _session_id, _guest_id, _slot_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/slot_settings";
 
@@ -2414,7 +2414,7 @@ function twitch_users_get_users(_optionals = {}, _callback_success = undefined, 
 	return _request;
 };
 
-function twitch_users_update_user(_optionals, _callback_success = undefined, _callback_failed = undefined)
+function twitch_users_update_user(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/users";
 
@@ -2423,7 +2423,6 @@ function twitch_users_update_user(_optionals, _callback_success = undefined, _ca
 	_header_map[? "Client-Id"] = twitch_get_client_id();
 
 	var _deferred_callback = method({ callback_success: _callback_success }, function(_data) {
-	
 		with (__twitch_get_singleton()) {
 			var _user = _data.data[0];
 			user_struct = _user;
@@ -2432,7 +2431,6 @@ function twitch_users_update_user(_optionals, _callback_success = undefined, _ca
 		if (is_callable(callback_success)) {
 			callback_success(_data);
 		}
-	
 	});
 
 	_url = __twitch_url_from_params(_url, undefined, _optionals);
