@@ -209,7 +209,7 @@ function twitch_analytics_get_game_analytics() {}
  * 
  * See: [Authentication](https://dev.twitch.tv/docs/authentication/)
  * 
- * @param {string} scopes The APIs that you're calling identify the scopes you must list. 
+ * @param {array[constant.TWITCH_SCOPE]} scopes The APIs that you're calling identify the scopes you must list.
  * @param {boolean} [force_verify] Set to `true` to force the user to re-authorize your app's access to their resources. The default is `false`.
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
@@ -5759,13 +5759,21 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
 
 /**
  * @module home
- * @title Twitch Reference
- * @desc > **Twitch:** [Reference](https://dev.twitch.tv/docs/api/reference/)
+ * @title Home
+ * @desc This is the Twitch extension for GameMaker.
  * 
- * This is the Twitch extension for GameMaker.
+ * This extension allows you to interact with Twitch using the [Twitch API](https://dev.twitch.tv/docs/api/). It is a wrapper around 
+ * 
+ * @section Guides
+ * @desc These are the available guides for the Twitch extension:
+ * @ref page.setup
+ * @ref page.getting_started
+ * @section_end
  * 
  * @section Modules
- * @desc These are the modules available in the Twitch extension.
+ * @desc **Twitch:** [Reference](https://dev.twitch.tv/docs/api/reference/)
+ * 
+ * These are the modules available in the Twitch extension:
  * @ref module.ads
  * @ref module.analytics
  * @ref module.auth
