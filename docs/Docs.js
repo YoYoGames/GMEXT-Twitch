@@ -1,6 +1,207 @@
 // Functions
 
 /**
+ * @func twitch_ads_start_commercial
+ * @desc **Twitch Endpoint:** [Start Commercial](https://dev.twitch.tv/docs/api/reference/#start-commercial)
+ * 
+ * This function starts a commercial on the specified channel.
+ * 
+ * [[Note: Only partners and affiliates may run commercials and they must be streaming live at the time.]]
+ * 
+ * [[Note: Only the broadcaster may start a commercial; the broadcaster's editors and moderators may not start commercials on behalf of the broadcaster.]]
+ * 
+ * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_EDIT_COMMERCIAL`_ED scope.
+ * 
+ * @param {string} broadcaster_id The ID of the partner or affiliate broadcaster that wants to run the commercial. This ID must match the user ID found in the OAuth token.
+ * @param {string} length The length of the commercial you requested. If you request a commercial that's longer than 180 seconds, the API uses 180 seconds.
+ * @param {function} callback_success Triggered if the request succeeded
+ * @param {function} callback_failed Triggered if the request failed
+ * 
+ * @event callback_success
+ * @desc These members are returned in the success callback:
+ * 
+ * | Member | Type | Description |
+ * | ------ | ---- | ----------- |
+ * | data | ${type.array} of ${type.struct} | An array that contains a single struct with the status of your start commercial request. |
+ * | &nbsp;├──&nbsp;length | ${type.real} | The length of the commercial you requested. If you request a commercial that's longer than 180 seconds, the API uses 180 seconds. |
+ * | &nbsp;├──&nbsp;message | ${type.string} | A message that indicates whether Twitch was able to serve an ad. |
+ * | &nbsp;└──&nbsp;retry_after | ${type.real} | The number of seconds you must wait before running another commercial. |
+ * 
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
+ * @func_end
+ */
+function twitch_ads_start_commercial(broadcaster_id, length, callback_success, callback_failed) {}
+
+
+/**
+ * @func twitch_ads_get_ad_schedule
+ * @desc **Twitch Endpoint:** [Get Ad Schedule](https://dev.twitch.tv/docs/api/reference/#get-ad-schedule)
+ * 
+ * This function returns ad schedule related information, including snooze, when the last ad was run, when the next ad is scheduled, and if the channel is currently in pre-roll free time. Note that a new ad cannot be run until 8 minutes after running a previous ad.
+ * 
+ * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_ADS`. The `user_id` in the user access token must match the `broadcaster_id`.
+ * 
+ * @param {string} broadcaster_id Provided `broadcaster_id` must match the `user_id` in the auth token.
+ * @param {function} callback_success Triggered if the request succeeded
+ * @param {function} callback_failed Triggered if the request failed
+ * 
+ * @event callback_success
+ * @desc These members are returned in the success callback:
+ * 
+ * | Member | Type | Description |
+ * | ------ | ---- | ----------- |
+ * | data | ${type.array} of ${type.struct} | A list that contains information related to the channel's ad schedule.|
+ * | &nbsp;├──&nbsp;snooze_count | ${type.real} | The number of snoozes available for the broadcaster.|
+ * | &nbsp;├──&nbsp;snooze_refresh_at | ${type.string} | The UTC timestamp when the broadcaster will gain an additional snooze, in RFC3339 format.|
+ * | &nbsp;├──&nbsp;next_ad_at | ${type.string} | The UTC timestamp of the broadcaster's next scheduled ad, in RFC3339 format. Empty if the channel has no ad scheduled or is not live.|
+ * | &nbsp;├──&nbsp;duration | ${type.real} | The length in seconds of the scheduled upcoming ad break.|
+ * | &nbsp;├──&nbsp;last_ad_at | ${type.string} | The UTC timestamp of the broadcaster's last ad-break, in RFC3339 format. Empty if the channel has not run an ad or is not live.|
+ * | &nbsp;└──&nbsp;preroll_free_time | ${type.real} | The amount of pre-roll free time remaining for the channel in seconds. Returns 0 if they are currently not pre-roll free.|
+ * 
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
+ * @func_end
+ */
+function twitch_ads_get_ad_schedule(broadcaster_id, callback_success, callback_failed) {}
+
+
+/**
+ * @func twitch_ads_snooze_next_ad
+ * @desc **Twitch Endpoint:** [Snooze Next Ad](https://dev.twitch.tv/docs/api/reference/#snooze-next-ad)
+ * 
+ * If available, pushes back the timestamp of the upcoming automatic mid-roll ad by 5 minutes. This endpoint duplicates the snooze functionality in the creator dashboard's Ads Manager.
+ * 
+ * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_ADS`. The `user_id` in the user access token must match the `broadcaster_id`.
+ * 
+ * @param {string} broadcaster_id Provided `broadcaster_id` must match the `user_id` in the auth token.
+ * @param {function} callback_success Triggered if the request succeeded
+ * @param {function} callback_failed Triggered if the request failed
+ * 
+ * @event callback_success
+ * @desc These members are returned in the success callback:
+ * 
+ * | Member | Type | Description |
+ * | ------ | ---- | ----------- |
+ * | data | ${type.array} of ${type.struct} | A list that contains information about the channel's snoozes and next upcoming ad after successfully snoozing.|
+ * | &nbsp;├──&nbsp;snooze_count | ${type.real} | The number of snoozes available for the broadcaster.|
+ * | &nbsp;├──&nbsp;snooze_refresh_at | ${type.string} | The UTC timestamp when the broadcaster will gain an additional snooze, in RFC3339 format.|
+ * | &nbsp;└──&nbsp;next_ad_at | ${type.string} | The UTC timestamp of the broadcaster's next scheduled ad, in RFC3339 format.|
+ * 
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
+ * @func_end
+ */
+function twitch_ads_snooze_next_ad(broadcaster_id, callback_success, callback_failed) {}
+
+
+/**
+ * @func twitch_analytics_get_extension_analytics
+ * @desc **Twitch Endpoint:** [Get Extension Analytics](https://dev.twitch.tv/docs/api/reference/#get-extension-analytics)
+ * 
+ * Gets an analytics report for one or more extensions. The response contains the URLs used to download the reports (CSV files). [Learn More](https://dev.twitch.tv/docs/insights)
+ * 
+ * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_ANALYTICS_READ_EXTENSIONS`.
+ * 
+ * @param {struct} optionals
+ * 
+ * - extension_id : ${type.string} : The extension's client ID. If specified, the response contains a report for the specified extension. If not specified, the response includes a report for each extension that the authenticated user owns.
+ * - type : ${type.string} : The type of analytics report to get. Possible values are:
+ * 
+ *   * `"overview_v2"`
+ * 
+ * - started_at : ${type.string} : The reporting window's start date, in RFC3339 format. Set the time portion to zeroes (for example, `"2021-10-22T00:00:00Z"`).
+ * 
+ *   The start date must be on or after January 31, 2018. If you specify an earlier date, the API ignores it and uses January 31, 2018. If you specify a start date, you must specify an end date. If you don't specify a start and end date, the report includes all available data since January 31, 2018.
+ * 
+ *   The report contains one row of data for each day in the reporting window.
+ * 
+ * - ended_at : ${type.string} : The reporting window's end date, in RFC3339 format. Set the time portion to zeroes (for example, `"2021-10-27T00:00:00Z"`). The report is inclusive of the end date.
+ * 
+ *   Specify an end date only if you provide a start date. Because it can take up to two days for the data to be available, you must specify an end date that's earlier than today minus one to two days. If not, the API ignores your end date and uses an end date that is today minus one to two days.
+ * 
+ * - first : ${type.string} : The maximum number of report URLs to return per page in the response. The minimum page size is 1 URL per page and the maximum is 100 URLs per page. The default is 20.
+ * 
+ *   **NOTE**: While you may specify a maximum value of 100, the response will contain at most 20 URLs per page.
+ * 
+ * - after : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)
+ * 
+ *   This parameter is ignored if the `extension_id` parameter is set.
+ * 
+ * @event callback_success
+ * @desc These members are returned in the success callback:
+ * 
+ * | Member | Type | Description |
+ * | ------ | ---- | ----------- |
+ * | data | ${type.array} of ${type.struct} | A list of reports. The reports are returned in no particular order; however, the data within each report is in ascending order by date (newest first). The report contains one row of data per day of the reporting window; the report contains rows for only those days that the extension was used. The array is empty if there are no reports. |
+ * | &nbsp;├──&nbsp;extension_id | ${type.string} | An ID that identifies the extension that the report was generated for. |
+ * | &nbsp;├──&nbsp;URL | ${type.string} | The URL that you use to download the report. The URL is valid for 5 minutes. |
+ * | &nbsp;├──&nbsp;type | ${type.string} | The type of report. |
+ * | &nbsp;├──&nbsp;date_range | ${type.struct} | The reporting window's start and end dates, in RFC3339 format. |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;started_at | ${type.string} | The reporting window's start date. |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;ended_at | ${type.string} | The reporting window's end date. |
+ * | &nbsp;└──&nbsp;pagination | ${type.struct} | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination) |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;cursor | ${type.string} | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter. |
+ * 
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
+ * 
+ * @func_end
+ */
+function twitch_analytics_get_extension_analytics() {}
+
+
+/**
+ * @func twitch_analytics_get_game_analytics
+ * @desc **Twitch Endpoint:** [Get Game Analytics](https://dev.twitch.tv/docs/api/reference/#get-game-analytics)
+ * 
+ * This function gets an analytics report for one or more games. The response contains the URLs used to download the reports (CSV files). [Learn more](https://dev.twitch.tv/docs/insights)
+ * 
+ * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_ANALYTICS_READ_GAMES`.
+ * 
+ * @param {struct} optionals The optional parameters to be passed into the function:
+ * 
+ * - game_id : ${type.string} : The game's client ID. If specified, the response contains a report for the specified game. If not specified, the response includes a report for each of the authenticated user's games.
+ * - type : ${type.string} : The type of analytics report to get. Possible values are:
+ * 
+ *   * `"overview_v2"`
+ * 
+ * - started_at : ${type.string} : The reporting window's start date, in RFC3339 format. Set the time portion to zeroes (for example, `"2021-10-22T00:00:00Z"`). If you specify a start date, you must specify an end date.
+ * 
+ *   The start date must be within one year of today's date. If you specify an earlier date, the API ignores it and uses a date that's one year prior to today's date. If you don't specify a start and end date, the report includes all available data for the last 365 days from today.
+ * 
+ *   The report contains one row of data for each day in the reporting window.
+ * 
+ * - ended_at : ${type.string} : The reporting window's end date, in RFC3339 format. Set the time portion to zeroes (for example, 2021-10-22T00:00:00Z). The report is inclusive of the end date.
+ *   
+ *   Specify an end date only if you provide a start date. Because it can take up to two days for the data to be available, you must specify an end date that's earlier than today minus one to two days. If not, the API ignores your end date and uses an end date that is today minus one to two days.
+ *   
+ * - first : ${type.real} : The maximum number of report URLs to return per page in the response. The minimum page size is 1 URL per page and the maximum is 100 URLs per page. The default is 20.
+ * 
+ *   **NOTE**: While you may specify a maximum value of 100, the response will contain at most 20 URLs per page.
+ * 
+ * - after : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ *   
+ *   This parameter is ignored if `game_id` parameter is set.
+ * 
+ * @func_end
+ */
+function twitch_analytics_get_game_analytics() {}
+
+
+/**
+ * 
+ */
+
+/**
  * @func twitch_auth
  * @desc **Twitch Endpoint:** N / A
  * 
@@ -9,7 +210,10 @@
  * See: [Authentication](https://dev.twitch.tv/docs/authentication/)
  * 
  * @param {string} scopes The APIs that you're calling identify the scopes you must list. 
- * @param {boolean} [force_verify] Set to `true` to force the user to re-authorize your app's access to their resources. The default is `false`. 
+ * @param {boolean} [force_verify] Set to `true` to force the user to re-authorize your app's access to their resources. The default is `false`.
+ * @param {function} callback_success Triggered if the request succeeded
+ * @param {function} callback_failed Triggered if the request failed
+ * 
  * @event callback_success
  * @desc These members are returned in the success callback: 
  * 
@@ -25,8 +229,11 @@
  * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
  * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
  * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. **NOTE**: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The struct includes this field only if the user access token includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMAIL`. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
  * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -45,9 +252,11 @@ function twitch_auth(scopes, force_verify) {}
  * See: [Authentication](https://dev.twitch.tv/docs/authentication/)
  * 
  * @param {string} code The code that the `/authorize` response returned in the code parameter.
+ * @param {function} callback_success Triggered if the request succeeded
+ * @param {function} callback_failed Triggered if the request failed
  * 
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -61,8 +270,11 @@ function twitch_auth(scopes, force_verify) {}
  * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
  * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
  * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The struct includes this field only if the user access token includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMAIL`. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
  * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -73,12 +285,15 @@ function twitch_auth_exchange_code(code) {}
  * @func twitch_auth_app_token
  * @desc **Twitch Endpoint:** N / A
  * 
- * This function the client credentials grant flow is meant only for server-to-server API requests that use an app access token.
+ * This function authenticates using an app access token.
  * 
  * See: [Authentication](https://dev.twitch.tv/docs/authentication/)
  * 
+ * @param {function} callback_success Triggered if the request succeeded
+ * @param {function} callback_failed Triggered if the request failed
+ * 
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -92,8 +307,11 @@ function twitch_auth_exchange_code(code) {}
  * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
  * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
  * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The struct includes this field only if the user access token includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMAIL`. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
  * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -110,8 +328,11 @@ function twitch_auth_app_token() {}
  * 
  * See: [Authentication](https://dev.twitch.tv/docs/authentication/)
  * 
+ * @param {function} callback_success Triggered if the request succeeded
+ * @param {function} callback_failed Triggered if the request failed
+ * 
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -125,8 +346,11 @@ function twitch_auth_app_token() {}
  * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
  * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
  * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The struct includes this field only if the user access token includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMAIL`. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
  * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -141,10 +365,13 @@ function twitch_auth_refresh_token() {}
  * 
  * It returns the request ID if a cached token is available or -1 otherwise.
  * 
+ * @param {function} callback_success Triggered if the request succeeded
+ * @param {function} callback_failed Triggered if the request failed
+ * 
  * @returns {real}
  * 
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -158,8 +385,11 @@ function twitch_auth_refresh_token() {}
  * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
  * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
  * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The struct includes this field only if the user access token includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMAIL`. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
  * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -219,19 +449,19 @@ function twitch_auth_signout() {}
  * @member TWITCH_SCOPE_CHAT_READ The value `"chat:read"`. View chat messages sent in a chatroom using an IRC connection.
  * @member TWITCH_SCOPE_CLIPS_EDIT The value `"clips:edit"`. Manage Clips for a channel.
  * @member TWITCH_SCOPE_MODERATION_READ The value `"moderation:read"`. View a channel's moderation data including Moderators, Bans, Timeouts, and Automod settings.
- * @member TWITCH_SCOPE_MODERATOR_READ_AUTOMOD_SETTINGS The value `"moderator:read:automod_settings"`. View a broadcaster’s AutoMod settings.
+ * @member TWITCH_SCOPE_MODERATOR_READ_AUTOMOD_SETTINGS The value `"moderator:read:automod_settings"`. View a broadcaster's AutoMod settings.
  * @member TWITCH_SCOPE_MODERATOR_READ_BLOCKED_TERMS The value `"moderator:read:blocked_terms"`. View a broadcaster's list of blocked terms.
  * @member TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS The value `"moderator:read:chat_settings"`. View a broadcaster's chat room settings.
  * @member TWITCH_SCOPE_MODERATOR_READ_FOLLOWERS The value `"moderator:read:followers"`. Read the followers of a broadcaster.
  * @member TWITCH_SCOPE_MODERATOR_READ_CHATTERS The value `"moderator:read:chatters"`. View the chatters in a broadcaster's chat room.
  * @member TWITCH_SCOPE_MODERATOR_READ_UNBAN_REQUESTS The value `"moderator:read:unban_requests"`. View a broadcaster's unban requests.
  * @member TWITCH_SCOPE_MODERATOR_READ_GUEST_STAR The value `"moderator:read:guest_star"`. Read Guest Star details for your channel.
- * @member TWITCH_SCOPE_MODERATOR_READ_SHIELD_MODE The value `"moderator:read:shield_mode"`. View a broadcaster’s Shield Mode status.
+ * @member TWITCH_SCOPE_MODERATOR_READ_SHIELD_MODE The value `"moderator:read:shield_mode"`. View a broadcaster's Shield Mode status.
  * @member TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR The value `"moderator:manage:guest_star"`. Manage Guest Star for channels where you are a Guest Star moderator.
  * @member TWITCH_SCOPE_MODERATOR_MANAGE_BANNED_USERS The value `"moderator:manage:banned_users"`. Ban and unban users.
  * @member TWITCH_SCOPE_MODERATOR_MANAGE_BLOCKED_TERMS The value `"moderator:manage:blocked_terms"`. Manage a broadcaster's list of blocked terms.
  * @member TWITCH_SCOPE_MODERATOR_MANAGE_AUTOMOD The value `"moderator:manage:automod"`. Manage messages held for review by AutoMod in channels where you are a moderator.
- * @member TWITCH_SCOPE_MODERATOR_MANAGE_AUTOMOD_SETTINGS The value `"moderator:manage:automod_settings"`. Manage a broadcaster’s AutoMod settings.
+ * @member TWITCH_SCOPE_MODERATOR_MANAGE_AUTOMOD_SETTINGS The value `"moderator:manage:automod_settings"`. Manage a broadcaster's AutoMod settings.
  * @member TWITCH_SCOPE_MODERATOR_MANAGE_CHAT_MESSAGES The value `"moderator:manage:chat_messages"`. Delete chat messages in channels where you have the moderator role
  * @member TWITCH_SCOPE_MODERATOR_MANAGE_CHAT_SETTINGS The value `"moderator:manage:chat_settings"`. Manage a broadcaster's chat room settings.
  * @member TWITCH_SCOPE_MODERATOR_MANAGE_UNBAN_REQUESTS The value `"moderator:manage:unban_requests"`. Manage a broadcaster's unban requests.
@@ -265,7 +495,7 @@ function twitch_auth_signout() {}
  * 
  * This function gets the Bits leaderboard for the authenticated broadcaster.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_BITS_READ` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_BITS_READ`.]]
  * 
  * @param {string} optionals The optional parameters to be passed into the function:
  * 
@@ -279,23 +509,30 @@ function twitch_auth_signout() {}
  * - `started_at` : ${type.real} : The start date, in RFC3339 format, used for determining the aggregation period. Specify this parameter only if you specify the `period` parameter. The start date is ignored if `period` is `"all"`.
  *   Note that the date is converted to PST before being used, so if you set the start time to `2022-01-01T00:00:00.0Z` and `period` to `"month"`, the actual reporting period is December 2021, not January 2022. If you want the reporting period to be January 2022, you must set the start time to `2022-01-01T08:00:00.0Z` or `2022-01-01T00:00:00.0-08:00`.
  *   If your start date uses the `+` offset operator (for example, `2022-01-01T00:00:00.0+05:00`), you must URL encode the start date.
- * - `user_id` : ${type.real} : 	An ID that identifies a user that cheered bits in the channel. If `count` is greater than 1, the response may include users ranked above and below the specified user. To get the leaderboard's top leaders, don’t specify a user ID.
+ * - `user_id` : ${type.real} : 	An ID that identifies a user that cheered bits in the channel. If `count` is greater than 1, the response may include users ranked above and below the specified user. To get the leaderboard's top leaders, don't specify a user ID.
  * 
- * @desc 
+ * @param {function} callback_success Triggered if the request succeeded
+ * @param {function} callback_failed Triggered if the request failed
+ * 
+ * @event callback_success
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.array}  | A list of leaderboard leaders. The leaders are returned in rank order by how much they’ve cheered. The array is empty if nobody has cheered bits. |
+ * | data | ${type.array}  | A list of leaderboard leaders. The leaders are returned in rank order by how much they've cheered. The array is empty if nobody has cheered bits. |
  * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies a user on the leaderboard. |
- * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user’s login name. |
- * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user’s display name. |
- * | &nbsp;├──&nbsp;rank | ${type.real}  | The user’s position on the leaderboard. |
+ * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name. |
+ * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name. |
+ * | &nbsp;├──&nbsp;rank | ${type.real}  | The user's position on the leaderboard. |
  * | &nbsp;├──&nbsp;score | ${type.real}  | The number of Bits the user has cheered. |
- * | &nbsp;├──&nbsp;date_range | ${type.struct}  | The reporting window’s start and end dates, in RFC3339 format. The dates are calculated by using the `started_at` and `period` parameters. If you don’t specify the `started_at` parameter, the fields contain empty strings. |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;started_at | ${type.string}  | The reporting window’s start date. |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;ended_at | ${type.string}  | tmThe reporting window’s end date.p |
+ * | &nbsp;├──&nbsp;date_range | ${type.struct}  | The reporting window's start and end dates, in RFC3339 format. The dates are calculated by using the `started_at` and `period` parameters. If you don't specify the `started_at` parameter, the fields contain empty strings. |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;started_at | ${type.string}  | The reporting window's start date. |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;ended_at | ${type.string}  | tmThe reporting window's end date.p |
  * | &nbsp;└──&nbsp;total | ${type.real}  | The number of ranked users in `data`. This is the value in the `count` parameter or the total number of entries on the leaderboard, whichever is less. |
- * 
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @function_end
  */
 function twitch_bits_get_bits_leaderboard(optionals, callback_success, callback_failed) {}
@@ -315,7 +552,7 @@ function twitch_bits_get_bits_leaderboard(optionals, callback_success, callback_
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -332,6 +569,9 @@ function twitch_bits_get_bits_leaderboard(optionals, callback_success, callback_
  * | &nbsp;├──&nbsp;order | ${type.number}  | The order that the Cheermotes are shown in the Bits card. The numbers may not be consecutive. For example, the numbers may jump from 1 to 7 to 13. The order numbers are unique within a Cheermote type (for example, `"global_first_party"`) but may not be unique amongst all Cheermotes in the response.  |
  * | &nbsp;├──&nbsp;last_updated | ${type.string}  | The date and time, in RFC3339 format, when this Cheermote was last updated.  |
  * | &nbsp;└──&nbsp;is_charitable | ${type.boolean}  | A Boolean value that indicates whether this Cheermote provides a charitable contribution match during charity campaigns.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -351,12 +591,12 @@ function twitch_bits_get_cheermotes(optionals, callback_success, callback_failed
  * 
  * - `id` : ${type.string} : A transaction ID used to filter the list of transactions. Specify this parameter for each transaction you want to get. For example, `id=1234&amp;id=5678`. You may specify a maximum of 100 IDs.
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)</a>
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)</a>
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -374,14 +614,17 @@ function twitch_bits_get_cheermotes(optionals, callback_success, callback_failed
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;sku | ${type.string}  | An ID that identifies the digital product.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;domain | ${type.string}  | Set to `twitch.ext.` + `<the extension's ID>`.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;cost | ${type.struct}  | Contains details about the digital product's cost.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;amount | ${type.number}  | The amount exchanged for the digital product.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;type | ${type.string}  | The type of currency exchanged. Possible values are: `"bits"`  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;amount | ${type.number}  | The amount exchanged for the digital product.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;type | ${type.string}  | The type of currency exchanged. Possible values are: `"bits"`  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;inDevelopment | ${type.boolean}  | A Boolean value that determines whether the product is in development. Is `true` if the digital product is in development and cannot be exchanged.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;displayName | ${type.string}  | The name of the digital product.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;expiration | ${type.string}  | This field is always empty since you may purchase only unexpired products.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;broadcast | ${type.boolean}  | A Boolean value that determines whether the data was broadcast to all instances of the extension. Is `true` if the data was broadcast to all instances.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -396,11 +639,11 @@ function twitch_bits_get_extension_transactions(extension_id, optionals, callbac
  * 
  * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
- * @param {string} broadcaster_id The ID of the broadcaster whose channel you want to get. To specify more than one ID, include this parameter for each broadcaster you want to get. For example, `broadcaster_id=1234&amp;broadcaster_id=5678`. You may specify a maximum of 100 IDs. The API ignores duplicate IDs and IDs that are not found. 
+ * @param {real|array} broadcaster_id The ID of the broadcaster whose channel you want to get. To specify more than one ID, pass an array with the ID of each broadcaster you want to get. You may specify a maximum of 100 IDs. The API ignores duplicate IDs and IDs that are not found. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -417,6 +660,9 @@ function twitch_bits_get_extension_transactions(extension_id, optionals, callbac
  * | &nbsp;├──&nbsp;content_classification_labels | ${type.array} of ${type.string}  | The CCLs applied to the channel.  |
  * | &nbsp;└──&nbsp;is_branded_content | ${type.boolean}  | Boolean flag indicating if the channel has branded content.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_channels_get_channel_information(broadcaster_id, callback_success, callback_failed) {}
@@ -428,7 +674,7 @@ function twitch_channels_get_channel_information(broadcaster_id, callback_succes
  * 
  * This function updates a channel's properties.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_BROADCAST` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_BROADCAST`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose channel you want to update. This ID must match the user ID in the user access token. 
  * @param {string} id ID of the [Content Classification Labels](https://blog.twitch.tv/en/2023/06/20/introducing-content-classification-labels/) that must be added/removed from the channel. Can be one of the following values: `"DrugsIntoxication"`, `"SexualThemes"`, `"ViolentGraphic"`, `"Gambling"`, `"ProfanityVulgarity"`
@@ -445,6 +691,14 @@ function twitch_channels_get_channel_information(broadcaster_id, callback_succes
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success.
+ *
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_channels_modify_channel_information(broadcaster_id, id, is_enabled, optionals, callback_success, callback_failed) {}
@@ -456,13 +710,13 @@ function twitch_channels_modify_channel_information(broadcaster_id, id, is_enabl
  * 
  * This function gets the broadcaster's list editors.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_READ_EDITORS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_EDITORS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the channel. This ID must match the user ID in the access token. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -470,6 +724,9 @@ function twitch_channels_modify_channel_information(broadcaster_id, id, is_enabl
  * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that uniquely identifies a user with editor permissions.  |
  * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
  * | &nbsp;└──&nbsp;created_at | ${type.string}  | The date and time, in RFC3339 format, when the user became one of the broadcaster's editors.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -482,19 +739,19 @@ function twitch_channels_get_channel_editors(broadcaster_id, callback_success, c
  * 
  * This function gets a list of broadcasters that the specified user follows. You can also use this endpoint to see whether a user follows a specific broadcaster.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_READ_FOLLOWS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_FOLLOWS`.]]
  * 
  * @param {string} user_id A user's ID. Returns the list of broadcasters that this user follows. This ID must match the user ID in the user OAuth token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `broadcaster_id` : ${type.string} : A broadcaster's ID. Use this parameter to see whether the user follows this broadcaster. If specified, the response contains this broadcaster if the user follows them. If not specified, the response contains all broadcasters that the user follows.
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -503,9 +760,12 @@ function twitch_channels_get_channel_editors(broadcaster_id, callback_success, c
  * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
  * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
  * | &nbsp;└──&nbsp;followed_at | ${type.string}  | The UTC timestamp when the user started following the broadcaster.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * | total | ${type.number}  | The total number of broadcasters that the user follows. As someone pages through the list, the number may change as the user follows or unfollows broadcasters.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -518,7 +778,7 @@ function twitch_channels_get_followed_channels(user_id, optionals, callback_succ
  * 
  * This function gets a list of users that follow the specified broadcaster. You can also use this endpoint to see whether a specific user follows the broadcaster.
  * 
- * * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_READ_FOLLOWERS` scope.
+ * * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_READ_FOLLOWERS`.
  * * The ID in the `broadcaster_id` parameter must match the user ID in the access token or the user ID in the access token must be a moderator for the specified broadcaster.
  * 
  * This endpoint will return specific follower information only if both of the above are true. If a scope is not provided or the user isn't the broadcaster or a moderator for the specified channel, only the total follower count will be included in the response.
@@ -527,25 +787,28 @@ function twitch_channels_get_followed_channels(user_id, optionals, callback_succ
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `user_id` : ${type.string} : A user's ID. Use this parameter to see whether the user follows this broadcaster. If specified, the response contains this user if they follow the broadcaster. If not specified, the response contains all users that follow the broadcaster.
- *   Using this parameter requires both a user access token with the `TWITCH_SCOPE_MODERATOR_READ_FOLLOWERS` scope and the user ID in the access token match the `broadcaster_id` or be the user ID for a moderator of the specified broadcaster.
+ *   Using this parameter requires both a user access token with the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_READ_FOLLOWERS`.and the user ID in the access token match the `broadcaster_id` or be the user ID for a moderator of the specified broadcaster.
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. <a href="https://dev.twitch.tv/docs/api/guide#pagination">Read more</a>.
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. <a href="https://dev.twitch.tv/docs/api/guide#pagination">Read more</a>.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.array}  | The list of users that follow the specified broadcaster. The list is in descending order by `followed_at` (with the most recent follower first). The list is empty if nobody follows the broadcaster, the specified `user_id` isn't in the follower list, the user access token is missing the `TWITCH_SCOPE_MODERATOR_READ_FOLLOWERS` scope, or the user isn't the broadcaster or moderator for the channel.  |
+ * | data | ${type.array}  | The list of users that follow the specified broadcaster. The list is in descending order by `followed_at` (with the most recent follower first). The list is empty if nobody follows the broadcaster, the specified `user_id` isn't in the follower list, the user access token is missing the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_READ_FOLLOWERS`. or the user isn't the broadcaster or moderator for the channel.  |
  * | &nbsp;├──&nbsp;followed_at | ${type.string}  | The UTC timestamp when the user started following the broadcaster.  |
  * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that uniquely identifies the user that's following the broadcaster.  |
  * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
  * | &nbsp;└──&nbsp;user_name | ${type.string}  | The user's display name.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * | total | ${type.number}  | The total number of users that follow this broadcaster. As someone pages through the list, the number of users may change as users follow or unfollow the broadcaster.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -558,7 +821,7 @@ function twitch_channels_get_channel_followers(broadcaster_id, optionals, callba
  * 
  * This function creates a Custom Reward in the broadcaster's channel. The maximum number of custom rewards per channel is 50, which includes both enabled and disabled rewards.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_REDEMPTIONS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_REDEMPTIONS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster to add the custom reward to. This ID must match the user ID found in the OAuth token. 
  * @param {string} title The custom reward's title. The title may contain a maximum of 45 characters and it must be unique amongst all of the broadcaster's custom rewards. 
@@ -580,7 +843,7 @@ function twitch_channels_get_channel_followers(broadcaster_id, optionals, callba
  * @param {function} callback_success Triggered if request succeeded
  * @param {function} callback_failed Triggered if request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -618,6 +881,9 @@ function twitch_channels_get_channel_followers(broadcaster_id, optionals, callba
  * | &nbsp;├──&nbsp;redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
  * | &nbsp;└──&nbsp;cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state (see the `global_cooldown_setting` field).  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_channel_points_create_custom_rewards(broadcaster_id, title, cost, optionals, callback_success, callback_failed) {}
@@ -631,12 +897,19 @@ function twitch_channel_points_create_custom_rewards(broadcaster_id, title, cost
  * 
  * The app used to create the reward is the only app that may delete it. If the reward's redemption status is `"UNFULFILLED"` at the time the reward is deleted, its redemption status is marked as `"FULFILLED"`.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_REDEMPTIONS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_REDEMPTIONS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that created the custom reward. This ID must match the user ID found in the OAuth token. 
  * @param {string} id The ID of the custom reward to delete. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_channel_points_delete_custom_reward(broadcaster_id, id, callback_success, callback_failed) {}
@@ -655,14 +928,14 @@ function twitch_channel_points_delete_custom_reward(broadcaster_id, id, callback
  * @param {string} broadcaster_id The ID of the broadcaster whose custom rewards you want to get. This ID must match the user ID found in the OAuth token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `id` : ${type.string} : A list of IDs to filter the rewards by. To specify more than one ID, include this parameter for each reward you want to get. For example, `id=1234&amp;id=5678`. You may specify a maximum of 50 IDs.
+ * - `id` : ${type.real} or ${type.array} of {$type.real} : A list of IDs to filter the rewards by. To specify more than one ID, pass an array with the ID of the rewards you want to get. You may specify a maximum of 50 IDs.
  *   Duplicate IDs are ignored. The response contains only the IDs that were found. If none of the IDs were found, the response is 404 Not Found.
  * - `only_manageable_rewards` : ${type.boolean} : A Boolean value that determines whether the response contains only the custom rewards that the app may manage (the app is identified by the ID in the Client-Id header). Set to `true` to get only the custom rewards that the app may manage. The default is `false`.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -700,6 +973,9 @@ function twitch_channel_points_delete_custom_reward(broadcaster_id, id, callback
  * | &nbsp;├──&nbsp;redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
  * | &nbsp;└──&nbsp;cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state. See the `global_cooldown_setting` field.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_channel_points_get_custom_reward(broadcaster_id, optionals, callback_success, callback_failed) {}
@@ -725,7 +1001,7 @@ function twitch_channel_points_get_custom_reward(broadcaster_id, optionals, call
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `id` : ${type.string} : A list of IDs to filter the redemptions by. To specify more than one ID, include this parameter for each redemption you want to get. For example, `id=1234&amp;id=5678`. You may specify a maximum of 50 IDs.
+ * - `id` : ${type.real} or ${type.array} of ${type.real} : A list of IDs to filter the redemptions by. To specify more than one ID, pass an array containing the ID of each redemption you want to get. You may specify a maximum of 50 IDs.
  *   Duplicate IDs are ignored. The response contains only the IDs that were found. If none of the IDs were found, the response is 404 Not Found.
  * - `sort` : ${type.string} : The order to sort redemptions by. The possible case-sensitive values are:
  *   * `"OLDEST"`
@@ -733,13 +1009,13 @@ function twitch_channel_points_get_custom_reward(broadcaster_id, optionals, call
  * 
  * The default is `"OLDEST"`.
  * 
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * - `first` : ${type.number} : The maximum number of redemptions to return per page in the response. The minimum page size is 1 redemption per page and the maximum is 50. The default is 20.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -760,6 +1036,9 @@ function twitch_channel_points_get_custom_reward(broadcaster_id, optionals, call
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;prompt | ${type.string}  | The prompt displayed to the viewer if user input is required.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;cost | ${type.int64}  | The reward's cost, in Channel Points.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_channel_points_get_custom_reward_redemption(broadcaster_id, reward_id, status, optionals, callback_success, callback_failed) {}
@@ -771,7 +1050,7 @@ function twitch_channel_points_get_custom_reward_redemption(broadcaster_id, rewa
  * 
  * This function updates a custom reward. The app used to create the reward is the only app that may update the reward.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_REDEMPTIONS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_REDEMPTIONS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that's updating the reward. This ID must match the user ID found in the OAuth token. 
  * @param {string} id The ID of the reward to update. 
@@ -795,7 +1074,7 @@ function twitch_channel_points_get_custom_reward_redemption(broadcaster_id, rewa
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -833,6 +1112,9 @@ function twitch_channel_points_get_custom_reward_redemption(broadcaster_id, rewa
  * | &nbsp;├──&nbsp;redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
  * | &nbsp;└──&nbsp;cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state. See the `global_cooldown_setting` field.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_channel_points_update_custom_reward(broadcaster_id, id, optionals, callback_success, callback_failed) {}
@@ -844,12 +1126,13 @@ function twitch_channel_points_update_custom_reward(broadcaster_id, id, optional
  * 
  * This function updates a redemption's status. You may update a redemption only if its status is UNFULFILLED. The app used to create the reward is the only app that may update the redemption.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_REDEMPTIONS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_REDEMPTIONS`.]]
  * 
- * @param {string} id A list of IDs that identify the redemptions to update. To specify more than one ID, include this parameter for each redemption you want to update. For example, `id=1234&amp;id=5678`. You may specify a maximum of 50 IDs. 
+ * @param {real|array} id A list of IDs that identify the redemptions to update. To specify more than one ID, pass an array containing the IDs of the redemptions you want to update. You may specify a maximum of 50 IDs. 
  * @param {string} broadcaster_id The ID of the broadcaster that's updating the redemption. This ID must match the user ID in the user access token. 
  * @param {string} reward_id The ID that identifies the reward that's been redeemed. 
  * @param {string} status The status to set the redemption to. Possible values are:
+ * 
  *   * `"CANCELED"`
  *   * `"FULFILLED"`
  * 
@@ -858,7 +1141,7 @@ function twitch_channel_points_update_custom_reward(broadcaster_id, id, optional
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -870,7 +1153,7 @@ function twitch_channel_points_update_custom_reward(broadcaster_id, id, optional
  * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of the user that redeemed the reward.  |
  * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
  * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
- * | &nbsp;├──&nbsp;reward | ${type.struct}  | An object that describes the reward that the user redeemed.  |
+ * | &nbsp;├──&nbsp;reward | ${type.struct}  | a struct that describes the reward that the user redeemed.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | The ID that uniquely identifies the reward.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The reward's title.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;prompt | ${type.string}  | The prompt displayed to the viewer if user input is required.  |
@@ -878,6 +1161,9 @@ function twitch_channel_points_update_custom_reward(broadcaster_id, id, optional
  * | &nbsp;├──&nbsp;user_input | ${type.string}  | The text that the user entered at the prompt when they redeemed the reward; otherwise, an empty string if user input was not required.  |
  * | &nbsp;├──&nbsp;status | ${type.string}  | The state of the redemption. Possible values are: `"CANCELED"`, `"FULFILLED"`, `"UNFULFILLED"`  |
  * | &nbsp;└──&nbsp;redeemed_at | ${type.string}  | The date and time of when the reward was redeemed, in RFC3339 format.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -892,13 +1178,13 @@ function twitch_channel_points_update_redemption_status(id, broadcaster_id, rewa
  * 
  * To receive events when progress is made towards the campaign's goal or the broadcaster changes the fundraising goal, subscribe to the [channel.charity_campaign.progress](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#channelcharity_campaignprogress) subscription type.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_READ_CHARITY` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_CHARITY`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that's currently running a charity campaign. This ID must match the user ID in the access token. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -920,6 +1206,9 @@ function twitch_channel_points_update_redemption_status(id, broadcaster_id, rewa
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;decimal_places | ${type.number}  | The number of decimal places used by the currency. For example, USD uses two decimal places. Use this number to translate `value` from minor units to major units by using the formula: `value / 10^decimal_places`  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;currency | ${type.string}  | The ISO-4217 three-letter currency code that identifies the type of currency in `value`.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_charity_get_charity_campaign(broadcaster_id, callback_success, callback_failed) {}
@@ -933,18 +1222,18 @@ function twitch_charity_get_charity_campaign(broadcaster_id, callback_success, c
  * 
  * To receive events as donations occur, subscribe to the [channel.charity_campaign.donate](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#channelcharity_campaigndonate) subscription type.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_READ_CHARITY` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_CHARITY`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that's currently running a charity campaign. This ID must match the user ID in the access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -954,12 +1243,15 @@ function twitch_charity_get_charity_campaign(broadcaster_id, callback_success, c
  * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies a user that donated money to the campaign.  |
  * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
  * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
- * | &nbsp;├──&nbsp;amount | ${type.struct}  | An object that contains the amount of money that the user donated.  |
+ * | &nbsp;├──&nbsp;amount | ${type.struct}  | a struct that contains the amount of money that the user donated.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;value | ${type.number}  | The monetary amount. The amount is specified in the currency's minor unit. For example, the minor units for USD is cents, so if the amount is $5.50 USD, `value` is set to 550.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;decimal_places | ${type.number}  | The number of decimal places used by the currency. For example, USD uses two decimal places. Use this number to translate `value` from minor units to major units by using the formula:`value / 10^decimal_places`  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;currency | ${type.string}  | The ISO-4217 three-letter currency code that identifies the type of currency in `value`.  |
- * | pagination | ${type.struct}  | An object that contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | a struct that contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -976,19 +1268,19 @@ function twitch_charity_get_charity_campaign_donations(broadcaster_id, optionals
  * 
  * To determine whether a user is a moderator or VIP, use ${function.twitch_moderation_get_moderators} and ${function.twitch_moderation_get_vips}. You can check the roles of up to 100 users.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_READ_CHATTERS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_READ_CHATTERS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose list of chatters you want to get. 
  * @param {string} moderator_id The ID of the broadcaster or one of the broadcaster's moderators. This ID must match the user ID in the user access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 1,000. The default is 100.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -996,9 +1288,12 @@ function twitch_charity_get_charity_campaign_donations(broadcaster_id, optionals
  * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of a user that's connected to the broadcaster's chat room.  |
  * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
  * | &nbsp;└──&nbsp;user_name | ${type.string}  | The user's display name.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
  * | total | ${type.number}  | The total number of users that are connected to the broadcaster's chat room. As you page through the list, the number of users may change as users join and leave the chat room.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1021,7 +1316,7 @@ function twitch_chat_get_chatters(broadcaster_id, moderator_id, optionals, callb
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1039,6 +1334,9 @@ function twitch_chat_get_chatters(broadcaster_id, moderator_id, optionals, callb
  * | &nbsp;├──&nbsp;scale | ${type.array} of ${type.string}  | The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are: 1.0 — A small version (28px x 28px) is available, 2.0 — A medium version (56px x 56px) is available, 3.0 — A large version (112px x 112px) is available.  |
  * | &nbsp;└──&nbsp;theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in. Possible themes are: `"dark"`, `"light"`  |
  * | template | ${type.string}  | A templated URL. Use the values from the `id`, `format`, `scale`, and `theme_mode` fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote. For information about what the template looks like and how to use it to fetch emotes, see [Emote CDN URL format](https://dev.twitch.tv/docs/irc/emotes#cdn-template). You should use this template instead of using the URLs in the `images` struct.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1058,7 +1356,7 @@ function twitch_chat_get_channel_emotes(broadcaster_id, callback_success, callba
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1073,6 +1371,9 @@ function twitch_chat_get_channel_emotes(broadcaster_id, callback_success, callba
  * | &nbsp;├──&nbsp;scale | ${type.array} of ${type.string}  | The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are:1.0 — A small version (28px x 28px) is available.2.0 — A medium version (56px x 56px) is available.3.0 — A large version (112px x 112px) is available.  |
  * | &nbsp;└──&nbsp;theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in. Possible themes are: `"dark"`, `"light"`  |
  * | template | ${type.string}  | A templated URL. Use the values from the `id`, `format`, `scale`, and `theme_mode` fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote. For information about what the template looks like and how to use it to fetch emotes, see [Emote CDN URL format](https://dev.twitch.tv/docs/irc/emotes#cdn-template). You should use this template instead of using the URLs in the `images` struct.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1095,7 +1396,7 @@ function twitch_chat_get_global_emotes(callback_success, callback_failed) {}
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1114,6 +1415,9 @@ function twitch_chat_get_global_emotes(callback_success, callback_failed) {}
  * | &nbsp;└──&nbsp;theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in. Possible themes are: `"dark"`, `"light"`  |
  * | template | ${type.string}  | A templated URL. Use the values from the `id`, `format`, `scale`, and `theme_mode` fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote. For information about what the template looks like and how to use it to fetch emotes, see [Emote CDN URL format](https://dev.twitch.tv/docs/irc/emotes#cdn-template). You should use this template instead of using the URLs in the `images` struct.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_chat_get_emote_sets(emote_set_id, callback_success, callback_failed) {}
@@ -1131,7 +1435,7 @@ function twitch_chat_get_emote_sets(emote_set_id, callback_success, callback_fai
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1146,6 +1450,9 @@ function twitch_chat_get_emote_sets(emote_set_id, callback_success, callback_fai
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;description | ${type.string}  | The description of the badge.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;click_action | ${type.string}  | The action to take when clicking on the badge. Set to `undefined` if no action is specified.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;click_url | ${type.string}  | The URL to navigate to when clicking on the badge. Set to `undefined` if no URL is specified.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1163,7 +1470,7 @@ function twitch_chat_get_channel_chat_badges(broadcaster_id, callback_success, c
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1178,6 +1485,9 @@ function twitch_chat_get_channel_chat_badges(broadcaster_id, callback_success, c
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;description | ${type.string}  | The description of the badge.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;click_action | ${type.string}  | The action to take when clicking on the badge. Set to `undefined` if no action is specified.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;click_url | ${type.string}  | The URL to navigate to when clicking on the badge. Set to `undefined` if no URL is specified.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1202,7 +1512,7 @@ function twitch_chat_get_global_chat_badges(callback_success, callback_failed) {
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1211,13 +1521,16 @@ function twitch_chat_get_global_chat_badges(callback_success, callback_failed) {
  * | &nbsp;├──&nbsp;emote_mode | ${type.boolean}  | A Boolean value that determines whether chat messages must contain only emotes. Is `true` if chat messages may contain only emotes; otherwise, `false`.  |
  * | &nbsp;├──&nbsp;follower_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Is `true` if the broadcaster restricts the chat room to followers only; otherwise, `false`. See the `follower_mode_duration` field for how long users must follow the broadcaster before being able to participate in the chat room.  |
  * | &nbsp;├──&nbsp;follower_mode_duration | ${type.number}  | The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Is `undefined` if `follower_mode` is `false`.  |
- * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator's ID. The response includes this field only if the request specifies a user access token that includes the `TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS` scope.  |
- * | &nbsp;├──&nbsp;non_moderator_chat_delay | ${type.boolean}  | A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. See the `non_moderator_chat_delay_duration` field for the length of the delay. Is `true` if the broadcaster applies a delay; otherwise, `false`. The response includes this field only if the request specifies a user access token that includes the `TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS` scope and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
- * | &nbsp;├──&nbsp;non_moderator_chat_delay_duration | ${type.number}  | The amount of time, in seconds, that messages are delayed before appearing in chat. Is `undefined` if `non_moderator_chat_delay` is `false`.The response includes this field only if the request specifies a user access token that includes the `TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS` scope and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator's ID. The response includes this field only if the request specifies a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS`.  |
+ * | &nbsp;├──&nbsp;non_moderator_chat_delay | ${type.boolean}  | A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. See the `non_moderator_chat_delay_duration` field for the length of the delay. Is `true` if the broadcaster applies a delay; otherwise, `false`. The response includes this field only if the request specifies a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS`.and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
+ * | &nbsp;├──&nbsp;non_moderator_chat_delay_duration | ${type.number}  | The amount of time, in seconds, that messages are delayed before appearing in chat. Is `undefined` if `non_moderator_chat_delay` is `false`.The response includes this field only if the request specifies a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS`.and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
  * | &nbsp;├──&nbsp;slow_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster limits how often users in the chat room are allowed to send messages. Is `true` if the broadcaster applies a delay; otherwise, `false`. See the `slow_mode_wait_time` field for the delay.  |
  * | &nbsp;├──&nbsp;slow_mode_wait_time | ${type.number}  | The amount of time, in seconds, that users must wait between sending messages. Is `undefined` if `slow_mode` is `false`.  |
  * | &nbsp;├──&nbsp;subscriber_mode | ${type.boolean}  | A Boolean value that determines whether only users that subscribe to the broadcaster's channel may talk in the chat room. Is `true` if the broadcaster restricts the chat room to subscribers only; otherwise, `false`.  |
  * | &nbsp;└──&nbsp;unique_chat_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster requires users to post only unique messages in the chat room. Is `true` if the broadcaster requires unique messages only; otherwise, `false`.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1230,19 +1543,19 @@ function twitch_chat_get_chat_settings(broadcaster_id, optionals, callback_succe
  * 
  * This function retrieves emotes available to the user across all channels.
  * 
- * * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_READ_EMOTES` scope.
+ * * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMOTES`.
  * * Parameter `user_id` must match the `user_id` in the user access token.
  * 
  * @param {string} user_id The ID of the user. This ID must match the user ID in the user access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `after` : ${type.string} : The cursor used to get the next page of results. The Pagination object in the response contains the cursor's value.
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The Pagination struct in the response contains the cursor's value.
  * - `broadcaster_id` : ${type.string} : The User ID of a broadcaster you wish to get follower emotes of. Using this parameter will guarantee inclusion of the broadcaster's follower emotes in the response body. **Note:** If the user specified in `user_id` is subscribed to the broadcaster specified, their follower emotes will appear in the response body regardless if this parameter is used.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1256,8 +1569,11 @@ function twitch_chat_get_chat_settings(broadcaster_id, optionals, callback_succe
  * | &nbsp;├──&nbsp;scale | ${type.array} of ${type.string}  | The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. 1.0 —  A small version (28px x 28px) is available, 2.0 — A medium version (56px x 56px) is available, 3.0 —  A large version (112px x 112px) is available.  |
  * | &nbsp;└──&nbsp;theme_mode | ${type.array} of ${type.string}  | The background themes that the emote is available in: `"dark"`, `"light"`  |
  * | template | ${type.string}  | A templated URL. Uses the values from the `id`, `format`, `scale`, and `theme_mode` fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote.  For information about what the template looks like and how to use it to fetch emotes, see [Emote CDN URL format](https://dev.twitch.tv/docs/irc/emotes#cdn-template).  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through.  For more information about pagination support, see Twitch API Guide - Pagination.  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through.  For more information about pagination support, see Twitch API Guide - Pagination.  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1270,14 +1586,14 @@ function twitch_chat_get_user_emotes(user_id, optionals, callback_success, callb
  * 
  * This function updates the broadcaster's chat settings.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_CHAT_SETTINGS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_CHAT_SETTINGS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose chat settings you want to update. 
  * @param {string} moderator_id The ID of a user that has permission to moderate the broadcaster's chat room, or the broadcaster's ID if they're making the update. This ID must match the user ID in the user access token. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1295,13 +1611,16 @@ function twitch_chat_get_user_emotes(user_id, optionals, callback_success, callb
  * | &nbsp;├──&nbsp;emote_mode | ${type.boolean}  | A Boolean value that determines whether chat messages must contain only emotes. Is `true` if chat messages may contain only emotes; otherwise, `false`.  |
  * | &nbsp;├──&nbsp;follower_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Is `true` if the broadcaster restricts the chat room to followers only; otherwise, `false`. See the follower_mode_duration field for how long users must follow the broadcaster before being able to participate in the chat room.  |
  * | &nbsp;├──&nbsp;follower_mode_duration | ${type.number}  | The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Is `undefined` if `follower_mode` is `false`.  |
- * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator's ID. The response includes this field only if the request specifies a user access token that includes the  `TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS` scope.  |
+ * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator's ID. The response includes this field only if the request specifies a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS`.  |
  * | &nbsp;├──&nbsp;non_moderator_chat_delay | ${type.boolean}  | A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. See the `non_moderator_chat_delay_duration` field for the length of the delay. Is `true` if the broadcaster applies a delay; otherwise, `false`.  |
  * | &nbsp;├──&nbsp;non_moderator_chat_delay_duration | ${type.number}  | The amount of time, in seconds, that messages are delayed before appearing in chat. Is `undefined` if `non_moderator_chat_delay` is `false`.  |
  * | &nbsp;├──&nbsp;slow_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster limits how often users in the chat room are allowed to send messages. Is `true` if the broadcaster applies a delay; otherwise, `false`. See the `slow_mode_wait_time` field for the delay.  |
  * | &nbsp;├──&nbsp;slow_mode_wait_time | ${type.number}  | The amount of time, in seconds, that users must wait between sending messages. Is `undefined` if `slow_mode` is `false`.  |
  * | &nbsp;├──&nbsp;subscriber_mode | ${type.boolean}  | A Boolean value that determines whether only users that subscribe to the broadcaster's channel may talk in the chat room. Is `true` if the broadcaster restricts the chat room to subscribers only; otherwise, `false`.  |
  * | &nbsp;└──&nbsp;unique_chat_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster requires users to post only unique messages in the chat room. Is `true` if the broadcaster requires unique messages only; otherwise, `false`.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1314,7 +1633,7 @@ function twitch_chat_update_chat_settings(broadcaster_id, moderator_id, callback
  * 
  * This function sends an announcement to the broadcaster's chat room.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_ANNOUNCEMENTS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_ANNOUNCEMENTS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the chat room to send the announcement to. 
  * @param {string} moderator_id The ID of a user who has permission to moderate the broadcaster's chat room, or the broadcaster's ID if they're sending the announcement. This ID must match the user ID in the user access token. 
@@ -1325,6 +1644,13 @@ function twitch_chat_update_chat_settings(broadcaster_id, moderator_id, callback
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_chat_send_chat_announcement(broadcaster_id, moderator_id, message, optionals, callback_success, callback_failed) {}
@@ -1342,13 +1668,20 @@ function twitch_chat_send_chat_announcement(broadcaster_id, moderator_id, messag
  * 
  * To receive notifications when a Shoutout is sent or received, subscribe to the [channel.shoutout.create](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#channelshoutoutcreate) and [channel.shoutout.receive](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#channelshoutoutreceive) subscription types. The **channel.shoutout.create** event includes cooldown periods that indicate when the broadcaster may send another Shoutout without exceeding the endpoint's rate limit.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_SHOUTOUTS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_SHOUTOUTS`.]]
  * 
  * @param {string} from_broadcaster_id The ID of the broadcaster that's sending the Shoutout. 
  * @param {string} to_broadcaster_id The ID of the broadcaster that's receiving the Shoutout. 
  * @param {string} moderator_id The ID of the broadcaster or a user that is one of the broadcaster's moderators. This ID must match the user ID in the access token. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_chat_send_a_shoutout(from_broadcaster_id, to_broadcaster_id, moderator_id, callback_success, callback_failed) {}
@@ -1372,7 +1705,7 @@ function twitch_chat_send_a_shoutout(from_broadcaster_id, to_broadcaster_id, mod
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1382,6 +1715,9 @@ function twitch_chat_send_a_shoutout(from_broadcaster_id, to_broadcaster_id, mod
  * | &nbsp;└──&nbsp;drop_reason | ${type.struct}  | The reason the message was dropped, if any.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;code | ${type.string}  | Code for why the message was dropped.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;message | ${type.string}  | Message for why the message was dropped.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1396,11 +1732,11 @@ function twitch_chat_send_chat_message(broadcaster_id, sender_id, message, optio
  * 
  * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
- * @param {string} user_id The ID of the user whose username color you want to get. To specify more than one user, include the `user_id` parameter for each user to get. For example, `&amp;user_id=1234&amp;user_id=5678`. The maximum number of IDs that you may specify is 100.The API ignores duplicate IDs and IDs that weren't found. 
+ * @param {real|array} user_id The ID of the user whose username color you want to get. To specify more than one user, pass an array with the ID of each user to get. The maximum number of IDs that you may specify is 100.The API ignores duplicate IDs and IDs that weren't found. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1409,6 +1745,9 @@ function twitch_chat_send_chat_message(broadcaster_id, sender_id, message, optio
  * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
  * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
  * | &nbsp;└──&nbsp;color | ${type.string}  | The Hex color code that the user uses in chat for their name. If the user hasn't specified a color in their settings, the string is empty.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1421,12 +1760,19 @@ function twitch_chat_get_user_chat_color(user_id, callback_success, callback_fai
  * 
  * This function updates the color used for the user's name in chat.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_MANAGE_CHAT_COLOR` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_MANAGE_CHAT_COLOR`.]]
  * 
  * @param {string} user_id The ID of the user whose chat color you want to update. This ID must match the user ID in the access token. 
  * @param {string} color The color to use for the user's name in chat. All users may specify one of the following named color values: `"blue"`, `"blue_violet"`, `"cadet_blue"`, `"chocolate"`, `"coral"`, `"dodger_blue"`, `"firebrick"`, `"golden_rod"`, `"green"`, `"hot_pink"`, `"orange_red"`, `"red"`, `"sea_green"`, `"spring_green"`, `"yellow_green"`. Turbo and Prime users may specify a named color or a Hex color code like `"#9146FF"`. If you use a Hex color code, remember to URL encode it. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_chat_update_user_chat_color(user_id, color, callback_success, callback_failed) {}
@@ -1444,7 +1790,7 @@ function twitch_chat_update_user_chat_color(user_id, color, callback_success, ca
  * 
  * Creating a clip is an asynchronous process that can take a short amount of time to complete. To determine whether the clip was successfully created, call ${function.twitch_clips_get_clips} using the clip ID that this request returned. If ${function.twitch_clips_get_clips} returns the clip, the clip was successfully created. If after 15 seconds ${function.twitch_clips_get_clips} hasn't returned the clip, assume it failed.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CLIPS_EDIT` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CLIPS_EDIT`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose stream you want to create a clip from. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -1454,12 +1800,16 @@ function twitch_chat_update_user_chat_color(user_id, color, callback_success, ca
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | edit_url | ${type.string}  | A URL that you can use to edit the clip's title, identify the part of the clip to publish, and publish the clip. [Learn More](https://help.twitch.tv/s/article/how-to-use-clips) The URL is valid for up to 24 hours or until the clip is published, whichever comes first.  |
  * | id | ${type.string}  | An ID that uniquely identifies the clip.  |
+ * 
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1478,20 +1828,20 @@ function twitch_clips_create_clip(broadcaster_id, optionals, callback_success, c
  * 
  * @param {string} broadcaster_id An ID that identifies the broadcaster whose video clips you want to get. Use this parameter to get clips that were captured from the broadcaster's streams. 
  * @param {string} game_id An ID that identifies the game whose clips you want to get. Use this parameter to get clips that were captured from streams that were playing this game. 
- * @param {string} id An ID that identifies the clip to get. To specify more than one ID, include this parameter for each clip you want to get. For example, `id=foo&amp;id=bar`. You may specify a maximum of 100 IDs. The API ignores duplicate IDs and IDs that aren't found. 
+ * @param {string|array} id An ID that identifies the clip to get. To specify more than one ID, pass an array with the ID of each clip you want to get. You may specify a maximum of 100 IDs. The API ignores duplicate IDs and IDs that aren't found. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `started_at` : ${type.string} : The start date used to filter clips. The API returns only clips within the start and end date window. Specify the date and time in RFC3339 format.
  * - `ended_at` : ${type.string} : The end date used to filter clips. If not specified, the time window is the start date plus one week. Specify the date and time in RFC3339 format.
  * - `first` : ${type.number} : The maximum number of clips to return per page in the response. The minimum page size is 1 clip per page and the maximum is 100. The default is 20.
- * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * - `is_featured` : ${type.boolean} : A Boolean value that determines whether the response includes featured clips. If `true`, returns only clips that are featured. If `false`, returns only clips that aren't featured. All clips are returned if this parameter is not present.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1513,8 +1863,11 @@ function twitch_clips_create_clip(broadcaster_id, optionals, callback_success, c
  * | &nbsp;├──&nbsp;duration | ${type.real}  | The length of the clip, in seconds. Precision is 0.1.  |
  * | &nbsp;├──&nbsp;vod_offset | ${type.number}  | The zero-based offset, in seconds, to where the clip starts in the video (VOD). Is `undefined` if the video is not available or hasn't been created yet from the live stream (see `video_id`). Note that there's a delay between when a clip is created during a broadcast and when the offset is set. During the delay period, `vod_offset` is `undefined`. The delay is indeterminant but is typically minutes long.  |
  * | &nbsp;└──&nbsp;is_featured | ${type.boolean}  | A Boolean value that indicates if the clip is featured or not.  |
- * | pagination | ${type.struct}  | The information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | The information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` or `before` parameter to this value depending on whether you're paging forwards or backwards.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1532,13 +1885,16 @@ function twitch_clips_get_clips(broadcaster_id, game_id, id, optionals, callback
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | List of information about the client's conduits.  |
  * | &nbsp;├──&nbsp;id | ${type.string}  | Conduit ID.  |
  * | &nbsp;└──&nbsp;shard_count | ${type.number}  | Number of shards associated with this conduit.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1557,13 +1913,16 @@ function twitch_conduits_get_conduits(callback_success, callback_failed) {}
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | List of information about the client's conduits.  |
  * | &nbsp;├──&nbsp;id | ${type.string}  | Conduit ID.  |
  * | &nbsp;└──&nbsp;shard_count | ${type.number}  | Number of shards created for this conduit.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1583,13 +1942,16 @@ function twitch_conduits_create_conduits(shard_count, callback_success, callback
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | List of information about the client's conduits.  |
  * | &nbsp;├──&nbsp;id | ${type.string}  | Conduit ID.  |
  * | &nbsp;└──&nbsp;shard_count | ${type.number}  | Number of shards associated with this conduit after the update.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1607,6 +1969,13 @@ function twitch_conduits_update_conduits(id, shard_count, callback_success, call
  * @param {string} id Conduit ID. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_conduits_delete_conduit(id, callback_success, callback_failed) {}
@@ -1624,12 +1993,12 @@ function twitch_conduits_delete_conduit(id, callback_success, callback_failed) {
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `status` : ${type.string} : Status to filter by.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The pagination object in the response contains the cursor's value.
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The Pagination struct in the response contains the cursor's value.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1642,8 +2011,11 @@ function twitch_conduits_delete_conduit(id, callback_success, callback_failed) {
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;session_id | ${type.string}  | An ID that identifies the WebSocket that notifications are sent to. Included only if method is set to websocket.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;connected_at | ${type.string}  | The UTC date and time that the WebSocket connection was established. Included only if method is set to websocket.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;disconnected_at | ${type.string}  | The UTC date and time that the WebSocket connection was lost. Included only if method is set to websocket.  |
- * | pagination | ${type.struct}  | Contains information used to page through a list of results. The object is empty if there are no more pages left to page through.  |
+ * | pagination | ${type.struct}  | Contains information used to page through a list of results. The struct is empty if there are no more pages left to page through.  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1674,7 +2046,7 @@ function twitch_conduits_get_conduit_shards(conduit_id, optionals, callback_succ
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1691,6 +2063,9 @@ function twitch_conduits_get_conduit_shards(conduit_id, optionals, callback_succ
  * | &nbsp;├──&nbsp;id | ${type.string}  | Shard ID.  |
  * | &nbsp;├──&nbsp;message | ${type.string}  | The error that occurred while updating the shard. Possible errors: - The length of the string in the secret field is not valid. - The URL in the transport's callback field is not valid. The URL must use the HTTPS protocol and the 443 port number. - The value specified in the method field is not valid. - The callback field is required if you specify the webhook transport method. - The session_id field is required if you specify the WebSocket transport method. - The websocket session is not connected. - The shard id is outside of the conduit's range.  |
  * | &nbsp;└──&nbsp;code | ${type.string}  | Error codes used to represent a specific error condition while attempting to update shards.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1712,7 +2087,7 @@ function twitch_conduits_update_conduit_shards(conduit_id, shards,id, transport,
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1721,6 +2096,9 @@ function twitch_conduits_update_conduit_shards(conduit_id, shards,id, transport,
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | Unique identifier for the CCL.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;description | ${type.string}  | Localized description of the CCL.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | Localized name of the CCL.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1756,13 +2134,13 @@ function twitch_ccls_get_content_classification_labels(optionals, callback_succe
  * - `user_id` : ${type.string} : An ID that identifies a user that was granted entitlements.
  * - `game_id` : ${type.string} : An ID that identifies a game that offered entitlements.
  * - `fulfillment_status` : ${type.string} : The entitlement's fulfillment status. Used to filter the list to only those with the specified status. Possible values are: `"CLAIMED"`, `"FULFILLED"`
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * - `first` : ${type.number} : The maximum number of entitlements to return per page in the response. The minimum page size is 1 entitlement per page and the maximum is 1000. The default is 20.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * |--------|------|-------------|
@@ -1774,8 +2152,11 @@ function twitch_ccls_get_content_classification_labels(optionals, callback_succe
  * | &nbsp;├──&nbsp;game_id | ${type.string}  | An ID that identifies the game the user was playing when the reward was entitled.  |
  * | &nbsp;├──&nbsp;fulfillment_status | ${type.string}  | The entitlement's fulfillment status. Possible values are: `"CLAIMED"`, `"FULFILLED"`  |
  * | &nbsp;└──&nbsp;last_updated | ${type.string}  | The UTC date and time (in RFC3339 format) of when the entitlement was last updated.  |
- * | pagination | ${type.struct}  | The information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | The information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` parameter to this value to page forward through the results.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1800,13 +2181,16 @@ function twitch_entitlements_get_drops_entitlements(optionals, callback_success,
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that indicates which entitlements were successfully updated and those that weren't.  |
  * | &nbsp;├──&nbsp;status | ${type.string}  | A string that indicates whether the status of the entitlements in the `ids` field were successfully updated. Possible values are: `"INVALID_ID"` - The entitlement IDs in the `ids` field are not valid. `"NOT_FOUND"` - The entitlement IDs in the `ids` field were not found. `"SUCCESS"` - The status of the entitlements in the `ids` field were successfully updated. `"UNAUTHORIZED"` - The user or organization identified by the user access token is not authorized to update the entitlements. `"UPDATE_FAILED"` - The update failed. These are considered transient errors and the request should be retried later.  |
  * | &nbsp;└──&nbsp;ids | ${type.array} of ${type.string}  | The list of entitlements that the status in the `status` field applies to.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1832,15 +2216,18 @@ function twitch_entitlements_update_drops_entitlements(optionals, callback_succe
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | The list of requested configuration segments. The list is returned in the same order that you specified the list of segments in the request.  |
  * | &nbsp;├──&nbsp;segment | ${type.string}  | The type of segment. Possible values are: `"broadcaster"`, `"developer"`, `"global"`  |
- * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that installed the extension. The object includes this field only if the `segment` parameter is set to `"developer"` or `"broadcaster"`.  |
+ * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that installed the extension. The struct includes this field only if the `segment` parameter is set to `"developer"` or `"broadcaster"`.  |
  * | &nbsp;├──&nbsp;content | ${type.string}  | The contents of the segment. This string may be a plain-text string or a string-encoded JSON object.  |
  * | &nbsp;└──&nbsp;version | ${type.string}  | The version number that identifies this definition of the segment's data.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1867,6 +2254,13 @@ function twitch_extensions_get_extension_configuration_segment(extension_id, seg
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_extensions_set_extension_configuration_segment(extension_id, segment, optionals, callback_success, callback_failed) {}
@@ -1886,6 +2280,13 @@ function twitch_extensions_set_extension_configuration_segment(extension_id, seg
  * @param {string} required_configuration The required_configuration string to use with the extension. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_extensions_set_extension_required_configuration(broadcaster_id, extension_id, extension_version, required_configuration, callback_success, callback_failed) {}
@@ -1914,6 +2315,13 @@ function twitch_extensions_set_extension_required_configuration(broadcaster_id, 
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_extensions_send_extension_pubsub_message(target, broadcaster_id, message, optionals, callback_success, callback_failed) {}
@@ -1938,7 +2346,7 @@ function twitch_extensions_send_extension_pubsub_message(target, broadcaster_id,
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1948,7 +2356,10 @@ function twitch_extensions_send_extension_pubsub_message(target, broadcaster_id,
  * | &nbsp;├──&nbsp;game_name | ${type.string}  | The name of the category or game being streamed.  |
  * | &nbsp;├──&nbsp;game_id | ${type.string}  | The ID of the category or game being streamed.  |
  * | &nbsp;└──&nbsp;title | ${type.string}  | The title of the broadcaster's stream. May be an empty string if not specified.  |
- * | pagination | ${type.string}  | This field contains the cursor used to page through the results. The field is empty if there are no more pages left to page through. Note that this field is a string compared to other endpoints that use a Pagination object. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.string}  | This field contains the cursor used to page through the results. The field is empty if there are no more pages left to page through. Note that this field is a string compared to other endpoints that use a Pagination struct. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1967,7 +2378,7 @@ function twitch_extensions_get_extension_live_channels(extension_id, optionals, 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -1977,6 +2388,9 @@ function twitch_extensions_get_extension_live_channels(extension_id, optionals, 
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;content | ${type.string}  | The raw secret that you use with JWT encoding.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you may begin using this secret to sign a JWT.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you must stop using this secret to decode a JWT.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -1999,7 +2413,7 @@ function twitch_extensions_get_extension_secrets(extension_id, callback_success,
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2009,6 +2423,9 @@ function twitch_extensions_get_extension_secrets(extension_id, callback_success,
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;content | ${type.string}  | The raw secret that you use with JWT encoding.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you may begin using this secret to sign a JWT.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that you must stop using this secret to decode a JWT.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2031,6 +2448,13 @@ function twitch_extensions_create_extension_secret(extension_id, optionals, call
  * @param {string} extension_version The extension's version number. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_extensions_send_extension_chat_message(broadcaster_id, text, extension_id, extension_version, callback_success, callback_failed) {}
@@ -2052,7 +2476,7 @@ function twitch_extensions_send_extension_chat_message(broadcaster_id, text, ext
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2079,27 +2503,30 @@ function twitch_extensions_send_extension_chat_message(broadcaster_id, text, ext
  * | &nbsp;├──&nbsp;viewer_summary | ${type.string}  | A brief description displayed on the channel to explain how the extension works.  |
  * | &nbsp;├──&nbsp;views | ${type.struct}  | Describes all views-related information such as how the extension is displayed on mobile devices.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;mobile | ${type.struct}  | Describes how the extension is displayed on mobile devices.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on mobile devices. This page is presented to viewers as a panel behind the chat area of the mobile app.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on mobile devices. This page is presented to viewers as a panel behind the chat area of the mobile app.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;panel | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a panel extension.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Panel slot.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;height | ${type.number}  | The height, in pixels, of the panel component that the extension is rendered in.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Panel slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;height | ${type.number}  | The height, in pixels, of the panel component that the extension is rendered in.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;video_overlay | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-overlay extension.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated on the Video - Overlay slot.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated on the Video - Overlay slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;component | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-component extension.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Video - Component slot.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_x | ${type.number}  | The width value of the ratio (width : height) which determines the extension's width, and how the extension's iframe will resize in different video player environments.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_y | ${type.number}  | The height value of the ratio (width : height) which determines the extension's height, and how the extension's iframe will resize in different video player environments.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;autoscale | ${type.boolean}  | A Boolean value that determines whether to apply CSS zoom. If `true`, a CSS zoom is applied such that the size of the extension is variable but the inner dimensions are fixed based on Scale Pixels. This allows your extension to render as if it is of fixed width and height. If `false`, the inner dimensions of the extension iframe are variable, meaning your extension must implement responsiveness.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;scale_pixels | ${type.number}  | The base width, in pixels, of the extension to use when scaling (see `autoscale`). This value is ignored if `autoscale` is `false`.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;target_height | ${type.number}  | The height as a percent of the maximum height of a video component extension. Values are between 1% - 100%.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Video - Component slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_x | ${type.number}  | The width value of the ratio (width : height) which determines the extension's width, and how the extension's iframe will resize in different video player environments.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_y | ${type.number}  | The height value of the ratio (width : height) which determines the extension's height, and how the extension's iframe will resize in different video player environments.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;autoscale | ${type.boolean}  | A Boolean value that determines whether to apply CSS zoom. If `true`, a CSS zoom is applied such that the size of the extension is variable but the inner dimensions are fixed based on Scale Pixels. This allows your extension to render as if it is of fixed width and height. If `false`, the inner dimensions of the extension iframe are variable, meaning your extension must implement responsiveness.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;scale_pixels | ${type.number}  | The base width, in pixels, of the extension to use when scaling (see `autoscale`). This value is ignored if `autoscale` is `false`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;target_height | ${type.number}  | The height as a percent of the maximum height of a video component extension. Values are between 1% - 100%.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;config | ${type.struct}  | Describes the view that is shown to broadcasters while they are configuring your extension within the Extension Manager.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file shown to broadcasters while they are configuring your extension within the Extension Manager.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file shown to broadcasters while they are configuring your extension within the Extension Manager.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
  * | &nbsp;├──&nbsp;allowlisted_config_urls | ${type.array} of ${type.string}  | Allowlisted configuration URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
  * | &nbsp;└──&nbsp;allowlisted_panel_urls | ${type.array} of ${type.string}  | Allowlisted panel URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2122,7 +2549,7 @@ function twitch_extensions_get_extensions(extension_id, optionals, callback_succ
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2149,27 +2576,30 @@ function twitch_extensions_get_extensions(extension_id, optionals, callback_succ
  * | &nbsp;├──&nbsp;viewer_summary | ${type.string}  | A brief description displayed on the channel to explain how the extension works.  |
  * | &nbsp;├──&nbsp;views | ${type.struct}  | Describes all views-related information such as how the extension is displayed on mobile devices.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;mobile | ${type.struct}  | Describes how the extension is displayed on mobile devices.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on mobile devices. This page is presented to viewers as a panel behind the chat area of the mobile app.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on mobile devices. This page is presented to viewers as a panel behind the chat area of the mobile app.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;panel | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a panel extension.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Panel slot.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;height | ${type.number}  | The height, in pixels, of the panel component that the extension is rendered in.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Panel slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;height | ${type.number}  | The height, in pixels, of the panel component that the extension is rendered in.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;video_overlay | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-overlay extension.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated on the Video - Overlay slot.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated on the Video - Overlay slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;component | ${type.struct}  | Describes how the extension is rendered if the extension may be activated as a video-component extension.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Video - Component slot.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_x | ${type.number}  | The width value of the ratio (width : height) which determines the extension's width, and how the extension's iframe will resize in different video player environments.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_y | ${type.number}  | The height value of the ratio (width : height) which determines the extension's height, and how the extension's iframe will resize in different video player environments.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;autoscale | ${type.boolean}  | A Boolean value that determines whether to apply CSS zoom. If `true`, a CSS zoom is applied such that the size of the extension is variable but the inner dimensions are fixed based on Scale Pixels. This allows your extension to render as if it is of fixed width and height. If `false`, the inner dimensions of the extension iframe are variable, meaning your extension must implement responsiveness.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;scale_pixels | ${type.number}  | The base width, in pixels, of the extension to use when scaling (see `autoscale`). This value is ignored if `autoscale` is `false`.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;target_height | ${type.number}  | The height as a percent of the maximum height of a video component extension. Values are between 1% - 100%.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file that is shown to viewers on the channel page when the extension is activated in a Video - Component slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_x | ${type.number}  | The width value of the ratio (width : height) which determines the extension's width, and how the extension's iframe will resize in different video player environments.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_y | ${type.number}  | The height value of the ratio (width : height) which determines the extension's height, and how the extension's iframe will resize in different video player environments.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;autoscale | ${type.boolean}  | A Boolean value that determines whether to apply CSS zoom. If `true`, a CSS zoom is applied such that the size of the extension is variable but the inner dimensions are fixed based on Scale Pixels. This allows your extension to render as if it is of fixed width and height. If `false`, the inner dimensions of the extension iframe are variable, meaning your extension must implement responsiveness.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;scale_pixels | ${type.number}  | The base width, in pixels, of the extension to use when scaling (see `autoscale`). This value is ignored if `autoscale` is `false`.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;target_height | ${type.number}  | The height as a percent of the maximum height of a video component extension. Values are between 1% - 100%.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;config | ${type.struct}  | Describes the view that is shown to broadcasters while they are configuring your extension within the Extension Manager.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file shown to broadcasters while they are configuring your extension within the Extension Manager.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url | ${type.string}  | The HTML file shown to broadcasters while they are configuring your extension within the Extension Manager.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content | ${type.boolean}  | A Boolean value that determines whether the extension can link to non-Twitch domains.  |
  * | &nbsp;├──&nbsp;allowlisted_config_urls | ${type.array} of ${type.string}  | Allowlisted configuration URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
  * | &nbsp;└──&nbsp;allowlisted_panel_urls | ${type.array} of ${type.string}  | Allowlisted panel URLs for displaying the extension (the allowlist is configured on Twitch's [developer site](https://dev.twitch.tv/console/extensions) under the **Extensions** > **Extension** > **Version** > **Capabilities**).  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2191,19 +2621,22 @@ function twitch_extensions_get_released_extensions(extension_id, optionals, call
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list of Bits products that the extension created. The list is in ascending SKU order. The list is empty if the extension hasn't created any products or they're all expired or disabled.  |
  * | &nbsp;├──&nbsp;sku | ${type.string}  | The product's SKU. The SKU is unique across an extension's products.  |
- * | &nbsp;├──&nbsp;cost | ${type.struct}  | An object that contains the product's cost information.  |
+ * | &nbsp;├──&nbsp;cost | ${type.struct}  | a struct that contains the product's cost information.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;amount | ${type.number}  | The product's price.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;type | ${type.string}  | The type of currency. Possible values are: `"bits"`  |
  * | &nbsp;├──&nbsp;in_development | ${type.boolean}  | A Boolean value that indicates whether the product is in development. If `true`, the product is not available for public use.  |
  * | &nbsp;├──&nbsp;display_name | ${type.string}  | The product's name as displayed in the extension.  |
  * | &nbsp;├──&nbsp;expiration | ${type.string}  | The date and time, in RFC3339 format, when the product expires.  |
  * | &nbsp;└──&nbsp;is_broadcast | ${type.boolean}  | A Boolean value that determines whether Bits product purchase events are broadcast to all instances of an extension on a channel. The events are broadcast via the `onTransactionComplete` helper callback. Is `true` if the event is broadcast to all instances.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2219,7 +2652,7 @@ function twitch_extensions_get_extension_bits_products(optionals, callback_succe
  * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens). The client ID in the app access token must match the extension's client ID.]]
  * 
  * @param {string} sku The product's SKU. The SKU must be unique within an extension. The product's SKU cannot be changed. The SKU may contain only alphanumeric characters, dashes (-), underscores (_), and periods (.) and is limited to a maximum of 255 characters. No spaces. 
- * @param {struct} cost An object that contains the product's cost information. 
+ * @param {struct} cost a struct that contains the product's cost information. 
  * @param {number} amount The product's price. 
  * @param {string} type The type of currency. Possible values are: `"bits"` — The minimum price is 1 and the maximum is 10000. 
  * @param {string} display_name The product's name as displayed in the extension. The maximum length is 255 characters. 
@@ -2232,19 +2665,22 @@ function twitch_extensions_get_extension_bits_products(optionals, callback_succe
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list of Bits products that the extension created. The list is in ascending SKU order. The list is empty if the extension hasn't created any products or they're all expired or disabled.  |
  * | &nbsp;├──&nbsp;sku | ${type.string}  | The product's SKU. The SKU is unique across an extension's products.  |
- * | &nbsp;├──&nbsp;cost | ${type.struct}  | An object that contains the product's cost information.  |
+ * | &nbsp;├──&nbsp;cost | ${type.struct}  | a struct that contains the product's cost information.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;amount | ${type.number}  | The product's price.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;type | ${type.string}  | The type of currency. Possible values are:`"bits"`  |
  * | &nbsp;├──&nbsp;in_development | ${type.boolean}  | A Boolean value that indicates whether the product is in development. If `true`, the product is not available for public use.  |
  * | &nbsp;├──&nbsp;display_name | ${type.string}  | The product's name as displayed in the extension.  |
  * | &nbsp;├──&nbsp;expiration | ${type.string}  | The date and time, in RFC3339 format, when the product expires.  |
  * | &nbsp;└──&nbsp;is_broadcast | ${type.boolean}  | A Boolean value that determines whether Bits product purchase events are broadcast to all instances of an extension on a channel. Is `true` if the event is broadcast to all instances.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2278,7 +2714,7 @@ function twitch_extensions_update_extension_bits_product(sku, cost, amount, type
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2300,6 +2736,9 @@ function twitch_extensions_update_extension_bits_product(sku, cost, amount, type
  * | total_cost | ${type.number}  | The sum of all of your subscription costs. [Learn More](https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits)  |
  * | max_total_cost | ${type.number}  | The maximum total cost that you're allowed to incur for all subscriptions you create.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_eventsub_create_eventsub_subscription(type, version, condition, transport, method, optionals, callback_success, callback_failed) {}
@@ -2318,6 +2757,13 @@ function twitch_eventsub_create_eventsub_subscription(type, version, condition, 
  * @param {string} id The ID of the subscription to delete. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_eventsub_delete_eventsub_subscription(id, callback_success, callback_failed) {}
@@ -2340,12 +2786,12 @@ function twitch_eventsub_delete_eventsub_subscription(id, callback_success, call
  * - `status` : ${type.string} : Filter subscriptions by its status. Possible values are: `"enabled"` — The subscription is enabled. `"webhook_callback_verification_pending"` — The subscription is pending verification of the specified callback URL. `"webhook_callback_verification_failed"` — The specified callback URL failed verification. `"notification_failures_exceeded"` — The notification delivery failure rate was too high. `"authorization_revoked"` — The authorization was revoked for one or more users specified in the **Condition* object. `"moderator_removed"` — The moderator that authorized the subscription is no longer one of the broadcaster's moderators. `"user_removed"` — One of the users specified in the **Condition** object was removed. `"chat_user_banned"` - The user specified in the **Condition** object was banned from the broadcaster's chat. `"version_removed"` — The subscription to subscription type and version is no longer supported. `"beta_maintenance"` — The subscription to the beta subscription type was removed due to maintenance. `"websocket_disconnected"` — The client closed the connection. `"websocket_failed_ping_pong"` — The client failed to respond to a ping message. `"websocket_received_inbound_traffic"` — The client sent a non-pong message. Clients may only send pong messages (and only in response to a ping message). `"websocket_connection_unused"` — The client failed to subscribe to events within the required time. `"websocket_internal_error"` — The Twitch WebSocket server experienced an unexpected error. `"websocket_network_timeout"` — The Twitch WebSocket server timed out writing the message to the client. `"websocket_network_error"` — The Twitch WebSocket server experienced a network error writing the message to the client. `"websocket_failed_to_reconnect"` - The client failed to reconnect to the Twitch WebSocket server within the required time after a Reconnect Message.
  * - `type` : ${type.string} : Filter subscriptions by subscription type. For a list of subscription types, see [Subscription Types](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#subscription-types).
  * - `user_id` : ${type.string} : Filter subscriptions by user ID. The response contains subscriptions where this ID matches a user ID that you specified in the **Condition** object when you [created the subscription](https://dev.twitch.tv/docs/api/reference#create-eventsub-subscription).
- * - `after` : ${type.string} : The cursor used to get the next page of results. The `pagination` object in the response contains the cursor's value.
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The `pagination` struct in the response contains the cursor's value.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2366,8 +2812,11 @@ function twitch_eventsub_delete_eventsub_subscription(id, callback_success, call
  * | total | ${type.number}  | The total number of subscriptions that you've created.  |
  * | total_cost | ${type.number}  | The sum of all of your subscription costs. [Learn More](https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits)  |
  * | max_total_cost | ${type.number}  | The maximum total cost that you're allowed to incur for all subscriptions that you create.  |
- * | pagination | ${type.struct}  | An object that contains the cursor used to get the next page of subscriptions. The object is empty if there are no more pages to get. The number of subscriptions returned per page is undertermined.  |
+ * | pagination | ${type.struct}  | a struct that contains the cursor used to get the next page of subscriptions. The struct is empty if there are no more pages to get. The number of subscriptions returned per page is undertermined.  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor value that you set the after parameter to.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2385,13 +2834,13 @@ function twitch_eventsub_get_eventsub_subscriptions(optionals, callback_success,
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
- * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2400,8 +2849,11 @@ function twitch_eventsub_get_eventsub_subscriptions(optionals, callback_success,
  * | &nbsp;├──&nbsp;name | ${type.string}  | The category's or game's name.  |
  * | &nbsp;├──&nbsp;box_art_url | ${type.string}  | A URL to the category's or game's box art. You must replace the `{width}x{height}` placeholder with the size of image you want.  |
  * | &nbsp;└──&nbsp;igdb_id | ${type.string}  | The ID that [IGDB](https://www.igdb.com/) uses to identify this game. If the IGDB ID is not available to Twitch, this field is set to an empty string.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` or `before` parameter to get the next or previous page of results.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2425,7 +2877,7 @@ function twitch_games_get_top_games(optionals, callback_success, callback_failed
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2434,6 +2886,9 @@ function twitch_games_get_top_games(optionals, callback_success, callback_failed
  * | &nbsp;├──&nbsp;name | ${type.string}  | The category's or game's name.  |
  * | &nbsp;├──&nbsp;box_art_url | ${type.string}  | A URL to the category's or game's box art. You must replace the `{width}x{height}` placeholder with the size of image you want.  |
  * | &nbsp;└──&nbsp;igdb_id | ${type.string}  | The ID that [IGDB](https://www.igdb.com/) uses to identify this game. If the IGDB ID is not available to Twitch, this field is set to an empty string.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2448,13 +2903,13 @@ function twitch_games_get_games(id, name, igdb_id, callback_success, callback_fa
  * 
  * Instead of polling for the progress of a goal, consider [subscribing](https://dev.twitch.tv/docs/eventsub/manage-subscriptions) to receive notifications when a goal makes progress using the [channel.goal.progress](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#channelgoalprogress) subscription type. [Read More](https://dev.twitch.tv/docs/api/goals#requesting-event-notifications)
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_READ_GOALS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_GOALS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that created the goals. This ID must match the user ID in the user access token. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2468,6 +2923,9 @@ function twitch_games_get_games(id, name, igdb_id, callback_success, callback_fa
  * | &nbsp;├──&nbsp;current_amount | ${type.number}  | The goal's current value. The goal's `type` determines how this value is increased or decreased. If `type` is `"follower"`, this field is set to the broadcaster's current number of followers. This number increases with new followers and decreases when users unfollow the broadcaster. If `type` is `"subscription"`, this field is increased and decreased by the points value associated with the subscription tier. For example, if a tier-two subscription is worth 2 points, this field is increased or decreased by 2, not 1. If `type` is `"subscription_count"`, this field is increased by 1 for each new subscription and decreased by 1 for each user that unsubscribes. If `type` is `"new_subscription"`, this field is increased by the points value associated with the subscription tier. For example, if a tier-two subscription is worth 2 points, this field is increased by 2, not 1. If `type` is `"new_subscription_count"`, this field is increased by 1 for each new subscription.  |
  * | &nbsp;├──&nbsp;target_amount | ${type.number}  | The goal's target value. For example, if the broadcaster has 200 followers before creating the goal, and their goal is to double that number, this field is set to 400.  |
  * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the broadcaster created the goal.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2491,7 +2949,7 @@ function twitch_goals_get_creator_goals(broadcaster_id, callback_success, callba
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2500,6 +2958,9 @@ function twitch_goals_get_creator_goals(broadcaster_id, callback_success, callba
  * | is_browser_source_audio_enabled | ${type.boolean}  | Flag determining if Browser Sources subscribed to sessions on this channel should output audio  |
  * | group_layout | ${type.string}  | This setting determines how the guests within a session should be laid out within the browser source. Can be one of the following values: `"TILED_LAYOUT"`: All live guests are tiled within the browser source with the same size. `"SCREENSHARE_LAYOUT"`: All live guests are tiled within the browser source with the same size. If there is an active screen share, it is sized larger than the other guests.  |
  * | browser_source_token | ${type.string}  | View only token to generate browser source URLs  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2526,6 +2987,13 @@ function twitch_guest_star_get_channel_guest_star_settings(optionals, callback_s
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_guest_star_update_channel_guest_star_settings(optionals, callback_success, callback_failed) {}
@@ -2546,7 +3014,7 @@ function twitch_guest_star_update_channel_guest_star_settings(optionals, callbac
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2561,13 +3029,16 @@ function twitch_guest_star_update_channel_guest_star_settings(optionals, callbac
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;volume | ${type.number}  | Value from 0 to 100 representing the host's volume setting for this guest.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;assigned_at | ${type.string}  | Timestamp when this guest was assigned a slot in the session.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;audio_settings | ${type.struct}  | Information about the guest's audio settings  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;video_settings | ${type.struct}  | Information about the guest's video settings  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2588,28 +3059,31 @@ function twitch_guest_star_get_guest_star_session(optionals, callback_success, c
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | Summary of the session details.  |
  * | &nbsp;├──&nbsp;id | ${type.string}  | ID uniquely representing the Guest Star session.  |
  * | &nbsp;├──&nbsp;guests | ${type.struct}  | List of guests currently interacting with the Guest Star session. On creation, the session will contain the broadcaster as a solo guest.  |
- * | &nbsp;├──&nbsp;slot_id | ${type.string}  | ID representing this guest's slot assignment. Host is always in slot `"0"`. Guests are assigned the following consecutive IDs (e.g, `"1"`, `"2"`, `"3"`, etc.). Screen Share is represented as a special guest with the ID `"SCREENSHARE"`. The identifier here matches the ID referenced in browser source links used in broadcasting software.  |
- * | &nbsp;├──&nbsp;is_live | ${type.boolean}  | Flag determining whether or not the guest is visible in the browser source in the host's streaming software.  |
- * | &nbsp;├──&nbsp;user_id | ${type.string}  | User ID of the guest assigned to this slot.  |
- * | &nbsp;├──&nbsp;user_display_name | ${type.string}  | Display name of the guest assigned to this slot.  |
- * | &nbsp;├──&nbsp;user_login | ${type.string}  | Login of the guest assigned to this slot.  |
- * | &nbsp;├──&nbsp;volume | ${type.number}  | Value from 0 to 100 representing the host's volume setting for this guest.  |
- * | &nbsp;├──&nbsp;assigned_at | ${type.string}  | Timestamp when this guest was assigned a slot in the session.  |
- * | &nbsp;├──&nbsp;audio_settings | ${type.struct}  | Information about the guest's audio settings  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
- * | &nbsp;└──&nbsp;video_settings | ${type.struct}  | Information about the guest's video settings  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;slot_id | ${type.string}  | ID representing this guest's slot assignment. Host is always in slot `"0"`. Guests are assigned the following consecutive IDs (e.g, `"1"`, `"2"`, `"3"`, etc.). Screen Share is represented as a special guest with the ID `"SCREENSHARE"`. The identifier here matches the ID referenced in browser source links used in broadcasting software.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_live | ${type.boolean}  | Flag determining whether or not the guest is visible in the browser source in the host's streaming software.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | User ID of the guest assigned to this slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_display_name | ${type.string}  | Display name of the guest assigned to this slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | Login of the guest assigned to this slot.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;volume | ${type.number}  | Value from 0 to 100 representing the host's volume setting for this guest.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;assigned_at | ${type.string}  | Timestamp when this guest was assigned a slot in the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;audio_settings | ${type.struct}  | Information about the guest's audio settings  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;video_settings | ${type.struct}  | Information about the guest's video settings  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2631,7 +3105,7 @@ function twitch_guest_star_create_guest_star_session(optionals, callback_success
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2646,13 +3120,16 @@ function twitch_guest_star_create_guest_star_session(optionals, callback_success
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;volume | ${type.number}  | Value from 0 to 100 representing the host's volume setting for this guest.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;assigned_at | ${type.string}  | Timestamp when this guest was assigned a slot in the session.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;audio_settings | ${type.struct}  | Information about the guest's audio settings  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's audio to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their audio to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate audio device available to be transmitted to the session.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;video_settings | ${type.struct}  | Information about the guest's video settings  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_host_enabled | ${type.boolean}  | Flag determining whether the host is allowing the guest's video to be seen or heard within the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;is_guest_enabled | ${type.boolean}  | Flag determining whether the guest is allowing their video to be transmitted to the session.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_available | ${type.boolean}  | Flag determining whether the guest has an appropriate video device available to be transmitted to the session.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2675,7 +3152,7 @@ function twitch_guest_star_end_guest_star_session(optionals, callback_success, c
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2687,6 +3164,9 @@ function twitch_guest_star_end_guest_star_session(optionals, callback_success, c
  * | &nbsp;├──&nbsp;is_audio_enabled | ${type.boolean}  | Flag signaling that the invited user has chosen to disable their local audio device. The user has muted themselves, but they may choose to unmute their audio feed upon joining the session.  |
  * | &nbsp;├──&nbsp;is_video_available | ${type.boolean}  | Flag signaling that the invited user has a video device available for sharing.  |
  * | &nbsp;└──&nbsp;is_audio_available | ${type.boolean}  | Flag signaling that the invited user has an audio device available for sharing.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2709,6 +3189,13 @@ function twitch_guest_star_get_guest_star_invites(optionals, callback_success, c
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_guest_star_send_guest_star_invite(optionals, callback_success, callback_failed) {}
@@ -2730,6 +3217,13 @@ function twitch_guest_star_send_guest_star_invite(optionals, callback_success, c
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_guest_star_delete_guest_star_invite(optionals, callback_success, callback_failed) {}
@@ -2752,6 +3246,13 @@ function twitch_guest_star_delete_guest_star_invite(optionals, callback_success,
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_guest_star_assign_guest_star_slot(optionals, callback_success, callback_failed) {}
@@ -2774,6 +3275,13 @@ function twitch_guest_star_assign_guest_star_slot(optionals, callback_success, c
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_guest_star_update_guest_star_slot(optionals, callback_success, callback_failed) {}
@@ -2797,6 +3305,13 @@ function twitch_guest_star_update_guest_star_slot(optionals, callback_success, c
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_guest_star_delete_guest_star_slot(optionals, callback_success, callback_failed) {}
@@ -2825,6 +3340,13 @@ function twitch_guest_star_delete_guest_star_slot(optionals, callback_success, c
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_guest_star_update_guest_star_slot_settings(optionals, callback_success, callback_failed) {}
@@ -2838,18 +3360,18 @@ function twitch_guest_star_update_guest_star_slot_settings(optionals, callback_s
  * 
  * Instead of polling for events, consider [subscribing](https://dev.twitch.tv/docs/eventsub/manage-subscriptions) to Hype Train events ([Begin](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#channelhype_trainbegin), [Progress](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#channelhype_trainprogress), [End](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#channelhype_trainend)).
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_READ_HYPE_TRAIN` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_HYPE_TRAIN`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that's running the Hype Train. This ID must match the User ID in the user access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 1.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -2865,18 +3387,21 @@ function twitch_guest_star_update_guest_star_slot_settings(optionals, callback_s
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;goal | ${type.number}  | The value needed to reach the next level.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies this Hype Train.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;last_contribution | ${type.struct}  | The most recent contribution towards the Hype Train's goal.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;total | ${type.number}  | The total amount contributed. If `type` is `"BITS"`, `total` represents the amount of Bits used. If type is `"SUBS"`, total is 500, 1000, or 2500 to represent tier 1, 2, or 3 subscriptions, respectively.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;type | ${type.string}  | The contribution method used. Possible values are: `"BITS"` - Cheering with Bits. `"SUBS"` - Subscription activity like subscribing or gifting subscriptions. `"OTHER"` - Covers other contribution methods not listed.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;user | ${type.string}  | The ID of the user that made the contribution.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;total | ${type.number}  | The total amount contributed. If `type` is `"BITS"`, `total` represents the amount of Bits used. If type is `"SUBS"`, total is 500, 1000, or 2500 to represent tier 1, 2, or 3 subscriptions, respectively.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;type | ${type.string}  | The contribution method used. Possible values are: `"BITS"` - Cheering with Bits. `"SUBS"` - Subscription activity like subscribing or gifting subscriptions. `"OTHER"` - Covers other contribution methods not listed.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;user | ${type.string}  | The ID of the user that made the contribution.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;level | ${type.number}  | The highest level that the Hype Train reached (the levels are 1 through 5).  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) that this Hype Train started.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;top_contributions | ${type.array}  | The top contributors for each contribution type. For example, the top contributor using BITS (by aggregate) and the top contributor using SUBS (by count).  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;total | ${type.number}  | The total amount contributed. If `type` is `"BITS"`, `total` represents the amount of Bits used. If `type` is `"SUBS"`, `total` is 500, 1000, or 2500 to represent tier 1, 2, or 3 subscriptions, respectively.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;type | ${type.string}  | The contribution method used. Possible values are: `"BITS"` - Cheering with Bits. `"SUBS"` - Subscription activity like subscribing or gifting subscriptions. `"OTHER"` - Covers other contribution methods not listed.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;user | ${type.string}  | The ID of the user that made the contribution.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;total | ${type.number}  | The total amount contributed. If `type` is `"BITS"`, `total` represents the amount of Bits used. If `type` is `"SUBS"`, `total` is 500, 1000, or 2500 to represent tier 1, 2, or 3 subscriptions, respectively.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;type | ${type.string}  | The contribution method used. Possible values are: `"BITS"` - Cheering with Bits. `"SUBS"` - Subscription activity like subscribing or gifting subscriptions. `"OTHER"` - Covers other contribution methods not listed.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;user | ${type.string}  | The ID of the user that made the contribution.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;total | ${type.number}  | The current total amount raised.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2901,7 +3426,7 @@ function twitch_hype_train_get_hype_train_events(broadcaster_id, optionals, call
  * 
  * The above limits are in addition to the standard [Twitch API rate limits](https://dev.twitch.tv/docs/api/guide#twitch-rate-limits). The rate limit headers in the response represent the Twitch rate limits and not the above limits.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATION_READ` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATION_READ`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose AutoMod settings and list of blocked terms are used to check the message. This ID must match the user ID in the access token. 
  * @param {array} data The list of messages to check. The list must contain at least one message and may contain up to a maximum of 100 messages. 
@@ -2910,13 +3435,16 @@ function twitch_hype_train_get_hype_train_events(broadcaster_id, optionals, call
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -------| -----| ------------|
  * | data | ${type.array}  | The list of messages and whether Twitch would approve them for chat.  |
  * | &nbsp;├──&nbsp;msg_id | ${type.string}  | The caller-defined ID passed in the request.  |
  * | &nbsp;└──&nbsp;is_permitted | ${type.boolean}  | A Boolean value that indicates whether Twitch would approve the message for chat or hold it for moderator review or block it from chat. Is `true` if Twitch would approve the message; otherwise, `false` if Twitch would hold the message for moderator review or block it from chat.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -2931,13 +3459,20 @@ function twitch_moderation_check_automod_status(broadcaster_id, data, msg_id, ms
  * 
  * To get messages that AutoMod is holding for review, subscribe to the **automod-queue.<moderator_id>.<channel_id>** [topic](https://dev.twitch.tv/docs/pubsub#topics) using [PubSub](https://dev.twitch.tv/docs/pubsub). PubSub sends a notification to your app when AutoMod holds a message for review.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_AUTOMOD` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_AUTOMOD`.]]
  * 
  * @param {string} user_id The moderator who is approving or denying the held message. This ID must match the user ID in the access token. 
  * @param {string} msg_id The ID of the message to allow or deny. 
  * @param {string} action The action to take for the message. Possible values are: `"ALLOW"`, `"DENY"` 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_manage_held_automod_messages(user_id, msg_id, action, callback_success, callback_failed) {}
@@ -2949,18 +3484,18 @@ function twitch_moderation_manage_held_automod_messages(user_id, msg_id, action,
  * 
  * This function gets the broadcaster's AutoMod settings. The settings are used to automatically block inappropriate or harassing messages from appearing in the broadcaster's chat room.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_READ_AUTOMOD_SETTINGS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_READ_AUTOMOD_SETTINGS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose AutoMod settings you want to get. 
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.array}  | The list of AutoMod settings. The list contains a single object that contains all the AutoMod settings.  |
+ * | data | ${type.array}  | The list of AutoMod settings. The list contains a single struct that contains all the AutoMod settings.  |
  * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The broadcaster's ID.  |
  * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator's ID.  |
  * | &nbsp;├──&nbsp;overall_level | ${type.number}  | The default AutoMod level for the broadcaster. This field is `undefined` if the broadcaster has set one or more of the individual settings.  |
@@ -2973,6 +3508,9 @@ function twitch_moderation_manage_held_automod_messages(user_id, msg_id, action,
  * | &nbsp;├──&nbsp;race_ethnicity_or_religion | ${type.number}  | The Automod level for racial discrimination.  |
  * | &nbsp;└──&nbsp;sex_based_terms | ${type.number}  | The Automod level for sexual content.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_get_automod_settings(broadcaster_id, moderator_id, callback_success, callback_failed) {}
@@ -2984,9 +3522,9 @@ function twitch_moderation_get_automod_settings(broadcaster_id, moderator_id, ca
  * 
  * This function updates the broadcaster's AutoMod settings. The settings are used to automatically block inappropriate or harassing messages from appearing in the broadcaster's chat room.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_AUTOMOD_SETTINGS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_AUTOMOD_SETTINGS`.]]
  * 
- * Because PUT is an overwrite operation, you must include all the fields that you want set after the operation completes. Typically, you’ll send a GET request, update the fields you want to change, and pass that object in the PUT request.
+ * Because PUT is an overwrite operation, you must include all the fields that you want set after the operation completes. Typically, you'll send a GET request, update the fields you want to change, and pass that object in the PUT request.
  * 
  * You may set either `overall_level` or the individual settings like `aggression`, but not both.
  * 
@@ -3016,11 +3554,11 @@ function twitch_moderation_get_automod_settings(broadcaster_id, moderator_id, ca
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.array}  | The list of AutoMod settings. The list contains a single object that contains all the AutoMod settings.  |
+ * | data | ${type.array}  | The list of AutoMod settings. The list contains a single struct that contains all the AutoMod settings.  |
  * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The broadcaster's ID.  |
  * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator's ID.  |
  * | &nbsp;├──&nbsp;overall_level | ${type.number}  | The default AutoMod level for the broadcaster. This field is `undefined` if the broadcaster has set one or more of the individual settings.  |
@@ -3032,6 +3570,9 @@ function twitch_moderation_get_automod_settings(broadcaster_id, moderator_id, ca
  * | &nbsp;├──&nbsp;swearing | ${type.number}  | The Automod level for profanity.  |
  * | &nbsp;├──&nbsp;race_ethnicity_or_religion | ${type.number}  | The Automod level for racial discrimination.  |
  * | &nbsp;└──&nbsp;sex_based_terms | ${type.number}  | The Automod level for sexual content.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3049,15 +3590,15 @@ function twitch_moderation_update_automod_settings(broadcaster_id, moderator_id,
  * @param {string} broadcaster_id The ID of the broadcaster whose list of banned users you want to get. This ID must match the user ID in the access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `user_id` : ${type.string} : A list of user IDs used to filter the results. To specify more than one ID, include this parameter for each user you want to get. For example, `user_id=1234&amp;user_id=5678`. You may specify a maximum of 100 IDs. The returned list includes only those users that were banned or put in a timeout. The list is returned in the same order that you specified the IDs.
+ * - `user_id` : ${type.real} or ${type.array} of ${type.real} : A list of user IDs used to filter the results. To specify more than one ID, pass an array with the ID of each user you want to get. You may specify a maximum of 100 IDs. The returned list includes only those users that were banned or put in a timeout. The list is returned in the same order that you specified the IDs.
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
- * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3071,8 +3612,11 @@ function twitch_moderation_update_automod_settings(broadcaster_id, moderator_id,
  * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The ID of the moderator that banned the user or put them in a timeout.  |
  * | &nbsp;├──&nbsp;moderator_login | ${type.string}  | The moderator's login name.  |
  * | &nbsp;└──&nbsp;moderator_name | ${type.string}  | The moderator's display name.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3091,7 +3635,7 @@ function twitch_moderation_get_banned_users(broadcaster_id, optionals, callback_
  * 
  * To remove a ban or end a timeout, see [Unban user](https://dev.twitch.tv/docs/api/reference/#unban-user).
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_BANNED_USERS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_BANNED_USERS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose chat room the user is being banned from. 
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token. 
@@ -3105,7 +3649,7 @@ function twitch_moderation_get_banned_users(broadcaster_id, optionals, callback_
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3115,6 +3659,9 @@ function twitch_moderation_get_banned_users(broadcaster_id, optionals, callback_
  * | &nbsp;├──&nbsp;user_id | ${type.string}  | The user that was banned or put in a timeout.  |
  * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the ban or timeout was placed.  |
  * | &nbsp;└──&nbsp;end_time | ${type.string}  | The UTC date and time (in RFC3339 format) that the timeout will end. Is `undefined` if the user was banned instead of being put in a timeout.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3129,13 +3676,20 @@ function twitch_moderation_ban_user(broadcaster_id, moderator_id, data, user_id,
  * 
  * To ban a user, see ${function.twitch_moderation_ban_user}.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_BANNED_USERS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_BANNED_USERS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose chat room the user is banned from chatting in. 
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token. 
  * @param {string} user_id The ID of the user to remove the ban or timeout from. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_unban_user(broadcaster_id, moderator_id, user_id, callback_success, callback_failed) {}
@@ -3156,13 +3710,13 @@ function twitch_moderation_unban_user(broadcaster_id, moderator_id, user_id, cal
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `user_id` : ${type.string} : The ID used to filter what unban requests are returned.
- * - `after` : ${type.string} : Cursor used to get next page of results. Pagination object in response contains cursor value.
+ * - `after` : ${type.string} : Cursor used to get next page of results. Pagination struct in response contains cursor value.
  * - `first` : ${type.number} : The maximum number of items to return per page in response
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3182,8 +3736,11 @@ function twitch_moderation_unban_user(broadcaster_id, moderator_id, user_id, cal
  * | &nbsp;├──&nbsp;created_at | ${type.string}  | Timestamp of when the unban request was created.  |
  * | &nbsp;├──&nbsp;resolved_at | ${type.string}  | Timestamp of when moderator/broadcaster approved or denied the request.  |
  * | &nbsp;└──&nbsp;resolution_text | ${type.string}  | Text input by the resolver (moderator) of the unban request.  |
- * | pagination | ${type.struct}  | Contains information used to page through a list of results. The object is empty if there are no more pages left to page through.  |
+ * | pagination | ${type.struct}  | Contains information used to page through a list of results. The struct is empty if there are no more pages left to page through.  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3196,7 +3753,7 @@ function twitch_moderation_get_unban_requests(broadcaster_id, moderator_id, stat
  * 
  * This function resolves an unban request by approving or denying it.
  * 
- * * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_UNBAN_REQUESTS` scope.
+ * * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_UNBAN_REQUESTS`.
  * * Parameter `moderator_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose channel is approving or denying the unban request. 
@@ -3210,7 +3767,7 @@ function twitch_moderation_get_unban_requests(broadcaster_id, moderator_id, stat
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3231,6 +3788,9 @@ function twitch_moderation_get_unban_requests(broadcaster_id, moderator_id, stat
  * | &nbsp;├──&nbsp;resolved_at | ${type.string}  | Timestamp of when moderator/broadcaster approved or denied the request.  |
  * | &nbsp;└──&nbsp;resolution_text | ${type.string}  | Text input by the resolver (moderator) of the unban request.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_resolve_unban_requests(broadcaster_id, moderator_id, unban_request_id, status, optionals, callback_success, callback_failed) {}
@@ -3249,12 +3809,12 @@ function twitch_moderation_resolve_unban_requests(broadcaster_id, moderator_id, 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value.
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3266,8 +3826,11 @@ function twitch_moderation_resolve_unban_requests(broadcaster_id, moderator_id, 
  * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was blocked.  |
  * | &nbsp;├──&nbsp;updated_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was updated. When the term is added, this timestamp is the same as `created_at`. The timestamp changes as AutoMod continues to deny the term.  |
  * | &nbsp;└──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the blocked term is set to expire. After the block expires, users may use the term in the broadcaster's chat room.This field is `undefined` if the term was added manually or was permanently blocked by AutoMod.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3280,7 +3843,7 @@ function twitch_moderation_get_blocked_terms(broadcaster_id, moderator_id, optio
  * 
  * This function adds a word or phrase to the broadcaster's list of blocked terms. These are the terms that the broadcaster doesn't want used in their chat room.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_BLOCKED_TERMS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_BLOCKED_TERMS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the list of blocked terms. 
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token. 
@@ -3288,7 +3851,7 @@ function twitch_moderation_get_blocked_terms(broadcaster_id, moderator_id, optio
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3301,6 +3864,9 @@ function twitch_moderation_get_blocked_terms(broadcaster_id, moderator_id, optio
  * | &nbsp;├──&nbsp;updated_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was updated. When the term is added, this timestamp is the same as `created_at`. The timestamp changes as AutoMod continues to deny the term.  |
  * | &nbsp;└──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the blocked term is set to expire. After the block expires, users may use the term in the broadcaster's chat room.This field is `undefined` if the term was added manually or was permanently blocked by AutoMod.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_add_blocked_term(broadcaster_id, moderator_id, text, callback_success, callback_failed) {}
@@ -3312,13 +3878,20 @@ function twitch_moderation_add_blocked_term(broadcaster_id, moderator_id, text, 
  * 
  * This function removes the word or phrase from the broadcaster's list of blocked terms.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_BLOCKED_TERMS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_BLOCKED_TERMS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the list of blocked terms. 
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token. 
  * @param {string} id The ID of the blocked term to remove from the broadcaster's list of blocked terms. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_remove_blocked_term(broadcaster_id, moderator_id, id, callback_success, callback_failed) {}
@@ -3330,7 +3903,7 @@ function twitch_moderation_remove_blocked_term(broadcaster_id, moderator_id, id,
  * 
  * This function removes a single chat message or all chat messages from the broadcaster's chat room.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_CHAT_MESSAGES` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_CHAT_MESSAGES`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the chat room to remove messages from. 
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token. 
@@ -3340,6 +3913,13 @@ function twitch_moderation_remove_blocked_term(broadcaster_id, moderator_id, id,
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_delete_chat_messages(broadcaster_id, moderator_id, optionals, callback_success, callback_failed) {}
@@ -3357,13 +3937,13 @@ function twitch_moderation_delete_chat_messages(broadcaster_id, moderator_id, op
  * @param {string} user_id A user's ID. Returns the list of channels that this user has moderator privileges in. This ID must match the user ID in the user OAuth token 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `after` : ${type.string} : The cursor used to get the next page of results. The Pagination object in the response contains the cursor's value.
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The Pagination struct in the response contains the cursor's value.
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. Minimum page size is 1 item per page and the maximum is 100. The default is 20.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3371,8 +3951,11 @@ function twitch_moderation_delete_chat_messages(broadcaster_id, moderator_id, op
  * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that uniquely identifies the channel this user can moderate.  |
  * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The channel's login name.  |
  * | &nbsp;└──&nbsp;broadcaster_name | ${type.string}  | The channels' display name.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through.  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through.  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3385,19 +3968,19 @@ function twitch_moderation_get_moderated_channels(user_id, optionals, callback_s
  * 
  * This function gets all users allowed to moderate the broadcaster's chat room.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATION_READ` scope. If your app also adds and removes moderators, you can use the `TWITCH_SCOPE_CHANNEL_MANAGE_MODERATORS` scope instead.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATION_READ`. If your app also adds and removes moderators, you can use the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_MODERATORS`.instead.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose list of moderators you want to get. This ID must match the user ID in the access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `user_id` : ${type.string} : A list of user IDs used to filter the results. To specify more than one ID, include this parameter for each moderator you want to get. For example, `user_id=1234&amp;user_id=5678`. You may specify a maximum of 100 IDs. The returned list includes only the users from the list who are moderators in the broadcaster's channel. The list is returned in the same order as you specified the IDs.
+ * - `user_id` : ${type.real} or ${type.array} of ${type.real} : A list of user IDs used to filter the results. To specify more than one ID, pass an array with the user ID of each moderator you want to get. You may specify a maximum of 100 IDs. The returned list includes only the users from the list who are moderators in the broadcaster's channel. The list is returned in the same order as you specified the IDs.
  * - `first` : ${type.string} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3405,8 +3988,11 @@ function twitch_moderation_get_moderated_channels(user_id, optionals, callback_s
  * | &nbsp;├──&nbsp;user_id | ${type.string}  | The ID of the user that has permission to moderate the broadcaster's channel.  |
  * | &nbsp;├──&nbsp;user_login | ${type.string}  | The user's login name.  |
  * | &nbsp;└──&nbsp;user_name | ${type.string}  | The user's display name.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3421,12 +4007,19 @@ function twitch_moderation_get_moderators(broadcaster_id, optionals, callback_su
  * 
  * **Rate Limits**: The broadcaster may add a maximum of 10 moderators within a 10-second window.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_MODERATORS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_MODERATORS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the chat room. This ID must match the user ID in the access token. 
  * @param {string} user_id The ID of the user to add as a moderator in the broadcaster's chat room. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_add_channel_moderator(broadcaster_id, user_id, callback_success, callback_failed) {}
@@ -3440,12 +4033,19 @@ function twitch_moderation_add_channel_moderator(broadcaster_id, user_id, callba
  * 
  * **Rate Limits**: The broadcaster may remove a maximum of 10 moderators within a 10-second window.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_MODERATORS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_MODERATORS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the chat room. This ID must match the user ID in the access token. 
  * @param {string} user_id The ID of the user to remove as a moderator from the broadcaster's chat room. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_remove_channel_moderator(broadcaster_id, user_id, callback_success, callback_failed) {}
@@ -3457,19 +4057,19 @@ function twitch_moderation_remove_channel_moderator(broadcaster_id, user_id, cal
  * 
  * This function gets a list of the broadcaster's VIPs.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_READ_VIPS` scope. If your app also adds and removes VIP status, you can use the `TWITCH_SCOPE_CHANNEL_MANAGE_VIPS` scope instead.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_VIPS`. If your app also adds and removes VIP status, you can use the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_VIPS`.instead.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose list of VIPs you want to get. This ID must match the user ID in the access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `user_id` : ${type.string} : Filters the list for specific VIPs. To specify more than one user, include the `user_id` parameter for each user to get. For example, `&amp;user_id=1234&amp;user_id=5678`. The maximum number of IDs that you may specify is 100. Ignores the ID of those users in the list that aren't VIPs.
+ * - `user_id` : ${type.real} or ${type.array} of ${type.real} : Filters the list for specific VIPs. To specify more than one user, pass an array with the ID of each user to get. The maximum number of IDs that you may specify is 100. Ignores the ID of those users in the list that aren't VIPs.
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3477,8 +4077,11 @@ function twitch_moderation_remove_channel_moderator(broadcaster_id, user_id, cal
  * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that uniquely identifies the VIP user.  |
  * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
  * | &nbsp;└──&nbsp;user_login | ${type.string}  | The user's login name.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3493,12 +4096,19 @@ function twitch_moderation_get_vips(broadcaster_id, optionals, callback_success,
  * 
  * **Rate Limits**: The broadcaster may add a maximum of 10 VIPs within a 10-second window.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_VIPS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_VIPS`.]]
  * 
  * @param {string} user_id The ID of the user to give VIP status to. 
  * @param {string} broadcaster_id The ID of the broadcaster that's adding the user as a VIP. This ID must match the user ID in the access token. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_add_channel_vip(user_id, broadcaster_id, callback_success, callback_failed) {}
@@ -3514,12 +4124,19 @@ function twitch_moderation_add_channel_vip(user_id, broadcaster_id, callback_suc
  * 
  * Rate Limits: The broadcaster may remove a maximum of 10 VIPs within a 10-second window.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_VIPS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_VIPS`.]]
  * 
  * @param {string} user_id The ID of the user to remove VIP status from. 
  * @param {string} broadcaster_id The ID of the broadcaster who owns the channel where the user has VIP status. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_remove_channel_vip(user_id, broadcaster_id, callback_success, callback_failed) {}
@@ -3533,7 +4150,7 @@ function twitch_moderation_remove_channel_vip(user_id, broadcaster_id, callback_
  * 
  * Twitch's Shield Mode feature is like a panic button that broadcasters can push to protect themselves from chat abuse coming from one or more accounts. When activated, Shield Mode applies the overrides that the broadcaster configured in the Twitch UX. If the broadcaster hasn't configured Shield Mode, it applies default overrides.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_SHIELD_MODE` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_SHIELD_MODE`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose Shield Mode you want to activate or deactivate. 
  * @param {string} moderator_id The ID of the broadcaster or a user that is one of the broadcaster's moderators. This ID must match the user ID in the access token. 
@@ -3541,16 +4158,19 @@ function twitch_moderation_remove_channel_vip(user_id, broadcaster_id, callback_
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.array}  | A list that contains a single object with the broadcaster's updated Shield Mode status.  |
+ * | data | ${type.array}  | A list that contains a single struct with the broadcaster's updated Shield Mode status.  |
  * | &nbsp;├──&nbsp;is_active | ${type.boolean}  | A Boolean value that determines whether Shield Mode is active. Is `true` if Shield Mode is active; otherwise, `false`.  |
  * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | An ID that identifies the moderator that last activated Shield Mode.  |
  * | &nbsp;├──&nbsp;moderator_login | ${type.string}  | The moderator's login name.  |
  * | &nbsp;├──&nbsp;moderator_name | ${type.string}  | The moderator's display name.  |
  * | &nbsp;└──&nbsp;last_activated_at | ${type.string}  | The UTC timestamp (in RFC3339 format) of when Shield Mode was last activated.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3572,7 +4192,7 @@ function twitch_moderation_update_shield_mode_status(broadcaster_id, moderator_i
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3583,6 +4203,9 @@ function twitch_moderation_update_shield_mode_status(broadcaster_id, moderator_i
  * | &nbsp;├──&nbsp;moderator_name | ${type.string}  | The moderator's display name. Is an empty string if Shield Mode hasn't been previously activated.  |
  * | &nbsp;└──&nbsp;last_activated_at | ${type.string}  | The UTC timestamp (in RFC3339 format) of when Shield Mode was last activated. Is an empty string if Shield Mode hasn't been previously activated.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_moderation_get_shield_mode_status(broadcaster_id, moderator_id, callback_success, callback_failed) {}
@@ -3592,9 +4215,9 @@ function twitch_moderation_get_shield_mode_status(broadcaster_id, moderator_id, 
  * @func twitch_moderation_warn_chat_user
  * @desc **Twitch Endpoint:** [Warn Chat User](https://dev.twitch.tv/docs/api/reference#warn-chat-user)
  * 
- * This function warns a user in the specified broadcaster’s chat room, preventing them from chat interaction until the warning is acknowledged. New warnings can be issued to a user when they already have a warning in the channel (new warning will replace old warning).
+ * This function warns a user in the specified broadcaster's chat room, preventing them from chat interaction until the warning is acknowledged. New warnings can be issued to a user when they already have a warning in the channel (new warning will replace old warning).
  * 
- * [[Note: Requires a user access token that includes the `TWITCH_SCOPE_MODERATOR_MANAGE_WARNINGS` scope. Parameter `moderator_id` must match the `user_id` in the [user access token](https://dev.twitch.tv/docs/authentication/#user-access-tokens).]]
+ * [[Note: Requires a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_WARNINGS`. Parameter `moderator_id` must match the `user_id` in the [user access token](https://dev.twitch.tv/docs/authentication/#user-access-tokens).]]
  * 
  * @param {string} broadcaster_id The ID of the channel in which the warning will take effect.
  * @param {string} moderator_id The ID of the twitch user who requested the warning.
@@ -3603,7 +4226,11 @@ function twitch_moderation_get_shield_mode_status(broadcaster_id, moderator_id, 
  * - `user_id` : ${type.string} : The ID of the twitch user to be warned.
  * - `reason` : ${type.string} : A custom reason for the warning. **Max 500 chars**.
  * 
- * @desc 
+ * @param {function} callback_success Triggered if the request succeeded
+ * @param {function} callback_failed Triggered if the request failed
+ * 
+ * @event callback_success
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3613,6 +4240,10 @@ function twitch_moderation_get_shield_mode_status(broadcaster_id, moderator_id, 
  * | moderator_id | ${type.string}  | The ID of the user who applied the warning. |
  * | reason | ${type.string}  | The reason provided for warning. |
  * 
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 
@@ -3629,14 +4260,14 @@ function twitch_moderation_get_shield_mode_status(broadcaster_id, moderator_id, 
  * @param {string} broadcaster_id The ID of the broadcaster that created the polls. This ID must match the user ID in the user access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `id` : ${type.string} : A list of IDs that identify the polls to return. To specify more than one ID, include this parameter for each poll you want to get. For example, `id=1234&amp;id=5678`. You may specify a maximum of 20 IDs. Specify this parameter only if you want to filter the list that the request returns. The endpoint ignores duplicate IDs and those not owned by this broadcaster.
+ * - `id` : ${type.real} of ${type.array} of ${type.real} : A list of IDs that identify the polls to return. To specify more than one ID, pass an array with the IDs of each poll you want to get. You may specify a maximum of 20 IDs. Specify this parameter only if you want to filter the list that the request returns. The endpoint ignores duplicate IDs and those not owned by this broadcaster.
  * - `first` : ${type.string} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 20 items per page. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3660,8 +4291,11 @@ function twitch_moderation_get_shield_mode_status(broadcaster_id, moderator_id, 
  * | &nbsp;├──&nbsp;duration | ${type.number}  | The length of time (in seconds) that the poll will run for.  |
  * | &nbsp;├──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll began.  |
  * | &nbsp;├──&nbsp;ended_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll ended. If `status` is `"ACTIVE"`, this field is set to `undefined`.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3676,7 +4310,7 @@ function twitch_polls_get_polls(broadcaster_id, optionals, callback_success, cal
  * 
  * The poll begins as soon as it's created. You may run only one poll at a time.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_POLLS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_POLLS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that's running the poll. This ID must match the user ID in the user access token. 
  * @param {string} title The question that viewers will vote on. For example, *What game should I play next?* The question may contain a maximum of 60 characters. 
@@ -3690,7 +4324,7 @@ function twitch_polls_get_polls(broadcaster_id, optionals, callback_success, cal
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3715,6 +4349,9 @@ function twitch_polls_get_polls(broadcaster_id, optionals, callback_success, cal
  * | &nbsp;├──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll began.  |
  * | &nbsp;└──&nbsp;ended_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll ended. If `status` is `"ACTIVE"`, this field is set to `undefined`.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_polls_create_poll(broadcaster_id, title, choices, duration, optionals, callback_success, callback_failed) {}
@@ -3726,7 +4363,7 @@ function twitch_polls_create_poll(broadcaster_id, title, choices, duration, opti
  * 
  * This function ends an active poll. You have the option to end it or end it and archive it.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_POLLS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_POLLS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that's running the poll. This ID must match the user ID in the user access token. 
  * @param {string} id The ID of the poll to update. 
@@ -3734,7 +4371,7 @@ function twitch_polls_create_poll(broadcaster_id, title, choices, duration, opti
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3759,6 +4396,9 @@ function twitch_polls_create_poll(broadcaster_id, title, choices, duration, opti
  * | &nbsp;├──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll began.  |
  * | &nbsp;└──&nbsp;ended_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the poll ended. If `status` is `"ACTIVE"`, this field is set to `undefined`.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_polls_end_poll(broadcaster_id, id, status, callback_success, callback_failed) {}
@@ -3775,14 +4415,14 @@ function twitch_polls_end_poll(broadcaster_id, id, status, callback_success, cal
  * @param {string} broadcaster_id The ID of the broadcaster whose predictions you want to get. This ID must match the user ID in the user access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `id` : ${type.string} : The ID of the prediction to get. To specify more than one ID, include this parameter for each prediction you want to get. For example, `id=1234&amp;id=5678`. You may specify a maximum of 25 IDs. The endpoint ignores duplicate IDs and those not owned by the broadcaster.
+ * - `id` : ${type.real} or ${type.array} of ${type.real} : The ID of the prediction to get. To specify more than one ID, pass an array with the ID of each prediction you want to get. You may specify a maximum of 25 IDs. The endpoint ignores duplicate IDs and those not owned by the broadcaster.
  * - `first` : ${type.string} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 25 items per page. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3799,19 +4439,22 @@ function twitch_polls_end_poll(broadcaster_id, id, status, callback_success, cal
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;users | ${type.number}  | The number of unique viewers that chose this outcome.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points | ${type.number}  | The number of Channel Points spent by viewers on this outcome.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;top_predictors | ${type.array}  | A list of viewers who were the top predictors; otherwise, `undefined` if none.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the viewer.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name | ${type.string}  | The viewer's display name.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | The viewer's login name.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name | ${type.string}  | The viewer's display name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | The viewer's login name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;color | ${type.string}  | The color that visually identifies this outcome in the UX. Possible values are: `"BLUE"`, `"PINK"`. If the number of outcomes is two, the color is `"BLUE"` for the first outcome and `"PINK"` for the second outcome. If there are more than two outcomes, the color is `"BLUE"` for all outcomes.  |
  * | &nbsp;├──&nbsp;prediction_window | ${type.number}  | The length of time (in seconds) that the prediction will run for.  |
  * | &nbsp;├──&nbsp;status | ${type.string}  | The prediction's status. Valid values are: `"ACTIVE"` - The Prediction is running and viewers can make predictions. `"CANCELED"` - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. `"LOCKED"` - The broadcaster locked the Prediction, which means viewers can no longer make predictions. `"RESOLVED"` - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.  |
  * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time of when the Prediction began.  |
  * | &nbsp;├──&nbsp;ended_at | ${type.string}  | The UTC date and time of when the Prediction ended. If status is `"ACTIVE"`, this is set to `undefined`.  |
  * | &nbsp;└──&nbsp;locked_at | ${type.string}  | The UTC date and time of when the Prediction was locked. If status is not `"LOCKED"`, this is set to `undefined`.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` parameter.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3826,7 +4469,7 @@ function twitch_predictions_get_predictions(broadcaster_id, optionals, callback_
  * 
  * With a Channel Points Prediction, the broadcaster poses a question and viewers try to predict the outcome. The prediction runs as soon as it's created. The broadcaster may run only one prediction at a time.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_PREDICTIONS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_PREDICTIONS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that's running the prediction. This ID must match the user ID in the user access token. 
  * @param {string} title The question that the broadcaster is asking. For example, *Will I finish this entire pizza?* The title is limited to a maximum of 45 characters. 
@@ -3835,7 +4478,7 @@ function twitch_predictions_get_predictions(broadcaster_id, optionals, callback_
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3852,17 +4495,20 @@ function twitch_predictions_get_predictions(broadcaster_id, optionals, callback_
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;users | ${type.number}  | The number of unique viewers that chose this outcome.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points | ${type.number}  | The number of Channel Points spent by viewers on this outcome.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;top_predictors | ${type.array}  | A list of viewers who were the top predictors; otherwise, `undefined` if none.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the viewer.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name | ${type.string}  | The viewer's display name.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | The viewer's login name.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name | ${type.string}  | The viewer's display name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | The viewer's login name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;color | ${type.string}  | The color that visually identifies this outcome in the UX. Possible values are: `"BLUE"`, `"PINK"`. If the number of outcomes is two, the color is `"BLUE"` for the first outcome and `"PINK"` for the second outcome. If there are more than two outcomes, the color is `"BLUE"` for all outcomes.  |
  * | &nbsp;├──&nbsp;prediction_window | ${type.number}  | The length of time (in seconds) that the prediction will run for.  |
  * | &nbsp;├──&nbsp;status | ${type.string}  | The prediction's status. Valid values are: `"ACTIVE"` - The Prediction is running and viewers can make predictions. `"CANCELED"` - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. `"LOCKED"` - The broadcaster locked the Prediction, which means viewers can no longer make predictions. `"RESOLVED"` - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.  |
  * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time of when the Prediction began.  |
  * | &nbsp;├──&nbsp;ended_at | ${type.string}  | The UTC date and time of when the Prediction ended. If `status` is `"ACTIVE"`, this is set to `undefined`.  |
  * | &nbsp;└──&nbsp;locked_at | ${type.string}  | The UTC date and time of when the Prediction was locked. If `status` is not `"LOCKED"`, this is set to `undefined`.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3875,7 +4521,7 @@ function twitch_predictions_create_prediction(broadcaster_id, title, outcomes, p
  * 
  * This function locks, resolves, or cancels a Channel Points Prediction.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_PREDICTIONS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_PREDICTIONS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that's running the prediction. This ID must match the user ID in the user access token. 
  * @param {string} id The ID of the prediction to update. 
@@ -3887,7 +4533,7 @@ function twitch_predictions_create_prediction(broadcaster_id, title, outcomes, p
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -3904,17 +4550,20 @@ function twitch_predictions_create_prediction(broadcaster_id, title, outcomes, p
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;users | ${type.number}  | The number of unique viewers that chose this outcome.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points | ${type.number}  | The number of Channel Points spent by viewers on this outcome.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;top_predictors | ${type.array}  | A list of viewers who were the top predictors; otherwise, `undefined` if none.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the viewer.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name | ${type.string}  | The viewer's display name.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | The viewer's login name.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the viewer.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name | ${type.string}  | The viewer's display name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login | ${type.string}  | The viewer's login name.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used | ${type.number}  | The number of Channel Points the viewer spent.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won | ${type.number}  | The number of Channel Points distributed to the viewer.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;color | ${type.string}  | The color that visually identifies this outcome in the UX. Possible values are: `"BLUE"`, `"PINK"`. If the number of outcomes is two, the color is `"BLUE"` for the first outcome and `"PINK"` for the second outcome. If there are more than two outcomes, the color is `"BLUE"` for all outcomes.  |
  * | &nbsp;├──&nbsp;prediction_window | ${type.number}  | The length of time (in seconds) that the prediction will run for.  |
  * | &nbsp;├──&nbsp;status | ${type.string}  | The prediction's status. Valid values are: `"ACTIVE"` - The Prediction is running and viewers can make predictions. `"CANCELED"` - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. `"LOCKED"` - The broadcaster locked the Prediction, which means viewers can no longer make predictions. `"RESOLVED"` - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.  |
  * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time of when the Prediction began.  |
  * | &nbsp;├──&nbsp;ended_at | ${type.string}  | The UTC date and time of when the Prediction ended. If `status` is `"ACTIVE"`, this is set to `undefined`.  |
  * | &nbsp;└──&nbsp;locked_at | ${type.string}  | The UTC date and time of when the Prediction was locked. If `status` is not `"LOCKED"`, this is set to `undefined`.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3935,20 +4584,23 @@ function twitch_predictions_end_prediction(broadcaster_id, id, status, optionals
  * 
  * **Rate Limit:** The limit is 10 requests within a 10-minute window.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_RAIDS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_RAIDS`.]]
  * 
  * @param {string} from_broadcaster_id The ID of the broadcaster that's sending the raiding party. This ID must match the user ID in the user access token. 
  * @param {string} to_broadcaster_id The ID of the broadcaster to raid. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.array}  | A list that contains a single object with information about the pending raid.  |
+ * | data | ${type.array}  | A list that contains a single struct with information about the pending raid.  |
  * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time, in RFC3339 format, of when the raid was requested.  |
  * | &nbsp;└──&nbsp;is_mature | ${type.boolean}  | A Boolean value that indicates whether the channel being raided contains mature content.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -3965,11 +4617,18 @@ function twitch_raids_start_a_raid(from_broadcaster_id, to_broadcaster_id, callb
  * 
  * **Rate Limit**: The limit is 10 requests within a 10-minute window.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_RAIDS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_RAIDS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that initiated the raid. This ID must match the user ID in the user access token. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_raids_cancel_a_raid(broadcaster_id, callback_success, callback_failed) {}
@@ -3986,16 +4645,16 @@ function twitch_raids_cancel_a_raid(broadcaster_id, callback_success, callback_f
  * @param {string} broadcaster_id The ID of the broadcaster that owns the streaming schedule you want to get. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `id` : ${type.string} : The ID of the scheduled segment to return. To specify more than one segment, include the ID of each segment you want to get. For example, `id=1234&amp;id=5678`. You may specify a maximum of 100 IDs.
+ * - `id` : ${type.real} or ${type.array} of ${type.real} : The ID of the scheduled segment to return. To specify more than one segment, pass an array with the IDs of the segments you want to get. You may specify a maximum of 100 IDs.
  * - `start_time` : ${type.string} : The UTC date and time that identifies when in the broadcaster's schedule to start returning segments. If not specified, the request returns segments starting after the current UTC date and time. Specify the date and time in RFC3339 format (for example, `2022-09-01T00:00:00Z`).
  * - `utc_offset` : ${type.string} : Not supported.
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 25 items per page. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4007,8 +4666,8 @@ function twitch_raids_cancel_a_raid(broadcaster_id, callback_success, callback_f
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The broadcast segment's title.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;canceled_until | ${type.string}  | Indicates whether the broadcaster canceled this segment of a recurring broadcast. If the broadcaster canceled this segment, this field is set to the same value that's in the  `end_time` field; otherwise, it's set to `undefined`.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;category | ${type.struct}  | The type of content that the broadcaster plans to stream or `undefined` if not specified.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will playing a game or Just Chatting if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will playing a game or Just Chatting if the broadcaster will host a talk show.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_recurring | ${type.boolean}  | A Boolean value that determines whether the broadcast is part of a recurring series that streams at the same time each week or is a one-time broadcast. Is `true` if the broadcast is part of a recurring series.  |
  * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that owns the broadcast schedule.  |
  * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
@@ -4016,8 +4675,11 @@ function twitch_raids_cancel_a_raid(broadcaster_id, callback_success, callback_f
  * | &nbsp;├──&nbsp;vacation | ${type.struct}  | The dates when the broadcaster is on vacation and not streaming. Is set to `undefined` if vacation mode is not enabled.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation starts.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation ends.  |
- * | &nbsp;├──&nbsp;pagination | ${type.struct}  | The information used to page through a list of results. The object is empty if there are no more pages left to page through. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).  |
+ * | &nbsp;├──&nbsp;pagination | ${type.struct}  | The information used to page through a list of results. The struct is empty if there are no more pages left to page through. [Read more](https://dev.twitch.tv/docs/api/guide#pagination).  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` parameter to this value.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4035,6 +4697,13 @@ function twitch_schedule_get_channel_stream_schedule(broadcaster_id, optionals, 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the streaming schedule you want to get. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ * 
+ * @event callback_success
+ * @desc The iCalendar data.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_schedule_get_channel_icalendar(broadcaster_id, callback_success, callback_failed) {}
@@ -4046,7 +4715,7 @@ function twitch_schedule_get_channel_icalendar(broadcaster_id, callback_success,
  * 
  * This function updates the broadcaster's schedule settings, such as scheduling a vacation.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_SCHEDULE` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_SCHEDULE`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose schedule settings you want to update. The ID must match the user ID in the user access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -4058,6 +4727,13 @@ function twitch_schedule_get_channel_icalendar(broadcaster_id, callback_success,
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_schedule_update_channel_stream_schedule(broadcaster_id, optionals, callback_success, callback_failed) {}
@@ -4069,7 +4745,7 @@ function twitch_schedule_update_channel_stream_schedule(broadcaster_id, optional
  * 
  * This function adds a single or recurring broadcast to the broadcaster's streaming schedule. For information about scheduling broadcasts, see [Stream Schedule](https://help.twitch.tv/s/article/channel-page-setup#Schedule).
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_SCHEDULE` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_SCHEDULE`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the schedule to add the broadcast segment to. This ID must match the user ID in the user access token. 
  * @param {string} start_time The date and time that the broadcast segment starts. Specify the date and time in RFC3339 format (for example, 2021-07-01T18:00:00Z). 
@@ -4084,7 +4760,7 @@ function twitch_schedule_update_channel_stream_schedule(broadcaster_id, optional
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4096,8 +4772,8 @@ function twitch_schedule_update_channel_stream_schedule(broadcaster_id, optional
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The broadcast segment's title.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;canceled_until | ${type.string}  | Indicates whether the broadcaster canceled this segment of a recurring broadcast. If the broadcaster canceled this segment, this field is set to the same value that's in the  `end_time` field; otherwise, it's set to `undefined`.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;category | ${type.struct}  | The type of content that the broadcaster plans to stream or `undefined` if not specified.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will play a game or Just Chatting if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will play a game or Just Chatting if the broadcaster will host a talk show.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_recurring | ${type.boolean}  | A Boolean value that determines whether the broadcast is part of a recurring series that streams at the same time each week or is a one-time broadcast. Is `true` if the broadcast is part of a recurring series.  |
  * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that owns the broadcast schedule.  |
  * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
@@ -4105,6 +4781,9 @@ function twitch_schedule_update_channel_stream_schedule(broadcaster_id, optional
  * | &nbsp;└──&nbsp;vacation | ${type.struct}  | The dates when the broadcaster is on vacation and not streaming. Is set to `undefined` if vacation mode is not enabled.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation starts.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation ends.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4119,7 +4798,7 @@ function twitch_schedule_create_channel_stream_schedule_segment(broadcaster_id, 
  * 
  * For recurring segments, updating a segment's title, category, duration, and timezone, changes all segments in the recurring schedule, not just the specified segment.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_SCHEDULE` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_SCHEDULE`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster who owns the broadcast segment to update. This ID must match the user ID in the user access token. 
  * @param {string} id The ID of the broadcast segment to update. 
@@ -4135,7 +4814,7 @@ function twitch_schedule_create_channel_stream_schedule_segment(broadcaster_id, 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4147,8 +4826,8 @@ function twitch_schedule_create_channel_stream_schedule_segment(broadcaster_id, 
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title | ${type.string}  | The broadcast segment's title.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;canceled_until | ${type.string}  | Indicates whether the broadcaster canceled this segment of a recurring broadcast. If the broadcaster canceled this segment, this field is set to the same value that's in the `end_time` field; otherwise, it's set to `undefined`.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;category | ${type.struct}  | The type of content that the broadcaster plans to stream or `undefined` if not specified.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
- * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will play a game or Just Chatting if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id | ${type.string}  | An ID that identifies the category that best represents the content that the broadcaster plans to stream. For example, the game's ID if the broadcaster will play a game or the Just Chatting ID if the broadcaster will host a talk show.  |
+ * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;name | ${type.string}  | The name of the category. For example, the game's title if the broadcaster will play a game or Just Chatting if the broadcaster will host a talk show.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;is_recurring | ${type.boolean}  | A Boolean value that determines whether the broadcast is part of a recurring series that streams at the same time each week or is a one-time broadcast. Is `true` if the broadcast is part of a recurring series.  |
  * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | The ID of the broadcaster that owns the broadcast schedule.  |
  * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
@@ -4156,6 +4835,9 @@ function twitch_schedule_create_channel_stream_schedule_segment(broadcaster_id, 
  * | &nbsp;└──&nbsp;vacation | ${type.struct}  | The dates when the broadcaster is on vacation and not streaming. Is set to `undefined` if vacation mode is not enabled.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;start_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation starts.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;end_time | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster's vacation ends.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4170,12 +4852,19 @@ function twitch_schedule_update_channel_stream_schedule_segment(broadcaster_id, 
  * 
  * [[Note: For recurring segments, removing a segment removes all segments in the recurring schedule.]]
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_SCHEDULE` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_SCHEDULE`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the streaming schedule. This ID must match the user ID in the user access token. 
  * @param {string} id The ID of the broadcast segment to remove. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_schedule_delete_channel_stream_schedule_segment(broadcaster_id, id, callback_success, callback_failed) {}
@@ -4195,12 +4884,12 @@ function twitch_schedule_delete_channel_stream_schedule_segment(broadcaster_id, 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4208,6 +4897,9 @@ function twitch_schedule_delete_channel_stream_schedule_segment(broadcaster_id, 
  * | &nbsp;├──&nbsp;box_art_url | ${type.string}  | A URL to an image of the game's box art or streaming category.  |
  * | &nbsp;├──&nbsp;name | ${type.string}  | The name of the game or category.  |
  * | &nbsp;└──&nbsp;id | ${type.string}  | An ID that uniquely identifies the game or category.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4233,12 +4925,12 @@ function twitch_search_search_categories(query, optionals, callback_success, cal
  * 
  * - `live_only` : ${type.boolean} : A Boolean value that determines whether the response includes only channels that are currently streaming live. Set to `true` to get only channels that are streaming live; otherwise, `false` to get live and offline channels. The default is `false`.
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4256,6 +4948,9 @@ function twitch_search_search_categories(query, optionals, callback_success, cal
  * | &nbsp;├──&nbsp;title | ${type.string}  | The stream's title. Is an empty string if the broadcaster didn't set it.  |
  * | &nbsp;└──&nbsp;started_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the broadcaster started streaming. The string is empty if the broadcaster is not streaming live.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_search_search_channels(query, optionals, callback_success, callback_failed) {}
@@ -4267,18 +4962,21 @@ function twitch_search_search_channels(query, optionals, callback_success, callb
  * 
  * This function gets the channel's stream key.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_READ_STREAM_KEY` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_STREAM_KEY`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the channel. The ID must match the user ID in the access token. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list that contains the channel's stream key.  |
  * | &nbsp;└──&nbsp;stream_key | ${type.string}  | The channel's stream key.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4301,13 +4999,13 @@ function twitch_streams_get_stream_key(broadcaster_id, callback_success, callbac
  * - `type` : ${type.string} : The type of stream to filter the list of streams by. Possible values are: `"all"`, `"live"`. The default is `"all"`.
  * - `language` : ${type.string} : A language code used to filter the list of streams. Returns only streams that broadcast in the specified language. Specify the language using an ISO 639-1 two-letter language code or `"other"` if the broadcast uses a language not in the list of [supported stream languages](https://help.twitch.tv/s/article/languages-on-twitch#streamlang). You may specify a maximum of 100 language codes. To specify multiple languages, include the `language` parameter for each language. For example, `&amp;language=de&amp;language=fr`.
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
- * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4327,8 +5025,11 @@ function twitch_streams_get_stream_key(broadcaster_id, callback_success, callbac
  * | &nbsp;├──&nbsp;thumbnail_url | ${type.string}  | A URL to an image of a frame from the last 5 minutes of the stream. Replace the width and height placeholders in the URL (`{width}x{height}`) with the size of the image you want, in pixels.  |
  * | &nbsp;├──&nbsp;tag_ids | ${type.array} of ${type.string}  | **IMPORTANT** As of February 28, 2023, this field is deprecated and returns only an empty array. If you use this field, please update your code to use the `tags` field. The list of tags that apply to the stream. The list contains IDs only when the channel is streaming live. For a list of possible tags, see [List of All Tags](https://www.twitch.tv/directory/all/tags). The list doesn't include Category Tags.  |
  * | &nbsp;└──&nbsp;is_mature | ${type.boolean}  | A Boolean value that indicates whether the stream is meant for mature audiences.  |
- * | pagination | ${type.struct}  | The information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | The information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` or `before` parameter to this value depending on whether you're paging forwards or backwards.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4341,18 +5042,18 @@ function twitch_streams_get_streams(optionals, callback_success, callback_failed
  * 
  * This function gets the list of broadcasters that the user follows and that are streaming live.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_READ_FOLLOWS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_FOLLOWS`.]]
  * 
  * @param {string} user_id The ID of the user whose list of followed streams you want to get. This ID must match the user ID in the access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 100.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4372,8 +5073,11 @@ function twitch_streams_get_streams(optionals, callback_success, callback_failed
  * | &nbsp;├──&nbsp;tag_ids | ${type.array} of ${type.string}  | **IMPORTANT** As of February 28, 2023, this field is deprecated and returns only an empty array. If you use this field, please update your code to use the `tags` field. The list of tags that apply to the stream. The list contains IDs only when the channel is streaming live. For a list of possible tags, see [List of All Tags](https://www.twitch.tv/directory/all/tags). The list doesn't include Category Tags.  |
  * | &nbsp;├──&nbsp;tags | ${type.array} of ${type.string}  | The tags applied to the stream.  |
  * | &nbsp;└──&nbsp;is_mature | ${type.boolean}  | A Boolean value that indicates whether the stream is meant for mature audiences.  |
- * | pagination | ${type.struct}  | The information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | The information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` parameter to this value.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4388,7 +5092,7 @@ function twitch_streams_get_followed_streams(user_id, optionals, callback_succes
  * 
  * You may not add markers:
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_BROADCAST` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_BROADCAST`.]]
  * 
  * @param {string} user_id The ID of the broadcaster that's streaming content. This ID must match the user ID in the access token or the user in the access token must be one of the broadcaster's editors. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -4398,7 +5102,7 @@ function twitch_streams_get_followed_streams(user_id, optionals, callback_succes
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4407,6 +5111,9 @@ function twitch_streams_get_followed_streams(user_id, optionals, callback_succes
  * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) of when the user created the marker.  |
  * | &nbsp;├──&nbsp;position_seconds | ${type.number}  | The relative offset (in seconds) of the marker from the beginning of the stream.  |
  * | &nbsp;└──&nbsp;description | ${type.string}  | A description that the user gave the marker to help them remember why they marked the location.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4426,13 +5133,13 @@ function twitch_streams_create_stream_marker(user_id, optionals, callback_succes
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `first` : ${type.string} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
- * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4448,8 +5155,11 @@ function twitch_streams_create_stream_marker(user_id, optionals, callback_succes
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;description | ${type.string}  | The description that the user gave the marker to help them remember why they marked the location. Is an empty string if the user didn't provide one.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;position_seconds | ${type.number}  | The relative offset (in seconds) of the marker from the beginning of the stream.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url | ${type.string}  | A URL that opens the video in Twitch Highlighter.  |
- * | pagination | ${type.struct}  | The information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | The information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Set the request's `after` or `before` parameter to this value depending on whether you're paging forwards or backwards.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4462,22 +5172,22 @@ function twitch_streams_get_stream_markers(user_id, video_id, optionals, callbac
  * 
  * This function gets a list of users that subscribe to the specified broadcaster.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_READ_SUBSCRIPTIONS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_SUBSCRIPTIONS`.]]
  * 
- * A Twitch extensions may use an app access token if the broadcaster has granted the `TWITCH_SCOPE_CHANNEL_READ_SUBSCRIPTIONS` scope from within the Twitch Extensions manager.
+ * A Twitch extensions may use an app access token if the broadcaster has granted the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_SUBSCRIPTIONS`.from within the Twitch Extensions manager.
  * 
  * @param {string} broadcaster_id The broadcaster's ID. This ID must match the user ID in the access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `user_id` : ${type.string} : Filters the list to include only the specified subscribers. To specify more than one subscriber, include this parameter for each subscriber. For example, `&amp;user_id=1234&amp;user_id=5678`. You may specify a maximum of 100 subscribers.
+ * - `user_id` : ${type.real} or ${type.array} of ${type.real} : Filters the list to include only the specified subscribers. To specify more than one subscriber, pass an array with the ID of each subscriber. You may specify a maximum of 100 subscribers.
  * - `first` : ${type.string} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. Do not specify if you set the `user_id` parameter. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
- * - `before` : ${type.string} : The cursor used to get the previous page of results. Do not specify if you set the `user_id` parameter. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. Do not specify if you set the `user_id` parameter. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `before` : ${type.string} : The cursor used to get the previous page of results. Do not specify if you set the `user_id` parameter. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4494,10 +5204,13 @@ function twitch_streams_get_stream_markers(user_id, video_id, optionals, callbac
  * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the subscribing user.  |
  * | &nbsp;├──&nbsp;user_name | ${type.string}  | The user's display name.  |
  * | &nbsp;└──&nbsp;user_login | ${type.string}  | The user's login name.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next or previous page of results. Use the cursor to set the request's `after` or `before` parameter depending on whether you're paging forwards or backwards.  |
  * | points | ${type.number}  | The current number of subscriber points earned by this broadcaster. Points are based on the subscription tier of each user that subscribes to this broadcaster. For example, a Tier 1 subscription is worth 1 point, Tier 2 is worth 2 points, and Tier 3 is worth 6 points. The number of points determines the number of emote slots that are unlocked for the broadcaster (see [Subscriber Emote Slots](https://help.twitch.tv/s/article/subscriber-emote-guide#emoteslots)).  |
  * | total | ${type.number}  | The total number of users that subscribe to this broadcaster.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4510,28 +5223,31 @@ function twitch_subscriptions_get_broadcaster_subscriptions(broadcaster_id, opti
  * 
  * This function checks whether the user subscribes to the broadcaster's channel.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_READ_SUBSCRIPTIONS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_SUBSCRIPTIONS`.]]
  * 
- * A Twitch extension may use an app access token if the broadcaster has granted the `TWITCH_SCOPE_USER_READ_SUBSCRIPTIONS` scope from within the Twitch Extensions manager.
+ * A Twitch extension may use an app access token if the broadcaster has granted the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_SUBSCRIPTIONS`.from within the Twitch Extensions manager.
  * 
  * @param {string} broadcaster_id The ID of a partner or affiliate broadcaster. 
  * @param {string} user_id The ID of the user that you're checking to see whether they subscribe to the broadcaster in `broadcaster_id`. This ID must match the user ID in the access Token. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.array}  | A list that contains a single object with information about the user's subscription.  |
+ * | data | ${type.array}  | A list that contains a single struct with information about the user's subscription.  |
  * | &nbsp;├──&nbsp;broadcaster_id | ${type.string}  | An ID that identifies the broadcaster.  |
  * | &nbsp;├──&nbsp;broadcaster_login | ${type.string}  | The broadcaster's login name.  |
  * | &nbsp;├──&nbsp;broadcaster_name | ${type.string}  | The broadcaster's display name.  |
- * | &nbsp;├──&nbsp;gifter_id | ${type.string}  | The ID of the user that gifted the subscription. The object includes this field only if `is_gift` is `true`.  |
- * | &nbsp;├──&nbsp;gifter_login | ${type.string}  | The gifter's login name. The object includes this field only if `is_gift` is `true`.  |
- * | &nbsp;├──&nbsp;gifter_name | ${type.string}  | The gifter's display name. The object includes this field only if `is_gift` is `true`.  |
+ * | &nbsp;├──&nbsp;gifter_id | ${type.string}  | The ID of the user that gifted the subscription. The struct includes this field only if `is_gift` is `true`.  |
+ * | &nbsp;├──&nbsp;gifter_login | ${type.string}  | The gifter's login name. The struct includes this field only if `is_gift` is `true`.  |
+ * | &nbsp;├──&nbsp;gifter_name | ${type.string}  | The gifter's display name. The struct includes this field only if `is_gift` is `true`.  |
  * | &nbsp;├──&nbsp;is_gift | ${type.boolean}  | A Boolean value that determines whether the subscription is a gift subscription. Is `true` if the subscription was gifted. |
  * | &nbsp;└──&nbsp;tier | ${type.string}  | The type of subscription. Possible values are: 1000 - Tier 1, 2000 - Tier 2, 3000 - Tier 3  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4550,7 +5266,7 @@ function twitch_subscriptions_check_user_subscription(broadcaster_id, user_id, c
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4567,6 +5283,9 @@ function twitch_subscriptions_check_user_subscription(broadcaster_id, user_id, c
  * | &nbsp;├──&nbsp;team_name | ${type.string}  | The team's name.  |
  * | &nbsp;├──&nbsp;team_display_name | ${type.string}  | The team's display name.  |
  * | &nbsp;└──&nbsp;id | ${type.string}  | An ID that identifies the team.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4586,7 +5305,7 @@ function twitch_teams_get_channel_teams(broadcaster_id, callback_success, callba
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4605,6 +5324,9 @@ function twitch_teams_get_channel_teams(broadcaster_id, callback_success, callba
  * | &nbsp;├──&nbsp;team_display_name | ${type.string}  | The team's display name.  |
  * | &nbsp;└──&nbsp;id | ${type.string}  | An ID that identifies the team.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_teams_get_teams(name, id, callback_success, callback_failed) {}
@@ -4617,19 +5339,19 @@ function twitch_teams_get_teams(name, id, callback_success, callback_failed) {}
  * This function gets information about one or more users. 
  * You may look up users using their user ID, login name, or both but the sum total of the number of users you may look up is 100. For example, you may specify 50 IDs and 50 names or 100 IDs or names, but you cannot specify 100 IDs and 100 names. 
  * If you don't specify IDs or login names, the request returns information about the user in the access token if you specify a user access token. 
- * To include the user's verified email address in the response, you must use a user access token that includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope.
+ * To include the user's verified email address in the response, you must use a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMAIL`.
  * 
  * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `id` : ${type.string} : The ID of the user to get. To specify more than one user, include the `id` parameter for each user to get. For example, `id=1234&amp;id=5678`. The maximum number of IDs you may specify is 100.
- * - `login` : ${type.string} : The login name of the user to get. To specify more than one user, include the `login` parameter for each user to get. For example, `login=foo&amp;login=bar`. The maximum number of login names you may specify is 100.
+ * - `id` : ${type.real} or ${type.array} of ${type.real} : The ID of the user to get. To specify more than one user, pass an array with the ID of each user to get. The maximum number of IDs you may specify is 100.
+ * - `login` : ${type.string} or ${type.array} of ${type.string} : The login name of the user to get. To specify more than one user, pass an array with the ID of each user to get. The maximum number of login names you may specify is 100.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4643,8 +5365,11 @@ function twitch_teams_get_teams(name, id, callback_success, callback_failed) {}
  * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
  * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
  * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. **NOTE:** This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The struct includes this field only if the user access token includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMAIL`. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
  * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4657,9 +5382,9 @@ function twitch_users_get_users(optionals, callback_success, callback_failed) {}
  * 
  * This function updates the specified user's information. The user ID in the OAuth token identifies the user whose information you want to update.
  * 
- * To include the user's verified email address in the response, the user access token must also include the `TWITCH_SCOPE_USER_READ_EMAIL` scope.
+ * To include the user's verified email address in the response, the user access token must also include the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMAIL`.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_EDIT` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_EDIT`.]]
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -4668,7 +5393,7 @@ function twitch_users_get_users(optionals, callback_success, callback_failed) {}
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4682,8 +5407,11 @@ function twitch_users_get_users(optionals, callback_success, callback_failed) {}
  * | &nbsp;├──&nbsp;profile_image_url | ${type.string}  | A URL to the user's profile image.  |
  * | &nbsp;├──&nbsp;offline_image_url | ${type.string}  | A URL to the user's offline image.  |
  * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times the user's channel has been viewed. **NOTE:** This field has been deprecated (see [Get Users API endpoint – "view_count" deprecation](https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777)). Any data in this field is not valid and should not be used.  |
- * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The object includes this field only if the user access token includes the `TWITCH_SCOPE_USER_READ_EMAIL` scope.If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
+ * | &nbsp;├──&nbsp;email | ${type.string}  | The user's verified email address. The struct includes this field only if the user access token includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMAIL`.If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.  |
  * | &nbsp;└──&nbsp;created_at | ${type.string}  | The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4696,18 +5424,18 @@ function twitch_users_update_user(optionals, callback_success, callback_failed) 
  * 
  * This function gets the list of users that the broadcaster has blocked. [Read More](https://help.twitch.tv/s/article/how-to-manage-harassment-in-chat?language=en_US#BlockWhispersandMessagesfromStrangers)
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_READ_BLOCKED_USERS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_BLOCKED_USERS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose list of blocked users you want to get. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100. The default is 20.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4715,6 +5443,9 @@ function twitch_users_update_user(optionals, callback_success, callback_failed) 
  * | &nbsp;├──&nbsp;user_id | ${type.string}  | An ID that identifies the blocked user.  |
  * | &nbsp;├──&nbsp;user_login | ${type.string}  | The blocked user's login name.  |
  * | &nbsp;└──&nbsp;display_name | ${type.string}  | The blocked user's display name.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4729,7 +5460,7 @@ function twitch_users_get_user_block_list(broadcaster_id, optionals, callback_su
  * 
  * To learn more about blocking users, see [Block Other Users on Twitch](https://help.twitch.tv/s/article/how-to-manage-harassment-in-chat?language=en_US#BlockWhispersandMessagesfromStrangers).
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_MANAGE_BLOCKED_USERS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_MANAGE_BLOCKED_USERS`.]]
  * 
  * @param {string} target_user_id The ID of the user to block. The API ignores the request if the broadcaster has already blocked the user. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -4739,6 +5470,13 @@ function twitch_users_get_user_block_list(broadcaster_id, optionals, callback_su
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_users_block_user(target_user_id, optionals, callback_success, callback_failed) {}
@@ -4750,11 +5488,18 @@ function twitch_users_block_user(target_user_id, optionals, callback_success, ca
  * 
  * This function removes the user from the broadcaster's list of blocked users. The user ID in the OAuth token identifies the broadcaster who's removing the block.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_MANAGE_BLOCKED_USERS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_MANAGE_BLOCKED_USERS`.]]
  * 
  * @param {string} target_user_id The ID of the user to remove from the broadcaster's list of blocked users. The API ignores the request if the broadcaster hasn't blocked the user. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_users_unblock_user(target_user_id, callback_success, callback_failed) {}
@@ -4766,12 +5511,12 @@ function twitch_users_unblock_user(target_user_id, callback_success, callback_fa
  * 
  * This function gets a list of all extensions (both active and inactive) that the broadcaster has installed. The user ID in the access token identifies the broadcaster.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_READ_BROADCAST` or `TWITCH_SCOPE_USER_EDIT_BROADCAST` scope. To include inactive extensions, you must include the `TWITCH_SCOPE_USER_EDIT_BROADCAST` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_READ_BROADCAST` or `TWITCH_SCOPE_USER_EDIT_BROADCAST` scope. To include inactive extensions, you must include the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_EDIT_BROADCAST`.]]
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4781,6 +5526,9 @@ function twitch_users_unblock_user(target_user_id, callback_success, callback_fa
  * | &nbsp;├──&nbsp;name | ${type.string}  | The extension's name.  |
  * | &nbsp;├──&nbsp;can_activate | ${type.boolean}  | A Boolean value that determines whether the extension is configured and can be activated. Is `true` if the extension is configured and can be activated.  |
  * | &nbsp;└──&nbsp;type | ${type.array} of ${type.string}  | The extension types that you can activate for this extension. Possible values are: `"component"`, `"mobile"`, `"overlay"`, `"panel"`  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4804,7 +5552,7 @@ function twitch_users_get_user_extensions(callback_success, callback_failed) {}
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4827,6 +5575,9 @@ function twitch_users_get_user_extensions(callback_success, callback_failed) {}
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;x | ${type.number}  | The x-coordinate where the extension is placed.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;y | ${type.number}  | The y-coordinate where the extension is placed.  |
  * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_users_get_user_active_extensions(optionals, callback_success, callback_failed) {}
@@ -4840,15 +5591,15 @@ function twitch_users_get_user_active_extensions(optionals, callback_success, ca
  * 
  * [[Note: If you try to activate an extension under multiple extension types, the last write wins (and there is no guarantee of write order).]]
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_EDIT_BROADCAST` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_EDIT_BROADCAST`.]]
  * 
  * @param {struct} data The extensions to update. The data field is a dictionary of extension types. The dictionary's possible keys are: `"panel"`, `"overlay"`, or `"component"`. The key's value is a dictionary of extensions.
  * 
- * For the extension's dictionary, the key is a sequential number beginning with 1. For panel and overlay extensions, the key's value is an object that contains the following fields: `active` (`true`/`false`), `id` (the extension's ID), and `version` (the extension's version). For component extensions, the key's value includes the above fields plus the `x` and `y` fields, which identify the coordinate where the extension is placed. 
+ * For the extension's dictionary, the key is a sequential number beginning with 1. For panel and overlay extensions, the key's value is a struct that contains the following fields: `active` (`true`/`false`), `id` (the extension's ID), and `version` (the extension's version). For component extensions, the key's value includes the above fields plus the `x` and `y` fields, which identify the coordinate where the extension is placed. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4870,6 +5621,9 @@ function twitch_users_get_user_active_extensions(optionals, callback_success, ca
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;name | ${type.string}  | The extension's name.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;x | ${type.number}  | The x-coordinate where the extension is placed.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;y | ${type.number}  | The y-coordinate where the extension is placed.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4896,13 +5650,13 @@ function twitch_users_update_user_extensions(data, callback_success, callback_fa
  * - `sort` : ${type.string} : The order to sort the returned videos in. Possible values are: `"time"` — Sort the results in descending order by when they were created (i.e., latest video first),  `"trending"` — Sort the results in descending order by biggest gains in viewership (i.e., highest trending video first), `"views"` — Sort the results in descending order by most views (i.e., highest number of views first). The default is `"time"`. Specify this parameter only if you specify the `game_id` or `user_id` parameter.
  * - `type` : ${type.string} : A filter used to filter the list of videos by the video's type. Possible case-sensitive values are: `"all"`, `"archive"` — On-demand videos (VODs) of past streams, `"highlight"` — Highlight reels of past streams, `"upload"` — External videos that the broadcaster uploaded using the Video Producer. The default is `"all"`, which returns all video types. Specify this parameter only if you specify the `game_id` or `user_id` parameter.
  * - `first` : ${type.string} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100. The default is 20. Specify this parameter only if you specify the `game_id` or `user_id` parameter.
- * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination). Specify this parameter only if you specify the `user_id` parameter.
- * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** object in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination). Specify this parameter only if you specify the `user_id` parameter.
+ * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination). Specify this parameter only if you specify the `user_id` parameter.
+ * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination). Specify this parameter only if you specify the `user_id` parameter.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
@@ -4926,8 +5680,11 @@ function twitch_users_update_user_extensions(data, callback_success, callback_fa
  * | &nbsp;└──&nbsp;muted_segments | ${type.array}  | The segments that Twitch Audio Recognition muted; otherwise, `undefined`.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;duration | ${type.number}  | The duration of the muted segment, in seconds.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;offset | ${type.number}  | The offset, in seconds, from the beginning of the video to where the muted segment begins.  |
- * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The object is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
+ * | pagination | ${type.struct}  | Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)  |
  * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor used to get the next page of results. Use the cursor to set the request's `after` or `before` parameter depending on whether you're paging forwards or backwards through the results.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4940,17 +5697,20 @@ function twitch_videos_get_videos(id, user_id, game_id, optionals, callback_succ
  * 
  * This function deletes one or more videos. You may delete past broadcasts, highlights, or uploads.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_MANAGE_VIDEOS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_VIDEOS`.]]
  * 
- * @param {string} id The list of videos to delete. To specify more than one video, include the `id` parameter for each video to delete. For example, `id=1234&amp;id=5678`. You can delete a maximum of 5 videos per request. Ignores invalid video IDs.If the user doesn't have permission to delete one of the videos in the list, none of the videos are deleted. 
+ * @param {real|array} id The list of videos to delete. To specify more than one video, pass an array with the ID of each video to delete. You can delete a maximum of 5 videos per request. Ignores invalid video IDs.If the user doesn't have permission to delete one of the videos in the list, none of the videos are deleted. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
- * @desc 
+ * @desc These members are returned in the success callback:
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array} of ${type.string}  | The list of IDs of the videos that were deleted.  |
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
  * @event_end
  * @func_end
  */
@@ -4969,7 +5729,7 @@ function twitch_videos_delete_videos(id, callback_success, callback_failed) {}
  *  
  * **Rate Limits:** You may whisper to a maximum of 40 unique recipients per day. Within the per day limit, you may whisper a maximum of 3 whispers per second and a maximum of 100 whispers per minute.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_USER_MANAGE_WHISPERS` scope.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_MANAGE_WHISPERS`.]]
  * 
  * @param {string} from_user_id The ID of the user sending the whisper. This user must have a verified phone number. This ID must match the user ID in the user access token. 
  * @param {string} to_user_id The ID of the user to receive the whisper. 
@@ -4984,6 +5744,13 @@ function twitch_videos_delete_videos(id, callback_success, callback_failed) {}
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
+ *
+ * @event callback_success
+ * @desc This method is triggered on success. It has no response body.
+ * @event_end
+ * @event callback_failed
+ * @desc This method is triggered on failure.
+ * @event_end
  * @func_end
  */
 function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callback_success, callback_failed) {}
@@ -4991,7 +5758,7 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
 // Modules
 
 /**
- * @module twitch_ref
+ * @module home
  * @title Twitch Reference
  * @desc > **Twitch:** [Reference](https://dev.twitch.tv/docs/api/reference/)
  * 
@@ -5082,7 +5849,7 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
  * 
  * @section_const
  * @desc These are the constants of this module: 
- * @ref TWITCH_SCOPE_*
+ * @ref TWITCH_SCOPE
  * @section_end
  * 
  * @module_end
