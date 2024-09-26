@@ -1,3 +1,3 @@
 
 
-twitch_users_get_user_active_extensions({}, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
+twitch_users_get_user_active_extensions({}, __twitch_debug_callback_success, __twitch_debug_callback_failure);

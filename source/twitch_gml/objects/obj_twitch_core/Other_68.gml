@@ -17,51 +17,57 @@ switch(async_load[? "type"])
 			twitch_client_auth_socket ??= async_load[? "socket"];
 		}
 		break;
-		
-	case network_type_disconnect:
-	
-		show_debug_message("network_type_disconnect");
-	
-		if (is_undefined(server))
-			return;
-		
-		if (!is_undefined(twitch_client_auth_socket)) {
-			network_destroy(twitch_client_auth_socket);
-		}
-		twitch_client_auth_socket = undefined;
-		break;
 
 	case network_type_data:
 	
 		show_debug_message("network_type_data")
 		
 		if (async_load[? "id"] == twitch_client_auth_socket)
-		{
+		{		
 			var _data = buffer_read(async_load[? "buffer"], buffer_string);
 
 			var _needle = "?code=";
 			var _start = string_pos(_needle,_data) + string_length(_needle);
 			var _end = string_pos_ext("&", _data, _start);
-			var _code = string_copy(_data, _start, _end - _start);
+			
+			var _count = _end == -1 ? string_length(_data) : _end - _start;
+			
+			var _code = string_copy(_data, _start, _count);
 		
 			twitch_oauth_token = _code
-		
-			var _buff_temp = buffer_load("twitch_auth_index.html");
-			if (_buff_temp != -1) {
-				network_send_raw(twitch_client_auth_socket,_buff_temp, buffer_get_size(_buff_temp));
-				buffer_delete(_buff_temp);
-			}
-			else {
-				var _object_name = object_get_name(object_index);
-				show_debug_message($"{_object_name} :: failed to load `twitch_auth_index.html`");
-			}
-		
+
+			// This is a special response which only purpose is to kill the tab opened by the authentication mechanism
+			var _close_tab_script = 
+				"HTTP/1.1 200 OK" + "\r\n" +		// This represents a successful result from the server
+				"Content-Type:text/html" + "\r\n" + // This specifies the type of content (HTML)
+				"Content-Length:237" + "\r\n\r\n" + // For security reasons we add the content length so we know that it isn't easily tempered with
+				"<html>" +
+					"<head>" +
+						// This is optional (just informative)
+						"<title>Authentication Complete</title>" +
+						// This JS script wil attempt to close the window and fallback to a message if it fails to
+						"<script>try{window.open('','_self').close();}catch(e){document.body.innerHTML='<p>Authentication successful. Please close this window manually.</p>';}</script>" +
+					"</head>" +
+					// This will be used later by the JS script as fallback mechanism
+					"<body></body>" +
+				"</html>";
+				
+			var _buff = buffer_create(1, buffer_grow, 1);
+			buffer_write(_buff, buffer_string, _close_tab_script);
+			network_send_raw(twitch_client_auth_socket, _buff, buffer_tell(_buff));
+			buffer_delete(_buff);
+			
 			if (os_type == os_android || os_type == os_ios) {
 				WebView_Destroy()
 			}
 		
-			twitch_auth_exchange_code(twitch_oauth_token, twitch_auth_callback_success, twitch_auth_callback_failed)
+			twitch_auth_exchange_code(twitch_oauth_token, twitch_auth_callback_success, twitch_auth_callback_failed);
+			
+			// We can safely destroy the server (the client is handle automatically)
 			network_destroy(server);
+			server = undefined;
+			twitch_client_auth_socket = undefined;
+			
 		}
 		else if (async_load[? "id"] == twitch_client_chat_socket)
 		{

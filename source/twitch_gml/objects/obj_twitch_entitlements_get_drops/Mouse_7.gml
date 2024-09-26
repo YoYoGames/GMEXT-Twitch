@@ -1,3 +1,3 @@
 
-twitch_entitlements_get_drops_entitlements({}, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
+twitch_entitlements_get_drops_entitlements({}, __twitch_debug_callback_success, __twitch_debug_callback_failure);
 

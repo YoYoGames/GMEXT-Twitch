@@ -1,8 +1,8 @@
 
 var _user = twitch_users_get_user();
-//twitch_schedule_create_channel_stream_schedule_segment(_user.id, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
-twitch_schedule_delete_channel_stream_schedule_segment(_user.id,, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
-twitch_schedule_get_channel_icalendar(_user.id, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
-twitch_schedule_get_channel_stream_schedule(_user.id, {}, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
-twitch_schedule_update_channel_stream_schedule(_user.id, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
-twitch_schedule_update_channel_stream_schedule_segment(_user.id,, {}, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
+//twitch_schedule_create_channel_stream_schedule_segment(_user.id, __twitch_debug_callback_success, __twitch_debug_callback_failure);
+twitch_schedule_delete_channel_stream_schedule_segment(_user.id,, __twitch_debug_callback_success, __twitch_debug_callback_failure);
+twitch_schedule_get_channel_icalendar(_user.id, __twitch_debug_callback_success, __twitch_debug_callback_failure);
+twitch_schedule_get_channel_stream_schedule(_user.id, {}, __twitch_debug_callback_success, __twitch_debug_callback_failure);
+twitch_schedule_update_channel_stream_schedule(_user.id, __twitch_debug_callback_success, __twitch_debug_callback_failure);
+twitch_schedule_update_channel_stream_schedule_segment(_user.id,, {}, __twitch_debug_callback_success, __twitch_debug_callback_failure);

@@ -1,3 +1,3 @@
 
-twitch_ccls_get_content_classification_labels({}, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
+twitch_ccls_get_content_classification_labels({}, __twitch_debug_callback_success, __twitch_debug_callback_failure);
 
