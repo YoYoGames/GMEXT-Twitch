@@ -10,7 +10,7 @@
  * 
  * [[Note: Only the broadcaster may start a commercial; the broadcaster's editors and moderators may not start commercials on behalf of the broadcaster.]]
  * 
- * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_EDIT_COMMERCIAL`_ED scope.
+ * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the `TWITCH_SCOPE_CHANNEL_EDIT_COMMERCIAL` scope.
  * 
  * @param {string} broadcaster_id The ID of the partner or affiliate broadcaster that wants to run the commercial. This ID must match the user ID found in the OAuth token.
  * @param {string} length The length of the commercial you requested. If you request a commercial that's longer than 180 seconds, the API uses 180 seconds.
@@ -545,7 +545,7 @@ function twitch_bits_get_bits_leaderboard(optionals, callback_success, callback_
  * 
  * [[Note: This requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
- * @param {string} broadcaster_id` : ${type.string} : The ID of the broadcaster whose custom Cheermotes you want to get. Specify the broadcaster's ID if you want to include the broadcaster's Cheermotes in the response (not all broadcasters upload Cheermotes). If not specified, the response contains only global Cheermotes.
+ * @param {string} broadcaster_id` ${type.string} The ID of the broadcaster whose custom Cheermotes you want to get. Specify the broadcaster's ID if you want to include the broadcaster's Cheermotes in the response (not all broadcasters upload Cheermotes). If not specified, the response contains only global Cheermotes.
  * 
  * If the broadcaster uploaded Cheermotes, the `type` field in the response is set to `"channel_custom"`.
  * 
@@ -589,7 +589,7 @@ function twitch_bits_get_cheermotes(optionals, callback_success, callback_failed
  * @param {string} extension_id The ID of the extension whose list of transactions you want to get. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `id` : ${type.string} : A transaction ID used to filter the list of transactions. Specify this parameter for each transaction you want to get. For example, `id=1234&amp;id=5678`. You may specify a maximum of 100 IDs.
+ * - `id` : ${type.string} : A transaction ID used to filter the list of transactions. Specify an array with transaction IDs to get multiple transactions. You may specify a maximum of 100 IDs.
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
  * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read More](https://dev.twitch.tv/docs/api/guide#pagination)</a>
  * 
@@ -838,7 +838,7 @@ function twitch_channels_get_channel_followers(broadcaster_id, optionals, callba
  * - `max_per_user_per_stream` : ${type.number} : The maximum number of redemptions allowed per user per stream. Applied only if `is_max_per_user_per_stream_enabled` is `true`. The minimum value is 1.
  * - `is_global_cooldown_enabled` : ${type.boolean} : A Boolean value that determines whether to apply a cooldown period between redemptions (see the `global_cooldown_seconds` field for the duration of the cooldown period). The default is `false`.
  * - `global_cooldown_seconds` : ${type.number} : The cooldown period, in seconds. Applied only if the `is_global_cooldown_enabled` field is `true`. The minimum value is 1; however, the minimum value is 60 for it to be shown in the Twitch UX.
- * - `should_redemptions_skip_request_queue` : ${type.boolean} : A Boolean value that determines whether redemptions should be set to FULFILLED status immediately when a reward is redeemed. If `false`, status is set to UNFULFILLED and follows the normal request queue process. The default is `false`.
+ * - `should_redemptions_skip_request_queue` : ${type.boolean} : A Boolean value that determines whether redemptions should be set to `"FULFILLED"` status immediately when a reward is redeemed. If `false`, status is set to `"UNFULFILLED"` and follows the normal request queue process. The default is `false`.
  * 
  * @param {function} callback_success Triggered if request succeeded
  * @param {function} callback_failed Triggered if request failed
@@ -877,7 +877,7 @@ function twitch_channels_get_channel_followers(broadcaster_id, optionals, callba
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;global_cooldown_seconds | ${type.int64}  | The cooldown period, in seconds.  |
  * | &nbsp;├──&nbsp;is_paused | ${type.boolean}  | A Boolean value that determines whether the reward is currently paused. Is `true` if the reward is paused. Viewers can't redeem paused rewards.  |
  * | &nbsp;├──&nbsp;is_in_stock | ${type.boolean}  | A Boolean value that determines whether the reward is currently in stock. Is `true` if the reward is in stock. Viewers can't redeem out of stock rewards.  |
- * | &nbsp;├──&nbsp;should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to FULFILLED status immediately when a reward is redeemed. If `false`, status is UNFULFILLED and follows the normal request queue process.  |
+ * | &nbsp;├──&nbsp;should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to `"FULFILLED"` status immediately when a reward is redeemed. If `false`, status is `"UNFULFILLED"` and follows the normal request queue process.  |
  * | &nbsp;├──&nbsp;redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
  * | &nbsp;└──&nbsp;cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state (see the `global_cooldown_setting` field).  |
  * @event_end
@@ -928,7 +928,7 @@ function twitch_channel_points_delete_custom_reward(broadcaster_id, id, callback
  * @param {string} broadcaster_id The ID of the broadcaster whose custom rewards you want to get. This ID must match the user ID found in the OAuth token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `id` : ${type.real} or ${type.array} of {$type.real} : A list of IDs to filter the rewards by. To specify more than one ID, pass an array with the ID of the rewards you want to get. You may specify a maximum of 50 IDs.
+ * - `id` : ${type.real} or ${type.array} of ${type.real} : A list of IDs to filter the rewards by. To specify more than one ID, pass an array with the ID of the rewards you want to get. You may specify a maximum of 50 IDs.
  *   Duplicate IDs are ignored. The response contains only the IDs that were found. If none of the IDs were found, the response is 404 Not Found.
  * - `only_manageable_rewards` : ${type.boolean} : A Boolean value that determines whether the response contains only the custom rewards that the app may manage (the app is identified by the ID in the Client-Id header). Set to `true` to get only the custom rewards that the app may manage. The default is `false`.
  * 
@@ -969,7 +969,7 @@ function twitch_channel_points_delete_custom_reward(broadcaster_id, id, callback
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;global_cooldown_seconds | ${type.int64}  | The cooldown period, in seconds.  |
  * | &nbsp;├──&nbsp;is_paused | ${type.boolean}  | A Boolean value that determines whether the reward is currently paused. Is `true` if the reward is paused. Viewers can't redeem paused rewards.  |
  * | &nbsp;├──&nbsp;is_in_stock | ${type.boolean}  | A Boolean value that determines whether the reward is currently in stock. Is `true` if the reward is in stock. Viewers can't redeem out of stock rewards.  |
- * | &nbsp;├──&nbsp;should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to FULFILLED status immediately when a reward is redeemed. If `false`, status is set to UNFULFILLED and follows the normal request queue process.  |
+ * | &nbsp;├──&nbsp;should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to `"FULFILLED"` status immediately when a reward is redeemed. If `false`, status is set to `"UNFULFILLED"` and follows the normal request queue process.  |
  * | &nbsp;├──&nbsp;redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
  * | &nbsp;└──&nbsp;cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state. See the `global_cooldown_setting` field.  |
  * @event_end
@@ -1108,7 +1108,7 @@ function twitch_channel_points_get_custom_reward_redemption(broadcaster_id, rewa
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;global_cooldown_seconds | ${type.int64}  | The cooldown period, in seconds.  |
  * | &nbsp;├──&nbsp;is_paused | ${type.boolean}  | A Boolean value that determines whether the reward is currently paused. Is `true` if the reward is paused. Viewers can't redeem paused rewards.  |
  * | &nbsp;├──&nbsp;is_in_stock | ${type.boolean}  | A Boolean value that determines whether the reward is currently in stock. Is `true` if the reward is in stock. Viewers can't redeem out of stock rewards.  |
- * | &nbsp;├──&nbsp;should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to FULFILLED status immediately when a reward is redeemed. If `false`, status is set to UNFULFILLED and follows the normal request queue process.  |
+ * | &nbsp;├──&nbsp;should_redemptions_skip_request_queue | ${type.boolean}  | A Boolean value that determines whether redemptions should be set to `"FULFILLED"` status immediately when a reward is redeemed. If `false`, status is set to `"UNFULFILLED"` and follows the normal request queue process.  |
  * | &nbsp;├──&nbsp;redemptions_redeemed_current_stream | ${type.number}  | The number of redemptions redeemed during the current live stream. The number counts against the `max_per_stream_setting` limit. This field is `undefined` if the broadcaster's stream isn't live or `max_per_stream_setting` isn't enabled.  |
  * | &nbsp;└──&nbsp;cooldown_expires_at | ${type.string}  | The timestamp of when the cooldown period expires. Is `undefined` if the reward isn't in a cooldown state. See the `global_cooldown_setting` field.  |
  * @event_end
@@ -1124,7 +1124,7 @@ function twitch_channel_points_update_custom_reward(broadcaster_id, id, optional
  * @func twitch_channel_points_update_redemption_status
  * @desc **Twitch Endpoint:** [Update Redemption Status](https://dev.twitch.tv/docs/api/reference/#update-redemption-status)
  * 
- * This function updates a redemption's status. You may update a redemption only if its status is UNFULFILLED. The app used to create the reward is the only app that may update the redemption.
+ * This function updates a redemption's status. You may update a redemption only if its status is `"UNFULFILLED"`. The app used to create the reward is the only app that may update the redemption.
  * 
  * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_REDEMPTIONS`.]]
  * 
@@ -1392,7 +1392,7 @@ function twitch_chat_get_global_emotes(callback_success, callback_failed) {}
  * 
  * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
- * @param {string} emote_set_id An ID that identifies the emote set to get. Include this parameter for each emote set you want to get. For example, `emote_set_id=1234&amp;emote_set_id=5678`. You may specify a maximum of 25 IDs. The response contains only the IDs that were found and ignores duplicate IDs. To get emote set IDs, use ${function.twitch_chat_get_channel_emotes}.
+ * @param {string|array} emote_set_id An ID that identifies the emote set to get. Pass an array of IDs to specify multiple emote sets. You may specify a maximum of 25 IDs. The response contains only the IDs that were found and ignores duplicate IDs. To get emote set IDs, use ${function.twitch_chat_get_channel_emotes}.
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
@@ -1845,7 +1845,7 @@ function twitch_clips_create_clip(broadcaster_id, optionals, callback_success, c
  * 
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
- * | data | ${type.array}  | The list of video clips. For clips returned by game_id or broadcaster_id, the list is in descending order by view count. For lists returned by id, the list is in the same order as the input IDs.  |
+ * | data | ${type.array}  | The list of video clips. For clips returned by `game_id` or `broadcaster_id`, the list is in descending order by view count. For lists returned by `id`, the list is in the same order as the input IDs.  |
  * | &nbsp;├──&nbsp;id | ${type.string}  | An ID that uniquely identifies the clip.  |
  * | &nbsp;├──&nbsp;url | ${type.string}  | A URL to the clip.  |
  * | &nbsp;├──&nbsp;embed_url | ${type.string}  | A URL that you can use in an iframe to embed the clip (see [Embedding Video and Clips](https://dev.twitch.tv/docs/embed/video-and-clips/)).  |
@@ -2111,7 +2111,7 @@ function twitch_ccls_get_content_classification_labels(optionals, callback_succe
  * 
  * This function gets an organization's list of entitlements that have been granted to a game, a user, or both.
  * 
- * [[Note: Entitlements returned in the response body data are not guaranteed to be sorted by any field returned by the API. To retrieve CLAIMED or FULFILLED entitlements, use the `fulfillment_status` parameter to filter results. To retrieve entitlements for a specific game, use the `game_id` parameter to filter results.]]
+ * [[Note: Entitlements returned in the response body data are not guaranteed to be sorted by any field returned by the API. To retrieve CLAIMED or `"FULFILLED"` entitlements, use the `fulfillment_status` parameter to filter results. To retrieve entitlements for a specific game, use the `game_id` parameter to filter results.]]
  * 
  * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]] The client ID in the access token must own the game.]]
  * 
@@ -2130,7 +2130,7 @@ function twitch_ccls_get_content_classification_labels(optionals, callback_succe
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `id` : ${type.string} : An ID that identifies the entitlement to get. Include this parameter for each entitlement you want to get. For example, `id=1234&amp;id=5678`. You may specify a maximum of 100 IDs.
+ * - `id` : ${type.string} or ${type.array} of ${type.string} : An ID that identifies the entitlement to get. Pass an array of IDs to get multiple entitlements. You may specify a maximum of 100 IDs.
  * - `user_id` : ${type.string} : An ID that identifies a user that was granted entitlements.
  * - `game_id` : ${type.string} : An ID that identifies a game that offered entitlements.
  * - `fulfillment_status` : ${type.string} : The entitlement's fulfillment status. Used to filter the list to only those with the specified status. Possible values are: `"CLAIMED"`, `"FULFILLED"`
@@ -2854,7 +2854,7 @@ function twitch_eventsub_get_eventsub_subscriptions(optionals, callback_success,
  * }
  * ```
  * 
- * This connection receives several types of message that should be handled correctly. See [Handling WebSocket Events](https://dev.twitch.tv/docs/eventsub/handling-websocket-events/)
+ * This connection receives several types of message that should be handled correctly. See [Handling WebSocket Events](https://dev.twitch.tv/docs/eventsub/handling-websocket-events/).
  * See the demo project for a complete code example.
  * 
  * [[Note: Ping-pong messages are handled automatically by GameMaker.]]
@@ -5827,7 +5827,7 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
  * @title Home
  * @desc This is the Twitch extension for GameMaker.
  * 
- * This extension allows you to interact with Twitch using the [Twitch API](https://dev.twitch.tv/docs/api/). It is a wrapper around 
+ * This extension allows you to interact with Twitch using the [Twitch API](https://dev.twitch.tv/docs/api/).
  * 
  * @section Guides
  * @desc These are the available guides for the Twitch extension:
@@ -6083,7 +6083,7 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
 /**
  * @module extensions
  * @title Extensions
- * @desc [[Note: these functions haven not been implemented yet.]]
+ * @desc [[Note: These functions haven not been implemented yet.]]
  * 
  * @section_func
  * @desc These are the functions of this module: 

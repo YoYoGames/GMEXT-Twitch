@@ -16,5 +16,5 @@ Android and iOS require the [GMEXT-WebView](https://github.com/YoYoGames/GMEXT-W
 
 ## Extension Options
 
-In the [Extension Options](manual.gamemaker.io/monthly/en/The_Asset_Editors/Extensions.htm#extension_options), enter the **Client ID** and **Client Secret** as well as the **Chat OAuth**.
+In the [Extension Options](https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Extensions.htm#extension_options), enter the **Client ID** and **Client Secret** as well as the **Chat OAuth**.
 
