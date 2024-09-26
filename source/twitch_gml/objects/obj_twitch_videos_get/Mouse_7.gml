@@ -1,2 +1,2 @@
 
-// twitch_videos_get_videos("name?", "id?", {}, ASYNC_TEST_RESPONSE_SUCCESS, ASYNC_TEST_RESPONSE_FAILED);
+// twitch_videos_get_videos("name?", "id?", {}, __twitch_debug_callback_success, __twitch_debug_callback_failure);

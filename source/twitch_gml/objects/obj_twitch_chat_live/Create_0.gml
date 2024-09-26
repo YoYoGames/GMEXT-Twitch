@@ -3,9 +3,6 @@ event_inherited();
 
 text = "Live Chat"
 
-
-//twitch_client_chat_socket
-//https://twitchapps.com/tmi/#access_token=knt10g2mrv33mzc497tcsobqt03d63&scope=chat%3Aread+chat%3Aedit+channel%3Amoderate+whispers%3Aread+whispers%3Aedit+channel_editor&token_type=bearer
 twitch_chat_live_connect("jzavala_yyg", "ChatBot", function(_buffer) {
 	
 	var _messages = buffer_read(_buffer, buffer_string);
