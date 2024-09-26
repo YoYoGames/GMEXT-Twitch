@@ -471,23 +471,21 @@ function twitch_analytics_get_game_analytics(_optionals = {}, _callback_success 
 
 // ## BITS #####################################################
 
-function twitch_bits_get_bits_leaderboard(_broadcaster_id, _callback_success = undefined, _callback_failed = undefined)
+function twitch_bits_get_bits_leaderboard(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
 {
-	var _url = $"{TWITCH_ENDPOINT}helix/bits/cheermotes";
+	var _url = $"{TWITCH_ENDPOINT}helix/bits/leaderboard";
 
 	var _header_map = ds_map_create();
 	_header_map[? "Authorization"] = $"Bearer {twitch_get_access_token()}"
 	_header_map[? "Client-Id"] = twitch_get_client_id();
-
-	var _parameters = { broadcaster_id: _broadcaster_id };
 	
-	_url = __twitch_url_from_params(_url, _parameters);
+	_url = __twitch_url_from_params(_url, undefined, _optionals);
 	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
 
 	return _request;
 };
 
-function twitch_bits_get_cheermotes(_broadcaster_id, _callback_success = undefined, _callback_failed = undefined)
+function twitch_bits_get_cheermotes(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/bits/cheermotes";
 
@@ -495,9 +493,7 @@ function twitch_bits_get_cheermotes(_broadcaster_id, _callback_success = undefin
 	_header_map[? "Authorization"] = $"Bearer {twitch_get_access_token()}"
 	_header_map[? "Client-Id"] = twitch_get_client_id();
 
-	var _parameters = { broadcaster_id: _broadcaster_id };
-	
-	_url = __twitch_url_from_params(_url, _parameters);
+	_url = __twitch_url_from_params(_url, undefined, _optionals);
 	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
 
 	return _request;
