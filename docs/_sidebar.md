@@ -32,7 +32,6 @@
  * ${module.search}
  * ${module.streams}
  * ${module.subscriptions}
- * ${module.tags}
  * ${module.teams}
  * ${module.users}
  * ${module.videos}

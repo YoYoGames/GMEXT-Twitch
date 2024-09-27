@@ -365,6 +365,8 @@ function twitch_auth_refresh_token() {}
  * 
  * It returns the request ID if a cached token is available or -1 otherwise.
  * 
+ * [[Note: This function can only be used if the user authenticated before using ${function.twitch_auth}.]]
+ * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * 
@@ -686,7 +688,7 @@ function twitch_channels_get_channel_information(broadcaster_id, callback_succes
  * - `title` : ${type.string} : The title of the user's stream. You may not set this field to an empty string.
  * - `delay` : ${type.number} : The number of seconds you want your broadcast buffered before streaming it live. The delay helps ensure fairness during competitive play. Only users with Partner status may set this field. The maximum delay is 900 seconds (15 minutes).
  * - `tags` : ${type.array} of ${type.string} : A list of channel-defined tags to apply to the channel. To remove all tags from the channel, set tags to an empty array. Tags help identify the content that the channel streams. [Learn More](https://help.twitch.tv/s/article/guide-to-tags) A channel may specify a maximum of 10 tags. Each tag is limited to a maximum of 25 characters and may not be an empty string or contain spaces or special characters. Tags are case insensitive. For readability, consider using camelCasing or PascalCasing.
- * - `content_classification_labels` : ${type.string} : List of labels that should be set as the Channel's CCLs.
+ * - `content_classification_labels` : ${type.array} : List of labels that should be set as the Channel's CCLs.
  * - `is_branded_content` : ${type.boolean} : Boolean flag indicating if the channel has branded content.
  * 
  * @param {function} callback_success Triggered if the request succeeded
@@ -1578,6 +1580,52 @@ function twitch_chat_get_chat_settings(broadcaster_id, optionals, callback_succe
  * @func_end
  */
 function twitch_chat_get_user_emotes(user_id, optionals, callback_success, callback_failed) {}
+
+
+/**
+ * @func twitch_chat_live_connect
+ * @desc **Twitch Endpoint:** N / A
+ * 
+ * This function creates a connection to be used with the Chat functions.
+ * 
+ * The function takes a callback function with a single parameter: the ${type.buffer} that holds the received data.
+ * 
+ * See the Twitch documentation on [IRC Concepts](https://dev.twitch.tv/docs/chat/irc/) for information on how to parse IRC messages.
+ * 
+ * @param {string} channel_id The ID of the channel to connect to
+ * @param {string} nickname The nickname to use
+ * @param {function} callback The callback function that receives the data
+ * 
+ * @func_end
+ */
+
+
+/**
+ * @func twitch_chat_live_disconnect
+ * @desc **Twitch Endpoint:** N / A
+ * 
+ * This function disconnects from the connection set up earlier using ${function.twitch_chat_live_connect}.
+ * 
+ * [[Note: This function frees the underlying web socket and must be called when you're finished using the connection to prevent a memory leak.]]
+ * 
+ * @func_end
+ */
+
+
+/**
+ * @func twitch_chat_live_send
+ * @desc 
+ * 
+ * @func_end
+ */
+
+
+/**
+ * @func twitch_chat_live_send_raw
+ * @desc 
+ * 
+ * @func_end
+ */
 
 
 /**
@@ -5897,7 +5945,6 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
  * @ref module.search
  * @ref module.streams
  * @ref module.subscriptions
- * @ref module.tags
  * @ref module.teams
  * @ref module.users
  * @ref module.videos
@@ -6115,7 +6162,7 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
 /**
  * @module extensions
  * @title Extensions
- * @desc [[Note: These functions haven not been implemented yet.]]
+ * @desc 
  * 
  * @section_func
  * @desc These are the functions of this module: 
