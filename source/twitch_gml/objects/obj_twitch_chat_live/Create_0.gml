@@ -39,7 +39,7 @@ twitch_chat_live_connect("jzavala_yyg", "ChatBot", function(_buffer) {
 				twitch_chat_live_send_raw($"PONG {_parsed_message.parameters}");
 			}
 			break;
-			
+						
 		case "PRIVMSG":
 			_command = string_replace(_parsed_message.parameters,"\n","")
 			_command = string_replace(_command,"\r","")
