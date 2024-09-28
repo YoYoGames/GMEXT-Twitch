@@ -1394,11 +1394,11 @@ function twitch_extensions_create_jwt_token(_secret, _payload = {}) {
 		var _len = array_length(_state_array);
 		for (var _i = 0; _i < _len; _i++) {
 			var _word = _state_array[_i];
-			// Write each byte of the 32-bit word into the buffer
-			buffer_write(_out_buffer, buffer_u8, (_word >> 24) & 0xff);  // Most significant byte
-			buffer_write(_out_buffer, buffer_u8, (_word >> 16) & 0xff);
-			buffer_write(_out_buffer, buffer_u8, (_word >> 8) & 0xff);
-			buffer_write(_out_buffer, buffer_u8, _word & 0xff);          // Least significant byte
+			_word = ((_word & 0x000000ff) << 24)
+					| ((_word & 0x0000ff00) <<  8)
+					| ((_word & 0x00ff0000) >>  8)
+					| ((_word & 0xff000000) >> 24);
+			buffer_write(_out_buffer, buffer_u32, _word);
 		}
 
 		// Seek to the begining of the output buffer
