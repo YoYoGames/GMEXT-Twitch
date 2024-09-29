@@ -1228,13 +1228,35 @@ function twitch_entitlements_update_drops_entitlements(_optionals = {}, _callbac
 function twitch_extensions_create_jwt_token(_secret, _payload = {}) {
 	
 	// ## CRYPTOGRAPHY #############################################
+	// 
+	// The functions in this section are derived from the work of community contributor Juju Adams.
+	// The original implementations are provided under the MIT license, as referenced below:
+	// 
+	// MIT License
+	// 
+	// Copyright (c) 2021 Juju Adams
+	// 
+	// Permission is hereby granted, free of charge, to any person obtaining a copy
+	// of this software and associated documentation files (the "Software"), to deal
+	// in the Software without restriction, including without limitation the rights
+	// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	// copies of the Software, and to permit persons to whom the Software is
+	// furnished to do so, subject to the following conditions:
+	// 
+	// The above copyright notice and this permission notice shall be included in all
+	// copies or substantial portions of the Software.
+	// 
+	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	// SOFTWARE. 
 
 	/// @desc Computes the SHA-256 hash of a given buffer using the SHA-256 algorithm.
 	/// This function implements the full SHA-256 algorithm, processes the input buffer, and returns the hash value either
 	/// as a hexadecimal string or as an array of 8 words (32-bit integers) depending on the `_return_string` parameter.
-	/// 
-	/// Note: This function is adapted from the community member, JujuAdams (2021-09-16).
-	/// 
 	/// @param {Id.Buffer} _out_buffer The output buffer where the binary SHA-256 hash (32 bytes) will be written.
 	/// @param {Id.Buffer} _in_buffer The input buffer to be hashed.
 	/// @param {Real} _in_offset The offset in the buffer where the hash should begin (default is 0).
@@ -1261,9 +1283,6 @@ function twitch_extensions_create_jwt_token(_secret, _payload = {}) {
 	                                    0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
 	                                    0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2 ];	
 	
-	    if (!buffer_exists(_in_buffer)) show_error("Buffer " + string(_in_buffer) + " doesn't exist", true);
-	    if (_in_offset + _size > buffer_get_size(_in_buffer)) show_error("Attempting to read outside buffer (offset + size = " + string(_in_offset + _size) + ", buffer size = " + string(buffer_get_size(_in_buffer)) + ")", true);
-    
 		var _state_array_0 = 0x6a09e667;
 		var _state_array_1 = 0xbb67ae85;
 		var _state_array_2 = 0x3c6ef372;
@@ -1408,9 +1427,6 @@ function twitch_extensions_create_jwt_token(_secret, _payload = {}) {
 	/// @desc Computes HMAC-SHA256 using a given key and message.
 	/// The function pads the key to the appropriate length and performs two rounds of SHA-256: the inner and outer rounds, 
 	/// using the padded key and the message. The output is returned as a SHA-256 word array.
-	/// 
-	/// Note: This function is adapted from the community member, JujuAdams (2021-09-16).
-	/// 
 	/// @param {Id.Buffer} _out_buffer - The output buffer where the binary HMAC-SHA256 hash (32 bytes) will be written.
 	/// @param {Id.Buffer} _key_buffer - The input buffer containing the key for HMAC.
 	/// @param {String} _message - The message to be hashed using HMAC-SHA256.
@@ -1470,14 +1486,16 @@ function twitch_extensions_create_jwt_token(_secret, _payload = {}) {
 	    return __twitch_buffer_sha256(_out_buffer, _outer_pad_buffer, undefined, undefined);
 	}
 
+	// ## ENCODE UTILS #############################################
+
 	/// @desc Encodes a given buffer into a Base64Url string.
 	/// This function converts a binary buffer into a standard Base64 string, and then converts it into Base64Url format
 	/// by replacing characters according to Base64Url rules.
 	/// @param {Id.Buffer} _buffer - The buffer to be encoded.
 	/// @returns {String} The Base64Url encoded string.
 	/// @ignore
-	static __twitch_buffer_base64_url_encode = function(_buffer) {
-		var _base64_url = buffer_base64_encode(_buffer, 0, buffer_get_size(_buffer));
+	static __twitch_buffer_base64_url_encode = function(_buffer, _offset = 0, _size = -1) {
+		var _base64_url = buffer_base64_encode(_buffer, _offset, _size);
 		_base64_url = string_replace_all(_base64_url, "+", "-");
 		_base64_url = string_replace_all(_base64_url, "/", "_");
 		_base64_url = string_trim_end(_base64_url, ["="]);
@@ -1498,20 +1516,24 @@ function twitch_extensions_create_jwt_token(_secret, _payload = {}) {
 		return _base64_url;
 	}
 	
-	// 1. Create and encode the JWT header (base64 url)
+	// ## IMPLEMENTATION ###########################################
+	
+	// Create and encode a static JWT header (base64 url)
 	static _encoded_header = __twitch_base64_url_encode(json_stringify({alg: "HS256", typ: "JWT"}));
 
-	// 2. Encode the JWT payload (base64 url)
+	// Encode the JWT payload (base64 url)
 	var _encoded_payload = __twitch_base64_url_encode(json_stringify(_payload));
 
-	// 3. Create the string to sign ("header.payload")
+	// Create the string to sign ("header.payload")
 	var _data = $"{_encoded_header}.{_encoded_payload}";
 
-	// 4: Decode the shared secret (twitch secrets are always base64 encoded)
+	// Decode the shared secret (twitch secrets are always base64 encoded)
 	var _secret_buffer = buffer_base64_decode(_secret);
 
+	// Create a buffer for the binary signature (it's static to reduce memory fragmentation)	
+	static _signature_binary_buffer = buffer_create(32, buffer_fixed, 1);
+	
 	// 5. Use the __twitch_hmac_sha256 function to create the signature (returns a word array)
-	var _signature_binary_buffer = buffer_create(32, buffer_fixed, 1);
 	__twitch_hmac_sha256(_signature_binary_buffer, _secret_buffer, _data);
 	
 	// 6. Convert word array to binary buffer and encode it (base64 url)
@@ -1519,7 +1541,6 @@ function twitch_extensions_create_jwt_token(_secret, _payload = {}) {
 
 	// 7. Clear resources
 	buffer_delete(_secret_buffer);
-	buffer_delete(_signature_binary_buffer);
 
 	// 8. Return the full JWT as "header.payload.signature"
 	return $"{_encoded_header}.{_encoded_payload}.{_signature_base64_url}";
@@ -3068,11 +3089,3 @@ function twitch_whispers_send_whisper(_from_user_id, _to_user_id, _message, _cal
 
 	return _request;
 };
-
-
-var _t = twitch_extensions_create_jwt_token("s7sK6iKws1KS+ihSERL7fgoT8rx90iFkJ/hUdcAEGSs=", {
-	userId: 123,
-	name: "Francisco Dias"
-});
-
-show_debug_message(_t);
