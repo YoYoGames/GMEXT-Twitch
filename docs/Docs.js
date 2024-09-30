@@ -991,8 +991,8 @@ function twitch_channel_points_get_custom_reward(broadcaster_id, optionals, call
  *   * `"FULFILLED"`
  *   * `"UNFULFILLED"`
  * 
- * [[Note: This field is required only if you don't specify the `id` parameter.]]
- * [[Note: Canceled and fulfilled redemptions are returned for only a few days after they're canceled or fulfilled.]]
+ * **Note**: This field is required only if you don't specify the `id` parameter.
+ * **Note**: Canceled and fulfilled redemptions are returned for only a few days after they're canceled or fulfilled.
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -1505,8 +1505,8 @@ function twitch_chat_get_global_chat_badges(callback_success, callback_failed) {
  * | &nbsp;├──&nbsp;follower_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Is `true` if the broadcaster restricts the chat room to followers only; otherwise, `false`. See the `follower_mode_duration` field for how long users must follow the broadcaster before being able to participate in the chat room.  |
  * | &nbsp;├──&nbsp;follower_mode_duration | ${type.number}  | The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Is `undefined` if `follower_mode` is `false`.  |
  * | &nbsp;├──&nbsp;moderator_id | ${type.string}  | The moderator's ID. The response includes this field only if the request specifies a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS`.  |
- * | &nbsp;├──&nbsp;non_moderator_chat_delay | ${type.boolean}  | A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. See the `non_moderator_chat_delay_duration` field for the length of the delay. Is `true` if the broadcaster applies a delay; otherwise, `false`. The response includes this field only if the request specifies a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS`.and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
- * | &nbsp;├──&nbsp;non_moderator_chat_delay_duration | ${type.number}  | The amount of time, in seconds, that messages are delayed before appearing in chat. Is `undefined` if `non_moderator_chat_delay` is `false`.The response includes this field only if the request specifies a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS`.and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
+ * | &nbsp;├──&nbsp;non_moderator_chat_delay | ${type.boolean}  | A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. See the `non_moderator_chat_delay_duration` field for the length of the delay. Is `true` if the broadcaster applies a delay; otherwise, `false`. The response includes this field only if the request specifies a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS` and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
+ * | &nbsp;├──&nbsp;non_moderator_chat_delay_duration | ${type.number}  | The amount of time, in seconds, that messages are delayed before appearing in chat. Is `undefined` if `non_moderator_chat_delay` is `false`.The response includes this field only if the request specifies a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS` and the user in the `moderator_id` parameter is one of the broadcaster's moderators.  |
  * | &nbsp;├──&nbsp;slow_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster limits how often users in the chat room are allowed to send messages. Is `true` if the broadcaster applies a delay; otherwise, `false`. See the `slow_mode_wait_time` field for the delay.  |
  * | &nbsp;├──&nbsp;slow_mode_wait_time | ${type.number}  | The amount of time, in seconds, that users must wait between sending messages. Is `undefined` if `slow_mode` is `false`.  |
  * | &nbsp;├──&nbsp;subscriber_mode | ${type.boolean}  | A Boolean value that determines whether only users that subscribe to the broadcaster's channel may talk in the chat room. Is `true` if the broadcaster restricts the chat room to subscribers only; otherwise, `false`.  |
@@ -1672,7 +1672,7 @@ function twitch_chat_live_send_raw(text) {}
  * | Member | Type | Description |
  * | -----------| ------------| ------------------------------|
  * | emote_mode | ${type.boolean}  | A Boolean value that determines whether chat messages must contain only emotes. Set to `true` if only emotes are allowed; otherwise, `false`. The default is `false`.  |
- * | follower_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Set to `true` if the broadcaster restricts the chat room to followers only; otherwise, `false`. The default is `true`.To specify how long users must follow the broadcaster before being able to participate in the chat room, see the `follower_mode_duration` field.  |
+ * | follower_mode | ${type.boolean}  | A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Set to `true` if the broadcaster restricts the chat room to followers only; otherwise, `false`. The default is `true`. To specify how long users must follow the broadcaster before being able to participate in the chat room, see the `follower_mode_duration` field.  |
  * | follower_mode_duration | ${type.number}  | The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Set only if `follower_mode` is `true`. Possible values are: 0 (no restriction) through 129600 (3 months). The default is 0.  |
  * | non_moderator_chat_delay | ${type.boolean}  | A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. Set to `true` if the broadcaster applies a delay; otherwise, `false`. The default is `false`. To specify the length of the delay, see the `non_moderator_chat_delay_duration` field.  |
  * | non_moderator_chat_delay_duration | ${type.number}  | The amount of time, in seconds, that messages are delayed before appearing in chat. Set only if `non_moderator_chat_delay` is `true`. Possible values are: 2  -  2 second delay (recommended), 4  -  4 second delay, 6  -  6 second delay  |
@@ -1852,7 +1852,7 @@ function twitch_chat_update_user_chat_color(user_id, color, callback_success, ca
 
 /**
  * @func twitch_clips_create_clip
- * @desc **Twitch Endpoint:** [func_name](https://dev.twitch.tv/docs/api/reference/#create-clip)
+ * @desc **Twitch Endpoint:** [Create Clip](https://dev.twitch.tv/docs/api/reference/#create-clip)
  * 
  * This function creates a clip from the broadcaster's stream.
  * 
@@ -1890,7 +1890,7 @@ function twitch_clips_create_clip(broadcaster_id, optionals, callback_success, c
 
 /**
  * @func twitch_clips_get_clips
- * @desc **Twitch Endpoint:** [func_name](https://dev.twitch.tv/docs/api/reference/#get-clips)
+ * @desc **Twitch Endpoint:** [Get Clips](https://dev.twitch.tv/docs/api/reference/#get-clips)
  * 
  * This function gets one or more video clips that were captured from streams. For information about clips, see [How to use clips](https://help.twitch.tv/s/article/how-to-use-clips).
  * 
@@ -2277,7 +2277,7 @@ function twitch_extensions_create_jwt_token(secret, payload) {}
  * 
  * @param {string} jwt_token A signed JSON Web Token (JWT) created by ${function.twitch_extensions_create_jwt_token}. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.
  * @param {string} extension_id The ID of the extension that contains the configuration segment you want to get. 
- * @param {string} segment The type of configuration segment to get. Possible case-sensitive values are: `"broadcaster"`, `"developer"`, `"global"`. You may specify one or more segments. To specify multiple segments, include the segment parameter for each segment to get. For example, `segment=broadcaster&amp;segment=developer`. Ignores duplicate segments. 
+ * @param {string|array} segment The type of configuration segment to get. Possible case-sensitive values are: `"broadcaster"`, `"developer"`, `"global"`. You may specify one or more segments. To specify multiple segments, pass an array with the segments you want to get. Ignores duplicate segments. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `broadcaster_id` : ${type.string} : The ID of the broadcaster that installed the extension. This parameter is required if you set the `segment` parameter to broadcaster or developer. Do not specify this parameter if you set `segment` to `"global"`.
@@ -2311,7 +2311,7 @@ function twitch_extensions_get_extension_configuration_segment(jwt_token, extens
  * 
  * **Rate Limits:** You may update the configuration a maximum of 20 times per minute.
  * 
- * @param {string } jwt_token A signed JSON Web Token (JWT) created by ${function.twitch_extensions_create_jwt_token}. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.
+ * @param {string} jwt_token A signed JSON Web Token (JWT) created by ${function.twitch_extensions_create_jwt_token}. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.
  * @param {string} extension_id The ID of the extension to update. 
  * @param {string} segment The configuration segment to update. Possible case-sensitive values are: `"broadcaster"`, `"developer"`, `"global"` 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -2707,7 +2707,7 @@ function twitch_extensions_get_extension_bits_products(optionals, callback_succe
  * This function adds or updates a Bits product that the extension created. If the SKU doesn't exist, the product is added. You may update all fields except the `sku` field.
  * 
  * @param {string} sku The product's SKU. The SKU must be unique within an extension. The product's SKU cannot be changed. The SKU may contain only alphanumeric characters, dashes (-), underscores (_), and periods (.) and is limited to a maximum of 255 characters. No spaces. 
- * @param {struct} cost a struct that contains the product's cost information. 
+ * @param {struct} cost A struct that contains the product's cost information. 
  * @param {number} amount The product's price. 
  * @param {string} type The type of currency. Possible values are: `"bits"` — The minimum price is 1 and the maximum is 10000. 
  * @param {string} display_name The product's name as displayed in the extension. The maximum length is 255 characters. 
@@ -2726,7 +2726,7 @@ function twitch_extensions_get_extension_bits_products(optionals, callback_succe
  * | -----------| ------------| ------------------------------|
  * | data | ${type.array}  | A list of Bits products that the extension created. The list is in ascending SKU order. The list is empty if the extension hasn't created any products or they're all expired or disabled.  |
  * | &nbsp;├──&nbsp;sku | ${type.string}  | The product's SKU. The SKU is unique across an extension's products.  |
- * | &nbsp;├──&nbsp;cost | ${type.struct}  | a struct that contains the product's cost information.  |
+ * | &nbsp;├──&nbsp;cost | ${type.struct}  | A struct that contains the product's cost information.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;amount | ${type.number}  | The product's price.  |
  * | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;type | ${type.string}  | The type of currency. Possible values are:`"bits"`  |
  * | &nbsp;├──&nbsp;in_development | ${type.boolean}  | A Boolean value that indicates whether the product is in development. If `true`, the product is not available for public use.  |
@@ -2877,7 +2877,7 @@ function twitch_eventsub_delete_eventsub_subscription(id, callback_success, call
  * | total_cost | ${type.number}  | The sum of all of your subscription costs. [Learn More](https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits)  |
  * | max_total_cost | ${type.number}  | The maximum total cost that you're allowed to incur for all subscriptions that you create.  |
  * | pagination | ${type.struct}  | a struct that contains the cursor used to get the next page of subscriptions. The struct is empty if there are no more pages to get. The number of subscriptions returned per page is undertermined.  |
- * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor value that you set the after parameter to.  |
+ * | &nbsp;└──&nbsp;cursor | ${type.string}  | The cursor value that you set the `after` parameter to.  |
  * @event_end
  * @event callback_failed
  * @desc This method is triggered on failure.
@@ -3205,8 +3205,8 @@ function twitch_guest_star_create_guest_star_session(optionals, callback_success
  * * Parameter `broadcaster_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
  * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR`
  * 
- * @param {string} broadcaster_id : The ID of the broadcaster you want to end a Guest Star session for. Provided `broadcaster_id` must match the `user_id` in the auth token.
- * @param {string} session_id : ID for the session to end on behalf of the broadcaster.
+ * @param {string} broadcaster_id The ID of the broadcaster you want to end a Guest Star session for. Provided `broadcaster_id` must match the `user_id` in the auth token.
+ * @param {string} session_id ID for the session to end on behalf of the broadcaster.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
@@ -3348,7 +3348,7 @@ function twitch_guest_star_delete_guest_star_invite(optionals, callback_success,
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the `user_id` in the user access token.
  * @param {string} session_id The ID of the Guest Star session in which to assign the slot.
  * @param {string} guest_id The Twitch User ID corresponding to the guest to assign a slot in the session. This user must already have an invite to this session, and have indicated that they are ready to join.
- * @param {string} slot_id The slot assignment to give to the user. Must be a numeric identifier between `"1"` and `"N"` where N is the max number of slots for the session. Max number of slots allowed for the session is reported by ${function.twitch_guest_star_get_channel_guest_star_settings}.
+ * @param {string} slot_id The slot assignment to give to the user. Must be a numeric identifier between 1 and N where N is the max number of slots for the session. Max number of slots allowed for the session is reported by ${function.twitch_guest_star_get_channel_guest_star_settings}.
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
@@ -3951,7 +3951,7 @@ function twitch_moderation_get_blocked_terms(broadcaster_id, moderator_id, optio
  * 
  * @param {string} broadcaster_id The ID of the broadcaster that owns the list of blocked terms. 
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's chat room. This ID must match the user ID in the user access token. 
- * @param {string} text The word or phrase to block from being used in the broadcaster's chat room. The term must contain a minimum of 2 characters and may contain up to a maximum of 500 characters.Terms may include a wildcard character (*). The wildcard character must appear at the beginning or end of a word or set of characters. For example, *foo or foo*.If the blocked term already exists, the response contains the existing blocked term. 
+ * @param {string} text The word or phrase to block from being used in the broadcaster's chat room. The term must contain a minimum of 2 characters and may contain up to a maximum of 500 characters. Terms may include a wildcard character (\*). The wildcard character must appear at the beginning or end of a word or set of characters. For example, \*foo or foo\*. If the blocked term already exists, the response contains the existing blocked term. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
@@ -3966,7 +3966,7 @@ function twitch_moderation_get_blocked_terms(broadcaster_id, moderator_id, optio
  * | &nbsp;├──&nbsp;text | ${type.string}  | The blocked word or phrase.  |
  * | &nbsp;├──&nbsp;created_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was blocked.  |
  * | &nbsp;├──&nbsp;updated_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the term was updated. When the term is added, this timestamp is the same as `created_at`. The timestamp changes as AutoMod continues to deny the term.  |
- * | &nbsp;└──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the blocked term is set to expire. After the block expires, users may use the term in the broadcaster's chat room.This field is `undefined` if the term was added manually or was permanently blocked by AutoMod.  |
+ * | &nbsp;└──&nbsp;expires_at | ${type.string}  | The UTC date and time (in RFC3339 format) that the blocked term is set to expire. After the block expires, users may use the term in the broadcaster's chat room. This field is `undefined` if the term was added manually or was permanently blocked by AutoMod.  |
  * @event_end
  * @event callback_failed
  * @desc This method is triggered on failure.
@@ -4679,7 +4679,7 @@ function twitch_predictions_end_prediction(broadcaster_id, id, status, optionals
  * 
  * This function raids another channel by sending the broadcaster's viewers to the targeted channel.
  * 
- * When you call the API from a chat bot or extension, the Twitch UX pops up a window at the top of the chat room that identifies the number of viewers in the raid. The raid occurs when the broadcaster clicks Raid Now or after the 90-second countdown expires.
+ * When you call the API from a chat bot or extension, the Twitch UX pops up a window at the top of the chat room that identifies the number of viewers in the raid. The raid occurs when the broadcaster clicks **Raid Now** or after the 90-second countdown expires.
  * 
  * To determine whether the raid successfully occurred, you must subscribe to the [Channel Raid](https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#channelraid) event. For more information, see [Get notified when a raid begins](https://dev.twitch.tv/docs/api/raids#get-notified-when-a-raid-begins).
  * 
@@ -5090,11 +5090,11 @@ function twitch_streams_get_stream_key(broadcaster_id, callback_success, callbac
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
- * - `user_id` : ${type.string} : A user ID used to filter the list of streams. Returns only the streams of those users that are broadcasting. You may specify a maximum of 100 IDs. To specify multiple IDs, include the `user_id` parameter for each user. For example, `&amp;user_id=1234&amp;user_id=5678`.
- * - `user_login` : ${type.string} : A user login name used to filter the list of streams. Returns only the streams of those users that are broadcasting. You may specify a maximum of 100 login names. To specify multiple names, include the `user_login` parameter for each user. For example, `&amp;user_login=foo&amp;user_login=bar`.
- * - `game_id` : ${type.string} : A game (category) ID used to filter the list of streams. Returns only the streams that are broadcasting the game (category). You may specify a maximum of 100 IDs. To specify multiple IDs, include the `game_id` parameter for each game. For example, `&amp;game_id=9876&amp;game_id=5432`.
+ * - `user_id` : ${type.string} or ${type.array} of ${type.string} : A user ID used to filter the list of streams. Returns only the streams of those users that are broadcasting. You may specify a maximum of 100 IDs. Pass an array of IDs to specify multiple.
+ * - `user_login` : ${type.string} or ${type.array} of ${type.string} : A user login name used to filter the list of streams. Returns only the streams of those users that are broadcasting. You may specify a maximum of 100 login names. To specify multiple names, pass an array of user names.
+ * - `game_id` : ${type.string} or ${type.array} of ${type.string} : A game (category) ID used to filter the list of streams. Returns only the streams that are broadcasting the game (category). You may specify a maximum of 100 IDs. Pass an array of IDs to specify multiple game IDs.
  * - `type` : ${type.string} : The type of stream to filter the list of streams by. Possible values are: `"all"`, `"live"`. The default is `"all"`.
- * - `language` : ${type.string} : A language code used to filter the list of streams. Returns only streams that broadcast in the specified language. Specify the language using an ISO 639-1 two-letter language code or `"other"` if the broadcast uses a language not in the list of [supported stream languages](https://help.twitch.tv/s/article/languages-on-twitch#streamlang). You may specify a maximum of 100 language codes. To specify multiple languages, include the `language` parameter for each language. For example, `&amp;language=de&amp;language=fr`.
+ * - `language` : ${type.string} : A language code used to filter the list of streams. Returns only streams that broadcast in the specified language. Specify the language using an ISO 639-1 two-letter language code or `"other"` if the broadcast uses a language not in the list of [supported stream languages](https://help.twitch.tv/s/article/languages-on-twitch#streamlang). You may specify a maximum of 100 language codes. To specify multiple languages, pass an array with the codes of each language you want to include.
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
  * - `before` : ${type.string} : The cursor used to get the previous page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
  * - `after` : ${type.string} : The cursor used to get the next page of results. The **Pagination** struct in the response contains the cursor's value. [Read more](https://dev.twitch.tv/docs/api/guide#pagination)
@@ -5802,7 +5802,7 @@ function twitch_videos_get_videos(id, user_id, game_id, optionals, callback_succ
  * 
  * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_VIDEOS`.]]
  * 
- * @param {real|array} id The list of videos to delete. To specify more than one video, pass an array with the ID of each video to delete. You can delete a maximum of 5 videos per request. Ignores invalid video IDs.If the user doesn't have permission to delete one of the videos in the list, none of the videos are deleted. 
+ * @param {real|array} id The list of videos to delete. To specify more than one video, pass an array with the ID of each video to delete. You can delete a maximum of 5 videos per request. Ignores invalid video IDs. If the user doesn't have permission to delete one of the videos in the list, none of the videos are deleted. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
