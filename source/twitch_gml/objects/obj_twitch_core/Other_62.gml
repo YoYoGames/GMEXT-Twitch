@@ -21,37 +21,32 @@ if (TWITCH_DEBUG) {
 	show_debug_message("HTTP: " + _encoded_async_load)
 }
 
-// Early exist bad status code
-if (_status != 0) {
+var _data = async_load[? "result"];
+
+if (_status == -1 && string_length(_data) != 0) {
 	if (is_callable(_request.callback_failed)) {
 		_request.callback_failed(json_parse(_encoded_async_load));
 	}
 	return;
 }
 
-var _http_status = async_load[? "http_status"];
-if (_http_status >= 200 && _http_status < 300)
-{
-	try
-	{
-		var _data = json_parse(async_load[? "result"]);
-		var _code = _data[$ "code"];
-		if (is_undefined(_code) || (_code >= 200 && _code < 300))
-		{
-			if (is_callable(_request.callback_success)) {
-				_request.callback_success(_data);
-			}
-			return;
-		}
+var _code = async_load[? "http_status"];
+if (_code >= 200 && _code < 300) {
+	try {
+		_data = json_parse(_data);
+		// feather ignore once GM1028
+		_code = _data[$ "code"];
 	}
-	catch (_exception)
-	{
-		show_debug_message($"obj_twitch_core :: {_exception}");
+	catch(_ex) { /* ignore it */ };
+
+	if (is_undefined(_code) || (_code >= 200 && _code < 300)) {
+		if (is_callable(_request.callback_success)) {
+			_request.callback_success(_data);
+		}
+		return;
 	}
 }
 
 if (is_callable(_request.callback_failed)) {
 	_request.callback_failed(json_parse(_encoded_async_load));
 }
-
-

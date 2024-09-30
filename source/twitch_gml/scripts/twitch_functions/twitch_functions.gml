@@ -3,10 +3,6 @@ function twitch_functions() {
 	throw $"{_GMFUNCTION_} :: This script file cannot be called.";
 };
 
-#region Twitch Global Variables
-
-#endregion
-
 #region Macros
 
 #macro TWITCH_DEBUG_MAX_RESPONSE_LENGTH 5000
@@ -142,6 +138,7 @@ function __twitch_request(_url, _http_method, _header_map, _body, _callback_succ
 	return _request_id;
 }
 
+
 #endregion
 
 // ## MANAGEMENT ###############################################
@@ -181,6 +178,12 @@ function twitch_get_redirect_port()
 	return redirect_port;
 };
 
+/// @returns {Real}
+function twitch_get_token_refresh_rate() {
+	static refresh_rate = extension_get_option_value("Twitch", "twitchTokenRefreshRate");
+	return clamp(refresh_rate, 10, refresh_rate);
+}
+
 /// @returns {String}
 function twitch_get_access_token()
 {
@@ -205,6 +208,7 @@ function twitch_get_refresh_token()
 	}
 }
 
+
 // ## AUTH #####################################################
 
 /// @param {Function} _callback_success
@@ -228,7 +232,8 @@ function __twitch_auth_defer_callback(_callback_success, _callback_failed) {
 				
 				// Do this to avoid a memory leak when spamming authentication calls
 				if (is_undefined(refresher)) {
-					refresher = call_later(600, time_source_units_seconds, twitch_auth_refresh_token, true);
+					var _refresh_rate = twitch_get_token_refresh_rate();
+					refresher = call_later(_refresh_rate, time_source_units_seconds, twitch_auth_refresh_token, true);
 				}
 			}
 			
@@ -242,6 +247,7 @@ function __twitch_auth_defer_callback(_callback_success, _callback_failed) {
 };
 
 /// @param {Struct} _session_data
+/// @ignore
 function __twitch_auth_session_load() {
 	if (!file_exists(TWITCH_SESSION_FILE))
 		return false;
@@ -257,6 +263,7 @@ function __twitch_auth_session_load() {
 }
 
 /// @param {Struct} _session_data
+/// @ignore
 function __twitch_auth_session_save(_session_data) {
 	// Store the session data in disk
 	var _map = json_decode(json_stringify(_session_data));
@@ -277,7 +284,7 @@ function twitch_auth(_scopes, _force_verify = false, _state = undefined, _callba
 	var _port = twitch_get_redirect_port();
 	var _redirect_uri = twitch_get_redirect_url();
 	
-	var _scopes_str = string_join_ext(" ", _scopes);
+	var _scopes_str = is_array(_scopes) ? string_join_ext(" ", _scopes) : _scopes;
 
 	var _parameters = { client_id: twitch_get_client_id(), force_verify: _force_verify, response_type: "code", redirect_uri: _redirect_uri, scope: _scopes_str, /* state */ };
 
@@ -1218,19 +1225,519 @@ function twitch_entitlements_update_drops_entitlements(_optionals = {}, _callbac
 
 // ## EXTENSIONS ###############################################
 
-//TODO: Requires JSON Web Token..........;
-//function twitch_extensions_get_extension_configuration_segment(_callback_success = undefined, _callback_failed = undefined){}
-//function twitch_extensions_set_extension_configuration_segment(_callback_success = undefined, _callback_failed = undefined){}
-//function twitch_extensions_set_extension_required_configuration(_callback_success = undefined, _callback_failed = undefined){}
-//function twitch_extensions_send_extension_pubsub_message(_callback_success = undefined, _callback_failed = undefined){}
-//function twitch_extensions_get_extension_live_channels(_callback_success = undefined, _callback_failed = undefined){}
-//function twitch_extensions_get_extension_secrets(_callback_success = undefined, _callback_failed = undefined){}
-//function twitch_extensions_create_extension_secret(_callback_success = undefined, _callback_failed = undefined){}
-//function twitch_extensions_send_extension_chat_message(_callback_success = undefined, _callback_failed = undefined){}
-//function twitch_extensions_get_extensions(_callback_success = undefined, _callback_failed = undefined){}
-//function twitch_extensions_get_released_extensions(_callback_success = undefined, _callback_failed = undefined){}
-//function twitch_extensions_get_extension_bits_products(_callback_success = undefined, _callback_failed = undefined){}
-//function twitch_extensions_update_extension_bits_product(_callback_success = undefined, _callback_failed = undefined){}
+function twitch_extensions_create_jwt_token(_secret, _payload = {}) {
+	
+	// ## CRYPTOGRAPHY #############################################
+	// 
+	// The functions in this section are derived from the work of community contributor Juju Adams.
+	// The original implementations are provided under the MIT license, as referenced below:
+	// 
+	// MIT License
+	// 
+	// Copyright (c) 2021 Juju Adams
+	// 
+	// Permission is hereby granted, free of charge, to any person obtaining a copy
+	// of this software and associated documentation files (the "Software"), to deal
+	// in the Software without restriction, including without limitation the rights
+	// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	// copies of the Software, and to permit persons to whom the Software is
+	// furnished to do so, subject to the following conditions:
+	// 
+	// The above copyright notice and this permission notice shall be included in all
+	// copies or substantial portions of the Software.
+	// 
+	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	// SOFTWARE. 
+
+	/// @desc Computes the SHA-256 hash of a given buffer using the SHA-256 algorithm.
+	/// This function implements the full SHA-256 algorithm, processes the input buffer, and returns the hash value either
+	/// as a hexadecimal string or as an array of 8 words (32-bit integers) depending on the `_return_string` parameter.
+	/// @param {Id.Buffer} _out_buffer The output buffer where the binary SHA-256 hash (32 bytes) will be written.
+	/// @param {Id.Buffer} _in_buffer The input buffer to be hashed.
+	/// @param {Real} _in_offset The offset in the buffer where the hash should begin (default is 0).
+	/// @param {Real} _size The number of bytes to read from the buffer (default is the remaining buffer size).
+	/// @ignore
+	static __twitch_buffer_sha256 = function(_out_buffer, _in_buffer, _in_offset = 0, _size = (buffer_get_size(_in_buffer) - _in_offset))
+	{
+		// Constants
+		static __sha256_block_size = 64;
+		static __sha256_word_datatype = buffer_u32;
+		static __sha256_word_size = buffer_sizeof(__sha256_word_datatype);
+		static __sha256_block_words = (__sha256_block_size / __sha256_word_size);
+		static __sha256_round_count = 64;
+
+		// Reusable arrays
+		static __sha256_message_schedule = array_create(__sha256_round_count, 0x00);
+
+		static __sha256_round_constants = [ 0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+	                                    0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+	                                    0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+	                                    0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+	                                    0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+	                                    0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+	                                    0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+	                                    0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2 ];	
+	
+		var _state_array_0 = 0x6a09e667;
+		var _state_array_1 = 0xbb67ae85;
+		var _state_array_2 = 0x3c6ef372;
+		var _state_array_3 = 0xa54ff53a;
+		var _state_array_4 = 0x510e527f;
+		var _state_array_5 = 0x9b05688c;
+		var _state_array_6 = 0x1f83d9ab;
+		var _state_array_7 = 0x5be0cd19;
+
+	    var _block_count = ceil(_size / __sha256_block_size);
+    
+	    //If we don't have space after the final block to store the bit size of the input buffer, add on an extra block
+	    var _last_block_remaining = __sha256_block_size*_block_count - _size;
+	    if (_last_block_remaining < 9) _block_count++; //Ensure we have enough room to append a 0x80 byte and a 64-bit integer at the end
+    
+		var _buffer = _in_buffer, _offset = _in_offset;
+	    buffer_resize(_buffer, _offset + __sha256_block_size*_block_count);
+    
+	    buffer_poke(_buffer, _offset + _size, buffer_u8, 0x80);
+    
+	    //Store the number of bits right at the end of the buffer
+	    //This is stored as a big endian number
+	    var _bits = 8*_size;
+	    buffer_seek(_buffer, buffer_seek_start, _offset + __sha256_block_size*_block_count - 8);
+	    buffer_write(_buffer, buffer_u8, _bits >> 56);
+	    buffer_write(_buffer, buffer_u8, _bits >> 48);
+	    buffer_write(_buffer, buffer_u8, _bits >> 40);
+	    buffer_write(_buffer, buffer_u8, _bits >> 32);
+	    buffer_write(_buffer, buffer_u8, _bits >> 24);
+	    buffer_write(_buffer, buffer_u8, _bits >> 16);
+	    buffer_write(_buffer, buffer_u8, _bits >>  8);
+	    buffer_write(_buffer, buffer_u8, _bits      );
+    
+	    //Jump back to where the data begins
+	    buffer_seek(_buffer, buffer_seek_start, _offset);
+    
+	    //Perform round for each block
+	    repeat(_block_count)
+	    {
+	        var _message_schedule = __sha256_message_schedule;
+        
+	        var _i = 0;
+	        repeat(__sha256_block_words)
+	        {
+	            var _value = buffer_read(_buffer, __sha256_word_datatype);
+	            //Reverse endianness
+	            _message_schedule[@ _i] = ((_value & 0x000000ff) << 24)
+	                                    | ((_value & 0x0000ff00) <<  8)
+	                                    | ((_value & 0x00ff0000) >>  8)
+	                                    | ((_value & 0xff000000) >> 24);
+	            ++_i;
+	        }
+        
+	        _i = __sha256_block_words;
+	        repeat(__sha256_round_count - __sha256_block_words)
+	        {
+	            var _p = _message_schedule[_i - 15];
+	            var _q = _message_schedule[_i -  2];
+            
+	            _message_schedule[@ _i] = ((((_q >> 17) | (_q << 15)) ^ ((_q >> 19) | (_q << 13)) ^ (_q >> 10)) //sigma 1
+	                                    +  _message_schedule[_i - 7]
+	                                    + (((_p >> 7) | (_p << 25)) ^ ((_p >> 18) | (_p << 14)) ^ (_p >> 3)) //sigma 0
+	                                    +  _message_schedule[_i - 16])
+	                                    & 0xffffffff;
+            
+	            _i++;
+	        }
+        
+	        var _a = _state_array_0;
+	        var _b = _state_array_1;
+	        var _c = _state_array_2;
+	        var _d = _state_array_3;
+	        var _e = _state_array_4;
+	        var _f = _state_array_5;
+	        var _g = _state_array_6;
+	        var _h = _state_array_7;
+        
+	        _i = 0;
+	        repeat(__sha256_round_count)
+	        {
+	            var _t1 = _h
+	                   + ((((_e >> 6) | (_e << 26))   ^   ((_e >> 11) | (_e << 21))   ^   ((_e >> 25) | (_e << 7))) & 0xffffffff) //sum 1
+	                   + ((_e & _f) ^ (~_e & _g))
+	                   + __sha256_round_constants[_i]
+	                   + _message_schedule[_i];
+               
+	            var _t2 = ((((_a >> 2) | (_a << 30))   ^   ((_a >> 13) | (_a << 19))   ^   ((_a >> 22) | (_a << 10))) & 0xffffffff) //sum 0
+	                   + ((_a & _b) ^ (_a & _c) ^ (_b & _c));
+        
+	            _h = _g;
+	            _g = _f;
+	            _f = _e;
+	            _e = (_d + _t1) & 0xffffffff;
+	            _d = _c;
+	            _c = _b;
+	            _b = _a;
+	            _a = (_t1 + _t2) & 0xffffffff;
+        
+	            ++_i;
+	        }
+	
+	        _state_array_0 = (_state_array_0 + _a) & 0xffffffff;
+	        _state_array_1 = (_state_array_1 + _b) & 0xffffffff;
+	        _state_array_2 = (_state_array_2 + _c) & 0xffffffff;
+	        _state_array_3 = (_state_array_3 + _d) & 0xffffffff;
+	        _state_array_4 = (_state_array_4 + _e) & 0xffffffff;
+	        _state_array_5 = (_state_array_5 + _f) & 0xffffffff;
+	        _state_array_6 = (_state_array_6 + _g) & 0xffffffff;
+	        _state_array_7 = (_state_array_7 + _h) & 0xffffffff;
+	    }
+	
+	
+		// Seek to the begining of the output buffer
+		buffer_seek(_out_buffer, buffer_seek_start, 0);
+	
+		var _state_array = [
+			_state_array_0,
+			_state_array_1,
+			_state_array_2,
+			_state_array_3,
+			_state_array_4,
+			_state_array_5,
+			_state_array_6,
+			_state_array_7,
+		];
+	
+		// Write each word into the buffer as 4 bytes (big-endian order)
+		var _len = array_length(_state_array);
+		for (var _i = 0; _i < _len; _i++) {
+			var _word = _state_array[_i];
+			_word = ((_word & 0x000000ff) << 24)
+					| ((_word & 0x0000ff00) <<  8)
+					| ((_word & 0x00ff0000) >>  8)
+					| ((_word & 0xff000000) >> 24);
+			buffer_write(_out_buffer, buffer_u32, _word);
+		}
+
+		// Seek to the begining of the output buffer
+		buffer_seek(_out_buffer, buffer_seek_start, 0);	
+	}
+
+	/// @desc Computes HMAC-SHA256 using a given key and message.
+	/// The function pads the key to the appropriate length and performs two rounds of SHA-256: the inner and outer rounds, 
+	/// using the padded key and the message. The output is returned as a SHA-256 word array.
+	/// @param {Id.Buffer} _out_buffer - The output buffer where the binary HMAC-SHA256 hash (32 bytes) will be written.
+	/// @param {Id.Buffer} _key_buffer - The input buffer containing the key for HMAC.
+	/// @param {String} _message - The message to be hashed using HMAC-SHA256.
+	/// @ignore
+	static __twitch_hmac_sha256 = function(_out_buffer, _key_buffer, _message)
+	{
+		static __twitch_buffer_sha256 = twitch_extensions_create_jwt_token.__twitch_buffer_sha256;
+		
+	    var _block_size  = 64; //bytes
+	    var _return_size = 32; //bytes
+    
+	    var _inner_pad_buffer = buffer_create(_block_size + string_byte_length(_message), buffer_fixed, 1);
+	    var _outer_pad_buffer = buffer_create(_block_size + _return_size, buffer_fixed, 1);
+    
+	    var _key_length = buffer_get_size(_key_buffer);
+	    if (_key_length > _block_size)
+	    {
+	        //If the key is longer than the block size, we hash the key and use that instead
+	        __twitch_buffer_sha256(_out_buffer, _key_buffer, undefined, undefined);
+        
+	        //Add the (hashed) key to the inner and outer pad buffers, XOR'd as necessary
+	        repeat(8)
+	        {
+	            var _value = buffer_read(_out_buffer, buffer_u32);            
+	            buffer_write(_inner_pad_buffer, buffer_u32, 0x36363636 ^ _value);
+	            buffer_write(_outer_pad_buffer, buffer_u32, 0x5c5c5c5c ^ _value);
+	        }
+        
+	        //Set the key length to the return size for the benefit of figuring out how much padding to add
+	        _key_length = _return_size;
+	    }
+	    else
+	    {
+	        //If the key is smaller than the block size, just use the key
+	        buffer_seek(_key_buffer, buffer_seek_start, 0);
+	        repeat(_key_length)
+	        {
+	            var _value = buffer_read(_key_buffer, buffer_u8);
+	            buffer_write(_inner_pad_buffer, buffer_u8, 0x36 ^ _value);
+	            buffer_write(_outer_pad_buffer, buffer_u8, 0x5c ^ _value);
+	        }
+	    }
+    
+	    //Pad out the rest too!
+	    buffer_fill(_inner_pad_buffer, _key_length, buffer_u8, 0x36, _block_size - _key_length);
+	    buffer_fill(_outer_pad_buffer, _key_length, buffer_u8, 0x5c, _block_size - _key_length);
+	    buffer_seek(_inner_pad_buffer, buffer_seek_start, _block_size);
+	    buffer_seek(_outer_pad_buffer, buffer_seek_start, _block_size);
+    
+	    //Append the message to the inner padding, and hash the whole lot
+	    buffer_write(_inner_pad_buffer, buffer_text, _message);
+	    __twitch_buffer_sha256(_out_buffer, _inner_pad_buffer, 0, buffer_tell(_inner_pad_buffer));
+	
+		buffer_copy(_out_buffer, 0, buffer_get_size(_out_buffer), _outer_pad_buffer, buffer_tell(_outer_pad_buffer));
+    
+	    //And finally hash the outer padding too
+	    return __twitch_buffer_sha256(_out_buffer, _outer_pad_buffer, undefined, undefined);
+	}
+
+	// ## ENCODE UTILS #############################################
+
+	/// @desc Encodes a given buffer into a Base64Url string.
+	/// This function converts a binary buffer into a standard Base64 string, and then converts it into Base64Url format
+	/// by replacing characters according to Base64Url rules.
+	/// @param {Id.Buffer} _buffer - The buffer to be encoded.
+	/// @returns {String} The Base64Url encoded string.
+	/// @ignore
+	static __twitch_buffer_base64_url_encode = function(_buffer, _offset = 0, _size = -1) {
+		var _base64_url = buffer_base64_encode(_buffer, _offset, _size);
+		_base64_url = string_replace_all(_base64_url, "+", "-");
+		_base64_url = string_replace_all(_base64_url, "/", "_");
+		_base64_url = string_trim_end(_base64_url, ["="]);
+		return _base64_url;
+	}
+
+	/// @desc Encodes a given string into a Base64Url string.
+	/// Converts the input string into Base64 format and then adjusts it to be Base64Url compliant by replacing
+	/// `+` with `-` and `/` with `_`, and removing any trailing `=` characters.
+	/// @param {String} _str - The input string to be encoded.
+	/// @returns {String} The Base64Url encoded string.
+	/// @ignore
+	static __twitch_base64_url_encode = function(_str) {
+		var _base64_url = base64_encode(_str);
+		_base64_url = string_replace_all(_base64_url, "+", "-");
+		_base64_url = string_replace_all(_base64_url, "/", "_");
+		_base64_url = string_trim_end(_base64_url, ["="]);
+		return _base64_url;
+	}
+	
+	// ## IMPLEMENTATION ###########################################
+	
+	// Create and encode a static JWT header (base64 url)
+	static _encoded_header = __twitch_base64_url_encode(json_stringify({alg: "HS256", typ: "JWT"}));
+
+	// Encode the JWT payload (base64 url)
+	var _encoded_payload = __twitch_base64_url_encode(json_stringify(_payload));
+
+	// Create the string to sign ("header.payload")
+	var _data = $"{_encoded_header}.{_encoded_payload}";
+
+	// Decode the shared secret (twitch secrets are always base64 encoded)
+	var _secret_buffer = buffer_base64_decode(_secret);
+
+	// Create a buffer for the binary signature (it's static to reduce memory fragmentation)	
+	static _signature_binary_buffer = buffer_create(32, buffer_fixed, 1);
+	
+	// 5. Use the __twitch_hmac_sha256 function to create the signature (returns a word array)
+	__twitch_hmac_sha256(_signature_binary_buffer, _secret_buffer, _data);
+	
+	// 6. Convert word array to binary buffer and encode it (base64 url)
+	var _signature_base64_url = __twitch_buffer_base64_url_encode(_signature_binary_buffer);
+
+	// 7. Clear resources
+	buffer_delete(_secret_buffer);
+
+	// 8. Return the full JWT as "header.payload.signature"
+	return $"{_encoded_header}.{_encoded_payload}.{_signature_base64_url}";
+}
+
+function twitch_extensions_get_extension_configuration_segment(_jwt_token, _extension_id, _segment, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+{	
+	var _url = $"{TWITCH_ENDPOINT}helix/extensions/configurations";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {_jwt_token}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _parameters = { extension_id: _extension_id, segment: _segment };
+	
+	_url = __twitch_url_from_params(_url, _parameters, _optionals);
+	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request;
+}
+
+function twitch_extensions_set_extension_configuration_segment(_jwt_token, _extension_id, _segment, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/extensions/configurations";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {_jwt_token}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _parameters = { extension_id: _extension_id, segment: _segment };
+	
+	_url = __twitch_url_from_params(_url, _parameters, _optionals);
+	var _request = __twitch_request(_url, "PUT", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request;
+}
+
+function twitch_extensions_set_extension_required_configuration(_jwt_token, _broadcaster_id, _extension_id, _extension_version, _required_configuration, _callback_success = undefined, _callback_failed = undefined) 
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/extensions/required_configuration";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {_jwt_token}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _parameters = { broadcaster_id: _broadcaster_id };
+	var _body = { extension_id: _extension_id, extension_version : _extension_version, required_configuration: _required_configuration };
+	
+	_url = __twitch_url_from_params(_url, _parameters, _optionals);
+	var _request = __twitch_request(_url, "PUT", _header_map, json_stringify(_body), _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request;
+}
+
+function twitch_extensions_send_extension_pubsub_message(_jwt_token, _target, _broadcaster_id, _message, _optionals = {}, _callback_success = undefined, _callback_failed = undefined) 
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/extensions/pubsub";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {_jwt_token}";
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _body = { target: _target, broadcaster_id: _broadcaster_id, message: _message };
+	_body = __twitch_struct_merge(_body, _optionals);
+
+	_url = __twitch_url_from_params(_url, undefined, undefined);
+	var _request = __twitch_request(_url, "POST", _header_map, json_stringify(_body), _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request;
+}
+
+function twitch_extensions_get_extension_live_channels(_extension_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/extensions/live";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {twitch_get_access_token()}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _parameters = { extension_id: _extension_id };
+
+	_url = __twitch_url_from_params(_url, _parameters, _optionals);
+	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request;
+}
+
+function twitch_extensions_get_extension_secrets(_jwt_token, _extension_id, _callback_success = undefined, _callback_failed = undefined)
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/extensions/jwt/secrets";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {_jwt_token}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _parameters = { extension_id: _extension_id };
+
+	_url = __twitch_url_from_params(_url, _parameters, undefined);
+	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request;
+}
+
+function twitch_extensions_create_extension_secret(_jwt_token, _extension_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/extensions/jwt/secrets";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {_jwt_token}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _parameters = { extension_id: _extension_id };
+
+	_url = __twitch_url_from_params(_url, _parameters, _optionals);
+	var _request = __twitch_request(_url, "POST", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request
+}
+
+function twitch_extensions_send_extension_chat_message(_jwt_token, _broadcaster_id, _text, _extension_id, _extension_version, _callback_success = undefined, _callback_failed = undefined)
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/extensions/chat";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {_jwt_token}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _parameters = { broadcaster_id: _broadcaster_id };
+	var _body = { text: _text, extension_id: _extension_id, extension_version: _extension_version }
+
+	_url = __twitch_url_from_params(_url, _parameters, undefined);
+	var _request = __twitch_request(_url, "POST", _header_map, json_stringify(_body), _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request
+}
+
+function twitch_extensions_get_extensions(_jwt_token, _extension_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/extensions";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {_jwt_token}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _parameters = { extension_id: _extension_id };
+
+	_url = __twitch_url_from_params(_url, _parameters, _optionals);
+	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request
+}
+
+function twitch_extensions_get_released_extensions(_extension_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/extensions/released";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {twitch_get_access_token()}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _parameters = { extension_id: _extension_id };
+
+	_url = __twitch_url_from_params(_url, _parameters, _optionals);
+	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request
+}
+
+function twitch_extensions_get_extension_bits_products(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/bits/extensions";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {twitch_get_app_access_token()}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	_url = __twitch_url_from_params(_url, undefined, _optionals);
+	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request
+}
+
+function twitch_extensions_update_extension_bits_product(_sku, _cost, _display_name, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/bits/extensions";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {twitch_get_app_access_token()}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _body = { sku: _sku, cost: _cost, display_name: _display_name };
+	_body = __twitch_struct_merge(_body, _optionals);
+	
+	var _request = __twitch_request(_url, "PUT", _header_map, json_stringify(_body), _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request
+}
 
 // ## EVENTSUB #################################################
 
@@ -2582,5 +3089,3 @@ function twitch_whispers_send_whisper(_from_user_id, _to_user_id, _message, _cal
 
 	return _request;
 };
-
-
