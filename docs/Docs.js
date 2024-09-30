@@ -42,7 +42,7 @@ function twitch_ads_start_commercial(broadcaster_id, length, callback_success, c
  * 
  * This function returns ad schedule related information, including snooze, when the last ad was run, when the next ad is scheduled, and if the channel is currently in pre-roll free time. Note that a new ad cannot be run until 8 minutes after running a previous ad.
  * 
- * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_ADS`. The `user_id` in the user access token must match the `broadcaster_id`.
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_ADS`.]]
  * 
  * @param {string} broadcaster_id Provided `broadcaster_id` must match the `user_id` in the auth token.
  * @param {function} callback_success Triggered if the request succeeded
@@ -76,7 +76,7 @@ function twitch_ads_get_ad_schedule(broadcaster_id, callback_success, callback_f
  * 
  * If available, pushes back the timestamp of the upcoming automatic mid-roll ad by 5 minutes. This endpoint duplicates the snooze functionality in the creator dashboard's Ads Manager.
  * 
- * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_ADS`. The `user_id` in the user access token must match the `broadcaster_id`.
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_ADS`.]]
  * 
  * @param {string} broadcaster_id Provided `broadcaster_id` must match the `user_id` in the auth token.
  * @param {function} callback_success Triggered if the request succeeded
@@ -107,7 +107,7 @@ function twitch_ads_snooze_next_ad(broadcaster_id, callback_success, callback_fa
  * 
  * Gets an analytics report for one or more extensions. The response contains the URLs used to download the reports (CSV files). [Learn More](https://dev.twitch.tv/docs/insights)
  * 
- * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_ANALYTICS_READ_EXTENSIONS`.
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_ANALYTICS_READ_EXTENSIONS`.]]
  * 
  * @param {struct} optionals
  * 
@@ -165,7 +165,7 @@ function twitch_analytics_get_extension_analytics() {}
  * 
  * This function gets an analytics report for one or more games. The response contains the URLs used to download the reports (CSV files). [Learn more](https://dev.twitch.tv/docs/insights)
  * 
- * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_ANALYTICS_READ_GAMES`.
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_ANALYTICS_READ_GAMES`.]]
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -545,8 +545,6 @@ function twitch_bits_get_bits_leaderboard(optionals, callback_success, callback_
  * 
  * This function gets a list of Cheermotes that users can use to cheer Bits in any Bits-enabled channel's chat room. Cheermotes are animated emotes that viewers can assign Bits to.
  * 
- * [[Note: This requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
  * @param {string} broadcaster_id The ID of the broadcaster whose custom Cheermotes you want to get. Specify the broadcaster's ID if you want to include the broadcaster's Cheermotes in the response (not all broadcasters upload Cheermotes). If not specified, the response contains only global Cheermotes.
  * 
  * If the broadcaster uploaded Cheermotes, the `type` field in the response is set to `"channel_custom"`.
@@ -585,8 +583,6 @@ function twitch_bits_get_cheermotes(optionals, callback_success, callback_failed
  * @desc **Twitch Endpoint:** [Get Extension Transactions](https://dev.twitch.tv/docs/api/reference/#get-extension-transactions)
  * 
  * This function gets an extension's list of transactions. A transaction records the exchange of a currency (for example, Bits) for a digital product.
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens).]]
  * 
  * @param {string} extension_id The ID of the extension whose list of transactions you want to get. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -638,8 +634,6 @@ function twitch_bits_get_extension_transactions(extension_id, optionals, callbac
  * @desc **Twitch Endpoint:** [Get Channel Information](https://dev.twitch.tv/docs/api/reference/#get-channel-information)
  * 
  * This function gets information about one or more channels.
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {real|array} broadcaster_id The ID of the broadcaster whose channel you want to get. To specify more than one ID, pass an array with the ID of each broadcaster you want to get. You may specify a maximum of 100 IDs. The API ignores duplicate IDs and IDs that are not found. 
  * @param {function} callback_success Triggered if the request succeeded
@@ -780,8 +774,7 @@ function twitch_channels_get_followed_channels(user_id, optionals, callback_succ
  * 
  * This function gets a list of users that follow the specified broadcaster. You can also use this endpoint to see whether a specific user follows the broadcaster.
  * 
- * * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_READ_FOLLOWERS`.
- * * The ID in the `broadcaster_id` parameter must match the user ID in the access token or the user ID in the access token must be a moderator for the specified broadcaster.
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_READ_FOLLOWERS`.]]
  * 
  * This endpoint will return specific follower information only if both of the above are true. If a scope is not provided or the user isn't the broadcaster or a moderator for the specified channel, only the total follower count will be included in the response.
  * 
@@ -1312,8 +1305,6 @@ function twitch_chat_get_chatters(broadcaster_id, moderator_id, optionals, callb
  * 
  * [[Note: With the exception of custom follower emotes, users may use custom emotes in any Twitch chat.]]
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
  * @param {string} broadcaster_id An ID that identifies the broadcaster whose emotes you want to get. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
@@ -1353,8 +1344,6 @@ function twitch_chat_get_channel_emotes(broadcaster_id, callback_success, callba
  * 
  * [Learn More](https://dev.twitch.tv/docs/irc/emotes)
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
@@ -1391,8 +1380,6 @@ function twitch_chat_get_global_emotes(callback_success, callback_failed) {}
  * An emote set groups emotes that have a similar context. For example, Twitch places all the subscriber emotes that a broadcaster uploads for their channel in the same emote set.
  * 
  * [Learn More](https://dev.twitch.tv/docs/irc/emotes)
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {string|array} emote_set_id An ID that identifies the emote set to get. Pass an array of IDs to specify multiple emote sets. You may specify a maximum of 25 IDs. The response contains only the IDs that were found and ignores duplicate IDs. To get emote set IDs, use ${function.twitch_chat_get_channel_emotes}.
  * @param {function} callback_success Triggered if the request succeeded
@@ -1431,8 +1418,6 @@ function twitch_chat_get_emote_sets(emote_set_id, callback_success, callback_fai
  * 
  * This function gets the broadcaster's list of custom chat badges. The list is empty if the broadcaster hasn't created custom chat badges. For information about custom badges, see [subscriber badges](https://help.twitch.tv/s/article/subscriber-badge-guide) and [Bits badges](https://help.twitch.tv/s/article/custom-bit-badges-guide).
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
  * @param {string} broadcaster_id The ID of the broadcaster whose chat badges you want to get. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
@@ -1466,8 +1451,6 @@ function twitch_chat_get_channel_chat_badges(broadcaster_id, callback_success, c
  * @desc **Twitch Endpoint:** [Get Global Chat Badges](https://dev.twitch.tv/docs/api/reference/#get-global-chat-badges)
  * 
  * This function gets Twitch's list of chat badges, which users may use in any channel's chat room. For information about chat badges, see [Twitch Chat Badges Guide](https://help.twitch.tv/s/article/twitch-chat-badges-guide).
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
@@ -1503,8 +1486,6 @@ function twitch_chat_get_global_chat_badges(callback_success, callback_failed) {
  * This function gets the broadcaster's chat settings.
  * 
  * For an overview of chat settings, see [Chat Commands for Broadcasters and Moderators](https://help.twitch.tv/s/article/chat-commands#AllMods) and [Moderator Preferences](https://help.twitch.tv/s/article/setting-up-moderation-for-your-twitch-channel#modpreferences).
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose chat settings you want to get. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -1545,8 +1526,7 @@ function twitch_chat_get_chat_settings(broadcaster_id, optionals, callback_succe
  * 
  * This function retrieves emotes available to the user across all channels.
  * 
- * * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMOTES`.
- * * Parameter `user_id` must match the `user_id` in the user access token.
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMOTES`.]]
  * 
  * @param {string} user_id The ID of the user. This ID must match the user ID in the user access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -1598,6 +1578,7 @@ function twitch_chat_get_user_emotes(user_id, optionals, callback_success, callb
  * 
  * @func_end
  */
+function twitch_chat_live_connect(channel_id, nickname, callback) {}
 
 
 /**
@@ -1610,22 +1591,37 @@ function twitch_chat_get_user_emotes(user_id, optionals, callback_success, callb
  * 
  * @func_end
  */
+function twitch_chat_live_disconnect() {}
 
 
 /**
  * @func twitch_chat_live_send
- * @desc 
+ * @desc **Twitch Endpoint:** N / A
+ * 
+ * This function sends a chat message to a channel's chat room.
+ * 
+ * See the Twitch documentation on [Sending Messages](https://dev.twitch.tv/docs/chat/irc/#sending-messages) for information on the possibilities.
+ * 
+ * @param {string} text The message to send
  * 
  * @func_end
  */
+function twitch_chat_live_send(text) {}
 
 
 /**
  * @func twitch_chat_live_send_raw
- * @desc 
+ * @desc **Twitch Endpoint:** N / A
+ * 
+ * This function sends a raw live chat message.
+ * 
+ * See the Twitch documentation on [IRC Concepts](https://dev.twitch.tv/docs/chat/irc/) for information on IRC messages.
+ * 
+ * @param {string} text The raw message to send
  * 
  * @func_end
  */
+function twitch_chat_live_send_raw(text) {}
 
 
 /**
@@ -1808,8 +1804,6 @@ function twitch_chat_send_chat_message(broadcaster_id, sender_id, message, optio
  * 
  * This function gets the color used for the user's name in chat.
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
  * @param {real|array} user_id The ID of the user whose username color you want to get. To specify more than one user, pass an array with the ID of each user to get. The maximum number of IDs that you may specify is 100.The API ignores duplicate IDs and IDs that weren't found. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
@@ -1902,8 +1896,6 @@ function twitch_clips_create_clip(broadcaster_id, optionals, callback_success, c
  * 
  * The `id`, `game_id`, and `broadcaster_id` parameters are mutually exclusive.
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
  * @param {string} broadcaster_id An ID that identifies the broadcaster whose video clips you want to get. Use this parameter to get clips that were captured from the broadcaster's streams. 
  * @param {string} game_id An ID that identifies the game whose clips you want to get. Use this parameter to get clips that were captured from streams that were playing this game. 
  * @param {string|array} id An ID that identifies the clip to get. To specify more than one ID, pass an array with the ID of each clip you want to get. You may specify a maximum of 100 IDs. The API ignores duplicate IDs and IDs that aren't found. 
@@ -1958,8 +1950,6 @@ function twitch_clips_get_clips(broadcaster_id, game_id, id, optionals, callback
  * 
  * This function gets the [conduits](https://dev.twitch.tv/docs/eventsub/handling-conduit-events/) for a client ID.
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens).]]
- * 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
@@ -1984,8 +1974,6 @@ function twitch_conduits_get_conduits(callback_success, callback_failed) {}
  * @desc **Twitch Endpoint:** [Create Conduits](https://dev.twitch.tv/docs/api/reference/#create-conduits)
  * 
  * This function creates a new [conduit](https://dev.twitch.tv/docs/eventsub/handling-conduit-events/).
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens).]]
  * 
  * @param {number} shard_count The number of shards to create for this conduit. 
  * @param {function} callback_success Triggered if the request succeeded
@@ -2012,8 +2000,6 @@ function twitch_conduits_create_conduits(shard_count, callback_success, callback
  * @desc **Twitch Endpoint:** [Update Conduits](https://dev.twitch.tv/docs/api/reference/#update-conduits)
  * 
  * This function updates a [conduit's](https://dev.twitch.tv/docs/eventsub/handling-conduit-events/) shard count. To delete shards, update the count to a lower number, and the shards above the count will be deleted. For example, if the existing shard count is 100, by resetting shard count to 50, shards 50-99 are disabled.
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens).]]
  * 
  * @param {string} id Conduit ID. 
  * @param {number} shard_count The new number of shards for this conduit. 
@@ -2042,8 +2028,6 @@ function twitch_conduits_update_conduits(id, shard_count, callback_success, call
  * 
  * This function deletes a specified [conduit](https://dev.twitch.tv/docs/eventsub/handling-conduit-events/). Note that it may take some time for Eventsub subscriptions on a deleted [conduit](https://dev.twitch.tv/docs/eventsub/handling-conduit-events/) to show as disabled when calling [Get Eventsub Subscriptions](https://dev.twitch.tv/docs/api/reference/#get-eventsub-subscriptions).
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens).]]
- * 
  * @param {string} id Conduit ID. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
@@ -2064,8 +2048,6 @@ function twitch_conduits_delete_conduit(id, callback_success, callback_failed) {
  * @desc **Twitch Endpoint:** [Get Conduit Shards](https://dev.twitch.tv/docs/api/reference/#get-conduit-shards)
  * 
  * This function gets a lists of all shards for a [conduit](https://dev.twitch.tv/docs/eventsub/handling-conduit-events/).
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens).]]
  * 
  * @param {string} conduit_id Conduit ID. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -2107,8 +2089,6 @@ function twitch_conduits_get_conduit_shards(conduit_id, optionals, callback_succ
  * This function updates shard(s) for a [conduit](https://dev.twitch.tv/docs/eventsub/handling-conduit-events/).
  * 
  * [[Note: Shard IDs are indexed starting at 0, so a conduit with a `shard_count` of 5 will have shards with IDs 0 through 4.]]
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens).]]
  * 
  * @param {string} conduit_id Conduit ID. 
  * @param {array[struct]} shards List of shards to update. 
@@ -2156,8 +2136,6 @@ function twitch_conduits_update_conduit_shards(conduit_id, shards,id, transport,
  * 
  * This function gets information about Twitch content classification labels.
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `locale` : ${type.string} : Locale for the Content Classification Labels. You may specify a maximum of 1 locale. Default: `"en-US"`. Supported locales: `"bg-BG"`, `"cs-CZ"`, `"da-DK"`, `"da-DK"`, `"de-DE"`, `"el-GR"`, `"en-GB"`, `"en-US"`, `"es-ES"`, `"es-MX"`, `"fi-FI"`, `"fr-FR"`, `"hu-HU"`, `"it-IT"`, `"ja-JP"`, `"ko-KR"`, `"nl-NL"`, `"no-NO"`, `"pl-PL"`, `"pt-BT"`, `"pt-PT"`, `"ro-RO"`, `"ru-RU"`, `"sk-SK"`, `"sv-SE"`, `"th-TH"`, `"tr-TR"`, `"vi-VN"`, `"zh-CN"`, `"zh-TW"`
@@ -2191,7 +2169,7 @@ function twitch_ccls_get_content_classification_labels(optionals, callback_succe
  * 
  * [[Note: Entitlements returned in the response body data are not guaranteed to be sorted by any field returned by the API. To retrieve CLAIMED or `"FULFILLED"` entitlements, use the `fulfillment_status` parameter to filter results. To retrieve entitlements for a specific game, use the `game_id` parameter to filter results.]]
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]] The client ID in the access token must own the game.]]
+ * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens). The client ID in the access token must own the game.]]
  * 
  * The following table identifies the request parameters that you may specify based on the type of access token used.
  * 
@@ -2249,7 +2227,7 @@ function twitch_entitlements_get_drops_entitlements(optionals, callback_success,
  * 
  * The following table identifies which entitlements are updated based on the type of access token used.
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]] The client ID in the access token must own the game.]]
+ * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens). The client ID in the access token must own the game.]]
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -2276,6 +2254,20 @@ function twitch_entitlements_update_drops_entitlements(optionals, callback_succe
 
 
 /**
+ * @func twitch_extensions_create_jwt_token
+ * @desc This function creates a JSON Web Token (JWT) to be used with the `twitch_extensions_*` functions that require it.
+ * 
+ * @param {string} secret The base64 encoded Twitch secret
+ * @param {string} [payload] The payload
+ * 
+ * @returns {string}
+ * 
+ * @func_end
+ */
+function twitch_extensions_create_jwt_token(secret, payload) {}
+
+
+/**
  * @func twitch_extensions_get_extension_configuration_segment
  * @desc **Twitch Endpoint:** [Get Extension Configuration Segment](https://dev.twitch.tv/docs/api/reference/#get-extension-configuration-segment)
  * 
@@ -2283,8 +2275,7 @@ function twitch_entitlements_update_drops_entitlements(optionals, callback_succe
  * 
  * **Rate Limits:** You may retrieve each segment a maximum of 20 times per minute.
  * 
- * [[Note: Requires a signed JSON Web Token (JWT) created by an Extension Backend Service (EBS). For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.]]
- * 
+ * @param {string} jwt_token A signed JSON Web Token (JWT) created by ${function.twitch_extensions_create_jwt_token}. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.
  * @param {string} extension_id The ID of the extension that contains the configuration segment you want to get. 
  * @param {string} segment The type of configuration segment to get. Possible case-sensitive values are: `"broadcaster"`, `"developer"`, `"global"`. You may specify one or more segments. To specify multiple segments, include the segment parameter for each segment to get. For example, `segment=broadcaster&amp;segment=developer`. Ignores duplicate segments. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -2309,7 +2300,7 @@ function twitch_entitlements_update_drops_entitlements(optionals, callback_succe
  * @event_end
  * @func_end
  */
-function twitch_extensions_get_extension_configuration_segment(extension_id, segment, optionals, callback_success, callback_failed) {}
+function twitch_extensions_get_extension_configuration_segment(jwt_token, extension_id, segment, optionals, callback_success, callback_failed) {}
 
 
 /**
@@ -2320,8 +2311,7 @@ function twitch_extensions_get_extension_configuration_segment(extension_id, seg
  * 
  * **Rate Limits:** You may update the configuration a maximum of 20 times per minute.
  * 
- * [[Note: Requires a signed JSON Web Token (JWT) created by an Extension Backend Service (EBS). For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.]]
- * 
+ * @param {string } jwt_token A signed JSON Web Token (JWT) created by ${function.twitch_extensions_create_jwt_token}. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.
  * @param {string} extension_id The ID of the extension to update. 
  * @param {string} segment The configuration segment to update. Possible case-sensitive values are: `"broadcaster"`, `"developer"`, `"global"` 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -2341,7 +2331,7 @@ function twitch_extensions_get_extension_configuration_segment(extension_id, seg
  * @event_end
  * @func_end
  */
-function twitch_extensions_set_extension_configuration_segment(extension_id, segment, optionals, callback_success, callback_failed) {}
+function twitch_extensions_set_extension_configuration_segment(jwt_token, extension_id, segment, optionals, callback_success, callback_failed) {}
 
 
 /**
@@ -2350,8 +2340,7 @@ function twitch_extensions_set_extension_configuration_segment(extension_id, seg
  * 
  * This function updates the extension's required_configuration string. Use this endpoint if your extension requires the broadcaster to configure the extension before activating it (to require configuration, you must select **Custom/My Own Service** in Extension [Capabilities](https://dev.twitch.tv/docs/extensions/life-cycle/#capabilities)). For more information, see [Required Configurations](https://dev.twitch.tv/docs/extensions/building#required-configurations) and [Setting Required Configuration](https://dev.twitch.tv/docs/extensions/building#setting-required-configuration-with-the-configuration-service-optional).
  * 
- * [[Note: Requires a signed JSON Web Token (JWT) created by an EBS. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). Set the `role` field to `"external"` and the `"user_id"` field to the ID of the user that owns the extension.]]
- * 
+ * @param {string} jwt_token A signed JSON Web Token (JWT) created by ${function.twitch_extensions_create_jwt_token}. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). Set the `role` field to `"external"` and the `"user_id"` field to the ID of the user that owns the extension.
  * @param {string} broadcaster_id The ID of the broadcaster that installed the extension on their channel. 
  * @param {string} extension_id The ID of the extension to update. 
  * @param {string} extension_version The version of the extension to update. 
@@ -2367,7 +2356,7 @@ function twitch_extensions_set_extension_configuration_segment(extension_id, seg
  * @event_end
  * @func_end
  */
-function twitch_extensions_set_extension_required_configuration(broadcaster_id, extension_id, extension_version, required_configuration, callback_success, callback_failed) {}
+function twitch_extensions_set_extension_required_configuration(jwt_token, broadcaster_id, extension_id, extension_version, required_configuration, callback_success, callback_failed) {}
 
 
 /**
@@ -2378,7 +2367,7 @@ function twitch_extensions_set_extension_required_configuration(broadcaster_id, 
  * 
  * **Rate Limits:** You may send a maximum of 100 messages per minute per combination of extension client ID and broadcaster ID.
  * 
- * [[Note: Requires a signed JSON Web Token (JWT) created by an Extension Backend Service (EBS). For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)) along with the `channel_id` and `pubsub_perms` fields. The `role` field must be set to `"external"`.]]
+ * @param {string} jwt_token A signed JSON Web Token (JWT) created by ${function.twitch_extensions_create_jwt_token}. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)) along with the `channel_id` and `pubsub_perms` fields. The `role` field must be set to `"external"`.
  * 
  * To send the message to a specific channel, set the `channel_id` field in the JWT to the channel's ID and set the `pubsub_perms.send` array to `"broadcast"`.
  * 
@@ -2402,7 +2391,7 @@ function twitch_extensions_set_extension_required_configuration(broadcaster_id, 
  * @event_end
  * @func_end
  */
-function twitch_extensions_send_extension_pubsub_message(target, broadcaster_id, message, optionals, callback_success, callback_failed) {}
+function twitch_extensions_send_extension_pubsub_message(jwt_token, target, broadcaster_id, message, optionals, callback_success, callback_failed) {}
 
 
 /**
@@ -2412,8 +2401,6 @@ function twitch_extensions_send_extension_pubsub_message(target, broadcaster_id,
  * This function gets a list of broadcasters that are streaming live and have installed or activated the extension.
  * 
  * It may take a few minutes for the list to include or remove broadcasters that have recently gone live or stopped broadcasting.
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {string} extension_id The ID of the extension to get. Returns the list of broadcasters that are live and that have installed or activated this extension. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -2450,9 +2437,8 @@ function twitch_extensions_get_extension_live_channels(extension_id, optionals, 
  * 
  * This function gets an extension's list of shared secrets.
  * 
- * [[Note: Requires a signed JSON Web Token (JWT) created by an Extension Backend Service (EBS). For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.]]
- * 
- * @param {string} extension_id The ID of the extension whose shared secrets you want to get. 
+ * @param {string} jwt_token A signed JSON Web Token (JWT) created by ${function.twitch_extensions_create_jwt_token}. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.
+ * @param {string} extension_id The ID of the extension whose shared secrets you want to get.
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
@@ -2472,7 +2458,7 @@ function twitch_extensions_get_extension_live_channels(extension_id, optionals, 
  * @event_end
  * @func_end
  */
-function twitch_extensions_get_extension_secrets(extension_id, callback_success, callback_failed) {}
+function twitch_extensions_get_extension_secrets(jwt_token, extension_id, callback_success, callback_failed) {}
 
 
 /**
@@ -2481,8 +2467,7 @@ function twitch_extensions_get_extension_secrets(extension_id, callback_success,
  * 
  * This function creates a shared secret used to sign and verify JWT tokens. Creating a new secret removes the current secrets from service. Use this function only when you are ready to use the new secret it returns.
  * 
- * [[Note: Requires a signed JSON Web Token (JWT) created by an Extension Backend Service (EBS). For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.]]
- * 
+ * @param {string} jwt_token A signed JSON Web Token (JWT) created by ${function.twitch_extensions_create_jwt_token}. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role`, `user_id`, and `exp` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.
  * @param {string} extension_id The ID of the extension to apply the shared secret to. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -2507,7 +2492,7 @@ function twitch_extensions_get_extension_secrets(extension_id, callback_success,
  * @event_end
  * @func_end
  */
-function twitch_extensions_create_extension_secret(extension_id, optionals, callback_success, callback_failed) {}
+function twitch_extensions_create_extension_secret(jwt_token, extension_id, optionals, callback_success, callback_failed) {}
 
 
 /**
@@ -2518,8 +2503,7 @@ function twitch_extensions_create_extension_secret(extension_id, optionals, call
  * 
  * **Rate Limits:** You may send a maximum of 12 messages per minute per channel.
  * 
- * [[Note: Requires a signed JSON Web Token (JWT) created by an Extension Backend Service (EBS). For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role` and `user_id` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.]]
- * 
+ * @param {string} jwt_token A signed JSON Web Token (JWT) created by ${function.twitch_extensions_create_jwt_token}. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role` and `user_id` fields (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)). The `role` field must be set to `"external"`.
  * @param {string} broadcaster_id The ID of the broadcaster that has activated the extension. 
  * @param {string} text The message. The message may contain a maximum of 280 characters. 
  * @param {string} extension_id The ID of the extension that's sending the chat message. 
@@ -2535,7 +2519,7 @@ function twitch_extensions_create_extension_secret(extension_id, optionals, call
  * @event_end
  * @func_end
  */
-function twitch_extensions_send_extension_chat_message(broadcaster_id, text, extension_id, extension_version, callback_success, callback_failed) {}
+function twitch_extensions_send_extension_chat_message(jwt_token, broadcaster_id, text, extension_id, extension_version, callback_success, callback_failed) {}
 
 
 /**
@@ -2544,8 +2528,7 @@ function twitch_extensions_send_extension_chat_message(broadcaster_id, text, ext
  * 
  * This function gets information about an extension.
  * 
- * [[Note: Requires a signed JSON Web Token (JWT) created by an Extension Backend Service (EBS). For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role` field (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)), and The `role` field must be set to `"external"`.]]
- * 
+ * @param {string} jwt_token A signed JSON Web Token (JWT) created by ${function.twitch_extensions_create_jwt_token}. For signing requirements, see [Signing the JWT](https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt). The signed JWT must include the `role` field (see [JWT Schema](https://dev.twitch.tv/docs/extensions/reference/#jwt-schema)), and The `role` field must be set to `"external"`.
  * @param {string} extension_id The ID of the extension to get. 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -2608,7 +2591,7 @@ function twitch_extensions_send_extension_chat_message(broadcaster_id, text, ext
  * @event_end
  * @func_end
  */
-function twitch_extensions_get_extensions(extension_id, optionals, callback_success, callback_failed) {}
+function twitch_extensions_get_extensions(jwt_token, extension_id, optionals, callback_success, callback_failed) {}
 
 
 /**
@@ -2616,8 +2599,6 @@ function twitch_extensions_get_extensions(extension_id, optionals, callback_succ
  * @desc **Twitch Endpoint:** [Get Released Extensions](https://dev.twitch.tv/docs/api/reference/#get-released-extensions)
  * 
  * This function gets information about a released extension. Returns the extension if its `state` is `"Released"`.
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {string} extension_id The ID of the extension to get. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -2690,8 +2671,6 @@ function twitch_extensions_get_released_extensions(extension_id, optionals, call
  * 
  * This function gets the list of Bits products that belongs to the extension. The client ID in the app access token identifies the extension.
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens). The client ID in the app access token must be the extension's client ID.]]
- * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `should_include_all` : ${type.boolean} : A Boolean value that determines whether to include disabled or expired Bits products in the response. The default is `false`.
@@ -2726,8 +2705,6 @@ function twitch_extensions_get_extension_bits_products(optionals, callback_succe
  * @desc **Twitch Endpoint:** [Update Extension Bits Product](https://dev.twitch.tv/docs/api/reference/#update-extension-bits-product)
  * 
  * This function adds or updates a Bits product that the extension created. If the SKU doesn't exist, the product is added. You may update all fields except the `sku` field.
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens). The client ID in the app access token must match the extension's client ID.]]
  * 
  * @param {string} sku The product's SKU. The SKU must be unique within an extension. The product's SKU cannot be changed. The SKU may contain only alphanumeric characters, dashes (-), underscores (_), and periods (.) and is limited to a maximum of 255 characters. No spaces. 
  * @param {struct} cost a struct that contains the product's cost information. 
@@ -2963,8 +2940,6 @@ function twitch_eventsub_get_eventsub_subscriptions(optionals, callback_success,
  * 
  * This function gets information about all broadcasts on Twitch.
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `first` : ${type.number} : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.
@@ -3002,12 +2977,9 @@ function twitch_games_get_top_games(optionals, callback_success, callback_failed
  * 
  * You may get up to 100 categories or games by specifying their ID or name. You may specify all IDs, all names, or a combination of IDs and names. If you specify a combination of IDs and names, the total number of IDs and names must not exceed 100.
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
- * 
- * @param {string} id The ID of the category or game to get. Include this parameter for each category or game you want to get. For example, `&amp;id=1234&amp;id=5678`. You may specify a maximum of 100 IDs. The endpoint ignores duplicate and invalid IDs or IDs that weren't found. 
- * @param {string} name The name of the category or game to get. The name must exactly match the category's or game's title. Include this parameter for each category or game you want to get. For example, `&amp;name=foo&amp;name=bar`. You may specify a maximum of 100 names. The endpoint ignores duplicate names and names that weren't found. 
- * @param {string} igdb_id The [IGDB](https://www.igdb.com/) ID of the game to get. Include this parameter for each game you want to get. For example, `&amp;igdb_id=1234&amp;igdb_id=5678`. You may specify a maximum of 100 IDs. The endpoint ignores duplicate and invalid IDs or IDs that weren't found. 
+ * @param {string|array} id The ID of the category or game to get. To specify multiple, pass an array with the IDs of each category or game you want to get. You may specify a maximum of 100 IDs. The endpoint ignores duplicate and invalid IDs or IDs that weren't found. 
+ * @param {string} name The name of the category or game to get. The name must exactly match the category's or game's title. To specify multiple, pass an array with the IDs of each category or game you want to get. You may specify a maximum of 100 names. The endpoint ignores duplicate names and names that weren't found. 
+ * @param {string} igdb_id The [IGDB](https://www.igdb.com/) ID of the game to get. To specify multiple, pass an array with the IDs of each category or game you want to get. You may specify a maximum of 100 IDs. The endpoint ignores duplicate and invalid IDs or IDs that weren't found. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
  * @event callback_success
@@ -3835,8 +3807,7 @@ function twitch_moderation_unban_user(broadcaster_id, moderator_id, user_id, cal
  * 
  * This function gets a list of unban requests for a broadcaster's channel.
  * 
- * * Requires a user access token that includes the `TWITCH_SCOPE_MODERATOR_READ_UNBAN_REQUESTS` or `TWITCH_SCOPE_MODERATOR_MANAGE_UNBAN_REQUESTS` scope.
- * * Parameter `moderator_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
+ * [[Note: Requires a user access token that includes the `TWITCH_SCOPE_MODERATOR_READ_UNBAN_REQUESTS` or `TWITCH_SCOPE_MODERATOR_MANAGE_UNBAN_REQUESTS` scope.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose channel is receiving unban requests. 
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's unban requests. This ID must match the user ID in the user access token. 
@@ -3887,8 +3858,7 @@ function twitch_moderation_get_unban_requests(broadcaster_id, moderator_id, stat
  * 
  * This function resolves an unban request by approving or denying it.
  * 
- * * Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_UNBAN_REQUESTS`.
- * * Parameter `moderator_id` must match the `user_id` in the [User-Access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_UNBAN_REQUESTS`.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose channel is approving or denying the unban request. 
  * @param {string} moderator_id The ID of the broadcaster or a user that has permission to moderate the broadcaster's unban requests. This ID must match the user ID in the user access token. 
@@ -4065,8 +4035,7 @@ function twitch_moderation_delete_chat_messages(broadcaster_id, moderator_id, op
  * 
  * This function gets a list of channels that the specified user has moderator privileges in.
  * 
- * * Parameter `user_id` must match the user ID in the [User-Access Token](https://dev.twitch.tv/docs/authentication#user-access-tokens)
- * * Requires ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_MODERATED_CHANNELS`
+ * [[Note: Requires ${constant.TWITCH_SCOPE} `TWITCH_SCOPE_USER_READ_MODERATED_CHANNELS`.]]
  * 
  * @param {string} user_id A user's ID. Returns the list of channels that this user has moderator privileges in. This ID must match the user ID in the user OAuth token 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -4102,7 +4071,7 @@ function twitch_moderation_get_moderated_channels(user_id, optionals, callback_s
  * 
  * This function gets all users allowed to moderate the broadcaster's chat room.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATION_READ`. If your app also adds and removes moderators, you can use the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_MODERATORS`.instead.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATION_READ`. If your app also adds and removes moderators, you can use the ${constant.TWITCH_SCOPE} `TWITCH_SCOPE_CHANNEL_MANAGE_MODERATORS`instead.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose list of moderators you want to get. This ID must match the user ID in the access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -4191,7 +4160,7 @@ function twitch_moderation_remove_channel_moderator(broadcaster_id, user_id, cal
  * 
  * This function gets a list of the broadcaster's VIPs.
  * 
- * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_VIPS`. If your app also adds and removes VIP status, you can use the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_VIPS`.instead.]]
+ * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_READ_VIPS`. If your app also adds and removes VIP status, you can use the ${constant.TWITCH_SCOPE} `TWITCH_SCOPE_CHANNEL_MANAGE_VIPS` instead.]]
  * 
  * @param {string} broadcaster_id The ID of the broadcaster whose list of VIPs you want to get. This ID must match the user ID in the access token. 
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -4351,7 +4320,7 @@ function twitch_moderation_get_shield_mode_status(broadcaster_id, moderator_id, 
  * 
  * This function warns a user in the specified broadcaster's chat room, preventing them from chat interaction until the warning is acknowledged. New warnings can be issued to a user when they already have a warning in the channel (new warning will replace old warning).
  * 
- * [[Note: Requires a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_WARNINGS`. Parameter `moderator_id` must match the `user_id` in the [user access token](https://dev.twitch.tv/docs/authentication/#user-access-tokens).]]
+ * [[Note: Requires a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_MODERATOR_MANAGE_WARNINGS`.]]
  * 
  * @param {string} broadcaster_id The ID of the channel in which the warning will take effect.
  * @param {string} moderator_id The ID of the twitch user who requested the warning.
@@ -5012,8 +4981,6 @@ function twitch_schedule_delete_channel_stream_schedule_segment(broadcaster_id, 
  * 
  * To match, the category's name must contain all parts of the query string. For example, if the query string is 42, the response includes any category name that contains 42 in the title. If the query string is a phrase like *love computer*, the response includes any category name that contains the words love and computer anywhere in the name. The comparison is case insensitive.
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
  * @param {string} query The URI-encoded search string. For example, encode #archery as `%23archery` and search strings like angel of death as `angel%20of%20death`.
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -5051,8 +5018,6 @@ function twitch_search_categories(query, optionals, callback_success, callback_f
  * To match, the beginning of the broadcaster's name or category must match the query string. The comparison is case insensitive. If the query string is `"angel_of_death"`, it matches all names that begin with `"angel_of_death"`. However, if the query string is a phrase like `"angel of death"`, it matches to names starting with `"angelofdeath"` or names starting with `"angel_of_death"`.
  * 
  * By default, the results include both live and offline channels. To get only live channels set the `live_only` parameter to `true`.
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {string} query The URI-encoded search string. For example, encode search strings like `"angel of death"` as `"angel%20of%20death"`.
  * @param {struct} optionals The optional parameters to be passed into the function:
@@ -5122,8 +5087,6 @@ function twitch_streams_get_stream_key(broadcaster_id, callback_success, callbac
  * @desc **Twitch Endpoint:** [Get Streams](https://dev.twitch.tv/docs/api/reference/#get-streams)
  * 
  * This function gets a list of all streams. The list is in descending order by the number of viewers watching the stream. Because viewers come and go during a stream, it's possible to find duplicate or missing streams in the list as you page through the results.
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -5225,6 +5188,11 @@ function twitch_streams_get_followed_streams(user_id, optionals, callback_succes
  * This function adds a marker to a live stream. A marker is an arbitrary point in a live stream that the broadcaster or editor wants to mark, so they can return to that spot later to create video highlights (see Video Producer, Highlights in the Twitch UX).
  * 
  * You may not add markers:
+ * 
+ * * If the stream is not live
+ * * If the stream has not enabled video on demand (VOD)
+ * * If the stream is a premiere (a live, first-viewing event that combines uploaded videos with live chat)
+ * * If the stream is a rerun of a past broadcast, including past premieres.
  * 
  * [[Note: Requires a [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens) that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_CHANNEL_MANAGE_BROADCAST`.]]
  * 
@@ -5394,8 +5362,6 @@ function twitch_subscriptions_check_user_subscription(broadcaster_id, user_id, c
  * 
  * This function gets the list of Twitch teams that the broadcaster is a member of.
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
  * @param {string} broadcaster_id The ID of the broadcaster whose teams you want to get. 
  * @param {function} callback_success Triggered if the request succeeded
  * @param {function} callback_failed Triggered if the request failed
@@ -5431,8 +5397,6 @@ function twitch_teams_get_channel_teams(broadcaster_id, callback_success, callba
  * @desc **Twitch Endpoint:** [Get Teams](https://dev.twitch.tv/docs/api/reference/#get-teams)
  * 
  * This function gets information about the specified Twitch team. [Read More](https://help.twitch.tv/s/article/twitch-teams)
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {string} name The name of the team to get. This parameter and the `id` parameter are mutually exclusive; you must specify the team's name or ID but not both. 
  * @param {string} id The ID of the team to get. This parameter and the `name` parameter are mutually exclusive; you must specify the team's name or ID but not both. 
@@ -5485,8 +5449,6 @@ function twitch_teams_get_teams(name, id, callback_success, callback_failed) {}
  * You may look up users using their user ID, login name, or both but the sum total of the number of users you may look up is 100. For example, you may specify 50 IDs and 50 names or 100 IDs or names, but you cannot specify 100 IDs and 100 names. 
  * If you don't specify IDs or login names, the request returns information about the user in the access token if you specify a user access token. 
  * To include the user's verified email address in the response, you must use a user access token that includes the ${constant.TWITCH_SCOPE}: `TWITCH_SCOPE_USER_READ_EMAIL`.
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
@@ -5688,8 +5650,6 @@ function twitch_users_get_user_extensions(callback_success, callback_failed) {}
  * 
  * [[Note: To include extensions that you have under development, you must specify a user access token that includes the `TWITCH_SCOPE_USER_READ_BROADCAST` or `TWITCH_SCOPE_USER_EDIT_BROADCAST` scope.]]
  * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
- * 
  * @param {struct} optionals The optional parameters to be passed into the function:
  * 
  * - `user_id` : ${type.string} : The ID of the broadcaster whose active extensions you want to get. This parameter is required if you specify an app access token and is optional if you specify a user access token. If you specify a user access token and don't specify this parameter, the API uses the user ID from the access token.
@@ -5782,8 +5742,6 @@ function twitch_users_update_user_extensions(data, callback_success, callback_fa
  * This function gets information about one or more published videos. You may get videos by ID, by user, or by game/category.
  * 
  * You may apply several filters to get a subset of the videos. The filters are applied as an AND operation to each video. For example, if `language` is set to `"de"` and `game_id` is set to `"21779"`, the response includes only videos that show playing League of Legends by users that stream in German. The filters apply only if you get videos by user ID or game ID.
- * 
- * [[Note: Requires an [app access token](https://dev.twitch.tv/docs/authentication#app-access-tokens) or [user access token](https://dev.twitch.tv/docs/authentication#user-access-tokens).]]
  * 
  * @param {string} id A list of IDs that identify the videos you want to get. To get more than one video, include this parameter for each video you want to get. For example, `id=1234&amp;id=5678`. You may specify a maximum of 100 IDs. The endpoint ignores duplicate IDs and IDs that weren't found (if there's at least one valid ID).The `id`, `user_id`, and `game_id` parameters are mutually exclusive. 
  * @param {string} user_id The ID of the user whose list of videos you want to get. The `id`, `user_id`, and `game_id` parameters are mutually exclusive. 
@@ -6166,6 +6124,7 @@ function twitch_whispers_send_whisper(from_user_id, to_user_id, message, callbac
  * 
  * @section_func
  * @desc These are the functions of this module: 
+ * @ref twitch_extensions_create_jwt_token
  * @ref twitch_extensions_get_extension_configuration_segment
  * @ref twitch_extensions_set_extension_configuration_segment
  * @ref twitch_extensions_set_extension_required_configuration
