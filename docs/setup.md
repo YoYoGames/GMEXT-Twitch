@@ -16,5 +16,8 @@ Android and iOS require the [GMEXT-WebView](https://github.com/YoYoGames/GMEXT-W
 
 ## Extension Options
 
+![Twitch Extension Options](assets/twitch_extension_options.png)
+
 In the [Extension Options](https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Extensions.htm#extension_options), enter the **Client ID** and **Client Secret** as well as the **Chat OAuth**.
 
+You can optionally change the **Token Refresh Rate**, which determines after how many seconds to refresh the access token. The minimum value is 10 seconds.
