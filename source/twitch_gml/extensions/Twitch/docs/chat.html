@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Chat - GMEXT-Twitch</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Chat";
+        var mkdocs_page_input_path = "chat.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-Twitch
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Twitch Extension</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ads.html">Ads</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="analytics.html">Analytics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bits.html">Bits</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="channels.html">Channels</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="channel_points.html">Channel Points</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="charity.html">Charity</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Chat</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="clips.html">Clips</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="conduits.html">Conduits</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ccls.html">CCLs (Content Classification Labels)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="entitlements.html">Entitlements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="eventsub.html">EventSub</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="games.html">Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="guest_star.html">Guest Star</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="hype_train.html">Hype Train</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="moderation.html">Moderation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="polls.html">Polls</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="predictions.html">Predictions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="raids.html">Raids</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="schedule.html">Schedule</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="search.html">Search</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="subscriptions.html">Subscriptions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="teams.html">Teams</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="users.html">Users</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="videos.html">Videos</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="whispers.html">Whispers</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-Twitch</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Chat</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-Twitch/edit/master/docs/chat.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="chat"><strong>Chat</strong></h1>
+<h2 id="functions">Functions</h2>
+<p>These are the functions of this module:</p>
+<ul>
+<li><a href="chat.html#twitch_chat_get_chatters">twitch_chat_get_chatters</a></li>
+<li><a href="chat.html#twitch_chat_get_channel_emotes">twitch_chat_get_channel_emotes</a></li>
+<li><a href="chat.html#twitch_chat_get_global_emotes">twitch_chat_get_global_emotes</a></li>
+<li><a href="chat.html#twitch_chat_get_emote_sets">twitch_chat_get_emote_sets</a></li>
+<li><a href="chat.html#twitch_chat_get_channel_chat_badges">twitch_chat_get_channel_chat_badges</a></li>
+<li><a href="chat.html#twitch_chat_get_global_chat_badges">twitch_chat_get_global_chat_badges</a></li>
+<li><a href="chat.html#twitch_chat_get_chat_settings">twitch_chat_get_chat_settings</a></li>
+<li><a href="chat.html#twitch_chat_get_user_emotes">twitch_chat_get_user_emotes</a></li>
+<li><a href="chat.html#twitch_chat_live_connect">twitch_chat_live_connect</a></li>
+<li><a href="chat.html#twitch_chat_live_send">twitch_chat_live_send</a></li>
+<li><a href="chat.html#twitch_chat_live_send_raw">twitch_chat_live_send_raw</a></li>
+<li><a href="chat.html#twitch_chat_live_disconnect">twitch_chat_live_disconnect</a></li>
+<li><a href="chat.html#twitch_chat_update_chat_settings">twitch_chat_update_chat_settings</a></li>
+<li><a href="chat.html#twitch_chat_send_chat_announcement">twitch_chat_send_chat_announcement</a></li>
+<li><a href="chat.html#twitch_chat_send_a_shoutout">twitch_chat_send_a_shoutout</a></li>
+<li><a href="chat.html#twitch_chat_send_chat_message">twitch_chat_send_chat_message</a></li>
+<li><a href="chat.html#twitch_chat_get_user_chat_color">twitch_chat_get_user_chat_color</a></li>
+<li><a href="chat.html#twitch_chat_update_user_chat_color">twitch_chat_update_user_chat_color</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_get_chatters">twitch_chat_get_chatters</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-chatters">func_name</a></p>
+<p>This function gets the list of users that are connected to the broadcaster's chat session.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is a delay between when users join and leave a chat and when the list is updated accordingly.</p>
+</div>
+<p>To determine whether a user is a moderator or VIP, use <a href="moderation.html#twitch_moderation_get_moderators">twitch_moderation_get_moderators</a> and <a href="moderation.html#twitch_moderation_get_vips">twitch_moderation_get_vips</a>. You can check the roles of up to 100 users.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a <a href="https://dev.twitch.tv/docs/authentication#user-access-tokens">user access token</a> that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_MODERATOR_READ_CHATTERS</code>.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_get_chatters(broadcaster_id, moderator_id, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster whose list of chatters you want to get.</td>
+</tr>
+<tr>
+<td>moderator_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster or one of the broadcaster's moderators. This ID must match the user ID in the user access token.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>first</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 1,000. The default is 100.<br>- <code>after</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The cursor used to get the next page of results. The <strong>Pagination</strong> struct in the response contains the cursor's value. <a href="https://dev.twitch.tv/docs/api/guide#pagination">Read more</a></td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of users that are connected to the broadcaster's chat room. The list is empty if no users are connected to the chat room.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of a user that's connected to the broadcaster's chat room.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;user_login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;user_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's display name.</td>
+</tr>
+<tr>
+<td>pagination</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. <a href="https://dev.twitch.tv/docs/api/guide#pagination">Read More</a></td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;cursor</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The cursor used to get the next page of results. Use the cursor to set the request's <code>after</code> parameter.</td>
+</tr>
+<tr>
+<td>total</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The total number of users that are connected to the broadcaster's chat room. As you page through the list, the number of users may change as users join and leave the chat room.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_get_channel_emotes">twitch_chat_get_channel_emotes</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-channel-emotes">Get Channel Emotes</a></p>
+<p>This function gets the broadcaster's list of custom emotes. Broadcasters create these custom emotes for users who subscribe to or follow the channel or cheer Bits in the channel's chat window. <a href="https://dev.twitch.tv/docs/irc/emotes">Learn More</a></p>
+<p>For information about the custom emotes, see <a href="https://help.twitch.tv/s/article/subscriber-emote-guide">subscriber emotes</a>, <a href="https://help.twitch.tv/s/article/custom-bit-badges-guide?language=bg#slots">Bits tier emotes</a>, and <a href="https://blog.twitch.tv/en/2021/06/04/kicking-off-10-years-with-our-biggest-emote-update-ever/">follower emotes</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With the exception of custom follower emotes, users may use custom emotes in any Twitch chat.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_get_channel_emotes(broadcaster_id, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the broadcaster whose emotes you want to get.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of emotes that the specified broadcaster created. If the broadcaster hasn't created custom emotes, the list is empty.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the emote. This is the name that viewers type in the chat window to get the emote to appear.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;images</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The image URLs for the emote. These image URLs always provide a static, non-animated emote image with a light background. <strong>NOTE:</strong> You should use the templated URL in the <code>template</code> field to fetch the image instead of using these URLs.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the small version (28px x 28px) of the emote.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the medium version (56px x 56px) of the emote.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the large version (112px x 112px) of the emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;tier</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The subscriber tier at which the emote is unlocked. This field contains the tier information only if <code>emote_type</code> is set to <code>"subscriptions"</code>, otherwise, it's an empty string.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;emote_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of emote. The possible values are: <code>"bitstier"</code> — A custom Bits tier emote, <code>"follower"</code> — A custom follower emote, <code>"subscriptions"</code> — A custom subscriber emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;emote_set_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the emote set that the emote belongs to.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;format</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only <code>"static"</code>. But if the emote is available as a static PNG and an animated GIF, the array contains <code>"static"</code> and <code>"animated"</code>. The possible formats are: <code>"animated"</code> — An animated GIF is available for this emote, <code>"static"</code> — A static PNG file is available for this emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;scale</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are: 1.0 — A small version (28px x 28px) is available, 2.0 — A medium version (56px x 56px) is available, 3.0 — A large version (112px x 112px) is available.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;theme_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The background themes that the emote is available in. Possible themes are: <code>"dark"</code>, <code>"light"</code></td>
+</tr>
+<tr>
+<td>template</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A templated URL. Use the values from the <code>id</code>, <code>format</code>, <code>scale</code>, and <code>theme_mode</code> fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote. For information about what the template looks like and how to use it to fetch emotes, see <a href="https://dev.twitch.tv/docs/irc/emotes#cdn-template">Emote CDN URL format</a>. You should use this template instead of using the URLs in the <code>images</code> struct.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_get_global_emotes">twitch_chat_get_global_emotes</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-global-emotes">Get Global Emotes</a></p>
+<p>This function gets the list of <a href="https://www.twitch.tv/creatorcamp/en/learn-the-basics/emotes/">global emotes</a>. Global emotes are Twitch-created emotes that users can use in any Twitch chat.</p>
+<p><a href="https://dev.twitch.tv/docs/irc/emotes">Learn More</a></p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_get_global_emotes(callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of global emotes.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the emote. This is the name that viewers type in the chat window to get the emote to appear.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;images</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The image URLs for the emote. These image URLs always provide a static, non-animated emote image with a light background. <strong>NOTE</strong>: You should use the templated URL in the <code>template</code> field to fetch the image instead of using these URLs.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the small version (28px x 28px) of the emote.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the medium version (56px x 56px) of the emote.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the large version (112px x 112px) of the emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;format</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only <code>"static"</code>. But if the emote is available as a static PNG and an animated GIF, the array contains <code>"static"</code> and <code>"animated"</code>. The possible formats are: <code>"animated"</code> — An animated GIF is available for this emote, <code>"static"</code> — A static PNG file is available for this emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;scale</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are:1.0 — A small version (28px x 28px) is available.2.0 — A medium version (56px x 56px) is available.3.0 — A large version (112px x 112px) is available.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;theme_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The background themes that the emote is available in. Possible themes are: <code>"dark"</code>, <code>"light"</code></td>
+</tr>
+<tr>
+<td>template</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A templated URL. Use the values from the <code>id</code>, <code>format</code>, <code>scale</code>, and <code>theme_mode</code> fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote. For information about what the template looks like and how to use it to fetch emotes, see <a href="https://dev.twitch.tv/docs/irc/emotes#cdn-template">Emote CDN URL format</a>. You should use this template instead of using the URLs in the <code>images</code> struct.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_get_emote_sets">twitch_chat_get_emote_sets</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-emote-sets">Get Emote Sets</a></p>
+<p>This function gets emotes for one or more specified emote sets.</p>
+<p>An emote set groups emotes that have a similar context. For example, Twitch places all the subscriber emotes that a broadcaster uploads for their channel in the same emote set.</p>
+<p><a href="https://dev.twitch.tv/docs/irc/emotes">Learn More</a></p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_get_emote_sets(emote_set_id, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>emote_set_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>An ID that identifies the emote set to get. Pass an array of IDs to specify multiple emote sets. You may specify a maximum of 25 IDs. The response contains only the IDs that were found and ignores duplicate IDs. To get emote set IDs, use <a href="chat.html#twitch_chat_get_channel_emotes">twitch_chat_get_channel_emotes</a>.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of emotes found in the specified emote sets. The list is empty if none of the IDs were found. The list is in the same order as the set IDs specified in the request. Each set contains one or more emoticons.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that uniquely identifies this emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the emote. This is the name that viewers type in the chat window to get the emote to appear.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;images</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The image URLs for the emote. These image URLs always provide a static, non-animated emote image with a light background. <strong>NOTE</strong>: You should use the templated URL in the <code>template</code> field to fetch the image instead of using these URLs.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_1x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the small version (28px x 28px) of the emote.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;url_2x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the medium version (56px x 56px) of the emote.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;url_4x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the large version (112px x 112px) of the emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;emote_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of emote. The possible values are: <code>"bitstier"</code> - A Bits tier emote, <code>"follower"</code> - A follower emote, <code>"subscriptions"</code> - A subscriber emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;emote_set_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the emote set that the emote belongs to.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;owner_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster who owns the emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;format</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only <code>"static"</code>. But if the emote is available as a static PNG and an animated GIF, the array contains <code>"static"</code> and <code>"animated"</code>. The possible formats are: <code>"animated"</code> - An animated GIF is available for this emote, <code>"static"</code> - A static PNG file is available for this emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;scale</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. Possible sizes are: 1.0 - A small version (28px x 28px) is available, 2.0 - A medium version (56px x 56px) is available, 3.0 - A large version (112px x 112px) is available.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;theme_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The background themes that the emote is available in. Possible themes are: <code>"dark"</code>, <code>"light"</code></td>
+</tr>
+<tr>
+<td>template</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A templated URL. Use the values from the <code>id</code>, <code>format</code>, <code>scale</code>, and <code>theme_mode</code> fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote. For information about what the template looks like and how to use it to fetch emotes, see <a href="https://dev.twitch.tv/docs/irc/emotes#cdn-template">Emote CDN URL format</a>. You should use this template instead of using the URLs in the <code>images</code> struct.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_get_channel_chat_badges">twitch_chat_get_channel_chat_badges</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-channel-chat-badges">Get Channel Chat Badges</a></p>
+<p>This function gets the broadcaster's list of custom chat badges. The list is empty if the broadcaster hasn't created custom chat badges. For information about custom badges, see <a href="https://help.twitch.tv/s/article/subscriber-badge-guide">subscriber badges</a> and <a href="https://help.twitch.tv/s/article/custom-bit-badges-guide">Bits badges</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_get_channel_chat_badges(broadcaster_id, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster whose chat badges you want to get.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of chat badges. The list is sorted in ascending order by <code>set_id</code>, and within a set, the list is sorted in ascending order by <code>id</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;set_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this set of chat badges. For example, Bits or Subscriber.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;versions</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of chat badges in this set.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this version of the badge. The ID can be any value. For example, for Bits, the ID is the Bits tier level, but for World of Warcraft, it could be Alliance or Horde.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_1x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the small version (18px x 18px) of the badge.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_2x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the medium version (36px x 36px) of the badge.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_4x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the large version (72px x 72px) of the badge.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The title of the badge.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The description of the badge.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;click_action</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The action to take when clicking on the badge. Set to <code>undefined</code> if no action is specified.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;click_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The URL to navigate to when clicking on the badge. Set to <code>undefined</code> if no URL is specified.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_get_global_chat_badges">twitch_chat_get_global_chat_badges</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-global-chat-badges">Get Global Chat Badges</a></p>
+<p>This function gets Twitch's list of chat badges, which users may use in any channel's chat room. For information about chat badges, see <a href="https://help.twitch.tv/s/article/twitch-chat-badges-guide">Twitch Chat Badges Guide</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_get_global_chat_badges(callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of chat badges. The list is sorted in ascending order by <code>set_id</code>, and within a set, the list is sorted in ascending order by <code>id</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;set_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this set of chat badges. For example, Bits or Subscriber.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;versions</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of chat badges in this set.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this version of the badge. The ID can be any value. For example, for Bits, the ID is the Bits tier level, but for World of Warcraft, it could be Alliance or Horde.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_1x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the small version (18px x 18px) of the badge.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_2x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the medium version (36px x 36px) of the badge.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;image_url_4x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the large version (72px x 72px) of the badge.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The title of the badge.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The description of the badge.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;click_action</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The action to take when clicking on the badge. Set to <code>undefined</code> if no action is specified.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;click_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The URL to navigate to when clicking on the badge. Set to <code>undefined</code> if no URL is specified.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_get_chat_settings">twitch_chat_get_chat_settings</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-chat-settings">Get Chat Settings</a></p>
+<p>This function gets the broadcaster's chat settings.</p>
+<p>For an overview of chat settings, see <a href="https://help.twitch.tv/s/article/chat-commands#AllMods">Chat Commands for Broadcasters and Moderators</a> and <a href="https://help.twitch.tv/s/article/setting-up-moderation-for-your-twitch-channel#modpreferences">Moderator Preferences</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_get_chat_settings(broadcaster_id, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster whose chat settings you want to get.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>moderator_id</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The ID of the broadcaster or one of the broadcaster's moderators. This field is required only if you want to include the <code>non_moderator_chat_delay</code> and <code>non_moderator_chat_delay_duration</code> settings in the response. If you specify this field, this ID must match the user ID in the user access token.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of chat settings. It contains a single struct with all the settings.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster specified in the request.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;emote_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether chat messages must contain only emotes. Is <code>true</code> if chat messages may contain only emotes; otherwise, <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;follower_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Is <code>true</code> if the broadcaster restricts the chat room to followers only; otherwise, <code>false</code>. See the <code>follower_mode_duration</code> field for how long users must follow the broadcaster before being able to participate in the chat room.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;follower_mode_duration</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Is <code>undefined</code> if <code>follower_mode</code> is <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;moderator_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The moderator's ID. The response includes this field only if the request specifies a user access token that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;non_moderator_chat_delay</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. See the <code>non_moderator_chat_delay_duration</code> field for the length of the delay. Is <code>true</code> if the broadcaster applies a delay; otherwise, <code>false</code>. The response includes this field only if the request specifies a user access token that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_MODERATION_READ_CHAT_SETTINGS</code> and the user in the <code>moderator_id</code> parameter is one of the broadcaster's moderators.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;non_moderator_chat_delay_duration</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The amount of time, in seconds, that messages are delayed before appearing in chat. Is <code>undefined</code> if <code>non_moderator_chat_delay</code> is <code>false</code>.The response includes this field only if the request specifies a user access token that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS</code> and the user in the <code>moderator_id</code> parameter is one of the broadcaster's moderators.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;slow_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster limits how often users in the chat room are allowed to send messages. Is <code>true</code> if the broadcaster applies a delay; otherwise, <code>false</code>. See the <code>slow_mode_wait_time</code> field for the delay.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;slow_mode_wait_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The amount of time, in seconds, that users must wait between sending messages. Is <code>undefined</code> if <code>slow_mode</code> is <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;subscriber_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether only users that subscribe to the broadcaster's channel may talk in the chat room. Is <code>true</code> if the broadcaster restricts the chat room to subscribers only; otherwise, <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;unique_chat_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster requires users to post only unique messages in the chat room. Is <code>true</code> if the broadcaster requires unique messages only; otherwise, <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_get_user_emotes">twitch_chat_get_user_emotes</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-user-emotes">Get User Emotes</a></p>
+<p>This function retrieves emotes available to the user across all channels.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a <a href="https://dev.twitch.tv/docs/authentication#user-access-tokens">user access token</a> that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_USER_READ_EMOTES</code>.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_get_user_emotes(user_id, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the user. This ID must match the user ID in the user access token.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>after</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The cursor used to get the next page of results. The Pagination struct in the response contains the cursor's value.<br>- <code>broadcaster_id</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The User ID of a broadcaster you wish to get follower emotes of. Using this parameter will guarantee inclusion of the broadcaster's follower emotes in the response body. <strong>Note:</strong> If the user specified in <code>user_id</code> is subscribed to the broadcaster specified, their follower emotes will appear in the response body regardless if this parameter is used.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that uniquely identifies this emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The User ID of broadcaster whose channel is receiving the unban request.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;emote_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of emote. The possible values are: <code>"none"</code> — No emote type was assigned to this emote, <code>"bitstier"</code> — A Bits tier emote, <code>"follower"</code> — A follower emote, <code>"subscriptions"</code> — A subscriber emote, <code>"channelpoints"</code> — An emote granted by using channel points, <code>"rewards"</code> — An emote granted to the user through a special event, <code>"hypetrain"</code> — An emote granted for participation in a Hype Train, <code>"prime"</code> — An emote granted for linking an Amazon Prime account, <code>"turbo"</code> — An emote granted for having Twitch Turbo, <code>"smilies"</code> — Emoticons supported by Twitch, <code>"globals"</code> — An emote accessible by everyone, <code>"owl2019"</code> — Emotes related to Overwatch League 2019, <code>"twofactor"</code> — Emotes granted by enabling two-factor authentication on an account, <code>"limitedtime"</code> — Emotes that were granted for only a limited time.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;emote_set_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the emote set that the emote belongs to.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;owner_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster who owns the emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;format</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The formats that the emote is available in. For example, if the emote is available only as a static PNG, the array contains only <code>"static"</code>. But if the emote is available as a static PNG and an animated GIF, the array contains <code>"static"</code> and <code>"animated"</code>. <code>"animated"</code> —  An animated GIF is available for this emote, <code>"static"</code> — A static PNG file is available for this emote.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;scale</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The sizes that the emote is available in. For example, if the emote is available in small and medium sizes, the array contains 1.0 and 2.0. 1.0 —  A small version (28px x 28px) is available, 2.0 — A medium version (56px x 56px) is available, 3.0 —  A large version (112px x 112px) is available.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;theme_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The background themes that the emote is available in: <code>"dark"</code>, <code>"light"</code></td>
+</tr>
+<tr>
+<td>template</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A templated URL. Uses the values from the <code>id</code>, <code>format</code>, <code>scale</code>, and <code>theme_mode</code> fields to replace the like-named placeholder strings in the templated URL to create a CDN (content delivery network) URL that you use to fetch the emote.  For information about what the template looks like and how to use it to fetch emotes, see <a href="https://dev.twitch.tv/docs/irc/emotes#cdn-template">Emote CDN URL format</a>.</td>
+</tr>
+<tr>
+<td>pagination</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through.  For more information about pagination support, see Twitch API Guide - Pagination.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;cursor</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The cursor used to get the next page of results. Use the cursor to set the request's <code>after</code> parameter.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_live_connect">twitch_chat_live_connect</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function creates a connection to be used with the Chat functions.</p>
+<p>The function takes a callback function with a single parameter: the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Buffers/Buffers.htm">Buffer</a> that holds the received data.</p>
+<p>See the Twitch documentation on <a href="https://dev.twitch.tv/docs/chat/irc/">IRC Concepts</a> for information on how to parse IRC messages.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_live_connect(channel_id, nickname, callback)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>channel_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the channel to connect to</td>
+</tr>
+<tr>
+<td>nickname</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The nickname to use</td>
+</tr>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The callback function that receives the data</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_live_disconnect">twitch_chat_live_disconnect</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function disconnects from the connection set up earlier using <a href="chat.html#twitch_chat_live_connect">twitch_chat_live_connect</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function frees the underlying web socket and must be called when you're finished using the connection to prevent a memory leak.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_live_disconnect()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_live_send">twitch_chat_live_send</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function sends a chat message to a channel's chat room.</p>
+<p>See the Twitch documentation on <a href="https://dev.twitch.tv/docs/chat/irc/#sending-messages">Sending Messages</a> for information on the possibilities.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_live_send(text)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The message to send</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_live_send_raw">twitch_chat_live_send_raw</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function sends a raw live chat message.</p>
+<p>See the Twitch documentation on <a href="https://dev.twitch.tv/docs/chat/irc/">IRC Concepts</a> for information on IRC messages.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_live_send_raw(text)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The raw message to send</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_update_chat_settings">twitch_chat_update_chat_settings</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#update-chat-settings">Update Chat Settings</a></p>
+<p>This function updates the broadcaster's chat settings.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a <a href="https://dev.twitch.tv/docs/authentication#user-access-tokens">user access token</a> that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_MODERATOR_MANAGE_CHAT_SETTINGS</code>.</p>
+</div>
+<p>To set the <code>slow_mode_wait_time</code> or <code>follower_mode_duration</code> field to its default value, set the corresponding <code>slow_mode</code> or <code>follower_mode</code> field to <code>true</code> (and don't include the <code>slow_mode_wait_time</code> or <code>follower_mode_duration</code> field).</p>
+<p>To set the <code>slow_mode_wait_time</code>, <code>follower_mode_duration</code>, or <code>non_moderator_chat_delay_duration</code> field's value, you must set the corresponding <code>slow_mode</code>, <code>follower_mode</code>, or <code>non_moderator_chat_delay</code> field to <code>true</code>.</p>
+<p>To remove the <code>slow_mode_wait_time</code>, <code>follower_mode_duration</code>, or <code>non_moderator_chat_delay_duration</code> field's value, set the corresponding <code>slow_mode</code>, <code>follower_mode</code>, or <code>non_moderator_chat_delay</code> field to <code>false</code> (and don't include the <code>slow_mode_wait_time</code>, <code>follower_mode_duration</code>, or <code>non_moderator_chat_delay_duration</code> field).</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_update_chat_settings(broadcaster_id, moderator_id, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster whose chat settings you want to update.</td>
+</tr>
+<tr>
+<td>moderator_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of a user that has permission to moderate the broadcaster's chat room, or the broadcaster's ID if they're making the update. This ID must match the user ID in the user access token.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>emote_mode</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a> : A Boolean value that determines whether chat messages must contain only emotes.<br>  Set to <code>true</code> if only emotes are allowed; otherwise, <code>false</code>. The default is <code>false</code>.<br>- <code>follower_mode</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a> : A Boolean value that determines whether the broadcaster restricts the chat room to followers only.<br>  Set to <code>true</code> if the broadcaster restricts the chat room to followers only; otherwise, <code>false</code>. The default is <code>true</code>.<br>  To specify how long users must follow the broadcaster before being able to participate in the chat room, see the <code>follower_mode_duration</code> field.<br>- <code>follower_mode_duration</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a> : The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Set only if <code>follower_mode</code> is <code>true</code>. Possible values are: 0 (no restriction) through 129600 (3 months). The default is 0.<br>- <code>non_moderator_chat_delay</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a> : A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message.<br>  Set to <code>true</code> if the broadcaster applies a delay; otherwise, <code>false</code>. The default is <code>false</code>.<br>  To specify the length of the delay, see the <code>non_moderator_chat_delay_duration</code> field.<br>- <code>non_moderator_chat_delay_duration</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> : The amount of time, in seconds, that messages are delayed before appearing in chat. Set only if <code>non_moderator_chat_delay</code> is <code>true</code>. Possible values are:<br>  * 2 - 2 second delay (recommended)<br>  * 4 - 4 second delay<br>  * 6 - 6 second delay<br>- <code>slow_mode</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a> : A Boolean value that determines whether the broadcaster limits how often users in the chat room are allowed to send messages. Set to <code>true</code> if the broadcaster applies a wait period between messages; otherwise, <code>false</code>. The default is <code>false</code>.<br>  To specify the delay, see the <code>slow_mode_wait_time</code> field.<br>- <code>slow_mode_wait_time</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> : The amount of time, in seconds, that users must wait between sending messages. Set only if <code>slow_mode</code> is <code>true</code>.<br>  Possible values are: 3 (3 second delay) through 120 (2 minute delay). The default is 30 seconds.<br>- <code>subscriber_mode</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a> : A Boolean value that determines whether only users that subscribe to the broadcaster’s channel may talk in the chat room.<br>  Set to <code>true</code> if the broadcaster restricts the chat room to subscribers only; otherwise, <code>false</code>. The default is <code>false</code>.<br>- <code>unique_chat_mode</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a> : A Boolean value that determines whether the broadcaster requires users to post only unique messages in the chat room.<br>  Set to <code>true</code> if the broadcaster allows only unique messages; otherwise, <code>false</code>. The default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>emote_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether chat messages must contain only emotes. Set to <code>true</code> if only emotes are allowed; otherwise, <code>false</code>. The default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>follower_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Set to <code>true</code> if the broadcaster restricts the chat room to followers only; otherwise, <code>false</code>. The default is <code>true</code>. To specify how long users must follow the broadcaster before being able to participate in the chat room, see the <code>follower_mode_duration</code> field.</td>
+</tr>
+<tr>
+<td>follower_mode_duration</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Set only if <code>follower_mode</code> is <code>true</code>. Possible values are: 0 (no restriction) through 129600 (3 months). The default is 0.</td>
+</tr>
+<tr>
+<td>non_moderator_chat_delay</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. Set to <code>true</code> if the broadcaster applies a delay; otherwise, <code>false</code>. The default is <code>false</code>. To specify the length of the delay, see the <code>non_moderator_chat_delay_duration</code> field.</td>
+</tr>
+<tr>
+<td>non_moderator_chat_delay_duration</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The amount of time, in seconds, that messages are delayed before appearing in chat. Set only if <code>non_moderator_chat_delay</code> is <code>true</code>. Possible values are: 2  -  2 second delay (recommended), 4  -  4 second delay, 6  -  6 second delay</td>
+</tr>
+<tr>
+<td>slow_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster limits how often users in the chat room are allowed to send messages. Set to <code>true</code> if the broadcaster applies a wait period between messages; otherwise, <code>false</code>. The default is <code>false</code>.To specify the delay, see the <code>slow_mode_wait_time</code> field.</td>
+</tr>
+<tr>
+<td>slow_mode_wait_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The amount of time, in seconds, that users must wait between sending messages. Set only if <code>slow_mode</code> is <code>true</code>. Possible values are: 3 (3 second delay) through 120 (2 minute delay). The default is 30 seconds.</td>
+</tr>
+<tr>
+<td>subscriber_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether only users that subscribe to the broadcaster's channel may talk in the chat room. Set to <code>true</code> if the broadcaster restricts the chat room to subscribers only; otherwise, <code>false</code>. The default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>unique_chat_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster requires users to post only unique messages in the chat room. Set to <code>true</code> if the broadcaster allows only unique messages; otherwise, <code>false</code>. The default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of chat settings. The list contains a single struct with all the settings.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster specified in the request.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;emote_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether chat messages must contain only emotes. Is <code>true</code> if chat messages may contain only emotes; otherwise, <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;follower_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster restricts the chat room to followers only. Is <code>true</code> if the broadcaster restricts the chat room to followers only; otherwise, <code>false</code>. See the follower_mode_duration field for how long users must follow the broadcaster before being able to participate in the chat room.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;follower_mode_duration</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The length of time, in minutes, that users must follow the broadcaster before being able to participate in the chat room. Is <code>undefined</code> if <code>follower_mode</code> is <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;moderator_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The moderator's ID. The response includes this field only if the request specifies a user access token that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;non_moderator_chat_delay</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster adds a short delay before chat messages appear in the chat room. This gives chat moderators and bots a chance to remove them before viewers can see the message. See the <code>non_moderator_chat_delay_duration</code> field for the length of the delay. Is <code>true</code> if the broadcaster applies a delay; otherwise, <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;non_moderator_chat_delay_duration</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The amount of time, in seconds, that messages are delayed before appearing in chat. Is <code>undefined</code> if <code>non_moderator_chat_delay</code> is <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;slow_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster limits how often users in the chat room are allowed to send messages. Is <code>true</code> if the broadcaster applies a delay; otherwise, <code>false</code>. See the <code>slow_mode_wait_time</code> field for the delay.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;slow_mode_wait_time</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The amount of time, in seconds, that users must wait between sending messages. Is <code>undefined</code> if <code>slow_mode</code> is <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;subscriber_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether only users that subscribe to the broadcaster's channel may talk in the chat room. Is <code>true</code> if the broadcaster restricts the chat room to subscribers only; otherwise, <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;unique_chat_mode</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the broadcaster requires users to post only unique messages in the chat room. Is <code>true</code> if the broadcaster requires unique messages only; otherwise, <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_send_chat_announcement">twitch_chat_send_chat_announcement</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#send-chat-announcement">Send Chat Announcement</a></p>
+<p>This function sends an announcement to the broadcaster's chat room.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a <a href="https://dev.twitch.tv/docs/authentication#user-access-tokens">user access token</a> that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_MODERATOR_MANAGE_ANNOUNCEMENTS</code>.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_send_chat_announcement(broadcaster_id, moderator_id, message, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster that owns the chat room to send the announcement to.</td>
+</tr>
+<tr>
+<td>moderator_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of a user who has permission to moderate the broadcaster's chat room, or the broadcaster's ID if they're sending the announcement. This ID must match the user ID in the user access token.</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The announcement to make in the broadcaster's chat room. Announcements are limited to a maximum of 500 characters; announcements longer than 500 characters are truncated.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>color</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The color used to highlight the announcement. Possible case-sensitive values are: <code>"blue"</code>, <code>"green"</code>, <code>"orange"</code>, <code>"purple"</code>, <code>"primary"</code> (default). If <code>color</code> is set to <code>"primary"</code> or is not set, the channel's accent color is used to highlight the announcement (see <strong>Profile Accent Color</strong> under <a href="https://www.twitch.tv/settings/profile">profile settings</a>, <strong>Channel and Videos</strong>, and <strong>Brand</strong>).</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>This method is triggered on success. It has no response body.</p>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_send_a_shoutout">twitch_chat_send_a_shoutout</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#send-a-shoutout">Send a Shoutout</a></p>
+<p>This function sends a Shoutout to the specified broadcaster. Typically, you send Shoutouts when you or one of your moderators notice another broadcaster in your chat, the other broadcaster is coming up in conversation, or after they raid your broadcast.</p>
+<p>Twitch's Shoutout feature is a great way for you to show support for other broadcasters and help them grow. Viewers who do not follow the other broadcaster will see a pop-up Follow button in your chat that they can click to follow the other broadcaster. <a href="https://help.twitch.tv/s/article/shoutouts">Learn More</a></p>
+<p><strong>Rate Limits</strong> The broadcaster may send a Shoutout once every 2 minutes. They may send the same broadcaster a Shoutout once every 60 minutes.</p>
+<p>To receive notifications when a Shoutout is sent or received, subscribe to the <a href="https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#channelshoutoutcreate">channel.shoutout.create</a> and <a href="https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#channelshoutoutreceive">channel.shoutout.receive</a> subscription types. The <strong>channel.shoutout.create</strong> event includes cooldown periods that indicate when the broadcaster may send another Shoutout without exceeding the endpoint's rate limit.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a <a href="https://dev.twitch.tv/docs/authentication#user-access-tokens">user access token</a> that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_MODERATOR_MANAGE_SHOUTOUTS</code>.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_send_a_shoutout(from_broadcaster_id, to_broadcaster_id, moderator_id, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>from_broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster that's sending the Shoutout.</td>
+</tr>
+<tr>
+<td>to_broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster that's receiving the Shoutout.</td>
+</tr>
+<tr>
+<td>moderator_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster or a user that is one of the broadcaster's moderators. This ID must match the user ID in the access token.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>This method is triggered on success. It has no response body.</p>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_send_chat_message">twitch_chat_send_chat_message</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#send-chat-message">Send Chat Message</a></p>
+<p>This function sends a message to the broadcaster's chat room.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires an <a href="https://dev.twitch.tv/docs/authentication#app-access-tokens">app access token</a> or user access token that includes the <code>TWITCH_SCOPE_USER_WRITE_CHAT</code> scope. If app access token used, then additionally requires <code>TWITCH_SCOPE_USER_BOT</code> scope from chatting user, and either <code>TWITCH_SCOPE_CHANNEL_BOT</code> scope from broadcaster or moderator status.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_send_chat_message(broadcaster_id, sender_id, message, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster whose chat room the message will be sent to.</td>
+</tr>
+<tr>
+<td>sender_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the user sending the message. This ID must match the user ID in the user access token.</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The message to send. The message is limited to a maximum of 500 characters. Chat messages can also include emoticons. To include emoticons, use the name of the emote. The names are case sensitive. Don't include colons around the name (e.g., <code>":bleedPurple:"</code>). If Twitch recognizes the name, Twitch converts the name to the emote before writing the chat message to the chat room</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>reply_parent_message_id</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The ID of the chat message being replied to.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;message_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The message id for the message that was sent.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;is_sent</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>If the message passed all checks and was sent.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;drop_reason</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The reason the message was dropped, if any.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;code</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Code for why the message was dropped.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Message for why the message was dropped.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_get_user_chat_color">twitch_chat_get_user_chat_color</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-user-chat-color">Get User Chat Color</a></p>
+<p>This function gets the color used for the user's name in chat.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_get_user_chat_color(user_id, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The ID of the user whose username color you want to get. To specify more than one user, pass an array with the ID of each user to get. The maximum number of IDs that you may specify is 100.The API ignores duplicate IDs and IDs that weren't found.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of users and the color code they use for their name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that uniquely identifies the user.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;user_login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;user_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;color</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The Hex color code that the user uses in chat for their name. If the user hasn't specified a color in their settings, the string is empty.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_chat_update_user_chat_color">twitch_chat_update_user_chat_color</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#update-user-chat-color">Update User Chat Color</a></p>
+<p>This function updates the color used for the user's name in chat.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a <a href="https://dev.twitch.tv/docs/authentication#user-access-tokens">user access token</a> that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_USER_MANAGE_CHAT_COLOR</code>.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_chat_update_user_chat_color(user_id, color, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the user whose chat color you want to update. This ID must match the user ID in the access token.</td>
+</tr>
+<tr>
+<td>color</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The color to use for the user's name in chat. All users may specify one of the following named color values: <code>"blue"</code>, <code>"blue_violet"</code>, <code>"cadet_blue"</code>, <code>"chocolate"</code>, <code>"coral"</code>, <code>"dodger_blue"</code>, <code>"firebrick"</code>, <code>"golden_rod"</code>, <code>"green"</code>, <code>"hot_pink"</code>, <code>"orange_red"</code>, <code>"red"</code>, <code>"sea_green"</code>, <code>"spring_green"</code>, <code>"yellow_green"</code>. Turbo and Prime users may specify a named color or a Hex color code like <code>"#9146FF"</code>. If you use a Hex color code, remember to URL encode it.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>This method is triggered on success. It has no response body.</p>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="charity.html" class="btn btn-neutral float-left" title="Charity"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="clips.html" class="btn btn-neutral float-right" title="Clips">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2024</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-Twitch" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="charity.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="clips.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

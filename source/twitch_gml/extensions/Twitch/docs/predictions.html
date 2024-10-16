@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Predictions - GMEXT-Twitch</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Predictions";
+        var mkdocs_page_input_path = "predictions.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-Twitch
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Twitch Extension</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ads.html">Ads</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="analytics.html">Analytics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bits.html">Bits</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="channels.html">Channels</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="channel_points.html">Channel Points</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="charity.html">Charity</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="chat.html">Chat</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="clips.html">Clips</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="conduits.html">Conduits</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ccls.html">CCLs (Content Classification Labels)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="entitlements.html">Entitlements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="eventsub.html">EventSub</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="games.html">Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="guest_star.html">Guest Star</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="hype_train.html">Hype Train</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="moderation.html">Moderation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="polls.html">Polls</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Predictions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="raids.html">Raids</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="schedule.html">Schedule</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="search.html">Search</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="subscriptions.html">Subscriptions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="teams.html">Teams</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="users.html">Users</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="videos.html">Videos</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="whispers.html">Whispers</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-Twitch</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Predictions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-Twitch/edit/master/docs/predictions.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="predictions"><strong>Predictions</strong></h1>
+<h2 id="functions">Functions</h2>
+<p>These are the functions of this module:</p>
+<ul>
+<li><a href="predictions.html#twitch_predictions_get_predictions">twitch_predictions_get_predictions</a></li>
+<li><a href="predictions.html#twitch_predictions_create_prediction">twitch_predictions_create_prediction</a></li>
+<li><a href="predictions.html#twitch_predictions_end_prediction">twitch_predictions_end_prediction</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_predictions_get_predictions">twitch_predictions_get_predictions</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-predictions">Get Predictions</a></p>
+<p>This function gets a list of Channel Points Predictions that the broadcaster created.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a <a href="https://dev.twitch.tv/docs/authentication#user-access-tokens">user access token</a> that includes the <code>TWITCH_SCOPE_CHANNEL_READ_PREDICTIONS</code> or <code>TWITCH_SCOPE_CHANNEL_MANAGE_PREDICTIONS</code> scope.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_predictions_get_predictions(broadcaster_id, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster whose predictions you want to get. This ID must match the user ID in the user access token.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>id</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> : The ID of the prediction to get. To specify more than one ID, pass an array with the ID of each prediction you want to get. You may specify a maximum of 25 IDs. The endpoint ignores duplicate IDs and those not owned by the broadcaster.<br>- <code>first</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 25 items per page. The default is 20.<br>- <code>after</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The cursor used to get the next page of results. The <strong>Pagination</strong> struct in the response contains the cursor's value. <a href="https://dev.twitch.tv/docs/api/guide#pagination">Read more</a></td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The broadcaster's list of Channel Points Predictions. The list is sorted in descending ordered by when the prediction began (the most recent prediction is first). The list is empty if the broadcaster hasn't created predictions.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this prediction.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the broadcaster that created the prediction.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The broadcaster's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The broadcaster's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The question that the prediction asks. For example, <em>Will I finish this entire pizza?</em></td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;winning_outcome_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the winning outcome. Is <code>undefined</code> unless <code>status</code> is <code>"RESOLVED"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;outcomes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of possible outcomes for the prediction.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The outcome's text.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;users</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of unique viewers that chose this outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of Channel Points spent by viewers on this outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;top_predictors</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>A list of viewers who were the top predictors; otherwise, <code>undefined</code> if none.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the viewer.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The viewer's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The viewer's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of Channel Points the viewer spent.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of Channel Points distributed to the viewer.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;color</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The color that visually identifies this outcome in the UX. Possible values are: <code>"BLUE"</code>, <code>"PINK"</code>. If the number of outcomes is two, the color is <code>"BLUE"</code> for the first outcome and <code>"PINK"</code> for the second outcome. If there are more than two outcomes, the color is <code>"BLUE"</code> for all outcomes.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;prediction_window</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The length of time (in seconds) that the prediction will run for.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The prediction's status. Valid values are: <code>"ACTIVE"</code> - The Prediction is running and viewers can make predictions. <code>"CANCELED"</code> - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. <code>"LOCKED"</code> - The broadcaster locked the Prediction, which means viewers can no longer make predictions. <code>"RESOLVED"</code> - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;created_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time of when the Prediction began.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;ended_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time of when the Prediction ended. If status is <code>"ACTIVE"</code>, this is set to <code>undefined</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;locked_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time of when the Prediction was locked. If status is not <code>"LOCKED"</code>, this is set to <code>undefined</code>.</td>
+</tr>
+<tr>
+<td>pagination</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Contains the information used to page through the list of results. The struct is empty if there are no more pages left to page through. <a href="https://dev.twitch.tv/docs/api/guide#pagination">Read More</a></td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;cursor</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The cursor used to get the next page of results. Use the cursor to set the request's <code>after</code> parameter.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_predictions_create_prediction">twitch_predictions_create_prediction</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#create-prediction">Create Prediction</a></p>
+<p>This function creates a Channel Points Prediction.</p>
+<p>With a Channel Points Prediction, the broadcaster poses a question and viewers try to predict the outcome. The prediction runs as soon as it's created. The broadcaster may run only one prediction at a time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a <a href="https://dev.twitch.tv/docs/authentication#user-access-tokens">user access token</a> that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_CHANNEL_MANAGE_PREDICTIONS</code>.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_predictions_create_prediction(broadcaster_id, title, outcomes, prediction_window, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster that's running the prediction. This ID must match the user ID in the user access token.</td>
+</tr>
+<tr>
+<td>title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The question that the broadcaster is asking. For example, <em>Will I finish this entire pizza?</em> The title is limited to a maximum of 45 characters.</td>
+</tr>
+<tr>
+<td>outcomes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of possible outcomes that the viewers may choose from. The list must contain a minimum of 2 choices and up to a maximum of 10 choices.</td>
+</tr>
+<tr>
+<td>prediction_window</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The length of time (in seconds) that the prediction will run for. The minimum is 30 seconds and the maximum is 1800 seconds (30 minutes).</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>A list that contains the single prediction that you created.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this prediction.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the broadcaster that created the prediction.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The broadcaster's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The broadcaster's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The question that the prediction asks. For example, <em>Will I finish this entire pizza?</em></td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;winning_outcome_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the winning outcome. Is <code>undefined</code> unless status is <code>"RESOLVED"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;outcomes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of possible outcomes for the prediction.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The outcome's text.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;users</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of unique viewers that chose this outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of Channel Points spent by viewers on this outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;top_predictors</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>A list of viewers who were the top predictors; otherwise, <code>undefined</code> if none.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the viewer.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The viewer's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The viewer's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of Channel Points the viewer spent.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of Channel Points distributed to the viewer.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;color</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The color that visually identifies this outcome in the UX. Possible values are: <code>"BLUE"</code>, <code>"PINK"</code>. If the number of outcomes is two, the color is <code>"BLUE"</code> for the first outcome and <code>"PINK"</code> for the second outcome. If there are more than two outcomes, the color is <code>"BLUE"</code> for all outcomes.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;prediction_window</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The length of time (in seconds) that the prediction will run for.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The prediction's status. Valid values are: <code>"ACTIVE"</code> - The Prediction is running and viewers can make predictions. <code>"CANCELED"</code> - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. <code>"LOCKED"</code> - The broadcaster locked the Prediction, which means viewers can no longer make predictions. <code>"RESOLVED"</code> - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;created_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time of when the Prediction began.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;ended_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time of when the Prediction ended. If <code>status</code> is <code>"ACTIVE"</code>, this is set to <code>undefined</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;locked_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time of when the Prediction was locked. If <code>status</code> is not <code>"LOCKED"</code>, this is set to <code>undefined</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_predictions_end_prediction">twitch_predictions_end_prediction</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#end-prediction">End Prediction</a></p>
+<p>This function locks, resolves, or cancels a Channel Points Prediction.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Requires a <a href="https://dev.twitch.tv/docs/authentication#user-access-tokens">user access token</a> that includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_CHANNEL_MANAGE_PREDICTIONS</code>.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_predictions_end_prediction(broadcaster_id, id, status, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster that's running the prediction. This ID must match the user ID in the user access token.</td>
+</tr>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the prediction to update.</td>
+</tr>
+<tr>
+<td>status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The status to set the prediction to. Possible case-sensitive values are: <code>"RESOLVED"</code> - The winning outcome is determined and the Channel Points are distributed to the viewers who predicted the correct outcome. <code>"CANCELED"</code> - The broadcaster is canceling the prediction and sending refunds to the participants. <code>"LOCKED"</code> - The broadcaster is locking the prediction, which means viewers may no longer make predictions. The broadcaster can update an active prediction to <code>"LOCKED"</code>, <code>"RESOLVED"</code>, or <code>"CANCELED"</code>; and update a locked prediction to <code>"RESOLVED"</code> or <code>"CANCELED"</code>.The broadcaster has up to 24 hours after the prediction window closes to resolve the prediction. If not, Twitch sets the status to <code>"CANCELED"</code> and returns the points.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>winning_outcome_id</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The ID of the winning outcome. You must set this parameter if you set <code>status</code> to <code>"RESOLVED"</code>.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>A list that contains the single prediction that you updated.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this prediction.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the broadcaster that created the prediction.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The broadcaster's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The broadcaster's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The question that the prediction asks. For example, <em>Will I finish this entire pizza?</em></td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;winning_outcome_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the winning outcome. Is <code>undefined</code> unless status is <code>"RESOLVED"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;outcomes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of possible outcomes for the prediction.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies this outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The outcome's text.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;users</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of unique viewers that chose this outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of Channel Points spent by viewers on this outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;top_predictors</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>A list of viewers who were the top predictors; otherwise, <code>undefined</code> if none.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the viewer.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The viewer's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;user_login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The viewer's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;channel_points_used</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of Channel Points the viewer spent.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;channel_points_won</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of Channel Points distributed to the viewer.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;color</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The color that visually identifies this outcome in the UX. Possible values are: <code>"BLUE"</code>, <code>"PINK"</code>. If the number of outcomes is two, the color is <code>"BLUE"</code> for the first outcome and <code>"PINK"</code> for the second outcome. If there are more than two outcomes, the color is <code>"BLUE"</code> for all outcomes.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;prediction_window</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The length of time (in seconds) that the prediction will run for.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The prediction's status. Valid values are: <code>"ACTIVE"</code> - The Prediction is running and viewers can make predictions. <code>"CANCELED"</code> - The broadcaster canceled the Prediction and refunded the Channel Points to the participants. <code>"LOCKED"</code> - The broadcaster locked the Prediction, which means viewers can no longer make predictions. <code>"RESOLVED"</code> - The winning outcome was determined and the Channel Points were distributed to the viewers who predicted the correct outcome.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;created_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time of when the Prediction began.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;ended_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time of when the Prediction ended. If <code>status</code> is <code>"ACTIVE"</code>, this is set to <code>undefined</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;locked_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time of when the Prediction was locked. If <code>status</code> is not <code>"LOCKED"</code>, this is set to <code>undefined</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="polls.html" class="btn btn-neutral float-left" title="Polls"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="raids.html" class="btn btn-neutral float-right" title="Raids">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2024</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-Twitch" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="polls.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="raids.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

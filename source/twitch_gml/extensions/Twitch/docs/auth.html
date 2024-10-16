@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Auth - GMEXT-Twitch</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Auth";
+        var mkdocs_page_input_path = "auth.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-Twitch
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Twitch Extension</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ads.html">Ads</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="analytics.html">Analytics</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Auth</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constants">Constants</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bits.html">Bits</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="channels.html">Channels</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="channel_points.html">Channel Points</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="charity.html">Charity</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="chat.html">Chat</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="clips.html">Clips</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="conduits.html">Conduits</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ccls.html">CCLs (Content Classification Labels)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="entitlements.html">Entitlements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="eventsub.html">EventSub</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="games.html">Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="guest_star.html">Guest Star</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="hype_train.html">Hype Train</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="moderation.html">Moderation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="polls.html">Polls</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="predictions.html">Predictions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="raids.html">Raids</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="schedule.html">Schedule</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="search.html">Search</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="subscriptions.html">Subscriptions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="teams.html">Teams</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="users.html">Users</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="videos.html">Videos</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="whispers.html">Whispers</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-Twitch</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Auth</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-Twitch/edit/master/docs/auth.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="auth"><strong>Auth</strong></h1>
+<p><strong>Twitch:</strong> <a href="https://dev.twitch.tv/docs/authentication/">Authentication</a></p>
+<h2 id="functions">Functions</h2>
+<p>These are the functions of this module:</p>
+<ul>
+<li><a href="auth.html#twitch_auth">twitch_auth</a></li>
+<li><a href="auth.html#twitch_auth_exchange_code">twitch_auth_exchange_code</a></li>
+<li><a href="auth.html#twitch_auth_app_token">twitch_auth_app_token</a></li>
+<li><a href="auth.html#twitch_auth_refresh_token">twitch_auth_refresh_token</a></li>
+<li><a href="auth.html#twitch_auth_from_cache">twitch_auth_from_cache</a></li>
+<li><a href="auth.html#twitch_auth_signout">twitch_auth_signout</a></li>
+</ul>
+<h2 id="constants">Constants</h2>
+<p>These are the constants of this module:</p>
+<ul>
+<li><a href="auth.html#twitch_scope">TWITCH_SCOPE</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_auth">twitch_auth</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function authenticates with Twitch through a web browser.</p>
+<p>See: <a href="https://dev.twitch.tv/docs/authentication/">Authentication</a></p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_auth(scopes, force_verify=undefined, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scopes</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="auth.html#twitch_scope">TWITCH_SCOPE</a></td>
+<td>The APIs that you're calling identify the scopes you must list.</td>
+</tr>
+<tr>
+<td>force_verify</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>Set to <code>true</code> to force the user to re-authorize your app's access to their resources. The default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of users.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the user.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of user. Possible values are: <code>"admin"</code> — Twitch administrator, <code>"global_mod"</code>, <code>"staff"</code> — Twitch staff, <code>""</code> — Normal user</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of broadcaster. Possible values are: <code>"affiliate"</code> — An affiliate broadcaster <a href="https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US">affiliate broadcaster</a>, <code>"partner"</code> — A partner broadcaster <a href="https://help.twitch.tv/s/article/partner-program-overview">partner broadcaster</a>, <code>""</code> — A normal broadcaster</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's description of their channel.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;profile_image_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the user's profile image.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;offline_image_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the user's offline image.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;view_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of times the user's channel has been viewed. <strong>NOTE</strong>: This field has been deprecated (see <a href="https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777">Get Users API endpoint – "view_count" deprecation</a>). Any data in this field is not valid and should not be used.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;email</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's verified email address. The struct includes this field only if the user access token includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_USER_READ_EMAIL</code>. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;created_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_auth_exchange_code">twitch_auth_exchange_code</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function authenticates using an exchange code.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function is used internally by the extension and you don't need to call it yourself.
+Call <a href="auth.html#twitch_auth">twitch_auth</a> to authenticate with Twitch.</p>
+</div>
+<p>See: <a href="https://dev.twitch.tv/docs/authentication/">Authentication</a></p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_auth_exchange_code(code, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The code that the <code>/authorize</code> response returned in the code parameter.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of users.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the user.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of user. Possible values are: <code>"admin"</code> — Twitch administrator, <code>"global_mod"</code>, <code>"staff"</code> — Twitch staff, <code>""</code> — Normal user</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of broadcaster. The type of broadcaster. Possible values are: <code>"affiliate"</code> — An affiliate broadcaster <a href="https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US">affiliate broadcaster</a>, <code>"partner"</code> — A partner broadcaster <a href="https://help.twitch.tv/s/article/partner-program-overview">partner broadcaster</a>, <code>""</code> — A normal broadcaster</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's description of their channel.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;profile_image_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the user's profile image.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;offline_image_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the user's offline image.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;view_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see <a href="https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777">Get Users API endpoint – "view_count" deprecation</a>). Any data in this field is not valid and should not be used.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;email</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's verified email address. The struct includes this field only if the user access token includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_USER_READ_EMAIL</code>. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;created_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_auth_app_token">twitch_auth_app_token</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function authenticates using an app access token.</p>
+<p>See: <a href="https://dev.twitch.tv/docs/authentication/">Authentication</a></p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_auth_app_token(callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of users.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the user.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of user. Possible values are: <code>"admin"</code> — Twitch administrator, <code>"global_mod"</code>, <code>"staff"</code> — Twitch staff, <code>""</code> — Normal user</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of broadcaster. The type of broadcaster. Possible values are: <code>"affiliate"</code> — An affiliate broadcaster <a href="https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US">affiliate broadcaster</a>, <code>"partner"</code> — A partner broadcaster <a href="https://help.twitch.tv/s/article/partner-program-overview">partner broadcaster</a>, <code>""</code> — A normal broadcaster</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's description of their channel.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;profile_image_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the user's profile image.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;offline_image_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the user's offline image.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;view_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see <a href="https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777">Get Users API endpoint – "view_count" deprecation</a>). Any data in this field is not valid and should not be used.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;email</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's verified email address. The struct includes this field only if the user access token includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_USER_READ_EMAIL</code>. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;created_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_auth_refresh_token">twitch_auth_refresh_token</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function refreshes an access token obtained earlier.</p>
+<p>Since the Twitch extension automatically refreshes the access token periodically you shouldn't need to call this function yourself.</p>
+<p>See: <a href="https://dev.twitch.tv/docs/authentication/">Authentication</a></p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_auth_refresh_token(callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of users.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the user.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of user. Possible values are: <code>"admin"</code> — Twitch administrator, <code>"global_mod"</code>, <code>"staff"</code> — Twitch staff, <code>""</code> — Normal user</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of broadcaster. The type of broadcaster. Possible values are: <code>"affiliate"</code> — An affiliate broadcaster <a href="https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US">affiliate broadcaster</a>, <code>"partner"</code> — A partner broadcaster <a href="https://help.twitch.tv/s/article/partner-program-overview">partner broadcaster</a>, <code>""</code> — A normal broadcaster</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's description of their channel.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;profile_image_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the user's profile image.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;offline_image_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the user's offline image.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;view_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see <a href="https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777">Get Users API endpoint – "view_count" deprecation</a>). Any data in this field is not valid and should not be used.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;email</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's verified email address. The struct includes this field only if the user access token includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_USER_READ_EMAIL</code>. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;created_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_auth_from_cache">twitch_auth_from_cache</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function performs authentication using the refresh token saved from a previous session.</p>
+<p>It returns the request ID if a cached token is available or -1 otherwise.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function can only be used if the user authenticated before using <a href="auth.html#twitch_auth">twitch_auth</a>.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_auth_from_cache(callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of users.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the user.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;login</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's login name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of user. Possible values are: <code>"admin"</code> — Twitch administrator, <code>"global_mod"</code>, <code>"staff"</code> — Twitch staff, <code>""</code> — Normal user</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of broadcaster. The type of broadcaster. Possible values are: <code>"affiliate"</code> — An affiliate broadcaster <a href="https://help.twitch.tv/s/article/joining-the-affiliate-program?language=en_US">affiliate broadcaster</a>, <code>"partner"</code> — A partner broadcaster <a href="https://help.twitch.tv/s/article/partner-program-overview">partner broadcaster</a>, <code>""</code> — A normal broadcaster</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's description of their channel.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;profile_image_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the user's profile image.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;offline_image_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the user's offline image.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;view_count</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The number of times the user's channel has been viewed. NOTE: This field has been deprecated (see <a href="https://discuss.dev.twitch.tv/t/get-users-api-endpoint-view-count-deprecation/37777">Get Users API endpoint – "view_count" deprecation</a>). Any data in this field is not valid and should not be used.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;email</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The user's verified email address. The struct includes this field only if the user access token includes the <a href="auth.html#twitch_scope">TWITCH_SCOPE</a>: <code>TWITCH_SCOPE_USER_READ_EMAIL</code>. If the request contains more than one user, only the user associated with the access token that provided consent will include an email address — the email address for all other users will be empty.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;created_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time that the user's account was created. The timestamp is in RFC3339 format.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_auth_signout">twitch_auth_signout</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function signs out from Twitch.</p>
+<p>See: <a href="https://dev.twitch.tv/docs/authentication/">Authentication</a></p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_auth_signout()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_scope">TWITCH_SCOPE</h1>
+<p><strong>Twitch:</strong> <a href="https://dev.twitch.tv/docs/authentication/scopes/">Twitch Access Token Scopes</a></p>
+<p>This group of macros represents the possible access token scopes.</p>
+<p>These constants are referenced by the following functions:</p>
+<ul>
+<li><a href="auth.html#twitch_auth">twitch_auth</a></li>
+</ul>
+<p><br></p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TWITCH_SCOPE_ANALYTICS_READ_EXTENSIONS</code></td>
+<td>The value <code>"analytics:read:extensions"</code>. View analytics data for the Twitch Extensions owned by the authenticated account.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_ANALYTICS_READ_GAMES</code></td>
+<td>The value <code>"analytics:read:games"</code>. View analytics data for the games owned by the authenticated account.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_BITS_READ</code></td>
+<td>The value <code>"bits:read"</code>. View Bits information for a channel. Joins your channel's chatroom as a bot user, and perform chat-related actions as that user.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_BOT</code></td>
+<td>The value <code>"channel:bot"</code>. Joins your channel's chatroom as a bot user, and perform chat-related actions as that user.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_EDIT_COMMERCIAL</code></td>
+<td>The value <code>"channel:edit:commercial"</code>. Run commercials on a channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_BROADCAST</code></td>
+<td>The value <code>"channel:manage:broadcast"</code>. Manage a channel's broadcast configuration, including updating channel configuration and managing stream markers and stream tags.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_EXTENSIONS</code></td>
+<td>The value <code>"channel:manage:extensions"</code>. Manage a channel's Extension configuration, including activating Extensions.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_POLLS</code></td>
+<td>The value <code>"channel:manage:polls"</code>. Manage a channel's polls.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_PREDICTIONS</code></td>
+<td>The value <code>"channel:manage:predictions"</code>. View a channel's Channel Points Predictions.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_RAIDS</code></td>
+<td>The value <code>"channel:manage:raids"</code>. Manage a channel raiding another channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_REDEMPTIONS</code></td>
+<td>The value <code>"channel:manage:redemptions"</code>. Manage Channel Points custom rewards and their redemptions on a channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_SCHEDULE</code></td>
+<td>The value <code>"channel:manage:schedule"</code>. Manage a channel's stream schedule.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_VIDEOS</code></td>
+<td>The value <code>"channel:manage:videos"</code>. Manage a channel's videos, including deleting videos.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_VIPS</code></td>
+<td>The value <code>"channel:manage:vips"</code>. Add or remove the VIP role from users in your channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_GUEST_STAR</code></td>
+<td>The value <code>"channel:manage:guest_star"</code>. Manage Guest Star for your channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_MODERATORS</code></td>
+<td>The value <code>"channel:manage:moderators"</code>. Add or remove the moderator role from users in your channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_EDITORS</code></td>
+<td>The value <code>"channel:read:editors"</code>. View a list of users with the editor role for a channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_GOALS</code></td>
+<td>The value <code>"channel:read:goals"</code>. View Creator Goals for a channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_GUEST_STAR</code></td>
+<td>The value <code>"channel:read:guest_star"</code>. Read Guest Star details for your channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_HYPE_TRAIN</code></td>
+<td>The value <code>"channel:read:hype_train"</code>. View Hype Train information for a channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_POLLS</code></td>
+<td>The value <code>"channel:read:polls"</code>. View a channel's polls.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_PREDICTIONS</code></td>
+<td>The value <code>"channel:read:predictions"</code>. View a channel's Channel Points Predictions.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_REDEMPTIONS</code></td>
+<td>The value <code>"channel:read:redemptions"</code>. View Channel Points custom rewards and their redemptions on a channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_STREAM_KEY</code></td>
+<td>The value <code>"channel:read:stream_key"</code>. View an authorized user's stream key.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_SUBSCRIPTIONS</code></td>
+<td>The value <code>"channel:read:subscriptions"</code>. View a list of all subscribers to a channel and check if a user is subscribed to a channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MANAGE_ADS</code></td>
+<td>The value <code>"channel:manage:ads"</code>. Manage ads schedule on a channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_ADS</code></td>
+<td>The value <code>"channel:read:ads"</code>. Read the ads schedule and details on your channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_VIPS</code></td>
+<td>The value <code>"channel:read:vips"</code>. Read the list of VIPs in your channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_MODERATE</code></td>
+<td>The value <code>"channel:moderate"</code>.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHANNEL_READ_CHARITY</code></td>
+<td>The value <code>"channel:read:charity"</code>. Read charity campaign details and user donations on your channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHAT_EDIT</code></td>
+<td>The value <code>"chat:edit"</code>. Send chat messages to a chatroom using an IRC connection.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CHAT_READ</code></td>
+<td>The value <code>"chat:read"</code>. View chat messages sent in a chatroom using an IRC connection.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_CLIPS_EDIT</code></td>
+<td>The value <code>"clips:edit"</code>. Manage Clips for a channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATION_READ</code></td>
+<td>The value <code>"moderation:read"</code>. View a channel's moderation data including Moderators, Bans, Timeouts, and Automod settings.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_READ_AUTOMOD_SETTINGS</code></td>
+<td>The value <code>"moderator:read:automod_settings"</code>. View a broadcaster's AutoMod settings.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_READ_BLOCKED_TERMS</code></td>
+<td>The value <code>"moderator:read:blocked_terms"</code>. View a broadcaster's list of blocked terms.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_READ_CHAT_SETTINGS</code></td>
+<td>The value <code>"moderator:read:chat_settings"</code>. View a broadcaster's chat room settings.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_READ_FOLLOWERS</code></td>
+<td>The value <code>"moderator:read:followers"</code>. Read the followers of a broadcaster.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_READ_CHATTERS</code></td>
+<td>The value <code>"moderator:read:chatters"</code>. View the chatters in a broadcaster's chat room.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_READ_UNBAN_REQUESTS</code></td>
+<td>The value <code>"moderator:read:unban_requests"</code>. View a broadcaster's unban requests.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_READ_GUEST_STAR</code></td>
+<td>The value <code>"moderator:read:guest_star"</code>. Read Guest Star details for your channel.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_READ_SHIELD_MODE</code></td>
+<td>The value <code>"moderator:read:shield_mode"</code>. View a broadcaster's Shield Mode status.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_MANAGE_GUEST_STAR</code></td>
+<td>The value <code>"moderator:manage:guest_star"</code>. Manage Guest Star for channels where you are a Guest Star moderator.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_MANAGE_BANNED_USERS</code></td>
+<td>The value <code>"moderator:manage:banned_users"</code>. Ban and unban users.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_MANAGE_BLOCKED_TERMS</code></td>
+<td>The value <code>"moderator:manage:blocked_terms"</code>. Manage a broadcaster's list of blocked terms.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_MANAGE_AUTOMOD</code></td>
+<td>The value <code>"moderator:manage:automod"</code>. Manage messages held for review by AutoMod in channels where you are a moderator.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_MANAGE_AUTOMOD_SETTINGS</code></td>
+<td>The value <code>"moderator:manage:automod_settings"</code>. Manage a broadcaster's AutoMod settings.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_MANAGE_CHAT_MESSAGES</code></td>
+<td>The value <code>"moderator:manage:chat_messages"</code>. Delete chat messages in channels where you have the moderator role</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_MANAGE_CHAT_SETTINGS</code></td>
+<td>The value <code>"moderator:manage:chat_settings"</code>. Manage a broadcaster's chat room settings.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_MANAGE_UNBAN_REQUESTS</code></td>
+<td>The value <code>"moderator:manage:unban_requests"</code>. Manage a broadcaster's unban requests.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_MANAGE_SHIELD_MODE</code></td>
+<td>The value <code>"moderator:manage:shield_mode"</code>. Manage a broadcaster's Shield Mode status.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_MANAGE_SHOUTOUTS</code></td>
+<td>The value <code>"moderator:manage:shoutouts"</code>. Manage a broadcaster's shoutouts.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_MODERATOR_MANAGE_ANNOUNCEMENTS</code></td>
+<td>The value <code>"moderator:manage:announcements"</code>. Send announcements in channels where you have the moderator role.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_BOT</code></td>
+<td>The value <code>"user:bot"</code>. Join a specified chat channel as your user and appear as a bot, and perform chat-related actions as your user.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_EDIT</code></td>
+<td>The value <code>"user:edit"</code>. Manage a user object.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_EDIT_BROADCAST</code></td>
+<td>The value <code>"user:edit:broadcast"</code>. View and edit a user's broadcasting configuration, including Extension configurations.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_MANAGE_BLOCKED_USERS</code></td>
+<td>The value <code>"user:manage:blocked_users"</code>. Manage the block list of a user.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_MANAGE_CHAT_COLOR</code></td>
+<td>The value <code>"user:manage:chat_color"</code>. Update the color used for the user's name in chat.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_MANAGE_WHISPERS</code></td>
+<td>The value <code>"user:manage:whispers"</code>. Receive whispers sent to your user, and send whispers on your user's behalf.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_READ_BLOCKED_USERS</code></td>
+<td>The value <code>"user:read:blocked_users"</code>. View the block list of a user.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_READ_BROADCAST</code></td>
+<td>The value <code>"user:read:broadcast"</code>. View a user's broadcasting configuration, including Extension configurations.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_READ_EMAIL</code></td>
+<td>The value <code>"user:read:email"</code>. View a user's email address.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_READ_SUBSCRIPTIONS</code></td>
+<td>The value <code>"user:read:subscriptions"</code>. View if an authorized user is subscribed to specific channels.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_READ_EMOTES</code></td>
+<td>The value <code>"user:read:emotes"</code>. View emotes available to a user.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_READ_FOLLOWS</code></td>
+<td>The value <code>"user:read:follows"</code>. View the list of channels a user follows.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_READ_MODERATED_CHANNELS</code></td>
+<td>The value <code>"user:read:moderated_channels"</code>. Read the list of channels you have moderator privileges in.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_READ_CHAT</code></td>
+<td>The value <code>"user:read:chat"</code>. Receive chatroom messages and informational notifications relating to a channel's chatroom.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_USER_WRITE_CHAT</code></td>
+<td>The value <code>"user:write:chat"</code>. Send chat messages to a chatroom.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_WHISPERS_READ</code></td>
+<td>The value <code>"whispers:read"</code>. Receive whisper messages for your user using PubSub.</td>
+</tr>
+<tr>
+<td><code>TWITCH_SCOPE_WHISPERS_EDIT</code></td>
+<td>The value <code>"whispers:edit"</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="analytics.html" class="btn btn-neutral float-left" title="Analytics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="bits.html" class="btn btn-neutral float-right" title="Bits">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2024</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-Twitch" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="analytics.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="bits.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

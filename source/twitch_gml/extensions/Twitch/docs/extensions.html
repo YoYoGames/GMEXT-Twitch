@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Extensions - GMEXT-Twitch</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Extensions";
+        var mkdocs_page_input_path = "extensions.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-Twitch
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Twitch Extension</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ads.html">Ads</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="analytics.html">Analytics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bits.html">Bits</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="channels.html">Channels</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="channel_points.html">Channel Points</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="charity.html">Charity</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="chat.html">Chat</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="clips.html">Clips</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="conduits.html">Conduits</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ccls.html">CCLs (Content Classification Labels)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="entitlements.html">Entitlements</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Extensions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="eventsub.html">EventSub</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="games.html">Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="guest_star.html">Guest Star</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="hype_train.html">Hype Train</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="moderation.html">Moderation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="polls.html">Polls</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="predictions.html">Predictions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="raids.html">Raids</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="schedule.html">Schedule</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="search.html">Search</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="subscriptions.html">Subscriptions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="teams.html">Teams</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="users.html">Users</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="videos.html">Videos</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="whispers.html">Whispers</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-Twitch</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Extensions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-Twitch/edit/master/docs/extensions.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="extensions"><strong>Extensions</strong></h1>
+<h2 id="functions">Functions</h2>
+<p>These are the functions of this module:</p>
+<ul>
+<li><a href="extensions.html#twitch_extensions_create_jwt_token">twitch_extensions_create_jwt_token</a></li>
+<li><a href="extensions.html#twitch_extensions_get_extension_configuration_segment">twitch_extensions_get_extension_configuration_segment</a></li>
+<li><a href="extensions.html#twitch_extensions_set_extension_configuration_segment">twitch_extensions_set_extension_configuration_segment</a></li>
+<li><a href="extensions.html#twitch_extensions_set_extension_required_configuration">twitch_extensions_set_extension_required_configuration</a></li>
+<li><a href="extensions.html#twitch_extensions_send_extension_pubsub_message">twitch_extensions_send_extension_pubsub_message</a></li>
+<li><a href="extensions.html#twitch_extensions_get_extension_live_channels">twitch_extensions_get_extension_live_channels</a></li>
+<li><a href="extensions.html#twitch_extensions_get_extension_secrets">twitch_extensions_get_extension_secrets</a></li>
+<li><a href="extensions.html#twitch_extensions_create_extension_secret">twitch_extensions_create_extension_secret</a></li>
+<li><a href="extensions.html#twitch_extensions_send_extension_chat_message">twitch_extensions_send_extension_chat_message</a></li>
+<li><a href="extensions.html#twitch_extensions_get_extensions">twitch_extensions_get_extensions</a></li>
+<li><a href="extensions.html#twitch_extensions_get_released_extensions">twitch_extensions_get_released_extensions</a></li>
+<li><a href="extensions.html#twitch_extensions_get_extension_bits_products">twitch_extensions_get_extension_bits_products</a></li>
+<li><a href="extensions.html#twitch_extensions_update_extension_bits_product">twitch_extensions_update_extension_bits_product</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_create_jwt_token">twitch_extensions_create_jwt_token</h1>
+<p>This function creates a JSON Web Token (JWT) to be used with the <code>twitch_extensions_*</code> functions that require it.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_create_jwt_token(secret, payload=undefined)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>secret</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The base64 encoded Twitch secret</td>
+</tr>
+<tr>
+<td>payload</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The payload</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_get_extension_configuration_segment">twitch_extensions_get_extension_configuration_segment</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-extension-configuration-segment">Get Extension Configuration Segment</a></p>
+<p>This function gets the specified configuration segment from the specified extension.</p>
+<p><strong>Rate Limits:</strong> You may retrieve each segment a maximum of 20 times per minute.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_get_extension_configuration_segment(jwt_token, extension_id, segment, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jwt_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A signed JSON Web Token (JWT) created by <a href="extensions.html#twitch_extensions_create_jwt_token">twitch_extensions_create_jwt_token</a>. For signing requirements, see <a href="https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt">Signing the JWT</a>. The signed JWT must include the <code>role</code>, <code>user_id</code>, and <code>exp</code> fields (see <a href="https://dev.twitch.tv/docs/extensions/reference/#jwt-schema">JWT Schema</a>). The <code>role</code> field must be set to <code>"external"</code>.</td>
+</tr>
+<tr>
+<td>extension_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the extension that contains the configuration segment you want to get.</td>
+</tr>
+<tr>
+<td>segment</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The type of configuration segment to get. Possible case-sensitive values are: <code>"broadcaster"</code>, <code>"developer"</code>, <code>"global"</code>. You may specify one or more segments. To specify multiple segments, pass an array with the segments you want to get. Ignores duplicate segments.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>broadcaster_id</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The ID of the broadcaster that installed the extension. This parameter is required if you set the <code>segment</code> parameter to broadcaster or developer. Do not specify this parameter if you set <code>segment</code> to <code>"global"</code>.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of requested configuration segments. The list is returned in the same order that you specified the list of segments in the request.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;segment</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of segment. Possible values are: <code>"broadcaster"</code>, <code>"developer"</code>, <code>"global"</code></td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster that installed the extension. The struct includes this field only if the <code>segment</code> parameter is set to <code>"developer"</code> or <code>"broadcaster"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;content</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The contents of the segment. This string may be a plain-text string or a string-encoded JSON object.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The version number that identifies this definition of the segment's data.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_set_extension_configuration_segment">twitch_extensions_set_extension_configuration_segment</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#set-extension-configuration-segment">Set Extension Configuration Segment</a></p>
+<p>This function updates a configuration segment. The segment is limited to 5 KB. Extensions that are active on a channel do not receive the updated configuration.</p>
+<p><strong>Rate Limits:</strong> You may update the configuration a maximum of 20 times per minute.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_set_extension_configuration_segment(jwt_token, extension_id, segment, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jwt_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A signed JSON Web Token (JWT) created by <a href="extensions.html#twitch_extensions_create_jwt_token">twitch_extensions_create_jwt_token</a>. For signing requirements, see <a href="https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt">Signing the JWT</a>. The signed JWT must include the <code>role</code>, <code>user_id</code>, and <code>exp</code> fields (see <a href="https://dev.twitch.tv/docs/extensions/reference/#jwt-schema">JWT Schema</a>). The <code>role</code> field must be set to <code>"external"</code>.</td>
+</tr>
+<tr>
+<td>extension_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the extension to update.</td>
+</tr>
+<tr>
+<td>segment</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The configuration segment to update. Possible case-sensitive values are: <code>"broadcaster"</code>, <code>"developer"</code>, <code>"global"</code></td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>broadcaster_id</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The ID of the broadcaster that installed the extension. Include this field only if the <code>segment</code> is set to <code>"developer"</code> or <code>"broadcaster"</code>.<br>- <code>content</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The contents of the segment. This string may be a plain-text string or a string-encoded JSON object.<br>- <code>version</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The version number that identifies this definition of the segment's data. If not specified, the latest definition is updated.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>This method is triggered on success. It has no response body.</p>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_set_extension_required_configuration">twitch_extensions_set_extension_required_configuration</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#set-extension-required-configuration">Set Extension Required Configuration</a></p>
+<p>This function updates the extension's required_configuration string. Use this endpoint if your extension requires the broadcaster to configure the extension before activating it (to require configuration, you must select <strong>Custom/My Own Service</strong> in Extension <a href="https://dev.twitch.tv/docs/extensions/life-cycle/#capabilities">Capabilities</a>). For more information, see <a href="https://dev.twitch.tv/docs/extensions/building#required-configurations">Required Configurations</a> and <a href="https://dev.twitch.tv/docs/extensions/building#setting-required-configuration-with-the-configuration-service-optional">Setting Required Configuration</a>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_set_extension_required_configuration(jwt_token, broadcaster_id, extension_id, extension_version, required_configuration, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jwt_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A signed JSON Web Token (JWT) created by <a href="extensions.html#twitch_extensions_create_jwt_token">twitch_extensions_create_jwt_token</a>. For signing requirements, see <a href="https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt">Signing the JWT</a>. The signed JWT must include the <code>role</code>, <code>user_id</code>, and <code>exp</code> fields (see <a href="https://dev.twitch.tv/docs/extensions/reference/#jwt-schema">JWT Schema</a>). Set the <code>role</code> field to <code>"external"</code> and the <code>"user_id"</code> field to the ID of the user that owns the extension.</td>
+</tr>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster that installed the extension on their channel.</td>
+</tr>
+<tr>
+<td>extension_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the extension to update.</td>
+</tr>
+<tr>
+<td>extension_version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The version of the extension to update.</td>
+</tr>
+<tr>
+<td>required_configuration</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The required_configuration string to use with the extension.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>This method is triggered on success. It has no response body.</p>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_send_extension_pubsub_message">twitch_extensions_send_extension_pubsub_message</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#send-extension-pubsub-message">Send Extension PubSub Message</a></p>
+<p>This function sends a message to one or more viewers. You can send messages to a specific channel or to all channels where your extension is active. This endpoint uses the same mechanism as the <a href="https://dev.twitch.tv/docs/extensions/reference#send">send</a> JavaScript helper function used to send messages.</p>
+<p><strong>Rate Limits:</strong> You may send a maximum of 100 messages per minute per combination of extension client ID and broadcaster ID.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_send_extension_pubsub_message(jwt_token, target, broadcaster_id, message, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jwt_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A signed JSON Web Token (JWT) created by <a href="extensions.html#twitch_extensions_create_jwt_token">twitch_extensions_create_jwt_token</a>. For signing requirements, see <a href="https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt">Signing the JWT</a>. The signed JWT must include the <code>role</code>, <code>user_id</code>, and <code>exp</code> fields (see <a href="https://dev.twitch.tv/docs/extensions/reference/#jwt-schema">JWT Schema</a>) along with the <code>channel_id</code> and <code>pubsub_perms</code> fields. The <code>role</code> field must be set to <code>"external"</code>.<br><br>To send the message to a specific channel, set the <code>channel_id</code> field in the JWT to the channel's ID and set the <code>pubsub_perms.send</code> array to <code>"broadcast"</code>.<br><br>To send the message to all channels on which your extension is active, set the <code>channel_id</code> field to <code>"all"</code> and set the <code>"pubsub_perms.send"</code> array to <code>"global"</code>.</td>
+</tr>
+<tr>
+<td>target</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The target of the message. Possible values are: <code>"broadcast"</code>, <code>"global"</code>, <code>"whisper&lt;user-id&gt;"</code>. If <code>is_global_broadcast</code> is <code>true</code>, you must set this field to <code>"global"</code>. The <code>"broadcast"</code> and <code>"global"</code> values are mutually exclusive; specify only one of them.</td>
+</tr>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster to send the message to. Don't include this field if <code>is_global_broadcast</code> is set to <code>true</code>.</td>
+</tr>
+<tr>
+<td>message</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The message to send. The message can be a plain-text string or a string-encoded JSON object. The message is limited to a maximum of 5 KB.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>is_global_broadcast</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a> : A Boolean value that determines whether the message should be sent to all channels where your extension is active. Set to <code>true</code> if the message should be sent to all channels. The default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>This method is triggered on success. It has no response body.</p>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_get_extension_live_channels">twitch_extensions_get_extension_live_channels</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-extension-live-channels">Get Extension Live Channels</a></p>
+<p>This function gets a list of broadcasters that are streaming live and have installed or activated the extension.</p>
+<p>It may take a few minutes for the list to include or remove broadcasters that have recently gone live or stopped broadcasting.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_get_extension_live_channels(extension_id, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extension_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the extension to get. Returns the list of broadcasters that are live and that have installed or activated this extension.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>first</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> : The maximum number of items to return per page in the response. The minimum page size is 1 item per page and the maximum is 100 items per page. The default is 20.<br>- <code>after</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The cursor used to get the next page of results. The <code>pagination</code> field in the response contains the cursor's value. <a href="https://dev.twitch.tv/docs/api/guide#pagination">Read more</a></td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of broadcasters that are streaming live and that have installed or activated the extension.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster that is streaming live and has installed or activated the extension.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;broadcaster_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The broadcaster's display name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;game_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the category or game being streamed.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;game_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the category or game being streamed.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;title</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The title of the broadcaster's stream. May be an empty string if not specified.</td>
+</tr>
+<tr>
+<td>pagination</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>This field contains the cursor used to page through the results. The field is empty if there are no more pages left to page through. Note that this field is a string compared to other endpoints that use a Pagination struct. <a href="https://dev.twitch.tv/docs/api/guide#pagination">Read More</a></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_get_extension_secrets">twitch_extensions_get_extension_secrets</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-extension-secrets">Get Extension Secrets</a></p>
+<p>This function gets an extension's list of shared secrets.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_get_extension_secrets(jwt_token, extension_id, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jwt_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A signed JSON Web Token (JWT) created by <a href="extensions.html#twitch_extensions_create_jwt_token">twitch_extensions_create_jwt_token</a>. For signing requirements, see <a href="https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt">Signing the JWT</a>. The signed JWT must include the <code>role</code>, <code>user_id</code>, and <code>exp</code> fields (see <a href="https://dev.twitch.tv/docs/extensions/reference/#jwt-schema">JWT Schema</a>). The <code>role</code> field must be set to <code>"external"</code>.</td>
+</tr>
+<tr>
+<td>extension_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the extension whose shared secrets you want to get.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of shared secrets that the extension created.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;format_version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The version number that identifies this definition of the secret's data.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;secrets</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of secrets.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;content</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The raw secret that you use with JWT encoding.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time (in RFC3339 format) that you may begin using this secret to sign a JWT.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;expires_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time (in RFC3339 format) that you must stop using this secret to decode a JWT.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_create_extension_secret">twitch_extensions_create_extension_secret</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#create-extension-secret">Create Extension Secret</a></p>
+<p>This function creates a shared secret used to sign and verify JWT tokens. Creating a new secret removes the current secrets from service. Use this function only when you are ready to use the new secret it returns.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_create_extension_secret(jwt_token, extension_id, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jwt_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A signed JSON Web Token (JWT) created by <a href="extensions.html#twitch_extensions_create_jwt_token">twitch_extensions_create_jwt_token</a>. For signing requirements, see <a href="https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt">Signing the JWT</a>. The signed JWT must include the <code>role</code>, <code>user_id</code>, and <code>exp</code> fields (see <a href="https://dev.twitch.tv/docs/extensions/reference/#jwt-schema">JWT Schema</a>). The <code>role</code> field must be set to <code>"external"</code>.</td>
+</tr>
+<tr>
+<td>extension_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the extension to apply the shared secret to.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>delay</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a> : The amount of time, in seconds, to delay activating the secret. The delay should provide enough time for instances of the extension to gracefully switch over to the new secret. The minimum delay is 300 seconds (5 minutes). The default is 300 seconds.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>A list that contains the newly added secrets.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;format_version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The version number that identifies this definition of the secret's data.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;secrets</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of secrets.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;content</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The raw secret that you use with JWT encoding.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;active_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time (in RFC3339 format) that you may begin using this secret to sign a JWT.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;expires_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time (in RFC3339 format) that you must stop using this secret to decode a JWT.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_send_extension_chat_message">twitch_extensions_send_extension_chat_message</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#send-extension-chat-message">Send Extension Chat Message</a></p>
+<p>This function sends a message to the specified broadcaster's chat room. The extension's name is used as the username for the message in the chat room. To send a chat message, your extension must enable <strong>Chat Capabilities</strong> (under your extension's <strong>Capabilities</strong> tab).</p>
+<p><strong>Rate Limits:</strong> You may send a maximum of 12 messages per minute per channel.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_send_extension_chat_message(jwt_token, broadcaster_id, text, extension_id, extension_version, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jwt_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A signed JSON Web Token (JWT) created by <a href="extensions.html#twitch_extensions_create_jwt_token">twitch_extensions_create_jwt_token</a>. For signing requirements, see <a href="https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt">Signing the JWT</a>. The signed JWT must include the <code>role</code> and <code>user_id</code> fields (see <a href="https://dev.twitch.tv/docs/extensions/reference/#jwt-schema">JWT Schema</a>). The <code>role</code> field must be set to <code>"external"</code>.</td>
+</tr>
+<tr>
+<td>broadcaster_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the broadcaster that has activated the extension.</td>
+</tr>
+<tr>
+<td>text</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The message. The message may contain a maximum of 280 characters.</td>
+</tr>
+<tr>
+<td>extension_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the extension that's sending the chat message.</td>
+</tr>
+<tr>
+<td>extension_version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The extension's version number.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>This method is triggered on success. It has no response body.</p>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_get_extensions">twitch_extensions_get_extensions</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-extensions">Get Extensions</a></p>
+<p>This function gets information about an extension.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_get_extensions(jwt_token, extension_id, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jwt_token</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A signed JSON Web Token (JWT) created by <a href="extensions.html#twitch_extensions_create_jwt_token">twitch_extensions_create_jwt_token</a>. For signing requirements, see <a href="https://dev.twitch.tv/docs/extensions/building/#signing-the-jwt">Signing the JWT</a>. The signed JWT must include the <code>role</code> field (see <a href="https://dev.twitch.tv/docs/extensions/reference/#jwt-schema">JWT Schema</a>), and The <code>role</code> field must be set to <code>"external"</code>.</td>
+</tr>
+<tr>
+<td>extension_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the extension to get.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>extension_version</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The version of the extension to get. If not specified, it returns the latest, released version. If you don't have a released version, you must specify a version; otherwise, the list is empty.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>A list that contains the specified extension.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;author_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the user or organization that owns the extension.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;bits_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension has features that use Bits. Is <code>true</code> if the extension has features that use Bits.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;can_install</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether a user can install the extension on their channel. Is <code>true</code> if a user can install the extension. Typically, this is set to <code>false</code> if the extension is currently in testing mode and requires users to be allowlisted (the allowlist is configured on Twitch's <a href="https://dev.twitch.tv/console/extensions">developer site</a> under the <strong>Extensions</strong> &gt; <strong>Extension</strong> &gt; <strong>Version</strong> &gt; <strong>Access</strong>).</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;configuration_location</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The location of where the extension's configuration is stored. Possible values are: <code>"hosted"</code> - The Extensions Configuration Service hosts the configuration. <code>"custom"</code> - The Extension Backend Service (EBS) hosts the configuration. <code>"none"</code> - The extension doesn't require configuration.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A longer description of the extension. It appears on the details page.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;eula_tos_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the extension's Terms of Service.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;has_chat_support</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension can communicate with the installed channel's chat. Is <code>true</code> if the extension can communicate with the channel's chat room.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;icon_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the default icon that's displayed in the Extensions directory.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;icon_urls</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>A dictionary that contains URLs to different sizes of the default icon. The dictionary's key identifies the icon's size (for example, <code>"24x24"</code>), and the dictionary's value contains the URL to the icon.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The extension's ID.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The extension's name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;privacy_policy_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the extension's privacy policy.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;request_identity_link</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension wants to explicitly ask viewers to link their Twitch identity.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;screenshot_urls</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A list of URLs to screenshots that are shown in the Extensions marketplace.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;state</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The extension's state. Possible values are: <code>"Approved"</code>, <code>"AssetsUploaded"</code>, <code>"Deleted"</code>, <code>"Deprecated"</code>, <code>"InReview"</code>, <code>"InTest"</code>, <code>"PendingAction"</code>, <code>"Rejected"</code>, <code>"Released"</code></td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;subscriptions_support_level</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Indicates whether the extension can view the user's subscription level on the channel that the extension is installed on. Possible values are: <code>"none"</code> - The extension can't view the user's subscription level. <code>"optional"</code> - The extension can view the user's subscription level.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;summary</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A short description of the extension that streamers see when hovering over the discovery splash screen in the Extensions manager.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;support_email</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The email address that users use to get support for the extension.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The extension's version number.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;viewer_summary</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A brief description displayed on the channel to explain how the extension works.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;views</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes all views-related information such as how the extension is displayed on mobile devices.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;mobile</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes how the extension is displayed on mobile devices.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;viewer_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The HTML file that is shown to viewers on mobile devices. This page is presented to viewers as a panel behind the chat area of the mobile app.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;panel</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes how the extension is rendered if the extension may be activated as a panel extension.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The HTML file that is shown to viewers on the channel page when the extension is activated in a Panel slot.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;height</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The height, in pixels, of the panel component that the extension is rendered in.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension can link to non-Twitch domains.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;video_overlay</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes how the extension is rendered if the extension may be activated as a video-overlay extension.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The HTML file that is shown to viewers on the channel page when the extension is activated on the Video - Overlay slot.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension can link to non-Twitch domains.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;component</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes how the extension is rendered if the extension may be activated as a video-component extension.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The HTML file that is shown to viewers on the channel page when the extension is activated in a Video - Component slot.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The width value of the ratio (width : height) which determines the extension's width, and how the extension's iframe will resize in different video player environments.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_y</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The height value of the ratio (width : height) which determines the extension's height, and how the extension's iframe will resize in different video player environments.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;autoscale</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether to apply CSS zoom. If <code>true</code>, a CSS zoom is applied such that the size of the extension is variable but the inner dimensions are fixed based on Scale Pixels. This allows your extension to render as if it is of fixed width and height. If <code>false</code>, the inner dimensions of the extension iframe are variable, meaning your extension must implement responsiveness.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;scale_pixels</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The base width, in pixels, of the extension to use when scaling (see <code>autoscale</code>). This value is ignored if <code>autoscale</code> is <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;target_height</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The height as a percent of the maximum height of a video component extension. Values are between 1% - 100%.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension can link to non-Twitch domains.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;config</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes the view that is shown to broadcasters while they are configuring your extension within the Extension Manager.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The HTML file shown to broadcasters while they are configuring your extension within the Extension Manager.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension can link to non-Twitch domains.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;allowlisted_config_urls</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Allowlisted configuration URLs for displaying the extension (the allowlist is configured on Twitch's <a href="https://dev.twitch.tv/console/extensions">developer site</a> under the <strong>Extensions</strong> &gt; <strong>Extension</strong> &gt; <strong>Version</strong> &gt; <strong>Capabilities</strong>).</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;allowlisted_panel_urls</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Allowlisted panel URLs for displaying the extension (the allowlist is configured on Twitch's <a href="https://dev.twitch.tv/console/extensions">developer site</a> under the <strong>Extensions</strong> &gt; <strong>Extension</strong> &gt; <strong>Version</strong> &gt; <strong>Capabilities</strong>).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_get_released_extensions">twitch_extensions_get_released_extensions</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-released-extensions">Get Released Extensions</a></p>
+<p>This function gets information about a released extension. Returns the extension if its <code>state</code> is <code>"Released"</code>.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_get_released_extensions(extension_id, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extension_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the extension to get.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>extension_version</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The version of the extension to get. If not specified, it returns the latest version.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>A list that contains the specified extension.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;author_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The name of the user or organization that owns the extension.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;bits_enabled</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension has features that use Bits. Is <code>true</code> if the extension has features that use Bits.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;can_install</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether a user can install the extension on their channel. Is <code>true</code> if a user can install the extension. Typically, this is set to <code>false</code> if the extension is currently in testing mode and requires users to be allowlisted (the allowlist is configured on Twitch's developer site under the <strong>Extensions</strong> &gt; <strong>Extension</strong> &gt; <strong>Version</strong> &gt; <strong>Access</strong>).</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;configuration_location</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The location of where the extension's configuration is stored. Possible values are: <code>"hosted"</code> - The Extensions Configuration Service hosts the configuration. <code>"custom"</code> - The Extension Backend Service (EBS) hosts the configuration. <code>"none"</code> - The extension doesn't require configuration.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;description</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A longer description of the extension. It appears on the details page.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;eula_tos_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the extension's Terms of Service.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;has_chat_support</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension can communicate with the installed channel's chat. Is <code>true</code> if the extension can communicate with the channel's chat room.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;icon_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the default icon that's displayed in the Extensions directory.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;icon_urls</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>A dictionary that contains URLs to different sizes of the default icon. The dictionary's key identifies the icon's size (for example, <code>"24x24"</code>), and the dictionary's value contains the URL to the icon.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The extension's ID.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The extension's name.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;privacy_policy_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A URL to the extension's privacy policy.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;request_identity_link</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension wants to explicitly ask viewers to link their Twitch identity.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;screenshot_urls</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A list of URLs to screenshots that are shown in the Extensions marketplace.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;state</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The extension's state. Possible values are: <code>"Approved"</code>, <code>"AssetsUploaded"</code>, <code>"Deleted"</code>, <code>"Deprecated"</code>, <code>"InReview"</code>, <code>"InTest"</code>, <code>"PendingAction"</code>, <code>"Rejected"</code>, <code>"Released"</code></td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;subscriptions_support_level</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Indicates whether the extension can view the user's subscription level on the channel that the extension is installed on. Possible values are: <code>"none"</code> - The extension can't view the user's subscription level. <code>"optional"</code> - The extension can view the user's subscription level.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;summary</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A short description of the extension that streamers see when hovering over the discovery splash screen in the Extensions manager.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;support_email</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The email address that users use to get support for the extension.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The extension's version number.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;viewer_summary</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>A brief description displayed on the channel to explain how the extension works.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;views</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes all views-related information such as how the extension is displayed on mobile devices.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;mobile</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes how the extension is displayed on mobile devices.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;viewer_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The HTML file that is shown to viewers on mobile devices. This page is presented to viewers as a panel behind the chat area of the mobile app.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;panel</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes how the extension is rendered if the extension may be activated as a panel extension.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The HTML file that is shown to viewers on the channel page when the extension is activated in a Panel slot.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;height</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The height, in pixels, of the panel component that the extension is rendered in.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension can link to non-Twitch domains.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;video_overlay</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes how the extension is rendered if the extension may be activated as a video-overlay extension.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The HTML file that is shown to viewers on the channel page when the extension is activated on the Video - Overlay slot.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension can link to non-Twitch domains.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;component</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes how the extension is rendered if the extension may be activated as a video-component extension.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The HTML file that is shown to viewers on the channel page when the extension is activated in a Video - Component slot.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_x</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The width value of the ratio (width : height) which determines the extension's width, and how the extension's iframe will resize in different video player environments.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;aspect_ratio_y</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The height value of the ratio (width : height) which determines the extension's height, and how the extension's iframe will resize in different video player environments.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;autoscale</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether to apply CSS zoom. If <code>true</code>, a CSS zoom is applied such that the size of the extension is variable but the inner dimensions are fixed based on Scale Pixels. This allows your extension to render as if it is of fixed width and height. If <code>false</code>, the inner dimensions of the extension iframe are variable, meaning your extension must implement responsiveness.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;scale_pixels</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The base width, in pixels, of the extension to use when scaling (see <code>autoscale</code>). This value is ignored if <code>autoscale</code> is <code>false</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;target_height</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The height as a percent of the maximum height of a video component extension. Values are between 1% - 100%.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension can link to non-Twitch domains.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;config</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>Describes the view that is shown to broadcasters while they are configuring your extension within the Extension Manager.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;viewer_url</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The HTML file shown to broadcasters while they are configuring your extension within the Extension Manager.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;can_link_external_content</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether the extension can link to non-Twitch domains.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;allowlisted_config_urls</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Allowlisted configuration URLs for displaying the extension (the allowlist is configured on Twitch's <a href="https://dev.twitch.tv/console/extensions">developer site</a> under the <strong>Extensions</strong> &gt; <strong>Extension</strong> &gt; <strong>Version</strong> &gt; <strong>Capabilities</strong>).</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;allowlisted_panel_urls</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a> of <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>Allowlisted panel URLs for displaying the extension (the allowlist is configured on Twitch's <a href="https://dev.twitch.tv/console/extensions">developer site</a> under the <strong>Extensions</strong> &gt; <strong>Extension</strong> &gt; <strong>Version</strong> &gt; <strong>Capabilities</strong>).</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_get_extension_bits_products">twitch_extensions_get_extension_bits_products</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-extension-bits-products">Get Extension Bits Products</a></p>
+<p>This function gets the list of Bits products that belongs to the extension. The client ID in the app access token identifies the extension.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_get_extension_bits_products(optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>should_include_all</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a> : A Boolean value that determines whether to include disabled or expired Bits products in the response. The default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>A list of Bits products that the extension created. The list is in ascending SKU order. The list is empty if the extension hasn't created any products or they're all expired or disabled.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;sku</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product's SKU. The SKU is unique across an extension's products.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;cost</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>a struct that contains the product's cost information.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;amount</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The product's price.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of currency. Possible values are: <code>"bits"</code></td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;in_development</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that indicates whether the product is in development. If <code>true</code>, the product is not available for public use.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product's name as displayed in the extension.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;expiration</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The date and time, in RFC3339 format, when the product expires.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;is_broadcast</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether Bits product purchase events are broadcast to all instances of an extension on a channel. The events are broadcast via the <code>onTransactionComplete</code> helper callback. Is <code>true</code> if the event is broadcast to all instances.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_extensions_update_extension_bits_product">twitch_extensions_update_extension_bits_product</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#update-extension-bits-product">Update Extension Bits Product</a></p>
+<p>This function adds or updates a Bits product that the extension created. If the SKU doesn't exist, the product is added. You may update all fields except the <code>sku</code> field.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_extensions_update_extension_bits_product(sku, cost, amount, type, display_name, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sku</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product's SKU. The SKU must be unique within an extension. The product's SKU cannot be changed. The SKU may contain only alphanumeric characters, dashes (-), underscores (_), and periods (.) and is limited to a maximum of 255 characters. No spaces.</td>
+</tr>
+<tr>
+<td>cost</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>A struct that contains the product's cost information.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The product's price.</td>
+</tr>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of currency. Possible values are: <code>"bits"</code> — The minimum price is 1 and the maximum is 10000.</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product's name as displayed in the extension. The maximum length is 255 characters.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>in_development</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a> : A Boolean value that indicates whether the product is in development. Set to <code>true</code> if the product is in development and not available for public use. The default is <code>false</code>.<br>- <code>expiration</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The date and time, in RFC3339 format, when the product expires. If not set, the product does not expire. To disable the product, set the expiration date to a date in the past.<br>- <code>is_broadcast</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a> : A Boolean value that determines whether Bits product purchase events are broadcast to all instances of the extension on a channel. The default is <code>false</code>.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>A list of Bits products that the extension created. The list is in ascending SKU order. The list is empty if the extension hasn't created any products or they're all expired or disabled.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;sku</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product's SKU. The SKU is unique across an extension's products.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;cost</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>A struct that contains the product's cost information.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;amount</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The product's price.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of currency. Possible values are:<code>"bits"</code></td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;in_development</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that indicates whether the product is in development. If <code>true</code>, the product is not available for public use.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;display_name</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The product's name as displayed in the extension.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;expiration</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The date and time, in RFC3339 format, when the product expires.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;is_broadcast</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Boolean</a></td>
+<td>A Boolean value that determines whether Bits product purchase events are broadcast to all instances of an extension on a channel. Is <code>true</code> if the event is broadcast to all instances.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="entitlements.html" class="btn btn-neutral float-left" title="Entitlements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="eventsub.html" class="btn btn-neutral float-right" title="EventSub">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2024</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-Twitch" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="entitlements.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="eventsub.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

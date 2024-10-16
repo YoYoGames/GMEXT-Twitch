@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>EventSub - GMEXT-Twitch</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+        <link href="assets/css/gmext_style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "EventSub";
+        var mkdocs_page_input_path = "eventsub.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/gml.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> GMEXT-Twitch
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="home.html">Twitch Extension</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ads.html">Ads</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="analytics.html">Analytics</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="auth.html">Auth</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="bits.html">Bits</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="channels.html">Channels</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="channel_points.html">Channel Points</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="charity.html">Charity</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="chat.html">Chat</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="clips.html">Clips</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="conduits.html">Conduits</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="ccls.html">CCLs (Content Classification Labels)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="entitlements.html">Entitlements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">EventSub</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="games.html">Games</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="goals.html">Goals</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="guest_star.html">Guest Star</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="hype_train.html">Hype Train</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="moderation.html">Moderation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="polls.html">Polls</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="predictions.html">Predictions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="raids.html">Raids</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="schedule.html">Schedule</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="search.html">Search</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="streams.html">Streams</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="subscriptions.html">Subscriptions</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="teams.html">Teams</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="users.html">Users</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="videos.html">Videos</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="whispers.html">Whispers</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">GMEXT-Twitch</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">EventSub</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/YoYoGames/GMEXT-Twitch/edit/master/docs/eventsub.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <p><a id="top"></a></p>
+<h1 id="eventsub"><strong>EventSub</strong></h1>
+<h2 id="functions">Functions</h2>
+<p>These are the functions of this module:</p>
+<ul>
+<li><a href="eventsub.html#twitch_eventsub_create_eventsub_subscription">twitch_eventsub_create_eventsub_subscription</a></li>
+<li><a href="eventsub.html#twitch_eventsub_delete_eventsub_subscription">twitch_eventsub_delete_eventsub_subscription</a></li>
+<li><a href="eventsub.html#twitch_eventsub_get_eventsub_subscriptions">twitch_eventsub_get_eventsub_subscriptions</a></li>
+<li><a href="eventsub.html#twitch_eventsub_live_connect">twitch_eventsub_live_connect</a></li>
+<li><a href="eventsub.html#twitch_eventsub_live_disconnect">twitch_eventsub_live_disconnect</a></li>
+</ul>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_eventsub_create_eventsub_subscription">twitch_eventsub_create_eventsub_subscription</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#create-eventsub-subscription">Create EventSub Subscription</a></p>
+<p>This function creates an EventSub subscription.</p>
+<p>If you use <a href="https://dev.twitch.tv/docs/eventsub/handling-webhook-events">webhooks to receive events</a>, the request must specify an app access token. The request will fail if you use a user access token. If the subscription type requires user authorization, the user must have granted your app (client ID) permissions to receive those events before you subscribe to them. For example, to subscribe to <a href="https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types/#channelsubscribe">channel.subscribe</a> events, your app must get a user access token that includes the <code>TWITCH_SCOPE_CHANNEL_READ_SUBSCRIPTIONS</code> scope, which adds the required permission to your app access token's client ID.</p>
+<p>If you use <a href="https://dev.twitch.tv/docs/eventsub/handling-websocket-events">WebSockets to receive events</a>, the request must specify a user access token. The request will fail if you use an app access token. If the subscription type requires user authorization, the token must include the required scope. However, if the subscription type doesn't include user authorization, the token may include any scopes or no scopes.</p>
+<p>If you use <a href="https://dev.twitch.tv/docs/eventsub/handling-conduit-events/">Conduits</a> to receive events, the request must specify an app access token. The request will fail if you use a user access token.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_eventsub_create_eventsub_subscription(type, version, condition, transport, method, optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The type of subscription to create. For a list of subscriptions that you can create, see&nbsp;<a href="https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#subscription-types">Subscription Types</a>. Set this field to the value in the&nbsp;<strong>Name</strong>&nbsp;column of the Subscription Types table.</td>
+</tr>
+<tr>
+<td>version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The version number that identifies the definition of the subscription type that you want the response to use.</td>
+</tr>
+<tr>
+<td>condition</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>A JSON object that contains the parameter values that are specific to the specified subscription type. For the object's required and optional fields, see the subscription type's documentation.</td>
+</tr>
+<tr>
+<td>transport</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The transport details that you want Twitch to use when sending you notifications.</td>
+</tr>
+<tr>
+<td>method</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The transport method.<br><br>Possible values are:<br><br>- <code>"webhook"</code><br>- <code>"websocket"</code><br>- <code>"conduit"</code><br><br>The demo project provides example code that shows how to use the <code>"websocket"</code> method. The other transports methods can also be used, though require additional setup. See <a href="https://dev.twitch.tv/docs/eventsub/handling-webhook-events/">Getting Events Using Webhook Callbacks</a> and <a href="https://dev.twitch.tv/docs/eventsub/handling-conduit-events/">Getting Events Using Conduits</a>.</td>
+</tr>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>callback</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The callback URL where the notifications are sent. The URL must use the HTTPS protocol and port 443. See&nbsp;<a href="https://dev.twitch.tv/docs/eventsub/handling-webhook-events#processing-an-event">Processing an event</a>. Specify this field only if <code>method</code> is set to <code>"webhook"</code>. <strong>NOTE</strong>: Redirects are not followed.<br>- <code>secret</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The secret used to verify the signature. The secret must be an ASCII string that's a minimum of 10 characters long and a maximum of 100 characters long. For information about how the secret is used, see&nbsp;<a href="https://dev.twitch.tv/docs/eventsub/handling-webhook-events#verifying-the-event-message">Verifying the event message</a>. Specify this field only if&nbsp;<code>method</code>&nbsp;is set to&nbsp;<code>"webhook"</code>.<br>- <code>session_id</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : An ID that identifies the WebSocket to send notifications to. When you connect to EventSub using WebSockets, the server returns the ID in the Welcome message. Specify this field only if&nbsp;<code>"method"</code>&nbsp;is set to&nbsp;<code>"websocket"</code>.<br>- <code>conduit_id</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : An ID that identifies the conduit to send notifications to. When you create a conduit, the server returns the conduit ID. Specify this field only if <code>method</code> is set to <code>"conduit"</code>.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>A list that contains the single subscription that you created.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the subscription.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The subscription's status. The subscriber receives events only for enabled subscriptions. Possible values are: <code>"enabled"</code> — The subscription is enabled. <code>"webhook_callback_verification_pending"</code> — The subscription is pending verification of the specified callback URL (see <a href="https://dev.twitch.tv/docs/eventsub/handling-webhook-events#responding-to-a-challenge-request">Responding to a challenge request</a>).</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The subscription's type. See <a href="https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#subscription-types">Subscription Types</a>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The version number that identifies this definition of the subscription's data.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;condition</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The subscription's parameter values. This is a string-encoded JSON object whose contents are determined by the subscription type.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;created_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The date and time (in RFC3339 format) of when the subscription was created.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;transport</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The transport details used to send the notifications.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;method</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The transport method. Possible values are: <code>"webhook"</code>, <code>"websocket"</code>, <code>"conduit"</code></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The callback URL where the notifications are sent. Included only if <code>method</code> is set to <code>"webhook"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;session_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the WebSocket that notifications are sent to. Included only if <code>method</code> is set to <code>"websocket"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;connected_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time that the WebSocket connection was established. Included only if method is set to <code>"websocket"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;conduit_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the conduit to send notifications to. Included only if method is set to <code>"conduit"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;cost</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The amount that the subscription counts against your limit. <a href="https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits">Learn More</a></td>
+</tr>
+<tr>
+<td>total</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The total number of subscriptions you've created.</td>
+</tr>
+<tr>
+<td>total_cost</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The sum of all of your subscription costs. <a href="https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits">Learn More</a></td>
+</tr>
+<tr>
+<td>max_total_cost</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum total cost that you're allowed to incur for all subscriptions you create.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_eventsub_delete_eventsub_subscription">twitch_eventsub_delete_eventsub_subscription</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#delete-eventsub-subscription">Delete EventSub Subscription</a></p>
+<p>This function deletes an EventSub subscription.</p>
+<p>If you use <a href="https://dev.twitch.tv/docs/eventsub/handling-webhook-events">webhooks to receive events</a>, the request must specify an app access token. The request will fail if you use a user access token.</p>
+<p>If you use <a href="https://dev.twitch.tv/docs/eventsub/handling-websocket-events">WebSockets to receive events</a>, the request must specify a user access token. The request will fail if you use an app access token. The token may include any scopes.</p>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_eventsub_delete_eventsub_subscription(id, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The ID of the subscription to delete.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>This method is triggered on success. It has no response body.</p>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_eventsub_get_eventsub_subscriptions">twitch_eventsub_get_eventsub_subscriptions</h1>
+<p><strong>Twitch Endpoint:</strong> <a href="https://dev.twitch.tv/docs/api/reference/#get-eventsub-subscriptions">Get EventSub Subscriptions</a></p>
+<p>This function gets a list of EventSub subscriptions that the client in the access token created.</p>
+<p>If you use Webhooks or Conduits to receive events, the request must specify an app access token. The request will fail if you use a user access token.</p>
+<p>If you use WebSockets to receive events, the request must specify a user access token. The request will fail if you use an app access token. The token may include any scopes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Use the <code>status</code>, <code>type</code>, and <code>user_id</code> parameters to filter the list of subscriptions that are returned. The filters are mutually exclusive; the request fails if you specify more than one filter.</p>
+</div>
+<p>This function operates asynchronously, which means that it does not immediately return the requested result. Instead, upon completion of the task, it will trigger the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a>, or <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a>.</p>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_eventsub_get_eventsub_subscriptions(optionals, callback_success, callback_failed)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>optionals</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The optional parameters to be passed into the function:<br><br>- <code>status</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : Filter subscriptions by its status. Possible values are: <code>"enabled"</code> — The subscription is enabled. <code>"webhook_callback_verification_pending"</code> — The subscription is pending verification of the specified callback URL. <code>"webhook_callback_verification_failed"</code> — The specified callback URL failed verification. <code>"notification_failures_exceeded"</code> — The notification delivery failure rate was too high. <code>"authorization_revoked"</code> — The authorization was revoked for one or more users specified in the <strong>Condition* object. <code>"moderator_removed"</code> — The moderator that authorized the subscription is no longer one of the broadcaster's moderators. <code>"user_removed"</code> — One of the users specified in the </strong>Condition<strong> object was removed. <code>"chat_user_banned"</code> - The user specified in the </strong>Condition<strong> object was banned from the broadcaster's chat. <code>"version_removed"</code> — The subscription to subscription type and version is no longer supported. <code>"beta_maintenance"</code> — The subscription to the beta subscription type was removed due to maintenance. <code>"websocket_disconnected"</code> — The client closed the connection. <code>"websocket_failed_ping_pong"</code> — The client failed to respond to a ping message. <code>"websocket_received_inbound_traffic"</code> — The client sent a non-pong message. Clients may only send pong messages (and only in response to a ping message). <code>"websocket_connection_unused"</code> — The client failed to subscribe to events within the required time. <code>"websocket_internal_error"</code> — The Twitch WebSocket server experienced an unexpected error. <code>"websocket_network_timeout"</code> — The Twitch WebSocket server timed out writing the message to the client. <code>"websocket_network_error"</code> — The Twitch WebSocket server experienced a network error writing the message to the client. <code>"websocket_failed_to_reconnect"</code> - The client failed to reconnect to the Twitch WebSocket server within the required time after a Reconnect Message.<br>- <code>type</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : Filter subscriptions by subscription type. For a list of subscription types, see <a href="https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#subscription-types">Subscription Types</a>.<br>- <code>user_id</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : Filter subscriptions by user ID. The response contains subscriptions where this ID matches a user ID that you specified in the </strong>Condition** object when you <a href="https://dev.twitch.tv/docs/api/reference#create-eventsub-subscription">created the subscription</a>.<br>- <code>after</code> : <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a> : The cursor used to get the next page of results. The <code>pagination</code> struct in the response contains the cursor's value.</td>
+</tr>
+<tr>
+<td>callback_success</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request succeeded</td>
+</tr>
+<tr>
+<td>callback_failed</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>Triggered if the request failed</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><strong>Triggers:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Success Callback</a></p>
+</blockquote>
+<p>These members are returned in the success callback:</p>
+<table>
+<thead>
+<tr>
+<th>Member</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Arrays.htm">Array</a></td>
+<td>The list of subscriptions. The list is ordered by the oldest subscription first. The list is empty if the client hasn't created subscriptions or there are no subscriptions that match the specified filter criteria.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the subscription.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;status</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The subscription's status. The subscriber receives events only for <strong>enabled</strong> subscriptions. Possible values are: <code>"enabled"</code> — The subscription is enabled. <code>"webhook_callback_verification_pending"</code> — The subscription is pending verification of the specified callback URL. <code>"webhook_callback_verification_failed"</code> — The specified callback URL failed verification. <code>"notification_failures_exceeded"</code> — The notification delivery failure rate was too high. <code>"authorization_revoked"</code> — The authorization was revoked for one or more users specified in the <strong>Condition</strong> object. <code>"moderator_removed"</code> — The moderator that authorized the subscription is no longer one of the broadcaster's moderators. <code>"user_removed"</code> — One of the users specified in the <strong>Condition</strong> object was removed. <code>"version_removed"</code> — The subscription to subscription type and version is no longer supported. <code>"beta_maintenance"</code> — The subscription to the beta subscription type was removed due to maintenance. <code>"websocket_disconnected"</code> — The client closed the connection. <code>"websocket_failed_ping_pong"</code> — The client failed to respond to a ping message. <code>"websocket_received_inbound_traffic"</code> — The client sent a non-pong message. Clients may only send pong messages (and only in response to a ping message). <code>"websocket_connection_unused"</code> — The client failed to subscribe to events within the required time. <code>"websocket_internal_error"</code> — The Twitch WebSocket server experienced an unexpected error. <code>"websocket_network_timeout"</code> — The Twitch WebSocket server timed out writing the message to the client. <code>"websocket_network_error"</code> — The Twitch WebSocket server experienced a network error writing the message to the client.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;type</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The subscription's type. See <a href="https://dev.twitch.tv/docs/eventsub/eventsub-subscription-types#subscription-types">Subscription Types</a>.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;version</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The version number that identifies this definition of the subscription's data.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;condition</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The subscription's parameter values. This is a string-encoded JSON object whose contents are determined by the subscription type.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;created_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The date and time (in RFC3339 format) of when the subscription was created.</td>
+</tr>
+<tr>
+<td>&nbsp;├──&nbsp;transport</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>The transport details used to send the notifications.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;method</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The transport method. Possible values are: <code>"webhook"</code>, <code>"websocket"</code></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The callback URL where the notifications are sent. Included only if <code>method</code> is set to <code>"webhook"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;session_id</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>An ID that identifies the WebSocket that notifications are sent to. Included only if <code>method</code> is set to <code>"websocket"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├──&nbsp;connected_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time that the WebSocket connection was established. Included only if <code>method</code> is set to <code>"websocket"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└──&nbsp;disconnected_at</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The UTC date and time that the WebSocket connection was lost. Included only if <code>method</code> is set to <code>"websocket"</code>.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;cost</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The amount that the subscription counts against your limit. <a href="https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits">Learn More</a></td>
+</tr>
+<tr>
+<td>total</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The total number of subscriptions that you've created.</td>
+</tr>
+<tr>
+<td>total_cost</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The sum of all of your subscription costs. <a href="https://dev.twitch.tv/docs/eventsub/manage-subscriptions/#subscription-limits">Learn More</a></td>
+</tr>
+<tr>
+<td>max_total_cost</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></td>
+<td>The maximum total cost that you're allowed to incur for all subscriptions that you create.</td>
+</tr>
+<tr>
+<td>pagination</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Structs.htm">Struct</a></td>
+<td>a struct that contains the cursor used to get the next page of subscriptions. The struct is empty if there are no more pages to get. The number of subscriptions returned per page is undertermined.</td>
+</tr>
+<tr>
+<td>&nbsp;└──&nbsp;cursor</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Strings/Strings.htm">String</a></td>
+<td>The cursor value that you set the <code>after</code> parameter to.</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Method_Variables.htm">Failure Callback</a></p>
+</blockquote>
+<p>This method is triggered on failure.</p>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_eventsub_live_connect">twitch_eventsub_live_connect</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function creates a connection to be used with the <code>"websocket"</code> transport method of the EventSub functions.</p>
+<p>The function takes a callback function with a single parameter: the <a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Reference/Buffers/Buffers.htm">Buffer</a> that holds the received data.</p>
+<pre class="highlight"><code class="language-gml">eventsub_callback = function(_buffer)
+{
+    var _eventsub_str = buffer_read(_buffer, buffer_string);
+    var _data = json_parse(_eventsub_str);
+
+    switch(_data.metadata.message_type)
+    {
+        // Process different message types in a switch statement
+        // ...
+    }
+}</code></pre>
+<p>This connection receives several types of message that should be handled correctly. See <a href="https://dev.twitch.tv/docs/eventsub/handling-websocket-events/">Handling WebSocket Events</a>.
+See the demo project for a complete code example.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ping-pong messages are handled automatically by GameMaker.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_eventsub_live_connect(callback)</code></pre>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Script_Functions.htm">Function</a></td>
+<td>The callback function that's called when data is received on the network socket</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p><a href="https://manual.gamemaker.io/monthly/en/GameMaker_Language/GML_Overview/Data_Types.htm">Real</a></p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<hr />
+<p align="right"><a href="#top">Back To Top</a></p>
+
+<h1 id="twitch_eventsub_live_disconnect">twitch_eventsub_live_disconnect</h1>
+<p><strong>Twitch Endpoint:</strong> N / A</p>
+<p>This function disconnects from the connection set up earlier using <a href="eventsub.html#twitch_eventsub_live_connect">twitch_eventsub_live_connect</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function frees the underlying web socket and must be called when you're finished using the connection to prevent a memory leak.</p>
+</div>
+<p><br></p>
+<p><strong>Syntax:</strong></p>
+<blockquote>
+<pre class="highlight"><code class="language-gml">twitch_eventsub_live_disconnect()</code></pre>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><strong>Returns:</strong></p>
+<blockquote>
+<p>N/A</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="extensions.html" class="btn btn-neutral float-left" title="Extensions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="games.html" class="btn btn-neutral float-right" title="Games">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p><p align="center">GameMaker 2024</p></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/YoYoGames/GMEXT-Twitch" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="extensions.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="games.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/gml.min.js"></script>
+      <script src="assets/js/gmext_script.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
