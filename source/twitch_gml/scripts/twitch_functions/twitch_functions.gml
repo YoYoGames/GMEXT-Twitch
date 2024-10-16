@@ -448,7 +448,7 @@ function twitch_ads_snooze_next_ad(_broadcaster_id, _callback_success = undefine
 
 // ## ANALYTICS ################################################
 
-function twitch_analytics_get_extension_analytics(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_analytics_get_extension_analytics(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/analytics/extensions";
 
@@ -462,7 +462,7 @@ function twitch_analytics_get_extension_analytics(_optionals = {}, _callback_suc
 	return _request;
 };
 
-function twitch_analytics_get_game_analytics(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_analytics_get_game_analytics(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/analytics/games";
 
@@ -478,7 +478,7 @@ function twitch_analytics_get_game_analytics(_optionals = {}, _callback_success 
 
 // ## BITS #####################################################
 
-function twitch_bits_get_bits_leaderboard(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_bits_get_bits_leaderboard(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/bits/leaderboard";
 
@@ -492,7 +492,7 @@ function twitch_bits_get_bits_leaderboard(_optionals = {}, _callback_success = u
 	return _request;
 };
 
-function twitch_bits_get_cheermotes(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_bits_get_cheermotes(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/bits/cheermotes";
 
@@ -506,7 +506,7 @@ function twitch_bits_get_cheermotes(_optionals = {}, _callback_success = undefin
 	return _request;
 };
 
-function twitch_bits_get_extension_transactions(_extension_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_bits_get_extension_transactions(_extension_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/extensions/transactions";
 
@@ -540,7 +540,7 @@ function twitch_channels_get_channel_information(_broadcaster_id, _callback_succ
 	return _request;
 };
 
-function twitch_channels_modify_channel_information(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_channels_modify_channel_information(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/channels";
 
@@ -573,7 +573,7 @@ function twitch_channels_get_channel_editors(_broadcaster_id, _callback_success 
 	return _request;
 };
 
-function twitch_channels_get_followed_channels(_user_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_channels_get_followed_channels(_user_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/channels/followed";
 
@@ -589,7 +589,7 @@ function twitch_channels_get_followed_channels(_user_id, _optionals = {}, _callb
 	return _request;
 };
 
-function twitch_channels_get_channel_followers(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_channels_get_channel_followers(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/channels/followers";
 
@@ -598,11 +598,9 @@ function twitch_channels_get_channel_followers(_broadcaster_id, _optionals = {},
 	_header_map[? "Client-Id"] = twitch_get_client_id();
 	_header_map[? "Content-Type"] = "application/json";
 
-	var _body = _optionals;
-
 	var _parameters = { broadcaster_id: _broadcaster_id };
 	
-	_url = __twitch_url_from_params(_url, _parameters);
+	_url = __twitch_url_from_params(_url, _parameters, _optionals);
 	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
 
 	return _request;
@@ -610,7 +608,7 @@ function twitch_channels_get_channel_followers(_broadcaster_id, _optionals = {},
 
 // ## CHANNEL POINTS ###########################################
 
-function twitch_channel_points_create_custom_rewards(_broadcaster_id, _title, _cost, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_channel_points_create_custom_rewards(_broadcaster_id, _title, _cost, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/channel_points/custom_rewards";
 
@@ -647,7 +645,7 @@ function twitch_channel_points_delete_custom_reward(_broadcaster_id, _id, _callb
 	return _request;
 };
 
-function twitch_channel_points_get_custom_reward(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_channel_points_get_custom_reward(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/channel_points/custom_rewards";
 
@@ -663,7 +661,7 @@ function twitch_channel_points_get_custom_reward(_broadcaster_id, _optionals = {
 	return _request;
 };
 
-function twitch_channel_points_get_custom_reward_redemption(_broadcaster_id, _reward_id, _status, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_channel_points_get_custom_reward_redemption(_broadcaster_id, _reward_id, _status, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/channel_points/custom_rewards/redemptions";
 
@@ -672,7 +670,7 @@ function twitch_channel_points_get_custom_reward_redemption(_broadcaster_id, _re
 	_header_map[? "Client-Id"] = twitch_get_client_id();
 	_header_map[? "Content-Type"] = "application/json";
 
-	var _body = _optionals;
+	var _body = _optionals ?? {};
 
 	var _parameters = { broadcaster_id: _broadcaster_id, reward_id: _reward_id, status: _status };
 	_url = __twitch_url_from_params(_url, _parameters);
@@ -682,7 +680,7 @@ function twitch_channel_points_get_custom_reward_redemption(_broadcaster_id, _re
 	return _request;
 };
 
-function twitch_channel_points_update_custom_reward(_broadcaster_id, _id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_channel_points_update_custom_reward(_broadcaster_id, _id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/channel_points/custom_rewards";
 
@@ -691,7 +689,7 @@ function twitch_channel_points_update_custom_reward(_broadcaster_id, _id, _optio
 	_header_map[? "Client-Id"] = twitch_get_client_id();
 	_header_map[? "Content-Type"] = "application/json";
 
-	var _body = _optionals;
+	var _body = _optionals ?? {};
 
 	var _parameters = { broadcaster_id: _broadcaster_id, id: _id };
 	
@@ -738,7 +736,7 @@ function twitch_charity_get_charity_campaign(_broadcaster_id, _callback_success 
 	return _request;
 };
 
-function twitch_charity_get_charity_campaign_donations(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_charity_get_charity_campaign_donations(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/charity/donations";
 
@@ -754,7 +752,7 @@ function twitch_charity_get_charity_campaign_donations(_broadcaster_id, _optiona
 	return _request;
 };
 
-function twitch_charity_get_chatters(_broadcaster_id, _moderator_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_charity_get_chatters(_broadcaster_id, _moderator_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/chat/chatters";
 
@@ -771,6 +769,22 @@ function twitch_charity_get_chatters(_broadcaster_id, _moderator_id, _optionals 
 };
 
 // ## CHAT #####################################################
+
+function twitch_chat_get_chatters(_broadcaster_id, _moderator_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
+{
+	var _url = $"{TWITCH_ENDPOINT}helix/chat/chatters";
+
+	var _header_map = ds_map_create();
+	_header_map[? "Authorization"] = $"Bearer {twitch_get_access_token()}"
+	_header_map[? "Client-Id"] = twitch_get_client_id();
+
+	var _parameters = { broadcaster_id: _broadcaster_id, moderator_id: _moderator_id };
+	
+	_url = __twitch_url_from_params(_url, _parameters, _optionals);
+	var _request = __twitch_request(_url, "GET", _header_map, "", _callback_success, _callback_failed, _GMFUNCTION_);
+
+	return _request;
+};
 
 function twitch_chat_get_channel_emotes(_broadcaster_id, _callback_success = undefined, _callback_failed = undefined)
 {
@@ -847,7 +861,7 @@ function twitch_chat_get_global_chat_badges(_callback_success = undefined, _call
 	return _request;
 };
 
-function twitch_chat_get_chat_settings(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_chat_get_chat_settings(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/chat/settings";
 
@@ -864,7 +878,7 @@ function twitch_chat_get_chat_settings(_broadcaster_id, _optionals = {}, _callba
 	return _request;
 };
 
-function twitch_chat_get_user_emotes(_user_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_chat_get_user_emotes(_user_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/chat/emotes/user";
 
@@ -880,7 +894,7 @@ function twitch_chat_get_user_emotes(_user_id, _optionals = {}, _callback_succes
 	return _request;
 };
 
-function twitch_chat_update_chat_settings(_broadcaster_id, _moderator_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_chat_update_chat_settings(_broadcaster_id, _moderator_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/chat/settings";
 
@@ -889,15 +903,17 @@ function twitch_chat_update_chat_settings(_broadcaster_id, _moderator_id, _optio
 	_header_map[? "Client-Id"] = twitch_get_client_id();
 	_header_map[? "Content-Type"] = "application/json";
 
+	var _body = _optionals ?? {};
+
 	var _parameters = { broadcaster_id: _broadcaster_id, moderator_id: _moderator_id };
 
 	_url = __twitch_url_from_params(_url, _parameters);
-	var _request = __twitch_request(_url, "PATCH", _header_map, json_stringify(_optionals), _callback_success, _callback_failed, _GMFUNCTION_);
+	var _request = __twitch_request(_url, "PATCH", _header_map, json_stringify(_body), _callback_success, _callback_failed, _GMFUNCTION_);
 
 	return _request;
 };
 
-function twitch_chat_send_chat_announcement(_broadcaster_id, _moderator_id, _message, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_chat_send_chat_announcement(_broadcaster_id, _moderator_id, _message, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/chat/announcements";
 
@@ -937,7 +953,7 @@ function twitch_chat_send_a_shoutout(_from_broadcaster_id, _to_broadcaster_id, _
 	return _request;
 };
 
-function twitch_chat_send_chat_message(_broadcaster_id, _sender_id, _message, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_chat_send_chat_message(_broadcaster_id, _sender_id, _message, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/chat/messages";
 
@@ -1049,7 +1065,7 @@ function twitch_chat_live_disconnect()
 
 // ## CLIPS ####################################################
 
-function twitch_clips_create_clip(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_clips_create_clip(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/clips";
 
@@ -1065,7 +1081,7 @@ function twitch_clips_create_clip(_broadcaster_id, _optionals = {}, _callback_su
 	return _request;
 };
 
-function twitch_clips_get_clips(_broadcaster_id, _game_id, _id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_clips_get_clips(_broadcaster_id, _game_id, _id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/clips";
 
@@ -1143,7 +1159,7 @@ function twitch_conduits_delete_conduit(_id, _callback_success = undefined, _cal
 	return _request;
 };
 
-function twitch_conduits_get_conduit_shards(_conduit_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_conduits_get_conduit_shards(_conduit_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/eventsub/conduits/shards";
 
@@ -1159,7 +1175,7 @@ function twitch_conduits_get_conduit_shards(_conduit_id, _optionals = {}, _callb
 	return _request;
 };
 
-function twitch_conduits_update_conduit_shards(_conduit_id, _shards, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_conduits_update_conduit_shards(_conduit_id, _shards, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/eventsub/conduits/shards";
 
@@ -1169,6 +1185,7 @@ function twitch_conduits_update_conduit_shards(_conduit_id, _shards, _optionals 
 	_header_map[? "Content-Type"] = "application/json";
 
 	var _body = { conduit_id: _conduit_id, shards: _shards };
+	_body = __twitch_struct_merge(_body, _optionals);
 
 	var _request = __twitch_request(_url, "PATCH", _header_map, json_stringify(_body), _callback_success, _callback_failed, _GMFUNCTION_);
 
@@ -1177,7 +1194,7 @@ function twitch_conduits_update_conduit_shards(_conduit_id, _shards, _optionals 
 
 // ## CCLS #####################################################
 
-function twitch_ccls_get_content_classification_labels(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_ccls_get_content_classification_labels(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/content_classification_labels";
 
@@ -1193,7 +1210,7 @@ function twitch_ccls_get_content_classification_labels(_optionals = {}, _callbac
 
 // ## ENTITLEMENTS #############################################
 
-function twitch_entitlements_get_drops_entitlements(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_entitlements_get_drops_entitlements(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/entitlements/drops";
 
@@ -1207,7 +1224,7 @@ function twitch_entitlements_get_drops_entitlements(_optionals = {}, _callback_s
 	return _request;
 };
 
-function twitch_entitlements_update_drops_entitlements(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_entitlements_update_drops_entitlements(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/entitlements/drops";
 
@@ -1216,7 +1233,7 @@ function twitch_entitlements_update_drops_entitlements(_optionals = {}, _callbac
 	_header_map[? "Client-Id"] = twitch_get_client_id();
 	_header_map[? "Content-Type"] = "application/json";
 
-	var _body = _optionals;
+	var _body = _optionals ?? {};
 
 	var _request = __twitch_request(_url, "PATCH", _header_map, json_stringify(_body), _callback_success, _callback_failed, _GMFUNCTION_);
 
@@ -1546,7 +1563,7 @@ function twitch_extensions_create_jwt_token(_secret, _payload = {}) {
 	return $"{_encoded_header}.{_encoded_payload}.{_signature_base64_url}";
 }
 
-function twitch_extensions_get_extension_configuration_segment(_jwt_token, _extension_id, _segment, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_extensions_get_extension_configuration_segment(_jwt_token, _extension_id, _segment, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {	
 	var _url = $"{TWITCH_ENDPOINT}helix/extensions/configurations";
 
@@ -1562,7 +1579,7 @@ function twitch_extensions_get_extension_configuration_segment(_jwt_token, _exte
 	return _request;
 }
 
-function twitch_extensions_set_extension_configuration_segment(_jwt_token, _extension_id, _segment, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_extensions_set_extension_configuration_segment(_jwt_token, _extension_id, _segment, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/extensions/configurations";
 
@@ -1595,7 +1612,7 @@ function twitch_extensions_set_extension_required_configuration(_jwt_token, _bro
 	return _request;
 }
 
-function twitch_extensions_send_extension_pubsub_message(_jwt_token, _target, _broadcaster_id, _message, _optionals = {}, _callback_success = undefined, _callback_failed = undefined) 
+function twitch_extensions_send_extension_pubsub_message(_jwt_token, _target, _broadcaster_id, _message, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined) 
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/extensions/pubsub";
 
@@ -1612,7 +1629,7 @@ function twitch_extensions_send_extension_pubsub_message(_jwt_token, _target, _b
 	return _request;
 }
 
-function twitch_extensions_get_extension_live_channels(_extension_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_extensions_get_extension_live_channels(_extension_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/extensions/live";
 
@@ -1644,7 +1661,7 @@ function twitch_extensions_get_extension_secrets(_jwt_token, _extension_id, _cal
 	return _request;
 }
 
-function twitch_extensions_create_extension_secret(_jwt_token, _extension_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_extensions_create_extension_secret(_jwt_token, _extension_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/extensions/jwt/secrets";
 
@@ -1677,7 +1694,7 @@ function twitch_extensions_send_extension_chat_message(_jwt_token, _broadcaster_
 	return _request
 }
 
-function twitch_extensions_get_extensions(_jwt_token, _extension_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_extensions_get_extensions(_jwt_token, _extension_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/extensions";
 
@@ -1693,7 +1710,7 @@ function twitch_extensions_get_extensions(_jwt_token, _extension_id, _optionals 
 	return _request
 }
 
-function twitch_extensions_get_released_extensions(_extension_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_extensions_get_released_extensions(_extension_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/extensions/released";
 
@@ -1709,7 +1726,7 @@ function twitch_extensions_get_released_extensions(_extension_id, _optionals = {
 	return _request
 }
 
-function twitch_extensions_get_extension_bits_products(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_extensions_get_extension_bits_products(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/bits/extensions";
 
@@ -1723,7 +1740,7 @@ function twitch_extensions_get_extension_bits_products(_optionals = {}, _callbac
 	return _request
 }
 
-function twitch_extensions_update_extension_bits_product(_sku, _cost, _display_name, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_extensions_update_extension_bits_product(_sku, _cost, _display_name, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/bits/extensions";
 
@@ -1741,7 +1758,7 @@ function twitch_extensions_update_extension_bits_product(_sku, _cost, _display_n
 
 // ## EVENTSUB #################################################
 
-function twitch_eventsub_create_eventsub_subscription(_type, _version, _condition, _transport, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_eventsub_create_eventsub_subscription(_type, _version, _condition, _transport, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/eventsub/subscriptions";
 
@@ -1779,7 +1796,7 @@ function twitch_eventsub_delete_eventsub_subscription(_id, _callback_success = u
 	return _request;
 };
 
-function twitch_eventsub_get_eventsub_subscriptions(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_eventsub_get_eventsub_subscriptions(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/eventsub/subscriptions";
 
@@ -1833,7 +1850,7 @@ function twitch_eventsub_live_disconnect()
 
 // ## GAMES ####################################################
 
-function twitch_games_get_top_games(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_games_get_top_games(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/games/top";
 
@@ -1899,7 +1916,7 @@ function twitch_guest_star_get_channel_guest_star_settings(_broadcaster_id, _mod
 	return _request;
 };
 
-function twitch_guest_star_update_channel_guest_star_settings(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_update_channel_guest_star_settings(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/channel_settings";
 
@@ -1908,7 +1925,7 @@ function twitch_guest_star_update_channel_guest_star_settings(_broadcaster_id, _
 	_header_map[? "Client-Id"] = twitch_get_client_id();
 	_header_map[? "Content-Type"] = "application/json";
 
-	var _body = _optionals;
+	var _body = _optionals ?? {};
 	var _parameters = { broadcaster_id: _broadcaster_id };
 
 	_url = __twitch_url_from_params(_url, _parameters);
@@ -2045,7 +2062,7 @@ function twitch_guest_star_update_guest_star_slot(_broadcaster_id, _moderator_id
 	return _request;
 };
 
-function twitch_guest_star_delete_guest_star_slot(_broadcaster_id, _moderator_id, _session_id, _guest_id, _slot_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_delete_guest_star_slot(_broadcaster_id, _moderator_id, _session_id, _guest_id, _slot_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/slot";
 
@@ -2061,7 +2078,7 @@ function twitch_guest_star_delete_guest_star_slot(_broadcaster_id, _moderator_id
 	return _request;
 };
 
-function twitch_guest_star_update_guest_star_slot_settings(_broadcaster_id, _moderator_id, _session_id, _guest_id, _slot_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_guest_star_update_guest_star_slot_settings(_broadcaster_id, _moderator_id, _session_id, _guest_id, _slot_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/guest_star/slot_settings";
 
@@ -2079,7 +2096,7 @@ function twitch_guest_star_update_guest_star_slot_settings(_broadcaster_id, _mod
 
 // ## HYPE TRAIN ###############################################
 
-function twitch_hype_train_get_hype_train_events(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_hype_train_get_hype_train_events(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/hypetrain/events";
 
@@ -2166,7 +2183,7 @@ function twitch_moderation_update_automod_settings(_broadcaster_id, _moderator_i
 	return _request;
 };
 
-function twitch_moderation_get_banned_users(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_moderation_get_banned_users(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/moderation/banned";
 
@@ -2215,7 +2232,7 @@ function twitch_moderation_unban_user(_broadcaster_id, _moderator_id, _user_id, 
 	return _request;
 };
 
-function twitch_moderation_get_unban_requests(_broadcaster_id, _moderator_id, _status, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_moderation_get_unban_requests(_broadcaster_id, _moderator_id, _status, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/moderation/unban_requests";
 
@@ -2231,7 +2248,7 @@ function twitch_moderation_get_unban_requests(_broadcaster_id, _moderator_id, _s
 	return _request;
 };
 
-function twitch_moderation_resolve_unban_requests(_broadcaster_id, _moderator_id, _unban_request_id, _status, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_moderation_resolve_unban_requests(_broadcaster_id, _moderator_id, _unban_request_id, _status, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/moderation/unban_requests";
 
@@ -2247,7 +2264,7 @@ function twitch_moderation_resolve_unban_requests(_broadcaster_id, _moderator_id
 	return _request;
 };
 
-function twitch_moderation_get_blocked_terms(_broadcaster_id, _moderator_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_moderation_get_blocked_terms(_broadcaster_id, _moderator_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/moderation/blocked_terms";
 
@@ -2297,7 +2314,7 @@ function twitch_moderation_remove_blocked_term(_broadcaster_id, _moderator_id, _
 	return _request;
 };
 
-function twitch_moderation_delete_chat_messages(_broadcaster_id, _moderator_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_moderation_delete_chat_messages(_broadcaster_id, _moderator_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/moderation/chat";
 
@@ -2313,7 +2330,7 @@ function twitch_moderation_delete_chat_messages(_broadcaster_id, _moderator_id, 
 	return _request;
 };
 
-function twitch_moderation_get_moderated_channels(_user_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_moderation_get_moderated_channels(_user_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/moderation/channels";
 
@@ -2329,7 +2346,7 @@ function twitch_moderation_get_moderated_channels(_user_id, _optionals = {}, _ca
 	return _request;
 };
 
-function twitch_moderation_get_moderators(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_moderation_get_moderators(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/moderation/moderators";
 
@@ -2377,7 +2394,7 @@ function twitch_moderation_remove_channel_moderator(_broadcaster_id, _user_id, _
 	return _request;
 };
 
-function twitch_moderation_get_vips(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_moderation_get_vips(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/channels/vips";
 
@@ -2479,7 +2496,7 @@ function twitch_moderation_warn_chat_user(_broadcaster_id, _moderator_id, _data,
 
 // ## POLLS ####################################################
 
-function twitch_polls_get_polls(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_polls_get_polls(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/polls";
 
@@ -2495,7 +2512,7 @@ function twitch_polls_get_polls(_broadcaster_id, _optionals = {}, _callback_succ
 	return _request;
 };
 
-function twitch_polls_create_poll(_broadcaster_id, _title, _choices, _duration, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_polls_create_poll(_broadcaster_id, _title, _choices, _duration, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/polls";
 
@@ -2530,7 +2547,7 @@ function twitch_polls_end_poll(_broadcaster_id, _id, _status, _callback_success 
 
 // ## PREDICTIONS ##############################################
 
-function twitch_predictions_get_predictions(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_predictions_get_predictions(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/predictions";
 
@@ -2562,7 +2579,7 @@ function twitch_predictions_create_prediction(_broadcaster_id, _title, _outcomes
 	return _request;
 };
 
-function twitch_predictions_end_prediction(_broadcaster_id, _id, _status, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_predictions_end_prediction(_broadcaster_id, _id, _status, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/predictions";
 
@@ -2614,7 +2631,7 @@ function twitch_raids_cancel_a_raid(_broadcaster_id, _callback_success = undefin
 
 // ## SCHEDULE #################################################
 
-function twitch_schedule_get_channel_stream_schedule(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_schedule_get_channel_stream_schedule(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/schedule";
 
@@ -2662,7 +2679,7 @@ function twitch_schedule_update_channel_stream_schedule(_broadcaster_id, _callba
 	return _request;
 };
 
-function twitch_schedule_create_channel_stream_schedule_segment(_broadcaster_id, _start_time, _timezone, _duration, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_schedule_create_channel_stream_schedule_segment(_broadcaster_id, _start_time, _timezone, _duration, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/schedule/segment";
 
@@ -2681,7 +2698,7 @@ function twitch_schedule_create_channel_stream_schedule_segment(_broadcaster_id,
 	return _request;
 };
 
-function twitch_schedule_update_channel_stream_schedule_segment(_broadcaster_id, _id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_schedule_update_channel_stream_schedule_segment(_broadcaster_id, _id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/schedule/segment";
 
@@ -2690,7 +2707,7 @@ function twitch_schedule_update_channel_stream_schedule_segment(_broadcaster_id,
 	_header_map[? "Client-Id"] = twitch_get_client_id();
 	_header_map[? "Content-Type"] = "application/json";
 
-	var _body = _optionals;
+	var _body = _optionals ?? {};
 	var _parameters = { broadcaster_id: _broadcaster_id, id: _id };
 
 	_url = __twitch_url_from_params(_url, _parameters);
@@ -2717,7 +2734,7 @@ function twitch_schedule_delete_channel_stream_schedule_segment(_broadcaster_id,
 
 // ## SEARCH ###################################################
 
-function twitch_search_categories(_query, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_search_categories(_query, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/search/categories";
 
@@ -2733,7 +2750,7 @@ function twitch_search_categories(_query, _optionals = {}, _callback_success = u
 	return _request;
 };
 
-function twitch_search_channels(_query, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_search_channels(_query, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/search/channels";
 
@@ -2767,7 +2784,7 @@ function twitch_streams_get_stream_key(_broadcaster_id, _callback_success = unde
 	return _request;
 };
 
-function twitch_streams_get_streams(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_streams_get_streams(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/streams";
 
@@ -2781,7 +2798,7 @@ function twitch_streams_get_streams(_optionals = {}, _callback_success = undefin
 	return _request;
 };
 
-function twitch_streams_get_followed_streams(_user_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_streams_get_followed_streams(_user_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/streams/followed";
 
@@ -2797,7 +2814,7 @@ function twitch_streams_get_followed_streams(_user_id, _optionals = {}, _callbac
 	return _request;
 };
 
-function twitch_streams_create_stream_marker(_user_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_streams_create_stream_marker(_user_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/streams/markers";
 
@@ -2814,7 +2831,7 @@ function twitch_streams_create_stream_marker(_user_id, _optionals = {}, _callbac
 	return _request;
 };
 
-function twitch_streams_get_stream_markers(_user_id, _video_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_streams_get_stream_markers(_user_id, _video_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/streams/markers";
 
@@ -2832,7 +2849,7 @@ function twitch_streams_get_stream_markers(_user_id, _video_id, _optionals = {},
 
 // ## SUBSCRIPTIONS ############################################
 
-function twitch_subscriptions_get_broadcaster_subscriptions(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_subscriptions_get_broadcaster_subscriptions(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/subscriptions";
 
@@ -2907,7 +2924,7 @@ function twitch_users_get_user()
 	}
 };
 
-function twitch_users_get_users(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_users_get_users(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/users";
 
@@ -2921,7 +2938,7 @@ function twitch_users_get_users(_optionals = {}, _callback_success = undefined, 
 	return _request;
 };
 
-function twitch_users_update_user(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_users_update_user(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/users";
 
@@ -2946,7 +2963,7 @@ function twitch_users_update_user(_optionals = {}, _callback_success = undefined
 	return _request;
 };
 
-function twitch_users_get_user_block_list(_broadcaster_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_users_get_user_block_list(_broadcaster_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/users/blocks";
 
@@ -2962,7 +2979,7 @@ function twitch_users_get_user_block_list(_broadcaster_id, _optionals = {}, _cal
 	return _request;
 };
 
-function twitch_users_block_user(_target_user_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_users_block_user(_target_user_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/users/blocks";
 
@@ -3007,7 +3024,7 @@ function twitch_users_get_user_extensions(_callback_success = undefined, _callba
 	return _request;
 };
 
-function twitch_users_get_user_active_extensions(_optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_users_get_user_active_extensions(_optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/users/extensions";
 
@@ -3038,7 +3055,7 @@ function twitch_users_update_user_extensions(_data, _callback_success = undefine
 
 // ## VIDEOS ###################################################
 
-function twitch_videos_get_videos(_id, _user_id, _game_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_videos_get_videos(_id, _user_id, _game_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/videos";
 
@@ -3054,7 +3071,7 @@ function twitch_videos_get_videos(_id, _user_id, _game_id, _optionals = {}, _cal
 	return _request;
 };
 
-function twitch_videos_delete_videos(_id, _optionals = {}, _callback_success = undefined, _callback_failed = undefined)
+function twitch_videos_delete_videos(_id, _optionals = undefined, _callback_success = undefined, _callback_failed = undefined)
 {
 	var _url = $"{TWITCH_ENDPOINT}helix/videos";
 
