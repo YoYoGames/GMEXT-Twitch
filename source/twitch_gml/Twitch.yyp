@@ -52,7 +52,9 @@
     {"$GMFolder":"","%Name":"WebView","folderPath":"folders/WebView.yy","name":"WebView","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Extensions","folderPath":"folders/WebView/Extensions.yy","name":"Extensions","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
-  "IncludedFiles":[],
+  "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"GMEXT-Twitch.html","CopyToMask":0,"filePath":"datafiles","name":"GMEXT-Twitch.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+  ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{

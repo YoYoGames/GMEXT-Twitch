@@ -5774,7 +5774,7 @@ function twitch_users_update_user_extensions(data, callback_success, callback_fa
  * | &nbsp;├──&nbsp;created_at | ${type.string}  | The date and time, in UTC, of when the video was created. The timestamp is in RFC3339 format.  |
  * | &nbsp;├──&nbsp;published_at | ${type.string}  | The date and time, in UTC, of when the video was published. The timestamp is in RFC3339 format.  |
  * | &nbsp;├──&nbsp;url | ${type.string}  | The video's URL.  |
- * | &nbsp;├──&nbsp;thumbnail_url | ${type.string}  | A URL to a thumbnail image of the video. Before using the URL, you must replace the `%{width}` and `%{height}` placeholders with the width and height of the thumbnail you want returned. Due to current limitations, `${width}` must be 320 and `${height}` must be 180.  |
+ * | &nbsp;├──&nbsp;thumbnail_url | ${type.string}  | A URL to a thumbnail image of the video. Before using the URL, you must replace the `%{width}` and `%{height}` placeholders with the width and height of the thumbnail you want returned. Due to current limitations, `%{width}` must be 320 and `%{height}` must be 180.  |
  * | &nbsp;├──&nbsp;viewable | ${type.string}  | The video's viewable state. Always set to `"public"`.  |
  * | &nbsp;├──&nbsp;view_count | ${type.number}  | The number of times that users have watched the video.  |
  * | &nbsp;├──&nbsp;language | ${type.string}  | The ISO 639-1 two-letter language code that the video was broadcast in. For example, the language code is `"DE"` if the video was broadcast in German. For a list of supported languages, see [Supported Stream Language](https://help.twitch.tv/s/article/languages-on-twitch#streamlang). The language value is `"other"` if the video was broadcast in a language not in the list of supported languages.  |

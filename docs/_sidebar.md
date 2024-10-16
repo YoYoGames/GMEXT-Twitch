@@ -1,4 +1,4 @@
-### [Twitch Extension](Home)
+### [Twitch Extension](home)
 ### Guides
 
 * ${page.setup}
