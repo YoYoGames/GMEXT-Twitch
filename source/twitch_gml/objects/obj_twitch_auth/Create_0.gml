@@ -10,6 +10,7 @@ twitch_auth_from_cache(
 	},
 	function()
 	{
-		
+		show_message_async("[Twitch] Sign In From Cache Failed")
+		show_debug_message("[Twitch] Sign In From Cache Failed")
 	}
 )

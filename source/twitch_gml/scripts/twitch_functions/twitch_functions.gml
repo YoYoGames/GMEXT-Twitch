@@ -237,9 +237,22 @@ function __twitch_auth_defer_callback(_callback_success, _callback_failed) {
 				}
 			}
 			
-			if (is_callable(callback_success)) {
-				/// feather ignore once GM1013
-				callback_success(data);
+			show_debug_message(json_encode(async_load))
+			if(async_load[?"result"] == "")
+			{
+				if (is_callable(callback_failed)) {
+					callback_failed(data);
+				}
+			}
+			else
+			{
+				// Store the session data in disk
+				__twitch_auth_session_save(data);
+				
+				if (is_callable(callback_success)) {
+					/// feather ignore once GM1013
+					callback_success(data);
+				}
 			}
 		}), 
 		callback_failed);
@@ -360,13 +373,23 @@ function twitch_auth_refresh_token(_callback_success = undefined, _callback_fail
 	var _client_id = twitch_get_client_id();
 	var _client_secret = twitch_get_client_secret();
 
-	var _deferred_callback = method({ callback_success: _callback_success }, function(_data) {
-	
-		// Store the session data in disk
-		__twitch_auth_session_save(_data);
+	var _deferred_callback = method({ callback_success: _callback_success, callback_failed: _callback_failed  }, function(_data) {
 		
-		if (is_callable(callback_success)) {
-			callback_success(_data);
+		show_debug_message(json_encode(async_load))
+		if(async_load[?"result"] == "")
+		{
+			if (is_callable(callback_failed)) {
+				callback_failed(_data);
+			}
+		}
+		else
+		{
+			// Store the session data in disk
+			__twitch_auth_session_save(_data);
+			
+			if (is_callable(callback_success)) {
+				callback_success(_data);
+			}
 		}
 	});
 
