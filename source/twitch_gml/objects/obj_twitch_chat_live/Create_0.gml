@@ -1,4 +1,9 @@
 
+var msg = "This feature has been discontinued\n Check this link: https://twitchapps.com/tmi/, You should use Event Subs to read chat messages"
+show_message_async(msg)
+show_debug_message(msg)
+
+
 event_inherited();
 
 text = "Live Chat"
