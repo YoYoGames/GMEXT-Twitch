@@ -211,6 +211,13 @@ function twitch_get_refresh_token()
 
 // ## AUTH #####################################################
 
+/// @param {Struct} _data The auth session data.
+/// @returns {Bool}
+/// @ignore
+function __twitch_auth_session_data_is_valid(_data) {
+	return is_struct(_data) && struct_exists(_data, "access_token") && struct_exists(_data, "refresh_token");
+}
+
 /// @param {Function} _callback_success
 /// @param {Function} _callback_failed
 /// @ignore
@@ -220,6 +227,11 @@ function __twitch_auth_defer_callback(_callback_success, _callback_failed) {
 
 		var _deferred_context = { callback_success, data: _data };
 
+		// Validate session data (this can be invalid if there is no internet connection)
+		if (!__twitch_auth_session_data_is_valid(_data)) {
+			return callback_failed("[ERROR] Could not reach the server (invalid session data).");
+		}
+			
 		// Store the session data in disk
 		__twitch_auth_session_save(_data);
 			
@@ -236,24 +248,12 @@ function __twitch_auth_defer_callback(_callback_success, _callback_failed) {
 					refresher = call_later(_refresh_rate, time_source_units_seconds, twitch_auth_refresh_token, true);
 				}
 			}
-			
-			show_debug_message(json_encode(async_load))
-			if(async_load[?"result"] == "")
-			{
-				if (is_callable(callback_failed)) {
-					callback_failed(data);
-				}
-			}
-			else
-			{
-				// Store the session data in disk
-				__twitch_auth_session_save(data);
 				
-				if (is_callable(callback_success)) {
-					/// feather ignore once GM1013
-					callback_success(data);
-				}
+			if (is_callable(callback_success)) {
+				/// feather ignore once GM1013
+				callback_success(data);
 			}
+			
 		}), 
 		callback_failed);
 	});
@@ -375,21 +375,17 @@ function twitch_auth_refresh_token(_callback_success = undefined, _callback_fail
 
 	var _deferred_callback = method({ callback_success: _callback_success, callback_failed: _callback_failed  }, function(_data) {
 		
-		show_debug_message(json_encode(async_load))
-		if(async_load[?"result"] == "")
-		{
-			if (is_callable(callback_failed)) {
-				callback_failed(_data);
-			}
+		// Validate session data (this can be invalid if there is no internet connection)
+		if (!__twitch_auth_session_data_is_valid(_data)) {
+			return callback_failed("[ERROR] Could not reach the server (invalid session data)");
 		}
-		else
-		{
-			// Store the session data in disk
-			__twitch_auth_session_save(_data);
+		
+		// Store the session data in disk
+		__twitch_auth_session_save(_data);
+
 			
-			if (is_callable(callback_success)) {
-				callback_success(_data);
-			}
+		if (is_callable(callback_success)) {
+			callback_success(_data);
 		}
 	});
 
