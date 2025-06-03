@@ -1,6 +1,7 @@
-name: Extension Bug Report
-description: File a bug report for issues that happen with any of our Official Extensions.
-labels: ["extension-bug"]
+name: Bug Report
+description: File a bug report for issues that only happen when this extension is in your project
+labels: ["Twitch"]
+type: "Extension Bug"
 body:
   - type: markdown
     attributes:
@@ -87,24 +88,22 @@ body:
         - Xbox (GDK)
     validations:
       required: false
-      
-  - type: checkboxes
-    id: compile-log
+
+  - type: input
+    id: expected
     attributes:
-      label: Compiler Log File
-      description: Please copy/paste your entire _Output Window_ contents from GameMaker into a new .txt file and ensure you have dropped that .txt file onto this bug report form, then tick the checkbox to confirm you have done so. This file is essential for all compilation and in-game bug reports.
-      options:
-        - label: I have attached my compiler log in a text file
-          required: true
-          
-  - type: checkboxes
+      label: Expected Change
+      description: If it is not obvious from your Description text, what difference would you expect to see once this is fixed?
+    validations:
+      required: false
+      
+  - type: input
     id: sample
     attributes:
-      label: Sample .yyz File
-      description: Please _Export_ as small a sample project as you can make to recreate the issue and drop the .yyz file GameMaker made for you onto this bug report form, then tick the checkbox to confirm you have done so. This file is often extremely important for in-game bug reports and we will ask for a sample if the issue does not easily reproduce for us.
-      options:
-        - label: I have attached a small sample project
-          required: false
+      label: Sample Package
+      description: Please create as small a sample project as you can make which shows the problem and then use the Help > Upload a Bug Package tool inside GameMaker. Say yes to including that little sample project! Then paste the download URL into the box below.
+    validations:
+      required: false
           
   - type: markdown
     attributes:
