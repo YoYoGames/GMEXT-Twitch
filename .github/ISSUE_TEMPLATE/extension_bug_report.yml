@@ -88,14 +88,6 @@ body:
         - Xbox (GDK)
     validations:
       required: false
-
-  - type: input
-    id: expected
-    attributes:
-      label: Expected Change
-      description: If it is not obvious from your Description text, what difference would you expect to see once this is fixed?
-    validations:
-      required: false
       
   - type: input
     id: sample
