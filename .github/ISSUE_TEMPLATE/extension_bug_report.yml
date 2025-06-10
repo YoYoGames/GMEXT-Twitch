@@ -6,13 +6,13 @@ body:
   - type: markdown
     attributes:
       value: |
-        For in-game issues which also happen when this extension is not part of your project, or just when using GameMaker itself, DO NOT report that here. Use the Help menu inside GameMaker.
+        For in-game bugs which also happen without this extension, or about using GameMaker itself, DO NOT report that here! (Help  inside GameMaker.)
         
-        Always ensure you're on the latest version of this extension before sending any bug reports!
+        Ensure the bug happens in the latest version of this extension before sending any bug reports! (DO NOT send reports for older versions.)
         
-        Also, search first of all for any existing reports of this bug - if one exists, DO NOT file your own duplicate - leave a thumbs-up or a comment on the existing report!
+        Search for any existing reports of this bug first! (If one exists, DO NOT file yours now - add a thumbs-up/comment on the existing report.)
        
-        Most fields are required to be filled-in before you can submit this report, as it is all essential/required information to confirm and fix your issue.
+        Most fields need to be filled-in before you can submit, as it's all required information to us confirm and fix this bug.
 
   - type: textarea
     id: description
