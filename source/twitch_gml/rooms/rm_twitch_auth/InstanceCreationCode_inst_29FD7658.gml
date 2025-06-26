@@ -1,2 +1,3 @@
 
 text = "Moderation"
+locked = true
