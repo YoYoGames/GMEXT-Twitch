@@ -350,10 +350,10 @@ function twitch_auth_app_token(_callback_success = undefined, _callback_failed =
 	var _deferred_callback = method({ callback_success: _callback_success }, function(_data) {
 		with (__twitch_get_singleton()) {
 			twitch_app_access_token = _data.access_token
-			
-			if (is_callable(callback_success)) {
-				callback_success(_data);
-			}
+		}
+
+		if (is_callable(callback_success)) {
+			callback_success(_data);
 		}
 	});
 
